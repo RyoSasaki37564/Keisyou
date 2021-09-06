@@ -1,0 +1,419 @@
+fileFormatVersion: 2
+guid: 24a441bd219c40247b2c67d9fede7e4f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8341506183496338678
+    second: RyuGariBattle_0
+  - first:
+      213: -3409483533326255455
+    second: RyuGariBattle_1
+  - first:
+      213: -7427290911542320009
+    second: RyuGariBattle_2
+  - first:
+      213: -4835274672753357444
+    second: RyuGariBattle_3
+  - first:
+      213: -6145158527367825138
+    second: RyuGariBattle_4
+  - first:
+      213: 6611428728181259624
+    second: RyuGariBattle_5
+  - first:
+      213: -3110962344988687301
+    second: RyuGariBattle_6
+  - first:
+      213: 4443008575440661295
+    second: RyuGariBattle_7
+  - first:
+      213: 1493286520526570837
+    second: RyuGariBattle_8
+  - first:
+      213: 3099050282404750369
+    second: RyuGariBattle_9
+  - first:
+      213: -4018989680953316905
+    second: RyuGariBattle_10
+  - first:
+      213: -4901968448111172062
+    second: RyuGariBattle_11
+  - first:
+      213: -8299584890142318408
+    second: RyuGariBattle_12
+  - first:
+      213: -3051976767161617577
+    second: RyuGariBattle_13
+  - first:
+      213: -6060635680401521421
+    second: RyuGariBattle_14
+  - first:
+      213: -6546289006580080518
+    second: RyuGariBattle_15
+  - first:
+      213: 7035462552634082231
+    second: RyuGariBattle_16
+  - first:
+      213: 8284504166054174393
+    second: RyuGariBattle_17
+  - first:
+      213: 4018028526196639371
+    second: RyuGariBattle_18
+  - first:
+      213: -4216787437086902823
+    second: RyuGariBattle_19
+  - first:
+      213: 3423975960220469774
+    second: RyuGariBattle_20
+  - first:
+      213: 5075935309428085109
+    second: RyuGariBattle_21
+  - first:
+      213: -3838717605952473971
+    second: RyuGariBattle_22
+  - first:
+      213: -1429400968198148160
+    second: RyuGariBattle_23
+  - first:
+      213: -8328756156476779702
+    second: RyuGariBattle_24
+  - first:
+      213: 1178241564472452565
+    second: RyuGariBattle_25
+  - first:
+      213: 8498933300735997327
+    second: RyuGariBattle_26
+  - first:
+      213: -9215665724481426998
+    second: RyuGariBattle_27
+  - first:
+      213: 3184560644290583309
+    second: RyuGariBattle_28
+  - first:
+      213: -8509680392737682817
+    second: RyuGariBattle_29
+  - first:
+      213: 2481635053948793758
+    second: RyuGariBattle_30
+  - first:
+      213: 8664472345843120518
+    second: RyuGariBattle_31
+  - first:
+      213: 6069202570839607614
+    second: RyuGariBattle_32
+  - first:
+      213: -5308653964887494930
+    second: RyuGariBattle_33
+  - first:
+      213: -7875999853709993874
+    second: RyuGariBattle_34
+  - first:
+      213: 4468679058460911156
+    second: RyuGariBattle_35
+  - first:
+      213: -3244000973641621437
+    second: RyuGariBattle_36
+  - first:
+      213: 8816201235542228860
+    second: RyuGariBattle_37
+  - first:
+      213: -8871284818235266856
+    second: RyuGariBattle_38
+  - first:
+      213: 4295927967237418998
+    second: RyuGariBattle_39
+  - first:
+      213: -3663508611580755478
+    second: RyuGariBattle_40
+  - first:
+      213: 2603785563508476587
+    second: RyuGariBattle_41
+  - first:
+      213: -3684377758137199986
+    second: RyuGariBattle_42
+  - first:
+      213: -6709034933237968140
+    second: RyuGariBattle_43
+  - first:
+      213: 1512812055960474797
+    second: RyuGariBattle_44
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RyuGariBattle_4
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 663
+        width: 180
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0937c7b0e208baa0800000000000000
+      internalID: -6145158527367825138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RyuGariBattle_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 673
+        width: 101
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d921debd2ea938c0800000000000000
+      internalID: -4018989680953316905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RyuGariBattle_15
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 472
+        width: 203
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a70efbd05d8e625a0800000000000000
+      internalID: -6546289006580080518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RyuGariBattle_16
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 38
+        width: 534
+        height: 637
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b341588aebf2a160800000000000000
+      internalID: 7035462552634082231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RyuGariBattle_20
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 354
+        width: 212
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a0b6caef7648f20800000000000000
+      internalID: 3423975960220469774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RyuGariBattle_27
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 223
+        width: 209
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9aa8ba9d06b1080800000000000000
+      internalID: -9215665724481426998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RyuGariBattle_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 16
+        width: 250
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3948c805932a3450800000000000000
+      internalID: 6069202570839607614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RyuGariBattle_41
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 21
+        width: 258
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baa8630bc21822420800000000000000
+      internalID: 2603785563508476587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
