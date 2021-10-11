@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EneQTE : MonoBehaviour
+public class QTE : MonoBehaviour
 {
-    int m_QTERandom = 0; //QTE発生判定用乱数
-
-    [SerializeField] float m_waitingQTE = 5.0f; //QTE判定待ち時間
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +17,8 @@ public class EneQTE : MonoBehaviour
         
     }
 
-    IEnumerator QTESet()
+    private void OnMouseEnter()
     {
-        yield return new WaitForSeconds(m_waitingQTE);
-
+        Destroy(this.gameObject);
     }
 }
