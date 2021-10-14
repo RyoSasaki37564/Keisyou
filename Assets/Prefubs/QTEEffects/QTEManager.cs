@@ -10,6 +10,7 @@ public class QTEManager : MonoBehaviour
 
 
     float m_posX, m_posY;
+    Vector2 m_v;
     Transform m_pos; //生成位置
 
     // Start is called before the first frame update
@@ -35,7 +36,8 @@ public class QTEManager : MonoBehaviour
     {
         m_posX = Random.Range(-200f, 200f);
         m_posY = Random.Range(-150f, 150f);
-        m_pos = new Transform()
+        m_v = new Vector2(m_posX, m_posY);
+        m_pos.position = m_v;
         Instantiate(m_QTEEffects[0], m_pos.transform.position, m_pos.transform.rotation);
         StartCoroutine(QTESys(m_waitTime));
     }
