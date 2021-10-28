@@ -8,10 +8,12 @@ public class QTEManager : MonoBehaviour
 
     [SerializeField] float m_waitTime = 3.0f; //何秒待つか。
 
+    [SerializeField] GameObject m_pulusPos;
+    [SerializeField] GameObject m_minusPos;
 
-    float m_posX, m_posY;
-    Vector2 m_v;
-    Transform m_pos; //生成位置
+    float m_posXRand, m_posYRand;
+
+    Vector2 m_effectPos; //生成位置
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +36,11 @@ public class QTEManager : MonoBehaviour
 
     void QTEGeneration()
     {
-        m_posX = Random.Range(-200f, 200f);
-        m_posY = Random.Range(-150f, 150f);
-        m_v = new Vector2(m_posX, m_posY);
-        m_pos.position = m_v;
-        Instantiate(m_QTEEffects[0], m_pos.transform.position, m_pos.transform.rotation);
+        m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
+        m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
+        m_effectPos = new Vector2(m_posXRand, m_posYRand);
+        var x =  Instantiate(m_QTEEffects[0]);
+        x.transform.position = m_effectPos;
         StartCoroutine(QTESys(m_waitTime));
     }
 }
