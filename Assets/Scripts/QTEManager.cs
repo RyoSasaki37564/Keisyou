@@ -21,12 +21,6 @@ public class QTEManager : MonoBehaviour
         StartCoroutine(QTESys(m_waitTime));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator QTESys(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
