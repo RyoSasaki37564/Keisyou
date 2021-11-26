@@ -30,7 +30,7 @@ public class QTEManager : MonoBehaviour
 
     void QTEGeneration()
     {
-        if(BattleManager.Instance.theTurn == BattleManager.Turn.InputTurn)
+        if(BattleManager.theTurn == BattleManager.Turn.InputTurn)
         {
             m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
             m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);

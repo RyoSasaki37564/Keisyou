@@ -8,9 +8,6 @@ public class Attack : MonoBehaviour
 
     public void AttackAct()
     {
-        BattleManager.Instance.m_currentEnemyHP -= 10;
-        Debug.LogWarning(BattleManager.Instance.m_currentEnemyHP);
-        BattleManager.Instance.TurnAdvance();
         Debug.Log("攻撃");
     }
 }

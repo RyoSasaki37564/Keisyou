@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
-    public static BattleManager Instance = default;
-
-    public Slider m_enemyHPSlider = default;
+    Slider m_enemyHPSlider = default;
 
     [SerializeField] float m_enmyHPMax = 200;
-    public float m_currentEnemyHP = 0;
+    float m_currentEnemyHP = 0;
 
     /// <summary>
     /// 戦闘シーンにおけるシーン定義。
@@ -28,53 +26,44 @@ public class BattleManager : MonoBehaviour
         /// <summary> BattleEnd = 戦闘終了時。 </summary>
         BattleEnd,
     }
-    public Turn theTurn = Turn.AwakeTurn;
+    public static Turn theTurn = Turn.AwakeTurn;
 
     private void Awake()
     {
-        if (Instance)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = new BattleManager();
-            DontDestroyOnLoad(this.gameObject);
-        }
 
         theTurn = Turn.AwakeTurn;
-        StartCoroutine(Instance.AwakeOff());
+        StartCoroutine(AwakeOff());
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Instance.m_enemyHPSlider = GameObject.Find("EHPSlider").GetComponent<Slider>();
-        Instance.m_enemyHPSlider.maxValue = m_enmyHPMax;
-        m_currentEnemyHP = Instance.m_enemyHPSlider.maxValue;
-        Instance.m_enemyHPSlider.value = m_currentEnemyHP;
+        m_enemyHPSlider = GameObject.Find("EHPSlider").GetComponent<Slider>();
+        m_enemyHPSlider.maxValue = m_enmyHPMax;
+        m_currentEnemyHP = m_enemyHPSlider.maxValue;
+        m_enemyHPSlider.value = m_currentEnemyHP;
         Debug.Log("やってまいりました。");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Instance.theTurn == Turn.PlayerTurn)
+        if(theTurn == Turn.PlayerTurn)
         {
-            StartCoroutine(Instance.Turning());
+            StartCoroutine(Turning());
         }
     }
 
     IEnumerator AwakeOff()
     {
         yield return new WaitForSeconds(3);
-        Instance.theTurn = Turn.InputTurn;
+        theTurn = Turn.InputTurn;
     }
     IEnumerator Turning()
     {
         yield return new WaitForSeconds(0.1f);
         Debug.Log("インプットターンやで");
-        Instance.theTurn = Turn.InputTurn;
+        theTurn = Turn.InputTurn;
     }
 
     /// <summary>
@@ -82,7 +71,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void TurnAdvance()
     {
-        Instance.theTurn++;
-        Debug.LogWarning(Instance.theTurn);
+        theTurn++;
+        Debug.LogWarning(theTurn);
     }
 }
