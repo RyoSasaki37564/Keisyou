@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Back
+    uniqueID: 1879364703
+    locked: 0
+  - name: Bottun
+    uniqueID: 1067489579
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: QTEEffects
+    uniqueID: 3280613127
     locked: 0
