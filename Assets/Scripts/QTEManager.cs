@@ -18,7 +18,7 @@ public class QTEManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(QTESys(m_waitTime));
+        StartCoroutine(QTESys(m_waitTime+5));
     }
 
     IEnumerator QTESys(float waitTime)
@@ -30,11 +30,14 @@ public class QTEManager : MonoBehaviour
 
     void QTEGeneration()
     {
-        m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
-        m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
-        m_effectPos = new Vector2(m_posXRand, m_posYRand);
-        var x =  Instantiate(m_QTEEffects[0]);
-        x.transform.position = m_effectPos;
+        if(BattleManager.Instance.theTurn == BattleManager.Turn.InputTurn)
+        {
+            m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
+            m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
+            m_effectPos = new Vector2(m_posXRand, m_posYRand);
+            var x = Instantiate(m_QTEEffects[0]);
+            x.transform.position = m_effectPos;
+        }
         StartCoroutine(QTESys(m_waitTime));
     }
 }
