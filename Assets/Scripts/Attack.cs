@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    float _power = 10;
+    [SerializeField]float m_power = 10;
+
+    Player m_p = default;
+
+    private void Start()
+    {
+        m_p = Player.Instance;
+    }
 
     public void AttackAct()
     {
-        Debug.Log("攻撃");
+        if(BattleManager.theTurn == BattleManager.Turn.InputTurn)
+        {
+            BattleManager.m_currentEnemyHP -= m_power;
+            Debug.Log("攻撃");
+            BattleManager.TurnAdvance();
+            m_p.m_concentlate++;
+        }
+        else
+        {
+            Debug.Log("今は攻撃できましぇん");
+        }
     }
 }

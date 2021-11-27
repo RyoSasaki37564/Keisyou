@@ -8,7 +8,7 @@ public class QTE : MonoBehaviour
     
     public void QTEBited()
     {
-        Player._pHP -= 10;
+        Player.Instance.m_pHP -= 10;
         Destroy(this.gameObject);
     }
 

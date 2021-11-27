@@ -8,7 +8,7 @@ public class BattleManager : MonoBehaviour
     Slider m_enemyHPSlider = default;
 
     [SerializeField] float m_enmyHPMax = 200;
-    float m_currentEnemyHP = 0;
+    public static float m_currentEnemyHP = 0;
 
     /// <summary>
     /// 戦闘シーンにおけるシーン定義。
@@ -30,7 +30,6 @@ public class BattleManager : MonoBehaviour
 
     private void Awake()
     {
-
         theTurn = Turn.AwakeTurn;
         StartCoroutine(AwakeOff());
     }
@@ -52,6 +51,8 @@ public class BattleManager : MonoBehaviour
         {
             StartCoroutine(Turning());
         }
+
+        m_enemyHPSlider.value = m_currentEnemyHP;
     }
 
     IEnumerator AwakeOff()
@@ -69,7 +70,7 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// 次のターンへ進める。
     /// </summary>
-    public void TurnAdvance()
+    public static void TurnAdvance()
     {
         theTurn++;
         Debug.LogWarning(theTurn);
