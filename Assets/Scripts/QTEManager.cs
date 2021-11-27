@@ -15,7 +15,7 @@ public class QTEManager : MonoBehaviour
 
     Vector2 m_effectPos; //生成位置
 
-    bool m_isQTETime = false;
+    [SerializeField]bool m_isQTETime = false;
 
     // Start is called before the first frame update
     void Start()

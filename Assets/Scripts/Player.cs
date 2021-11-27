@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : BattleChara
 {
     public static Player Instance = default;
-
-    public int m_pHP = 100;
 
     public float m_maxConcentlate = 100;
     public float m_concentlate = 0;
@@ -34,8 +32,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_hpSlider.maxValue = m_pHP;
-        m_hpSlider.value = m_pHP;
+        m_maxHP = 100;
+
+        m_hpSlider.maxValue = m_maxHP;
+        m_currentHP = m_maxHP;
+        m_hpSlider.value = m_currentHP;
 
         m_conSlider.maxValue = m_maxConcentlate;
         m_conSlider.value = m_concentlate;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_hpSlider.value = m_pHP;
+        m_hpSlider.value = m_currentHP;
         m_conSlider.value = m_concentlate;
         m_dgSlider.value = m_dogePower;
     }

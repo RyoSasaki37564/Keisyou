@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1356e79211c04d9713aa04c110e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pHP: 100
+  m_isDead: 0
   m_maxConcentlate: 100
   m_concentlate: 0
   m_dogePower: 100
@@ -2074,6 +2074,7 @@ MonoBehaviour:
   m_waitTime: 3
   m_pulusPos: {fileID: 959559432}
   m_minusPos: {fileID: 335316467}
+  m_isQTETime: 1
 --- !u!1 &1881726266
 GameObject:
   m_ObjectHideFlags: 0
