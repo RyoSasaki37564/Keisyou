@@ -12,11 +12,9 @@ public class Enemy : BattleChara
     /// <summary> 固有特異行動 </summary>
     [SerializeField] GameObject[] m_enemySpecialMove = default;
 
-    /// <summary> 敵ステータスのマスター </summary>
-    [SerializeField] TextAsset m_master = default; 
-    
-    StringReader sr;
-
+    private void Awake()
+    {
+    }
 
     // Start is called before the first frame update
     void Start()
