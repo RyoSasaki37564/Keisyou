@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 戦闘シーンにおけるキャラクター全般の始祖クラス。担当：必須共通パラメータ宣言及び体力処理の関数と生死判定
+/// </summary>
 public class BattleChara : MonoBehaviour
 {
     //体力
