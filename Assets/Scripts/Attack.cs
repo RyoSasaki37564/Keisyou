@@ -17,7 +17,6 @@ public class Attack : MonoBehaviour
     {
         if(BattleManager.theTurn == BattleManager.Turn.InputTurn)
         {
-            BattleManager.m_currentEnemyHP -= m_power;
             Debug.Log("攻撃");
             BattleManager.TurnAdvance();
             m_p.m_concentlate++;

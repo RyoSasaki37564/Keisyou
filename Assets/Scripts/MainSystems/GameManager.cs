@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
             this.e_deffence = deffence;
         }
     }
-    EnemyMasterData[] m_enemyMaster;
+    /// <summary> 敵マスターの配列　,,e_id,, e_name,, e_hp,,  e_attack,, e_deffence,, </summary>
+    public EnemyMasterData[] m_enemyMaster;
 
     void Awake()
     {
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Instance = new GameManager();
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
 
             //マスター格納処理

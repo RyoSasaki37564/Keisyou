@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
-    Slider m_enemyHPSlider = default;
-
-    [SerializeField] float m_enemyHPMax = 200;
-    public static float m_currentEnemyHP = 0;
-
     /// <summary>
     /// 戦闘シーンにおけるシーン定義。
     /// </summary>
@@ -28,6 +23,8 @@ public class BattleManager : MonoBehaviour
     }
     public static Turn theTurn = Turn.AwakeTurn;
 
+    Enemy m_e;
+
     private void Awake()
     {
         theTurn = Turn.AwakeTurn;
@@ -37,10 +34,12 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         m_enemyHPSlider = GameObject.Find("EHPSlider").GetComponent<Slider>();
         m_enemyHPSlider.maxValue = m_enemyHPMax;
         m_currentEnemyHP = m_enemyHPSlider.maxValue;
         m_enemyHPSlider.value = m_currentEnemyHP;
+        */
         Debug.Log("やってまいりました。");
     }
 
@@ -51,8 +50,8 @@ public class BattleManager : MonoBehaviour
         {
             StartCoroutine(Turning());
         }
-
-        m_enemyHPSlider.value = m_currentEnemyHP;
+        
+        //m_enemyHPSlider.value = m_currentEnemyHP;
     }
 
     IEnumerator AwakeOff()

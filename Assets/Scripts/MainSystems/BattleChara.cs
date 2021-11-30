@@ -37,7 +37,7 @@ public class BattleChara : MonoBehaviour
     /// </summary>
     /// <param name="damage"></param>
     /// <param name="isUnDeffencive"></param>
-    public void Damage(float damage, bool isUnDeffencive)
+    public virtual void Damage(float damage, bool isUnDeffencive)
     {
         if(isUnDeffencive == false)
         {
@@ -55,7 +55,7 @@ public class BattleChara : MonoBehaviour
     /// 回復処理
     /// </summary>
     /// <param name="medic"></param>
-    public void Healing(float medic)
+    public virtual void Healing(float medic)
     {
         m_currentHP += medic;
         if(m_currentHP > m_maxHP)
@@ -68,7 +68,7 @@ public class BattleChara : MonoBehaviour
     /// 生死判定
     /// </summary>
     /// <returns></returns>
-    bool DeadOrAlive()
+    public virtual bool DeadOrAlive()
     {
         if (m_currentHP <= 0)
         {
