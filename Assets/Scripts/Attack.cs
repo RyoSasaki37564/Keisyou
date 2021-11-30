@@ -10,9 +10,12 @@ public class Attack : MonoBehaviour
 
     [SerializeField] Animator m_approchTobackWall = default; //接近アニメーション
 
+    [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
+
     private void Start()
     {
         m_p = Player.Instance;
+        m_syucyusen.SetActive(false);
     }
 
     public void AttackAct()
@@ -20,6 +23,7 @@ public class Attack : MonoBehaviour
         if(BattleManager.theTurn == BattleManager.Turn.InputTurn)
         {
             m_approchTobackWall.SetBool("IsApproach", true);
+            m_syucyusen.SetActive(true);
             Debug.Log("攻撃");
             BattleManager.TurnAdvance();
             m_p.m_concentlate++;

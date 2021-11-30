@@ -14,7 +14,7 @@ public class Enemy : BattleChara
     /// <summary> エンカウントした敵のIDを格納するリスト </summary>
     public static List<int> m_encountEnemyID = new List<int>();
 
-    List<Enemy> m_enemies = new List<Enemy>(); //戦闘ごとに設定された数の敵実体を格納
+    List<Enemy> m_enemies; //戦闘ごとに設定された数の敵実体を格納
 
     string m_enemyName = default; //おなまえ
 
@@ -70,14 +70,12 @@ public class Enemy : BattleChara
                 var x = Instantiate(m_enemyUI[i], m_enemyUI[0].transform.position,
                     m_enemyObjectsInCanvas.transform.rotation);
                 x.transform.SetParent(m_enemyObjectsInCanvas.transform);
-
-                x.transform.localScale = new Vector3(1, 1, 1);
-
+                x.transform.localScale = new Vector3(1, 1, 1); //これ入れないとHPバーが世界を埋め尽くすほどバカデカくなるにょ。
                 Slider enemyHPSL = x.GetComponentInChildren<Slider>();
-                enemyHPSL.maxValue = m_enemies[i].m_maxHP;//m_enemies[i].m_maxHP;
-                enemyHPSL.value = m_enemies[i].m_maxHP;//m_enemies[i].m_maxHP;
+                enemyHPSL.maxValue = m_enemies[i].m_maxHP;
+                enemyHPSL.value = m_enemies[i].m_maxHP;
                 Text enemyNameText = x.GetComponentInChildren<Text>();
-                enemyNameText.text = m_enemies[i].m_enemyName;//m_enemies[i].m_enemyName;
+                enemyNameText.text = m_enemies[i].m_enemyName;
             }
             m_enemyUI[0].SetActive(false);
         }
