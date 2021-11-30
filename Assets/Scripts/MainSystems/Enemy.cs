@@ -74,10 +74,10 @@ public class Enemy : BattleChara
                 x.transform.localScale = new Vector3(1, 1, 1);
 
                 Slider enemyHPSL = x.GetComponentInChildren<Slider>();
-                enemyHPSL.maxValue = ene.m_maxHP;//m_enemies[i].m_maxHP;
-                enemyHPSL.value = ene.m_maxHP;//m_enemies[i].m_maxHP;
+                enemyHPSL.maxValue = m_enemies[i].m_maxHP;//m_enemies[i].m_maxHP;
+                enemyHPSL.value = m_enemies[i].m_maxHP;//m_enemies[i].m_maxHP;
                 Text enemyNameText = x.GetComponentInChildren<Text>();
-                enemyNameText.text = ene.m_enemyName;//m_enemies[i].m_enemyName;
+                enemyNameText.text = m_enemies[i].m_enemyName;//m_enemies[i].m_enemyName;
             }
             m_enemyUI[0].SetActive(false);
         }

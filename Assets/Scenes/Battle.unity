@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_power: 10
+  m_approchTobackWall: {fileID: 1189412522}
 --- !u!1 &511166785
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +921,7 @@ GameObject:
   - component: {fileID: 1189412521}
   - component: {fileID: 1189412520}
   - component: {fileID: 1189412522}
+  - component: {fileID: 1189412523}
   m_Layer: 0
   m_Name: BackWall
   m_TagString: Untagged
@@ -1011,6 +1013,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1189412523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189412519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566388a804819a54395abd587f45e9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_back: {fileID: 1189412522}
 --- !u!1 &1231055818
 GameObject:
   m_ObjectHideFlags: 0
