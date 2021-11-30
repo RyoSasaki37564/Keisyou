@@ -7,7 +7,7 @@ public class BattleManager : MonoBehaviour
 {
     Slider m_enemyHPSlider = default;
 
-    [SerializeField] float m_enmyHPMax = 200;
+    [SerializeField] float m_enemyHPMax = 200;
     public static float m_currentEnemyHP = 0;
 
     /// <summary>
@@ -38,7 +38,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         m_enemyHPSlider = GameObject.Find("EHPSlider").GetComponent<Slider>();
-        m_enemyHPSlider.maxValue = m_enmyHPMax;
+        m_enemyHPSlider.maxValue = m_enemyHPMax;
         m_currentEnemyHP = m_enemyHPSlider.maxValue;
         m_enemyHPSlider.value = m_currentEnemyHP;
         Debug.Log("やってまいりました。");

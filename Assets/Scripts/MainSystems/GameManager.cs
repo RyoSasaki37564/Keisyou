@@ -18,11 +18,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public struct EnemyMasterData
     {
-        int e_id;
-        string e_name;
-        float e_hp;
-        float e_attack;
-        float e_deffence;
+        public int e_id;
+        public string e_name;
+        public float e_hp;
+        public float e_attack;
+        public float e_deffence;
 
         public EnemyMasterData(int id, string name, float hp, float attack, float deffence)
         {
@@ -48,13 +48,14 @@ public class GameManager : MonoBehaviour
 
             //マスター格納処理
             sr = new StringReader(m_master.text);
-            m_enemyMasterLineMax = int.Parse(sr.ToString());
+            m_enemyMasterLineMax = int.Parse(sr.ReadLine());
+            string[] line = sr.ReadLine().Split(',');//2行目はパラメータフォーマットなので読み捨てる
             m_enemyMaster = new EnemyMasterData[m_enemyMasterLineMax];
             if(sr != null)
             {
                 for (var i = 0; i < m_enemyMasterLineMax; i++)
                 {
-                    var line = sr.ReadLine().Split(',');
+                    line = sr.ReadLine().Split(',');
                     m_enemyMaster[i] = new EnemyMasterData(int.Parse(line[0]), line[1],
                         float.Parse(line[2]), float.Parse(line[3]), float.Parse(line[4]));
                 }
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
