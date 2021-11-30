@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class Player : BattleChara
 {
@@ -10,7 +11,10 @@ public class Player : BattleChara
     public float m_maxConcentlate = 100;
     public float m_concentlate = 0;
 
-    public float m_dogePower = 100;
+    [SerializeField] TextAsset m_playerLevelTable = default; //プレイヤーのステータス
+    StringReader sr;
+
+    public float m_dogePower;
 
     [SerializeField] Slider m_hpSlider = default;
     [SerializeField] Slider m_conSlider = default;
@@ -26,6 +30,8 @@ public class Player : BattleChara
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
+            //マスター格納さん太郎
+            sr = new StringReader(m_playerLevelTable.text);
         }
     }
 

@@ -35,7 +35,8 @@ public class Enemy : BattleChara
     // Start is called before the first frame update
     void Start()
     {
-        m_enemies = new List<Enemy>();
+        //MonoBehaviourを継承したクラスではListの初期化にコンストラクタが使えないらしい。ので、ここで初期化命令を行う。
+        m_enemies = new List<Enemy>(); 
         //テスト用エンカウント
         m_encountEnemyID.Add(0);
         EnemyGenerate();
