@@ -1066,6 +1066,7 @@ MonoBehaviour:
   m_isDead: 0
   m_maxConcentlate: 100
   m_concentlate: 0
+  m_playerLevelTable: {fileID: 0}
   m_dogePower: 100
   m_hpSlider: {fileID: 552295176}
   m_conSlider: {fileID: 2062225447}

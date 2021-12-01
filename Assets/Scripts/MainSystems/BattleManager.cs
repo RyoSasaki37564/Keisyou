@@ -23,8 +23,6 @@ public class BattleManager : MonoBehaviour
     }
     public static Turn theTurn = Turn.AwakeTurn;
 
-    Enemy m_e;
-
     private void Awake()
     {
         theTurn = Turn.AwakeTurn;
@@ -34,12 +32,6 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        m_enemyHPSlider = GameObject.Find("EHPSlider").GetComponent<Slider>();
-        m_enemyHPSlider.maxValue = m_enemyHPMax;
-        m_currentEnemyHP = m_enemyHPSlider.maxValue;
-        m_enemyHPSlider.value = m_currentEnemyHP;
-        */
         Debug.Log("やってまいりました。");
     }
 
@@ -51,7 +43,6 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(Turning());
         }
         
-        //m_enemyHPSlider.value = m_currentEnemyHP;
     }
 
     IEnumerator AwakeOff()
@@ -66,9 +57,7 @@ public class BattleManager : MonoBehaviour
         theTurn = Turn.InputTurn;
     }
 
-    /// <summary>
-    /// 次のターンへ進める。
-    /// </summary>
+    /// <summary> 次のターンへ進める。</summary>
     public static void TurnAdvance()
     {
         theTurn++;
