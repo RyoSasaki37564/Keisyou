@@ -1064,13 +1064,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isDead: 0
-  m_maxConcentlate: 100
-  m_concentlate: 0
-  m_playerLevelTable: {fileID: 0}
-  m_dogePower: 100
+  m_playerLevelTableText: {fileID: 4900000, guid: 0ef1049cffaf4bd428a67a920450facd,
+    type: 3}
   m_hpSlider: {fileID: 552295176}
   m_conSlider: {fileID: 2062225447}
   m_dgSlider: {fileID: 1570908399}
+  m_dogeText: {fileID: 656682139}
 --- !u!4 &1231055820
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,8 +2142,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1067489579
-  m_SortingLayer: -1
+  m_SortingLayerID: 1879364703
+  m_SortingLayer: -2
   m_SortingOrder: 1
   m_Sprite: {fileID: 7035462552634082231, guid: 24a441bd219c40247b2c67d9fede7e4f,
     type: 3}

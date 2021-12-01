@@ -61,7 +61,10 @@ public class GameManager : MonoBehaviour
                         float.Parse(line[2]), float.Parse(line[3]), float.Parse(line[4]));
                 }
             }
-
+            else
+            {
+                Debug.LogError("ますたーがないですます");
+            }
         }
     }
 

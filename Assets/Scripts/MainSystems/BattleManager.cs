@@ -42,7 +42,6 @@ public class BattleManager : MonoBehaviour
         {
             StartCoroutine(Turning());
         }
-        
     }
 
     IEnumerator AwakeOff()

@@ -26,7 +26,7 @@ public class Attack : MonoBehaviour
             m_syucyusen.SetActive(true);
             Debug.Log("攻撃");
             BattleManager.TurnAdvance();
-            m_p.m_concentlate++;
+            m_p.m_currentConcentlate++;
         }
         else
         {
