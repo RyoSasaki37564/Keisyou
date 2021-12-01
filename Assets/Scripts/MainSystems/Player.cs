@@ -104,7 +104,8 @@ public class Player : BattleChara
         m_conSlider.value = m_currentConcentlate;
 
         m_dgSlider.maxValue = m_dogePowerMax;
-        m_dgSlider.value = m_dogePowerMax;
+        m_currentDogePower = m_dogePowerMax;
+        m_dgSlider.value = m_currentDogePower;
 
     }
 
