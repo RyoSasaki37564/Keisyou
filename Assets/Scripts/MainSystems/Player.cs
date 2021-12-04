@@ -8,7 +8,7 @@ public class Player : BattleChara
 {
     public static Player Instance = default;
 
-    public int m_playerLevel { get; set; }
+    [ContextMenuItem("レベル+１", "LevelUP")] public int m_playerLevel;
 
     /// <summary> 集中力の最大 </summary>
     public float m_maxConcentlate { get; set; }
@@ -96,17 +96,7 @@ public class Player : BattleChara
     // Start is called before the first frame update
     void Start()
     {
-        m_hpSlider.maxValue = m_maxHP;
-        m_currentHP = m_maxHP;
-        m_hpSlider.value = m_currentHP;
-
-        m_conSlider.maxValue = m_maxConcentlate;
-        m_conSlider.value = m_currentConcentlate;
-
-        m_dgSlider.maxValue = m_dogePowerMax;
-        m_currentDogePower = m_dogePowerMax;
-        m_dgSlider.value = m_currentDogePower;
-
+        UISettings();
     }
 
     // Update is called once per frame
@@ -124,24 +114,55 @@ public class Player : BattleChara
     /// <param name="lv">指定するレベル</param>
     public void Leveling(int lv)
     {
-        int x = lv - 1;
-        m_playerLevel = lv;
-        this.m_maxHP = m_playerLevelTable[x].p_hp;
-        this.m_attack = m_playerLevelTable[x].p_attack;
-        this.m_deffence = m_playerLevelTable[x].p_deffence;
-        this.m_dogePowerMax = m_playerLevelTable[x].p_doge;
-        this.m_maxConcentlate = m_playerLevelTable[x].p_concentlate;
+        if(lv < 100 && lv > 0)
+        {
+            int x = lv - 1;
+            m_playerLevel = lv;
+            this.m_maxHP = m_playerLevelTable[x].p_hp;
+            this.m_attack = m_playerLevelTable[x].p_attack;
+            this.m_deffence = m_playerLevelTable[x].p_deffence;
+            this.m_dogePowerMax = m_playerLevelTable[x].p_doge;
+            this.m_maxConcentlate = m_playerLevelTable[x].p_concentlate;
+        }
+        else
+        {
+            Debug.LogWarning("無効なレベルを入れるなよん");
+        }
     }
-    /// <summary>
-    /// レベルを一つ上げる。
-    /// </summary>
-    public void Leveling()
+    /// <summary> レベルを一つ上げる。 </summary>
+    public void LevelUP()
     {
-        this.m_playerLevel++;
-        this.m_maxHP = m_playerLevelTable[m_playerLevel--].p_hp;
-        this.m_attack = m_playerLevelTable[m_playerLevel--].p_attack;
-        this.m_deffence = m_playerLevelTable[m_playerLevel--].p_deffence;
-        this.m_dogePowerMax = m_playerLevelTable[m_playerLevel--].p_doge;
-        this.m_maxConcentlate = m_playerLevelTable[m_playerLevel--].p_concentlate;
+        if(this.m_playerLevel != 99)
+        {
+            this.m_playerLevel++;
+            this.m_maxHP = m_playerLevelTable[m_playerLevel - 1].p_hp;
+            this.m_attack = m_playerLevelTable[m_playerLevel - 1].p_attack;
+            this.m_deffence = m_playerLevelTable[m_playerLevel - 1].p_deffence;
+            this.m_dogePowerMax = m_playerLevelTable[m_playerLevel - 1].p_doge;
+            this.m_maxConcentlate = m_playerLevelTable[m_playerLevel - 1].p_concentlate;
+
+            UISettings();
+        }
+        else
+        {
+            Debug.LogWarning("これ以上レベルは上がりましぇ～ん");
+        }
+    }
+
+    /// <summary>
+    /// ステータスUI初期化処理
+    /// </summary>
+    void UISettings()
+    {
+        m_hpSlider.maxValue = m_maxHP;
+        m_currentHP = m_maxHP;
+        m_hpSlider.value = m_currentHP;
+
+        m_conSlider.maxValue = m_maxConcentlate;
+        m_conSlider.value = m_currentConcentlate;
+
+        m_dgSlider.maxValue = m_dogePowerMax;
+        m_currentDogePower = m_dogePowerMax;
+        m_dgSlider.value = m_currentDogePower;
     }
 }

@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class QTE : MonoBehaviour
 {
-    
+    [SerializeField] float m_damage = default;
+
     public void QTEBited()
     {
-        Player.Instance.Damage(10, true);
+        Player.Instance.Damage(m_damage, false);
         Destroy(this.gameObject);
     }
 

@@ -15,12 +15,11 @@ public class QTEManager : MonoBehaviour
 
     Vector2 m_effectPos; //生成位置
 
-    [SerializeField]bool m_isQTETime = false;
+    [SerializeField] bool m_isQTETime = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(QTESys(m_waitTime+5));
+        StartCoroutine(QTESys(m_waitTime));
     }
 
     IEnumerator QTESys(float waitTime)
@@ -32,6 +31,12 @@ public class QTEManager : MonoBehaviour
 
     void QTEGeneration()
     {
+        var r = Random.Range(1, 3);
+        if(r == 1)
+        {
+            m_isQTETime = true;
+        }
+
         if(m_isQTETime == true && BattleManager.theTurn == BattleManager.Turn.InputTurn)
         {
             m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
@@ -39,6 +44,7 @@ public class QTEManager : MonoBehaviour
             m_effectPos = new Vector2(m_posXRand, m_posYRand);
             var x = Instantiate(m_QTEEffects[0]);
             x.transform.position = m_effectPos;
+            m_isQTETime = false;
             StartCoroutine(QTESys(m_waitTime));
         }
         //StartCoroutine(QTESys(m_waitTime));

@@ -14,7 +14,7 @@ public class Enemy : BattleChara
     /// <summary> エンカウントした敵のIDを格納するリスト </summary>
     public static List<int> m_encountEnemyID = new List<int>();
 
-    List<Enemy> m_enemies; //戦闘ごとに設定された数の敵実体を格納
+    public static List<Enemy> m_enemies; //戦闘ごとに設定された数の敵実体を格納
 
     string m_enemyName = default; //おなまえ
 
@@ -36,20 +36,22 @@ public class Enemy : BattleChara
     void Start()
     {
         //MonoBehaviourを継承したクラスではListの初期化にコンストラクタが使えないらしい。ので、ここで初期化命令を行う。
-        m_enemies = new List<Enemy>(); 
+        m_enemies = new List<Enemy>();
+        
         //テスト用エンカウント
         m_encountEnemyID.Add(0);
+        
         EnemyGenerate();
-        if (m_enemies == null)
-        {
-            Debug.LogError("null!");
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //敵インスタンスはstaticなので、死亡したタイミングで消去
+        if(this.m_isDead)
+        {
+            m_enemies.Remove(this);
+        }
     }
 
     void EnemyGenerate()
