@@ -4,7 +4,6 @@ using UnityEditor;
 
 public class EditorSample : EditorWindow
 {
-
     SOSample _sample;
     private const string ASSET_PATH = "Assets/Resources/SOSample.asset";
 
@@ -48,13 +47,13 @@ public class EditorSample : EditorWindow
 
             using (new GUILayout.HorizontalScope(GUI.skin.box))
             {
-                GUI.backgroundColor = Color.green;
+                GUI.backgroundColor = Color.white;
                 // 読み込みボタン
                 if (GUILayout.Button("読み込み"))
                 {
                     Import();
                 }
-                GUI.backgroundColor = Color.magenta;
+                GUI.backgroundColor = Color.white;
                 // 書き込みボタン
                 if (GUILayout.Button("書き込み"))
                 {
