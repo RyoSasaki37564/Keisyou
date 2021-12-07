@@ -23,13 +23,16 @@ public class Enemy : BattleChara
 
     [SerializeField] GameObject[] m_enemyUI = default; //敵体力バーなどの元
 
-    /// <summary> なまえ　たいりょく　こうげき　ぼうぎょ </summary>
-    public Enemy(string name, float hp, float atk, float def)
+    public int m_statmina { get; set; }
+
+    /// <summary> なまえ　たいりょく　こうげき　ぼうぎょ すたみな</summary>
+    public Enemy(string name, float hp, float atk, float def, int stamina)
     {
         this.m_enemyName = name;
         this.m_maxHP = hp;
         this.m_attack = atk;
         this.m_deffence = def;
+        this.m_statmina = stamina;
     }
 
     // Start is called before the first frame update
@@ -65,7 +68,8 @@ public class Enemy : BattleChara
                 Enemy ene = new Enemy(GameManager.Instance.m_enemyMaster[m_encountEnemyID[i]].e_name,
                     GameManager.Instance.m_enemyMaster[m_encountEnemyID[i]].e_hp,
                     GameManager.Instance.m_enemyMaster[m_encountEnemyID[i]].e_attack,
-                    GameManager.Instance.m_enemyMaster[m_encountEnemyID[i]].e_deffence);
+                    GameManager.Instance.m_enemyMaster[m_encountEnemyID[i]].e_deffence,
+                    GameManager.Instance.m_enemyMaster[m_encountEnemyID[i]].e_stamina);
 
                 m_enemies.Add(ene);
 

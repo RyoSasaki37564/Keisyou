@@ -44,7 +44,6 @@ public class TagSearcher : EditorWindow
             /*
              ここにSearchの結果のオブジェクトを表示したい
              */
-
         }
     }
 

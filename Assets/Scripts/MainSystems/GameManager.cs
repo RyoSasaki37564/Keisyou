@@ -23,14 +23,16 @@ public class GameManager : MonoBehaviour
         public float e_hp;
         public float e_attack;
         public float e_deffence;
+        public int e_stamina;
 
-        public EnemyMasterData(int id, string name, float hp, float attack, float deffence)
+        public EnemyMasterData(int id, string name, float hp, float attack, float deffence, int stamina)
         {
             this.e_id = id;
             this.e_name = name;
             this.e_hp = hp;
             this.e_attack = attack;
             this.e_deffence = deffence;
+            this.e_stamina = stamina;
         }
     }
     /// <summary> 敵マスターの配列　,,e_id,, e_name,, e_hp,,  e_attack,, e_deffence,, </summary>
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
                 {
                     line = sr.ReadLine().Split(',');
                     m_enemyMaster[i] = new EnemyMasterData(int.Parse(line[0]), line[1],
-                        float.Parse(line[2]), float.Parse(line[3]), float.Parse(line[4]));
+                        float.Parse(line[2]), float.Parse(line[3]), float.Parse(line[4]), int.Parse(line[5]));
                 }
             }
             else
