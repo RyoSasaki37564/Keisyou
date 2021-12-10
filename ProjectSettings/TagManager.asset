@@ -14,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Blocks
   - 
   - 
   - 
@@ -51,8 +51,14 @@ TagManager:
   - name: QTEEffects
     uniqueID: 3280613127
     locked: 0
+  - name: FieldGround
+    uniqueID: 4110182667
+    locked: 0
   - name: FieldObj0
     uniqueID: 3727750445
+    locked: 0
+  - name: Chara
+    uniqueID: 173591733
     locked: 0
   - name: FieldObj1
     uniqueID: 1213170935
