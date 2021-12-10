@@ -54,3 +54,9 @@ TagManager:
   - name: FieldObj0
     uniqueID: 3727750445
     locked: 0
+  - name: FieldObj1
+    uniqueID: 1213170935
+    locked: 0
+  - name: FieldObj2
+    uniqueID: 4279717611
+    locked: 0
