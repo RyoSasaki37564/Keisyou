@@ -29,7 +29,7 @@ public class PlayerMoveController : MonoBehaviour
         {
             return;
         }
-        
+
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
 
@@ -37,20 +37,19 @@ public class PlayerMoveController : MonoBehaviour
         {
             m_gridMove.Move((int)h, (int)v, m_moveTime);
         }
-
-
     }
     private void LateUpdate()
     {
-        if (!m_gridMove.IsMoving) //入力がなければアイドルする
+        //歩行アニメ処理
+        m_walkingAnim.SetFloat("SetWalkH", h);
+        m_walkingAnim.SetFloat("SetWalkV", v);
+        if (!m_gridMove.IsMoving)
         {
             m_walkingAnim.SetBool("SetIdle", true);
         }
-        else if (m_walkingAnim) //入力に応じて歩行アニメーション
+        else
         {
             m_walkingAnim.SetBool("SetIdle", false);
-            m_walkingAnim.SetFloat("SetWalkH", h);
-            m_walkingAnim.SetFloat("SetWalkV", v);
         }
     }
 }
