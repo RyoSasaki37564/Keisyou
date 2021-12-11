@@ -12,10 +12,16 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField] float m_moveTime = 1f;
     GridMoveController m_gridMove = null;
 
+    Animator m_walkingAnim = default; //歩行アニメ
+
+
+    float h;
+    float v;
+
     void Start()
     {
         m_gridMove = GetComponent<GridMoveController>();
-
+        m_walkingAnim = GetComponent<Animator>();
     }
 
     void Update()
@@ -26,19 +32,22 @@ public class PlayerMoveController : MonoBehaviour
         }
 
         
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
+
         if (h != 0 || v != 0)
         {
             m_gridMove.Move((int)h, (int)v, m_moveTime);
-            /*
-            // 移動可能ならば移動して、ターンを進める
-            if (m_gridMove.Move((int)h, (int)v, m_moveTime))
-            {
-            }
-            */
         }
-        
+
+
+    }
+    private void LateUpdate()
+    {
+
+        if (m_walkingAnim)
+        {
+            m_walkingAnim.SetFloat("SetWalk", v);
+        }
     }
 }
