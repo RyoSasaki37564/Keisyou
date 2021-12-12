@@ -31,9 +31,14 @@ public class PlayerMoveController : MonoBehaviour
         {
             return;
         }
-
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        if(v == 0)
+        {
+            h = Input.GetAxisRaw("Horizontal");
+        }
+        if(h == 0)
+        {
+            v = Input.GetAxisRaw("Vertical");
+        }
 
         if (h != 0 || v != 0)
         {
