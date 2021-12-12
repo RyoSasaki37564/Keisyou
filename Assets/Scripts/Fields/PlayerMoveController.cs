@@ -35,7 +35,14 @@ public class PlayerMoveController : MonoBehaviour
 
         if (h != 0 || v != 0)
         {
-            m_gridMove.Move((int)h, (int)v, m_moveTime);
+            if(Input.GetKeyDown(KeyCode.Space)) //ダッシュ
+            {
+                m_gridMove.Move((int)h, (int)v, m_moveTime/2);
+            }
+            else
+            {
+                m_gridMove.Move((int)h, (int)v, m_moveTime);
+            }
         }
     }
     private void LateUpdate()
