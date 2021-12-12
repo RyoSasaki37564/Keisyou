@@ -10,6 +10,8 @@ public class PlayerMoveController : MonoBehaviour
 {
     /// <summary>１ターンで動くのにかける時間（単位: 秒）</summary>
     [SerializeField] float m_moveTime = 1f;
+    /// <summary>ダッシュ時の加速力</summary>
+    [SerializeField] float m_dash = 2.5f;
     GridMoveController m_gridMove = null;
 
     Animator m_walkingAnim = default; //歩行アニメ
@@ -35,9 +37,9 @@ public class PlayerMoveController : MonoBehaviour
 
         if (h != 0 || v != 0)
         {
-            if(Input.GetKeyDown(KeyCode.Space)) //ダッシュ
+            if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) //ダッシュ
             {
-                m_gridMove.Move((int)h, (int)v, m_moveTime/2);
+                m_gridMove.Move((int)h, (int)v, m_moveTime/m_dash);
             }
             else
             {
