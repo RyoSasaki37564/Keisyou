@@ -54,14 +54,14 @@ TagManager:
   - name: FieldGround
     uniqueID: 4110182667
     locked: 0
+  - name: Chara
+    uniqueID: 173591733
+    locked: 0
   - name: Downer
     uniqueID: 1213170935
     locked: 0
   - name: FieldObj
     uniqueID: 3727750445
-    locked: 0
-  - name: Chara
-    uniqueID: 173591733
     locked: 0
   - name: Upper
     uniqueID: 4279717611
