@@ -12,6 +12,8 @@ public class Attack : MonoBehaviour
 
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
 
+    [SerializeField] Target m_tergetIndexer = default; //ターゲット番号
+
     private void Start()
     {
         m_p = Player.Instance;
@@ -20,12 +22,19 @@ public class Attack : MonoBehaviour
 
     public void AttackAct()
     {
-        if(BattleManager.theTurn == BattleManager.Turn.InputTurn)
+        if(BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
+
+
             m_approchTobackWall.SetBool("IsApproach", true);
             m_syucyusen.SetActive(true);
             Debug.Log("攻撃");
             BattleManager.TurnAdvance();
+
+            BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].Damage(m_power, false); //標的に対して通常攻撃
+            Debug.Log("現在の敵体力" + BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_currentHP);
+            BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_currentHP;
+
             m_p.m_currentConcentlate++;
         }
         else

@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
+    [SerializeField] Text m_diaLogText = default; //戦闘中のダイアログ
+
+    public static List<Enemy> m_enemies; //戦闘ごとに設定された数の敵実体を格納
+
     /// <summary>
     /// 戦闘シーンにおけるシーン定義。
     /// </summary>
@@ -21,11 +25,11 @@ public class BattleManager : MonoBehaviour
         /// <summary> BattleEnd = 戦闘終了時。 </summary>
         BattleEnd,
     }
-    public static Turn theTurn = Turn.AwakeTurn;
+    public static Turn _theTurn = Turn.AwakeTurn;
 
     private void Awake()
     {
-        theTurn = Turn.AwakeTurn;
+        _theTurn = Turn.AwakeTurn;
         StartCoroutine(AwakeOff());
     }
 
@@ -38,28 +42,49 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(theTurn == Turn.PlayerTurn)
+        if(_theTurn == Turn.PlayerTurn)
         {
             StartCoroutine(Turning());
+        }
+
+        switch (_theTurn)
+        {
+            case Turn.AwakeTurn:
+                m_diaLogText.text = "";
+                break;
+
+            case Turn.InputTurn:
+                m_diaLogText.text = "どうする？";
+                break;
+
+            case Turn.PlayerTurn:
+                m_diaLogText.text = "";
+                break;
+
+            case Turn.EnemyTurn:
+                m_diaLogText.text = "";
+                break;
+
+            case Turn.BattleEnd:
+                m_diaLogText.text = "";
+                break;
         }
     }
 
     IEnumerator AwakeOff()
     {
         yield return new WaitForSeconds(3);
-        theTurn = Turn.InputTurn;
+        _theTurn = Turn.InputTurn;
     }
     IEnumerator Turning()
     {
         yield return new WaitForSeconds(0.1f);
-        Debug.Log("インプットターンやで");
-        theTurn = Turn.InputTurn;
+        _theTurn = Turn.InputTurn;
     }
 
     /// <summary> 次のターンへ進める。</summary>
     public static void TurnAdvance()
     {
-        theTurn++;
-        Debug.LogWarning(theTurn);
+        _theTurn++;
     }
 }

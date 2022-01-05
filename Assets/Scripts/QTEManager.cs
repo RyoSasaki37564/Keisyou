@@ -37,7 +37,7 @@ public class QTEManager : MonoBehaviour
             m_isQTETime = true;
         }
 
-        if(m_isQTETime == true && BattleManager.theTurn == BattleManager.Turn.InputTurn)
+        if(m_isQTETime == true && BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
             m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
             m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
@@ -47,6 +47,9 @@ public class QTEManager : MonoBehaviour
             m_isQTETime = false;
             StartCoroutine(QTESys(m_waitTime));
         }
-        //StartCoroutine(QTESys(m_waitTime));
+        else
+        {
+            StartCoroutine(QTESys(m_waitTime));
+        }
     }
 }

@@ -20,18 +20,6 @@ public class BattleChara : MonoBehaviour
     //生死
     public bool m_isDead = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// ダメージ処理。防御無視ならばboolをtrueに。
     /// </summary>
