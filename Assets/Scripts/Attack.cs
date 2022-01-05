@@ -24,18 +24,33 @@ public class Attack : MonoBehaviour
     {
         if(BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
-
-
             m_approchTobackWall.SetBool("IsApproach", true);
             m_syucyusen.SetActive(true);
             Debug.Log("攻撃");
             BattleManager.TurnAdvance();
 
             BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].Damage(m_power, false); //標的に対して通常攻撃
-            Debug.Log("現在の敵体力" + BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_currentHP);
+
+            //UI反映
             BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_currentHP;
 
-            m_p.m_currentConcentlate++;
+            Debug.Log("現在の敵体力" + BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_currentHP);
+
+            //残り回避率に応じて集中力を増加
+            if(m_p.m_currentDogePower > 0)
+            {
+                m_p.m_currentConcentlate += m_p.m_currentDogePower / m_p.m_dogePowerMax;
+            }
+
+            //攻撃するたび回避率を減少
+            if(m_p.m_currentDogePower >= 5)
+            {
+                m_p.m_currentDogePower -= 5;
+            }
+            else
+            {
+                m_p.m_currentDogePower = 0;
+            }
         }
         else
         {

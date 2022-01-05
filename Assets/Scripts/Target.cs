@@ -11,10 +11,4 @@ public class Target : MonoBehaviour
     {
         m_tergetNum = 0;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

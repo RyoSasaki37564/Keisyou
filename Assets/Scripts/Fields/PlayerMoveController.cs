@@ -32,9 +32,9 @@ public class PlayerMoveController : MonoBehaviour
             return;
         }
 
+        //斜めに動ける入力受付
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-
         /*本来の移動処理。こちらは斜め移動を禁止する。
         if (v == 0)
         {
