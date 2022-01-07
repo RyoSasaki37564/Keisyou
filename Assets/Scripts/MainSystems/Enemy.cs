@@ -37,6 +37,33 @@ public class Enemy : MonoBehaviour
         EnemyGenerate();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (BattleManager._theTurn == BattleManager.Turn.EnemyTurn)
+        {
+            for(var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
+            {
+                Debug.LogWarning("Yeah");
+                Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
+            }
+            BattleManager._theTurn++;
+        }
+
+        //敵インスタンスはstaticなので、死亡したタイミングで消去
+        if(BattleManager._theTurn == BattleManager.Turn.PlayerTurn)
+        {
+            for (var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
+            {
+                if (EnemyStuts.m_enemiesStuts[i].m_isDead)
+                {
+                    EnemyStuts.m_enemiesStuts.Remove(EnemyStuts.m_enemiesStuts[i]);
+                }
+
+            }
+        }
+    }
+
     public void EnemyGenerate()
     {
         if(GameManager.Instance)

@@ -20,22 +20,6 @@ public class EnemyStuts : BattleChara
         this.m_statmina = stamina;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (BattleManager._theTurn == BattleManager.Turn.EnemyTurn)
-        {
-            Player.Instance.Damage(m_attack, false);
-        }
-
-        //敵インスタンスはstaticなので、死亡したタイミングで消去
-        if (this.m_isDead)
-        {
-            m_enemiesStuts.Remove(this);
-        }
-
-    }
-
     public static EnemyStuts EnemyStutsGenerate(int id)
     {
         if (GameManager.Instance)
