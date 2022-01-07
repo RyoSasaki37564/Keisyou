@@ -27,10 +27,11 @@ public class BattleManager : MonoBehaviour
     }
     public static Turn _theTurn = Turn.AwakeTurn;
 
+    bool m_diaLogStopper = false;
+
     private void Awake()
     {
         _theTurn = Turn.AwakeTurn;
-        StartCoroutine(AwakeOff());
     }
 
     // Start is called before the first frame update
@@ -46,22 +47,31 @@ public class BattleManager : MonoBehaviour
         switch (_theTurn)
         {
             case Turn.AwakeTurn:
-                m_diaLogText.text = "狩りだ";
+                m_diaLogText.text = "狩りだ　▽";
+                if(Input.GetButton("Fire1"))
+                {
+                    _theTurn = Turn.InputTurn;
+                }
                 break;
 
             case Turn.InputTurn:
-                m_diaLogText.text = "どうする？";
+                m_diaLogText.text = "どうする？　▽";
                 break;
 
             case Turn.PlayerTurn:
-                m_diaLogText.text = "プレイヤーの行動";
+                m_diaLogText.text = "プレイヤーの行動　▽";
                 break;
 
             case Turn.EnemyTurn:
-                m_diaLogText.text = "敵の行動";
+                if(m_diaLogStopper == false)
+                {
+                    m_diaLogText.text = "敵の行動　▽";
+                    m_diaLogStopper = true;
+                }
                 break;
 
             case Turn.TurnEnd:
+                m_diaLogStopper = false;
                 if(Player.Instance.m_currentHP <= 0)
                 {
                     _theTurn = Turn.BattleEnd;
@@ -73,15 +83,9 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.BattleEnd:
-                m_diaLogText.text = "葬送";
+                m_diaLogText.text = "葬送　▽";
                 break;
         }
-    }
-
-    IEnumerator AwakeOff()
-    {
-        yield return new WaitForSeconds(3);
-        _theTurn = Turn.InputTurn;
     }
 
     /// <summary> 次のターンへ進める。</summary>

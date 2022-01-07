@@ -24,9 +24,16 @@ public class Enemy : MonoBehaviour
 
     public Slider m_enemyHPSL = default;
 
+    [SerializeField] Text m_diaLog = default;
+
+    bool m_moveStopper = false;
+
+    [SerializeField] GameObject m_RedShutyuSen = default;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_RedShutyuSen.SetActive(false);
 
         //MonoBehaviourを継承したクラスではListの初期化にコンストラクタが使えないらしい。ので、ここで初期化命令を行う。
         EnemyStuts.m_enemiesStuts = new List<EnemyStuts>();
@@ -40,14 +47,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //攻撃処理
         if (BattleManager._theTurn == BattleManager.Turn.EnemyTurn)
         {
-            for(var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
+            if(m_moveStopper == false)
             {
-                Debug.LogWarning("Yeah");
-                Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
+                StartCoroutine(NomalEnemyTurn());
+                m_moveStopper = true;
             }
-            BattleManager._theTurn++;
         }
 
         //敵インスタンスはstaticなので、死亡したタイミングで消去
@@ -62,6 +69,38 @@ public class Enemy : MonoBehaviour
 
             }
         }
+    }
+
+    IEnumerator NomalEnemyTurn()
+    {
+        for (var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
+        {
+            int rand = Random.Range(0, 1);
+            if (rand == 0)
+            {
+                int dogeJadge = Random.Range(0, 100);
+                if(dogeJadge < Player.Instance.m_currentDogePower)
+                {
+                    m_diaLog.text = "回避　▽";
+                    yield return new WaitForSeconds(1);
+                }
+                else
+                {
+                    m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "の攻撃　▽";
+                    m_RedShutyuSen.SetActive(true);
+                    yield return new WaitForSeconds(1);
+                    Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
+                    m_RedShutyuSen.SetActive(false);
+                }
+            }
+            else
+            {
+                m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "は様子を見ている　▽";
+                yield return new WaitForSeconds(1);
+            }
+        }
+        BattleManager._theTurn++;
+        m_moveStopper = false;
     }
 
     public void EnemyGenerate()

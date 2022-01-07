@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField]float m_power = 10;
-
-    Player m_p = default;
-
     [SerializeField] Animator m_approchTobackWall = default; //接近アニメーション
 
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
@@ -16,7 +12,6 @@ public class Attack : MonoBehaviour
 
     private void Start()
     {
-        m_p = Player.Instance;
         m_syucyusen.SetActive(false);
     }
 
@@ -30,7 +25,7 @@ public class Attack : MonoBehaviour
             m_syucyusen.SetActive(true);
             Debug.Log("攻撃");
 
-            EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(m_power, false); //標的に対して通常攻撃
+            EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(Player.Instance.m_attack, false); //標的に対して通常攻撃
 
             //UI反映
             Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
@@ -38,19 +33,19 @@ public class Attack : MonoBehaviour
             Debug.Log("現在の敵体力" + EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP);
 
             //残り回避率に応じて集中力を増加
-            if(m_p.m_currentDogePower > 0)
+            if(Player.Instance.m_currentDogePower > 0)
             {
-                m_p.m_currentConcentlate += m_p.m_currentDogePower / m_p.m_dogePowerMax;
+                Player.Instance.m_currentConcentlate += (Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax)*3;
             }
 
             //攻撃するたび回避率を減少
-            if(m_p.m_currentDogePower >= 5)
+            if(Player.Instance.m_currentDogePower >= 5)
             {
-                m_p.m_currentDogePower -= 5;
+                Player.Instance.m_currentDogePower -= 5;
             }
             else
             {
-                m_p.m_currentDogePower = 0;
+                Player.Instance.m_currentDogePower = 0;
             }
         }
         else
