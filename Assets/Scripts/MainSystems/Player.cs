@@ -102,10 +102,34 @@ public class Player : BattleChara
     // Update is called once per frame
     void Update()
     {
-        m_hpSlider.value = m_currentHP;
-        m_conSlider.value = m_currentConcentlate;
-        m_dgSlider.value = m_currentDogePower;
-        m_dogeText.text = m_currentDogePower.ToString();
+        //ステータスUI描画
+        if(m_currentHP <= m_maxHP)
+        {
+            m_hpSlider.value = m_currentHP;
+        }
+        else
+        {
+            m_currentHP = m_maxHP;
+        }
+
+        if(m_currentConcentlate <= m_maxConcentlate)
+        {
+            m_conSlider.value = m_currentConcentlate;
+        }
+        else
+        {
+            m_currentConcentlate = m_maxConcentlate;
+        }
+
+        if(m_currentDogePower <= m_dogePowerMax)
+        {
+            m_dgSlider.value = m_currentDogePower;
+            m_dogeText.text = m_currentDogePower.ToString();
+        }
+        else
+        {
+            m_currentDogePower = m_dogePowerMax;
+        }
     }
 
     /// <summary>

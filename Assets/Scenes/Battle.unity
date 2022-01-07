@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f49dffd48be95a408d1b222eec15e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_power: 10
   m_approchTobackWall: {fileID: 1189412522}
   m_syucyusen: {fileID: 517052460}
   m_tergetIndexer: {fileID: 743884480}
@@ -345,7 +344,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -196}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 600.86633, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &646176109
 MonoBehaviour:

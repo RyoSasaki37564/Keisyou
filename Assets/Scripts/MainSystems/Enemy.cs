@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
 
         //テスト用エンカウント
         m_encountEnemyID.Add(0);
+        m_encountEnemyID.Add(0);
 
         EnemyGenerate();
     }
@@ -75,20 +76,22 @@ public class Enemy : MonoBehaviour
     {
         for (var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
         {
-            int rand = Random.Range(0, 1);
+            int rand = Random.Range(0, 2);
             if (rand == 0)
             {
                 int dogeJadge = Random.Range(0, 100);
                 if(dogeJadge < Player.Instance.m_currentDogePower)
                 {
-                    m_diaLog.text = "回避　▽";
-                    yield return new WaitForSeconds(1);
+                    m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName +"の攻撃を回避 ▽";
+                    yield return new WaitForSeconds(1.5f);
+                    m_diaLog.text = "";
                 }
                 else
                 {
-                    m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "の攻撃　▽";
+                    m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName +"の攻撃　▽";
                     m_RedShutyuSen.SetActive(true);
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(1.5f);
+                    m_diaLog.text = "";
                     Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
                     m_RedShutyuSen.SetActive(false);
                 }
@@ -96,7 +99,8 @@ public class Enemy : MonoBehaviour
             else
             {
                 m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "は様子を見ている　▽";
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(1.5f);
+                m_diaLog.text = "";
             }
         }
         BattleManager._theTurn++;
@@ -112,7 +116,7 @@ public class Enemy : MonoBehaviour
             {
                 EnemyStuts eneStuts = EnemyStuts.EnemyStutsGenerate(i);
                 //UIを生成してパラメータを反映
-                var x = Instantiate(m_enemyUI[i], m_enemyUI[0].transform.position,
+                var x = Instantiate(m_enemyUI[0], m_enemyUI[0].transform.position,
                     m_enemyObjectsInCanvas.transform.rotation);
                 x.transform.SetParent(m_enemyObjectsInCanvas.transform);
                 x.transform.localScale = new Vector3(0.8f, 0.8f, 1); //これ入れないとHPバーが世界を埋め尽くすほどバカデカくなるにょ。
