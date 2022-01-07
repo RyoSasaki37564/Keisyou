@@ -24,17 +24,18 @@ public class Attack : MonoBehaviour
     {
         if(BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
+            BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
+
             m_approchTobackWall.SetBool("IsApproach", true);
             m_syucyusen.SetActive(true);
             Debug.Log("攻撃");
-            BattleManager.TurnAdvance();
 
-            BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].Damage(m_power, false); //標的に対して通常攻撃
+            EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(m_power, false); //標的に対して通常攻撃
 
             //UI反映
-            BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_currentHP;
+            Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
 
-            Debug.Log("現在の敵体力" + BattleManager.m_enemies[m_tergetIndexer.m_tergetNum].m_currentHP);
+            Debug.Log("現在の敵体力" + EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP);
 
             //残り回避率に応じて集中力を増加
             if(m_p.m_currentDogePower > 0)
@@ -54,7 +55,7 @@ public class Attack : MonoBehaviour
         }
         else
         {
-            Debug.Log("今は攻撃できましぇん");
+            Debug.Log("今はインプットターンじゃないので攻撃できましぇん");
         }
     }
 }

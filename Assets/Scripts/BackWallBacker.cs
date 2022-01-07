@@ -9,7 +9,11 @@ public class BackWallBacker : MonoBehaviour
 
     public void Backer()
     {
+        BattleManager._theTurn = BattleManager.Turn.EnemyTurn;
+        Debug.LogWarning("Hey");
+
         m_back.SetBool("IsApproach", false);
         m_syucyusen.SetActive(false);
+
     }
 }

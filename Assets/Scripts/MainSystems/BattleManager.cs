@@ -7,8 +7,6 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField] Text m_diaLogText = default; //戦闘中のダイアログ
 
-    public static List<Enemy> m_enemies; //戦闘ごとに設定された数の敵実体を格納
-
     /// <summary>
     /// 戦闘シーンにおけるシーン定義。
     /// </summary>
@@ -22,7 +20,9 @@ public class BattleManager : MonoBehaviour
         PlayerTurn,
         /// <summary> EnemyTurn = 敵行動演出ターン。 </summary>
         EnemyTurn,
-        /// <summary> BattleEnd = 戦闘終了時。 </summary>
+        /// <summary> TurnEnd = ターン終了時。 </summary>
+        TurnEnd,
+        /// <summary> BattleEnd = バトル終了時。 </summary>
         BattleEnd,
     }
     public static Turn _theTurn = Turn.AwakeTurn;
@@ -42,15 +42,11 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_theTurn == Turn.PlayerTurn)
-        {
-            StartCoroutine(Turning());
-        }
 
         switch (_theTurn)
         {
             case Turn.AwakeTurn:
-                m_diaLogText.text = "";
+                m_diaLogText.text = "狩りだ";
                 break;
 
             case Turn.InputTurn:
@@ -58,15 +54,26 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.PlayerTurn:
-                m_diaLogText.text = "";
+                m_diaLogText.text = "プレイヤーの行動";
                 break;
 
             case Turn.EnemyTurn:
-                m_diaLogText.text = "";
+                m_diaLogText.text = "敵の行動";
+                break;
+
+            case Turn.TurnEnd:
+                if(Player.Instance.m_currentHP <= 0)
+                {
+                    _theTurn = Turn.BattleEnd;
+                }
+                else
+                {
+                    _theTurn = Turn.InputTurn;
+                }
                 break;
 
             case Turn.BattleEnd:
-                m_diaLogText.text = "";
+                m_diaLogText.text = "葬送";
                 break;
         }
     }
@@ -76,15 +83,12 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         _theTurn = Turn.InputTurn;
     }
-    IEnumerator Turning()
-    {
-        yield return new WaitForSeconds(0.1f);
-        _theTurn = Turn.InputTurn;
-    }
 
     /// <summary> 次のターンへ進める。</summary>
-    public static void TurnAdvance()
+    public static IEnumerator TurnAdvance()
     {
+        Debug.LogWarning(_theTurn);
+        yield return new WaitForSeconds(1.5f);
         _theTurn++;
     }
 }

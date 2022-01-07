@@ -367,7 +367,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 635e6f6ad611cea41ac9ab38915c160c, type: 3}
+    m_Font: {fileID: 12800000, guid: 62b97e8c27d38d94199e1408609e8fa4, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -1946,7 +1946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isDead: 0
-  m_enemyGrahicsBody: []
+  m_enemyGrahicsBody:
+  - {fileID: 2016818957}
   m_enemySpecialMove: []
   m_enemyObjectsInCanvas: {fileID: 1469555635}
   m_enemyUI:
@@ -2472,7 +2473,7 @@ PrefabInstance:
     - target: {fileID: 49462636672421809, guid: f6e523fa311aade41a29861846660ab6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 49462636672421810, guid: f6e523fa311aade41a29861846660ab6,
         type: 3}
@@ -2860,6 +2861,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067759003780900612, guid: 62852e0e03f1f1f4d9d0fc7f4c163263,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5067759003780900615, guid: 62852e0e03f1f1f4d9d0fc7f4c163263,
         type: 3}
