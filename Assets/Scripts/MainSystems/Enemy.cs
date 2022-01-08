@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
     {
         for (var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
         {
-            int rand = Random.Range(0, 2);
+            int rand = Random.Range(0, 1);
             if (rand == 0)
             {
                 int dogeJadge = Random.Range(0, 100);

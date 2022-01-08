@@ -82,7 +82,7 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.BattleEnd:
-                m_diaLogText.text = "葬送　▽";
+                m_diaLogText.text = " <color=#8b0000>死</color>　▽";
                 break;
         }
     }

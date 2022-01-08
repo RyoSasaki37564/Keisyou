@@ -29,6 +29,8 @@ public class Player : BattleChara
     [SerializeField] Slider m_conSlider = default;
     [SerializeField] Slider m_dgSlider = default;
 
+    [SerializeField] Text m_hpText = default; //体力の表記
+    [SerializeField] Text m_conText = default; //集中の表記
     [SerializeField] Text m_dogeText = default; //回避率の表記
 
     /// <summary> プレイヤーレベルテーブルの最大行数＆レベル上限 開発段階では99 </summary>
@@ -103,11 +105,17 @@ public class Player : BattleChara
     void Update()
     {
         //ステータスUI描画
-        if(m_currentHP <= m_maxHP)
+        if (m_currentHP < 0)
         {
             m_hpSlider.value = m_currentHP;
+            m_hpText.text = "<color=#8b0000>死</color>";
         }
-        else
+        else if (m_currentHP <= m_maxHP)
+        {
+            m_hpSlider.value = m_currentHP;
+            m_hpText.text = m_currentHP.ToString();
+        }
+        else if(m_currentHP > m_maxHP)
         {
             m_currentHP = m_maxHP;
         }
@@ -115,6 +123,7 @@ public class Player : BattleChara
         if(m_currentConcentlate <= m_maxConcentlate)
         {
             m_conSlider.value = m_currentConcentlate;
+            m_conText.text = m_currentConcentlate.ToString();
         }
         else
         {
