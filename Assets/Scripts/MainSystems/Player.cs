@@ -10,6 +10,9 @@ public class Player : BattleChara
 
     [ContextMenuItem("レベル+１", "LevelUP")] public int m_playerLevel;
 
+    /// <summary> プレイヤーの合計攻撃力。自身のステータスと武器の威力の合計 </summary>
+    public float m_offenseOfPlayer { get; set; }
+
     /// <summary> 集中力の最大 </summary>
     public float m_maxConcentlate { get; set; }
 
@@ -19,6 +22,14 @@ public class Player : BattleChara
     /// <summary> レベルテーブルのCSV </summary>
     [SerializeField] TextAsset m_playerLevelTableText = default;
     StringReader sr;
+
+    /// <summary> 武器マスターテーブルのCSV </summary>
+    [SerializeField] TextAsset m_armsMasterTableText = default;
+    StringReader armsSR;
+    /// <summary>
+    /// 武器マスターの最大行数
+    /// </summary>
+    int m_armsTableLineMax;
 
     /// <summary> 回避率の最大 </summary>
     public float m_dogePowerMax { get; set; }
@@ -59,6 +70,36 @@ public class Player : BattleChara
     /// <summary> レベルテーブルの本体 </summary>
     public PlayerStatus[] m_playerLevelTable;
 
+    /// <summary>　武器データの内容　</summary>
+    public struct ToryuguStuts
+    {
+        public int _id;
+        public string _name;
+        public int _atk;
+        /// <summary>
+        /// 0 = 花 ,1 = 鳥, 2 = 風, 3 = 月
+        /// 相性は　0 > 1 > 2 > 0。　月(3)は全属性と有利を取り合う。
+        /// </summary>
+        public int _type;
+        public bool _isGet; //所持の有無
+
+        public ToryuguStuts(int id, string name, int atk, int type, bool get)
+        {
+            this._id = id;
+            this._name = name;
+            this._atk = atk;
+            this._type = type;
+            this._isGet = get;
+        }
+    }
+    /// <summary> 武器データテーブルの本体 </summary>
+    public ToryuguStuts[] m_armsMasterTable;
+
+    [SerializeField] int m_nowArmsID { get; set; } //現在の装備中武器ID
+
+    [SerializeField] Text m_armsNameNow = default; //現在の武器名
+
+
     private void Awake()
     {
         if(Instance)
@@ -69,7 +110,7 @@ public class Player : BattleChara
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
-            //マスターデータ格納
+            //レベルマスターデータ格納
             sr = new StringReader(m_playerLevelTableText.text);
             m_playerLevelTableLineMax = int.Parse(sr.ReadLine());
             m_playerLevelTable = new PlayerStatus[m_playerLevelTableLineMax];
@@ -86,12 +127,42 @@ public class Player : BattleChara
             }
             else
             {
-                Debug.LogError("ますたーがないですます");
+                Debug.LogError("reberuますたーがないですます");
             }
 
             //レベル１のプレイヤーを生成
             m_playerLevel = 1;
             Leveling(m_playerLevel);
+
+
+            //武器マスター格納
+            armsSR = new StringReader(m_armsMasterTableText.text);
+            m_armsTableLineMax = int.Parse(armsSR.ReadLine());
+            m_armsMasterTable = new ToryuguStuts[m_armsTableLineMax];
+            line = armsSR.ReadLine().Split(',');
+            //武器データテーブル生成
+            if (armsSR != null)
+            {
+                //初期装備のみ解放しておく
+                line = armsSR.ReadLine().Split(',');
+                m_armsMasterTable[0] = new ToryuguStuts(int.Parse(line[0]), line[1],
+                    int.Parse(line[2]), int.Parse(line[3]), true);
+
+                for (var i = 1; i < m_armsTableLineMax; i++)
+                {
+                    line = armsSR.ReadLine().Split(',');
+                    m_armsMasterTable[i] = new ToryuguStuts(int.Parse(line[0]), line[1],
+                        int.Parse(line[2]), int.Parse(line[3]), false);
+
+                    //開発用に今だけ全開放
+                    m_armsMasterTable[i]._isGet = true;
+
+                }
+            }
+            else
+            {
+                Debug.LogError("bukiますたーがないですます");
+            }
         }
     }
 

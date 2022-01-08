@@ -27,14 +27,14 @@ public class Attack : MonoBehaviour
             m_approchTobackWall.SetBool("IsApproach", true);
             m_syucyusen.SetActive(true);
 
-            m_diaLog.text = "～　<color=#8b0000>攻撃</color>　～　▽";
+            m_diaLog.text = "～　<color=#8b0000>攻撃</color>　～　▽"; //赤字だぜ～
 
             EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(Player.Instance.m_attack, false); //標的に対して通常攻撃
 
             //UI反映
             Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
 
-            Debug.Log("現在の敵体力" + EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP);
+            //Debug.Log("現在の敵体力" + EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP);
 
             //残り回避率に応じて集中力を増加
             if(Player.Instance.m_currentDogePower > 0)
