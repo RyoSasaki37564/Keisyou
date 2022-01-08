@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Attack : MonoBehaviour
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
 
     [SerializeField] Target m_tergetIndexer = default; //ターゲット番号
+
+    [SerializeField] Text m_diaLog = default;
 
     private void Start()
     {
@@ -23,7 +26,8 @@ public class Attack : MonoBehaviour
 
             m_approchTobackWall.SetBool("IsApproach", true);
             m_syucyusen.SetActive(true);
-            Debug.Log("攻撃");
+
+            m_diaLog.text = "～　<color=#8b0000>攻撃</color>　～　▽";
 
             EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(Player.Instance.m_attack, false); //標的に対して通常攻撃
 

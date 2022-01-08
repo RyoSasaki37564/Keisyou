@@ -12,6 +12,7 @@ public class BackWallBacker : MonoBehaviour
         BattleManager._theTurn = BattleManager.Turn.EnemyTurn;
         Debug.LogWarning("Hey");
 
+        m_back.SetBool("IsDoge", false);
         m_back.SetBool("IsApproach", false);
         m_syucyusen.SetActive(false);
 

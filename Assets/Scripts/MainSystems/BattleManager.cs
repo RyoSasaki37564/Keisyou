@@ -59,7 +59,6 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.PlayerTurn:
-                m_diaLogText.text = "プレイヤーの行動　▽";
                 break;
 
             case Turn.EnemyTurn:

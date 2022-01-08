@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour
 
         //テスト用エンカウント
         m_encountEnemyID.Add(0);
-        m_encountEnemyID.Add(0);
 
         EnemyGenerate();
     }
