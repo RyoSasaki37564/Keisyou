@@ -18,7 +18,7 @@ public class NineKeyInput : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit.collider)
             {
-                Debug.Log(hit.collider.gameObject.name);
+                Debug.Log(hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
             }
         }
     }
