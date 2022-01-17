@@ -1,63 +1,118 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NineKeyInput : MonoBehaviour
 {
-    [SerializeField] GameObject[] m_nines = new GameObject[9];
+    [SerializeField]Text m_dialog = default;
 
-    Vector3 m_mousePosDelta;
+    [SerializeField] GameObject[] m_commands = new GameObject[9];
+
 
     public struct CommandCode
     {
-        public int number { get; set; }
-        public int contact { get; set; }
+        public int Number { get; set; }
+        public int Contact { get; set; }
 
+        /// <summary>
+        /// 入力されたキーの番号と接触方向を受け取り、ID情報に変換する
+        /// </summary>
+        /// <param name="numID">キー番号</param>
+        /// <param name="conID">接触方向</param>
         public CommandCode(int numID, int conID)
         {
-            number = numID;
-            contact = conID;
+            Number = numID;
+            Contact = conID;
         }
     }
-    List<CommandCode> m_commandList = new List<CommandCode>();
-    int m_indexer = 0;
+    List<CommandCode> m_commandList = new List<CommandCode>(); //ここに格納された値を参照し、該当する龍撃の演出を呼び出す。
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        m_indexer = 0;
-    }
+    bool m_phase = false;
 
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if(m_phase == false)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider)
+            if (Input.GetButton("Fire1"))
             {
-                Debug.Log(GetAim(m_mousePosDelta, Input.mousePosition));
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+                if (hit.collider)
+                {
+                    Debug.Log("接触情報：" + hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
 
-                Debug.Log("接触情報：" + hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
+                    CommandCode m_CC = new CommandCode(int.Parse(hit.collider.gameObject.transform.parent.name),
+                        int.Parse(hit.collider.gameObject.name));
 
-                CommandCode m_CC = new CommandCode(int.Parse(hit.collider.gameObject.transform.parent.name), 
-                    int.Parse(hit.collider.gameObject.name));
-                hit.collider.gameObject.transform.parent.gameObject.SetActive(false);
-                m_commandList.Add(m_CC);
+                    hit.collider.gameObject.transform.parent.gameObject.SetActive(false);
+
+                    m_commandList.Add(m_CC);
+                }
             }
         }
     }
 
-    private void FixedUpdate()
+    public void Phaser()
     {
-        m_mousePosDelta = Input.mousePosition;
+        if(m_phase == false)
+        {
+            m_phase = true;
+            Ryuugeki(m_commandList);
+            foreach (var i in m_commands)
+            {
+                i.SetActive(true);
+            }
+
+        }
+        else
+        {
+            m_phase = false;
+            m_dialog.text = "";
+            foreach (var i in m_commands)
+            {
+                i.SetActive(true);
+            }
+        }
     }
 
-    public float GetAim(Vector3 p1, Vector3 p2)
+    public void Ryuugeki(List<CommandCode> commands)
     {
-        float dx = p2.x - p1.x;
-        float dy = p2.y - p1.y;
-        float rad = Mathf.Atan2(dy, dx);
-        return rad * Mathf.Rad2Deg;
+        if(commands.Count == 3)
+        {
+            if(commands[0].Number == 2 && commands[1].Number == 5 && commands[2].Number == 8)
+            {
+                m_dialog.text = "顎門落とし";
+            }
+            else
+            {
+                m_dialog.text = "ガチビンタ";
+            }
+        }
+        else if(commands.Count == 9)
+        {
+            if (commands[0].Number == 1 &&
+                commands[1].Number == 2 &&
+                commands[2].Number == 3 &&
+                commands[3].Number == 6 &&
+                commands[4].Number == 9 &&
+                commands[5].Number == 8 &&
+                commands[6].Number == 7 &&
+                commands[7].Number == 4 &&
+                commands[8].Number == 5)
+            {
+                m_dialog.text = "とぐろ回し";
+            }
+            else
+            {
+                m_dialog.text = "ガチビンタ";
+            }
+        }
+        else
+        {
+            m_dialog.text = "ガチビンタ";
+        }
+
+        commands.Clear();
     }
 }
