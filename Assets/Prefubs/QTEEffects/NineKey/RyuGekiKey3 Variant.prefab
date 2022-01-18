@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3396556491775476068, guid: d95e0d1d783938547b6630d8f830017a,
         type: 3}
       propertyPath: m_Name
-      value: RyuGekiKey3
+      value: RyuGekiKey3 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3396556491775476069, guid: d95e0d1d783938547b6630d8f830017a,
         type: 3}

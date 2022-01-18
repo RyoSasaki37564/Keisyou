@@ -9,6 +9,13 @@ public class NineKeyInput : MonoBehaviour
 
     [SerializeField] GameObject[] m_commands = new GameObject[9];
 
+    [SerializeField] GameObject m_effectSlash = default; //斬撃マーク
+    GameObject[] m_slashs = new GameObject[9]; //斬撃のオブジェクトプール
+    int m_slashIndexer = 0;
+
+    [SerializeField] GameObject m_effectSrast = default; //刺突マーク
+    GameObject[] m_srasts = new GameObject[9]; //刺突のオブジェクトプール
+    int m_srastIndexer = 0;
 
     public struct CommandCode
     {
@@ -30,6 +37,23 @@ public class NineKeyInput : MonoBehaviour
 
     bool m_phase = false;
 
+    private void Awake()
+    {
+        //マーカーエフェクトを生成しプール
+        for(var i = 0; i < 9; i++)
+        {
+            var x = Instantiate(m_effectSlash);
+            m_slashs[i] = x;
+            m_slashs[i].SetActive(false);
+        }
+        for (var i = 0; i < 9; i++)
+        {
+            var x = Instantiate(m_effectSrast);
+            m_srasts[i] = x;
+            m_srasts[i].SetActive(false);
+        }
+    }
+
     void Update()
     {
         if(m_phase == false)
@@ -38,14 +62,57 @@ public class NineKeyInput : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+                //キー番号とキーに対する接触情報から入力IDを生成しリストに格納
                 if (hit.collider)
                 {
                     Debug.Log("接触情報：" + hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
+                    int i = int.Parse(hit.collider.gameObject.name); //接触位置
+                    CommandCode m_CC = new CommandCode(int.Parse(hit.collider.gameObject.transform.parent.name), i) ;
 
-                    CommandCode m_CC = new CommandCode(int.Parse(hit.collider.gameObject.transform.parent.name),
-                        int.Parse(hit.collider.gameObject.name));
+                    if(i == 5) //5は刺突
+                    {
+                        m_srasts[m_srastIndexer].SetActive(true);
+                        m_srasts[m_srastIndexer].transform.position = hit.collider.gameObject.transform.parent.position;
+                        m_srastIndexer++;
+                    }
+                    else //それ以外は斬撃
+                    {
+                        m_slashs[m_slashIndexer].SetActive(true);
+                        m_slashs[m_slashIndexer].transform.position = hit.collider.gameObject.transform.parent.position;
+                        //斬撃の角度を調節
+                        switch (i)
+                        {
+                            case 1:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 45, 90);
+                                break;
+                            case 2:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 0, 90);
+                                break;
+                            case 3:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -45, 90);
+                                break;
+                            case 4:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 90, 90);
+                                break;
+                            case 6:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -90, 90);
+                                break;
+                            case 7:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 165, 90);
+                                break;
+                            case 8:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 900, 70);
+                                break;
+                            case 9:
+                                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -165, 90);
+                                break;
 
-                    hit.collider.gameObject.transform.parent.gameObject.SetActive(false);
+                        }
+
+                        m_slashIndexer++;
+                    }
+
+                    hit.collider.gameObject.transform.parent.gameObject.SetActive(false); //入力したキーはその龍撃中反応を切る
 
                     m_commandList.Add(m_CC);
                 }
@@ -74,6 +141,16 @@ public class NineKeyInput : MonoBehaviour
                 i.SetActive(true);
             }
         }
+        foreach(var x in m_slashs)
+        {
+            x.SetActive(false);
+        }
+        foreach (var x in m_srasts)
+        {
+            x.SetActive(false);
+        }
+        m_slashIndexer = 0;
+        m_srastIndexer = 0;
     }
 
     public void Ryuugeki(List<CommandCode> commands)
@@ -99,7 +176,7 @@ public class NineKeyInput : MonoBehaviour
                 commands[5].Number == 8 &&
                 commands[6].Number == 7 &&
                 commands[7].Number == 4 &&
-                commands[8].Number == 5)
+                commands[8].Number == 5 && commands[8].Contact == 5)
             {
                 m_dialog.text = "とぐろ回し";
             }
