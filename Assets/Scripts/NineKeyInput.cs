@@ -130,7 +130,6 @@ public class NineKeyInput : MonoBehaviour
             {
                 i.SetActive(true);
             }
-
         }
         else
         {
@@ -170,14 +169,6 @@ public class NineKeyInput : MonoBehaviour
             else
             {
                 m_dialog.text = "ガチビンタ";
-            }
-        }
-        else if(commands.Count == 5)
-        {
-            if(commands[0].Number == 4 && commands[0].Contact == 3
-               )
-            {
-
             }
         }
         else if(commands.Count == 9)
