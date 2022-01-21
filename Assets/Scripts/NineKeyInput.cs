@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NineKeyInput : MonoBehaviour
 {
-    [SerializeField]Text m_dialog = default;
+    [SerializeField] Text m_dialog = default;
 
     [SerializeField] GameObject[] m_commands = new GameObject[9];
 
@@ -155,15 +155,29 @@ public class NineKeyInput : MonoBehaviour
 
     public void Ryuugeki(List<CommandCode> commands)
     {
-        if(commands.Count == 3)
+        if(commands.Count == 0)
         {
-            if(commands[0].Number == 2 && commands[1].Number == 5 && commands[2].Number == 8)
+            m_dialog.text = "失敗";
+        }
+        else if(commands.Count == 3)
+        {
+            if(commands[0].Number == 2 &&
+               commands[1].Number == 5 &&
+               commands[2].Number == 8 && commands[2].Contact == 5)
             {
                 m_dialog.text = "顎門落とし";
             }
             else
             {
                 m_dialog.text = "ガチビンタ";
+            }
+        }
+        else if(commands.Count == 5)
+        {
+            if(commands[0].Number == 4 && commands[0].Contact == 3
+               )
+            {
+
             }
         }
         else if(commands.Count == 9)

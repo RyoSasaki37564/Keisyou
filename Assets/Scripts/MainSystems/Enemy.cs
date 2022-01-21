@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
     /// <summary> エンカウントした敵のIDを格納するリスト </summary>
     public static List<int> m_encountEnemyID = new List<int>();
 
-
     /// <summary> Canvas下にある敵UI格納用親オブジェクト </summary>
     [SerializeField] GameObject m_enemyObjectsInCanvas = default;
 
@@ -28,7 +27,11 @@ public class Enemy : MonoBehaviour
 
     bool m_moveStopper = false;
 
+    public static bool m_isRyugekiChance = false; //龍撃チャンス
+
     [SerializeField] GameObject m_RedShutyuSen = default;
+
+    [SerializeField] GameObject m_PALLY_TEST_BOTTUN = default; //パリィ処理のテスト用ボタン
 
     // Start is called before the first frame update
     void Start()
@@ -82,8 +85,13 @@ public class Enemy : MonoBehaviour
                 if(dogeJadge < Player.Instance.m_currentDogePower)
                 {
                     m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName +"の攻撃を回避 ▽";
+
+                    //  テストが終わったら消すこと
+                    m_PALLY_TEST_BOTTUN.SetActive(true);
+
                     yield return new WaitForSeconds(1.5f);
                     m_diaLog.text = "";
+                    m_PALLY_TEST_BOTTUN.SetActive(false);
                 }
                 else
                 {
@@ -104,6 +112,27 @@ public class Enemy : MonoBehaviour
         }
         BattleManager._theTurn++;
         m_moveStopper = false;
+    }
+
+    //パリィ処理のテスト用
+    public void PallyTest()
+    {
+        StartCoroutine(Pallied());
+    }
+
+    IEnumerator Pallied()
+    {
+        m_isRyugekiChance = true;
+        //パリィは強制的にプレイヤーターンにする
+        BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
+
+        //パリィしたとして、龍撃を行えたかどうかで処理を分ける
+        if (Ryugeki.m_isHitRyugeki == true)
+        {
+            yield break;
+        }
+        yield return new WaitForSeconds(3f);
+        m_isRyugekiChance = false;
     }
 
     public void EnemyGenerate()

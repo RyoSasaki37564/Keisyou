@@ -12,5 +12,6 @@ public class ContactReset : MonoBehaviour
         {
             i.SetActive(true);
         }
+
     }
 }
