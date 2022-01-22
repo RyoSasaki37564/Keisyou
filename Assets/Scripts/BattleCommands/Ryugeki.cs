@@ -20,6 +20,12 @@ public class Ryugeki : MonoBehaviour
         if(m_isHitRyugeki == true)
         {
             m_nineKeysScript.Phaser();
+            m_isHitRyugeki = false;
+            foreach (var i in m_playerCommandsUI)
+            {
+                i.SetActive(true);
+            }
+            m_nines.SetActive(false);
         }
         else
         {

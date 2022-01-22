@@ -51,11 +51,11 @@ public class BattleManager : MonoBehaviour
                 if(Input.GetButton("Fire1"))
                 {
                     _theTurn = Turn.InputTurn;
+                    m_diaLogText.text = "どうする？　▽";
                 }
                 break;
 
             case Turn.InputTurn:
-                m_diaLogText.text = "どうする？　▽";
                 break;
 
             case Turn.PlayerTurn:
@@ -78,6 +78,7 @@ public class BattleManager : MonoBehaviour
                 else
                 {
                     _theTurn = Turn.InputTurn;
+                    m_diaLogText.text = "どうする？　▽";
                 }
                 break;
 
