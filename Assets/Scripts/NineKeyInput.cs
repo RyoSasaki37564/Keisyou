@@ -194,7 +194,7 @@ public class NineKeyInput : MonoBehaviour
         {
             m_dialog.text = "ガチビンタ";
         }
-
+        m_phase = false;
         commands.Clear();
     }
 }

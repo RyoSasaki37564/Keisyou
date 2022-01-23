@@ -87,12 +87,4 @@ public class BattleManager : MonoBehaviour
                 break;
         }
     }
-
-    /// <summary> 次のターンへ進める。</summary>
-    public static IEnumerator TurnAdvance()
-    {
-        Debug.LogWarning(_theTurn);
-        yield return new WaitForSeconds(1.5f);
-        _theTurn++;
-    }
 }

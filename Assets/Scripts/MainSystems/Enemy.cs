@@ -110,7 +110,7 @@ public class Enemy : MonoBehaviour
                 m_diaLog.text = "";
             }
         }
-        BattleManager._theTurn++;
+        //BattleManager._theTurn++;
         m_moveStopper = false;
     }
 
@@ -125,6 +125,7 @@ public class Enemy : MonoBehaviour
         m_isRyugekiChance = true;
         //パリィは強制的にプレイヤーターンにする
         BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
+        Debug.Log("パリィ下　" + BattleManager._theTurn);
 
         //パリィしたとして、龍撃を行えたかどうかで処理を分ける
         if (Ryugeki.m_isHitRyugeki == true)
