@@ -21,7 +21,7 @@ public class Ryugeki : MonoBehaviour
     {
         if(m_isHitRyugeki == true)
         {
-            m_fader.color = new Color(250, 250, 250, 250);
+            StartCoroutine(FadeIn());
             m_nineKeysScript.Phaser();
             Debug.Log("龍撃撃った " + BattleManager._theTurn);
             m_isHitRyugeki = false;
@@ -30,13 +30,13 @@ public class Ryugeki : MonoBehaviour
                 i.SetActive(true);
             }
             m_nines.SetActive(false);
-            StartCoroutine(FadeIn());
         }
         else
         {
             if (BattleManager._theTurn == BattleManager.Turn.InputTurn ||
                Enemy.m_isRyugekiChance == true)
             {
+                StartCoroutine(FadeIn());
                 BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
                 m_isHitRyugeki = true;
                 foreach (var i in m_playerCommandsUI)
@@ -52,7 +52,8 @@ public class Ryugeki : MonoBehaviour
 
     IEnumerator FadeIn()
     {
-        yield return new WaitForSeconds(0.3f);
+        m_fader.color = new Color(250, 250, 250, 250);
+        yield return new WaitForSeconds(0.15f);
         m_fader.color = new Color(0, 0, 0, 0);
         BattleManager._theTurn = BattleManager.Turn.InputTurn;
     }

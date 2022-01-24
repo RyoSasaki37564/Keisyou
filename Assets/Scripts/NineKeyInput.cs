@@ -17,6 +17,8 @@ public class NineKeyInput : MonoBehaviour
     GameObject[] m_srasts = new GameObject[9]; //刺突のオブジェクトプール
     int m_srastIndexer = 0;
 
+    [SerializeField] Target m_tergetIndexer = default; //標的
+
     public struct CommandCode
     {
         public int Number { get; set; }
@@ -162,8 +164,9 @@ public class NineKeyInput : MonoBehaviour
         {
             if(commands[0].Number == 2 &&
                commands[1].Number == 5 &&
-               commands[2].Number == 8 && commands[2].Contact == 5)
+               commands[2].Number == 8 && commands[2].Contact == 5) //顎門落とし
             {
+                RyugekiDamage(Player.Instance.m_attack * GameManager.Instance.m_enemyMaster[0].e_attack / 2 ,false);
                 m_dialog.text = "顎門落とし";
             }
             else
@@ -196,5 +199,13 @@ public class NineKeyInput : MonoBehaviour
         }
         m_phase = false;
         commands.Clear();
+    }
+
+    void RyugekiDamage(float _iryoku, bool _isKantsu)
+    {
+        EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(_iryoku, _isKantsu); //標的に対して通常攻撃
+
+        //UI反映
+        Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
     }
 }

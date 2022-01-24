@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
                 {
                     m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName +"の攻撃を回避 ▽";
 
-                    //  テストが終わったら消すこと
+                    //  テストが終わったらこのボタンに関連する行は消すこと
                     m_PALLY_TEST_BOTTUN.SetActive(true);
 
                     yield return new WaitForSeconds(1.5f);
@@ -110,30 +110,33 @@ public class Enemy : MonoBehaviour
                 m_diaLog.text = "";
             }
         }
-        //BattleManager._theTurn++;
+        BattleManager._theTurn = BattleManager.Turn.TurnEnd;
         m_moveStopper = false;
     }
 
     //パリィ処理のテスト用
     public void PallyTest()
     {
-        StartCoroutine(Pallied());
-    }
-
-    IEnumerator Pallied()
-    {
         m_isRyugekiChance = true;
         //パリィは強制的にプレイヤーターンにする
         BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
         Debug.Log("パリィ下　" + BattleManager._theTurn);
 
+        StartCoroutine(Pallied());
+    }
+
+    IEnumerator Pallied()
+    {
+        yield return new WaitForSeconds(3f);
         //パリィしたとして、龍撃を行えたかどうかで処理を分ける
         if (Ryugeki.m_isHitRyugeki == true)
         {
             yield break;
         }
-        yield return new WaitForSeconds(3f);
-        m_isRyugekiChance = false;
+        else
+        {
+            m_isRyugekiChance = false;
+        }
     }
 
     public void EnemyGenerate()

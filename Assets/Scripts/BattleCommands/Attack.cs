@@ -34,7 +34,6 @@ public class Attack : MonoBehaviour
             //UI反映
             Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
 
-            //Debug.Log("現在の敵体力" + EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP);
 
             //残り回避率に応じて集中力を増加
             if(Player.Instance.m_currentDogePower > 0)
