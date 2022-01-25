@@ -70,7 +70,7 @@ public class NineKeyInput : MonoBehaviour
                 //キー番号とキーに対する接触情報から入力IDを生成しリストに格納
                 if (hit.collider)
                 {
-                    Debug.Log("接触情報：" + hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
+                    //Debug.Log("接触情報：" + hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
                     int i = int.Parse(hit.collider.gameObject.name); //接触位置
                     CommandCode m_CC = new CommandCode(int.Parse(hit.collider.gameObject.transform.parent.name), i) ;
 
