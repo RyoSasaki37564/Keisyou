@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 /// <summary>
 /// 戦闘シーンにおけるキャラクター全般の始祖クラス。担当：必須共通パラメータ宣言及び体力処理の関数と生死判定
@@ -21,24 +20,26 @@ public class BattleChara : MonoBehaviour
     //生死
     public bool m_isDead = false;
 
-    public float m_changeValueInterval = 1f; //値の変化速度
-
     /// <summary>
     /// ダメージ処理。防御無視ならばboolをtrueに。
     /// </summary>
     /// <param name="damage"></param>
     /// <param name="isUnDeffencive"></param>
-    public virtual void Damage(float damage, bool isUnDeffencive)
+    public virtual float Damage(float damage, bool isUnDeffencive)
     {
         if(isUnDeffencive == false)
         {
-            DOTween.To(() => m_currentHP, x => m_currentHP = x, m_currentHP - (damage - (damage * m_deffence)), m_changeValueInterval);
+            m_currentHP -= damage - (damage * m_deffence);
             m_isDead = DeadOrAlive();
+
+            return damage - (damage * m_deffence);
         }
         else
         {
-            DOTween.To(() => m_currentHP, x => m_currentHP = x, m_currentHP - damage, m_changeValueInterval);
+            m_currentHP -= damage;
             m_isDead = DeadOrAlive();
+
+            return damage;
         }
     }
 

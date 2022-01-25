@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Attack : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Attack : MonoBehaviour
     [SerializeField] Target m_tergetIndexer = default; //ターゲット番号
 
     [SerializeField] Text m_diaLog = default;
+
+    public float m_changeValueInterval = 1f; //値の変化速度
 
     private void Start()
     {
@@ -29,14 +32,18 @@ public class Attack : MonoBehaviour
 
             m_diaLog.text = "～　<color=#8b0000>攻撃</color>　～　▽"; //赤字だぜ～
 
-            EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(Player.Instance.m_attack, false); //標的に対して通常攻撃
+            float ite = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(Player.Instance.m_attack, false); //標的に対して通常攻撃
 
             //UI反映
-            Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
+            //Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
+
+
+            DOTween.To(() => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = x,
+                Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - ite, m_changeValueInterval);
 
 
             //残り回避率に応じて集中力を増加
-            if(Player.Instance.m_currentDogePower > 0)
+            if (Player.Instance.m_currentDogePower > 0)
             {
                 Player.Instance.m_currentConcentlate += (Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax)*3;
             }
