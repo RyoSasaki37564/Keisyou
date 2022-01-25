@@ -180,6 +180,7 @@ public class Player : BattleChara
         {
             m_hpSlider.value = m_currentHP;
             m_hpText.text = "<color=#8b0000>死</color>";
+
         }
         else if (m_currentHP <= m_maxHP)
         {

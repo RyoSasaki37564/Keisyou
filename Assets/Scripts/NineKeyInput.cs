@@ -166,7 +166,7 @@ public class NineKeyInput : MonoBehaviour
                commands[1].Number == 5 &&
                commands[2].Number == 8 && commands[2].Contact == 5) //顎門落とし
             {
-                RyugekiDamage(Player.Instance.m_attack * GameManager.Instance.m_enemyMaster[0].e_attack / 2 ,false);
+                RyugekiDamage(Player.Instance.m_attack * 10 * GameManager.Instance.m_enemyMaster[0].e_attack, false);
                 m_dialog.text = "顎門落とし";
             }
             else
