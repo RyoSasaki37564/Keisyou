@@ -22,7 +22,7 @@ public class TouchManager : MonoBehaviour
         }
     }
     private TouchInfo _info = new TouchInfo();
-    private event System.Action<TouchInfo> _begane;
+    private event System.Action<TouchInfo> _began;
     private event System.Action<TouchInfo> _moved;
     private event System.Action<TouchInfo> _ended;
     //タッチ開始のイベント
@@ -30,11 +30,11 @@ public class TouchManager : MonoBehaviour
     {
         add
         {
-            Instance._begane += value;
+            Instance._began += value;
         }
         remove
         {
-            Instance._begane -= value;
+            Instance._began -= value;
         }
     }
     public static event System.Action<TouchInfo> Moved
@@ -63,7 +63,7 @@ public class TouchManager : MonoBehaviour
     {
         get
         {
-#if IS_EDITOR
+#if IS_EDITOR || UNITY_STANDALONE
             if (Input.GetMouseButtonDown(0))
             {
                 return TouchState.Began;
@@ -103,7 +103,7 @@ public class TouchManager : MonoBehaviour
     {
         get
         {
-#if IS_EDITOR
+#if IS_EDITOR || UNITY_STANDALONE
             return State == TouchState.None ?
                 Vector2.zero : (Vector2)Input.mousePosition;   //三項演算子
 #else
@@ -120,9 +120,9 @@ public class TouchManager : MonoBehaviour
         {
             _info.screenPoint = Position;
             _info.deltaScreenPoint = Vector2.zero;
-            if (_begane != null)
+            if (_began != null)
             {
-                _begane(_info);
+                _began(_info);
             }
         }
         else if (State == TouchState.Moved)

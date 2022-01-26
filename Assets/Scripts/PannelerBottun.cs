@@ -12,6 +12,18 @@ public class PannelerBottun : MonoBehaviour
         m_pannel.SetActive(false);
     }
 
+    public void Panneling()
+    {
+        if(m_pannel.activeSelf == true)
+        {
+            m_pannel.SetActive(false);
+        }
+        else
+        {
+            m_pannel.SetActive(true);
+        }
+    }
+
     public void PannelOpen()
     {
         m_pannel.SetActive(true);
