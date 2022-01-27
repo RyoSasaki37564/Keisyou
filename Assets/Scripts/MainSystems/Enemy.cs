@@ -7,12 +7,6 @@ public class Enemy : MonoBehaviour
 {
     public static List<Enemy> m_enemies = new List<Enemy>();
 
-    /// <summary> 戦闘画面における敵のビジュアル管理オブジェクト </summary>
-    [SerializeField] GameObject[] m_enemyGrahicsBody = default;
-
-    /// <summary> 固有特異行動 </summary>
-    [SerializeField] GameObject[] m_enemySpecialMove = default;
-
     /// <summary> エンカウントした敵のIDを格納するリスト </summary>
     public static List<int> m_encountEnemyID = new List<int>();
 
@@ -33,6 +27,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject m_PALLY_TEST_BOTTUN = default; //パリィ処理のテスト用ボタン
 
+    [SerializeField]Animator m_anim = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +41,7 @@ public class Enemy : MonoBehaviour
         m_encountEnemyID.Add(0);
 
         EnemyGenerate();
+
     }
 
     // Update is called once per frame
@@ -71,6 +68,36 @@ public class Enemy : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        switch (BattleManager._theTurn)
+        {
+            case BattleManager.Turn.AwakeTurn:
+                break;
+
+            case BattleManager.Turn.InputTurn:
+                break;
+
+            case BattleManager.Turn.PlayerTurn:
+                if(Ryugeki.m_isHitRyugeki == true)
+                {
+                    m_anim.SetBool("IsDamaged", true);
+                }
+                break;
+
+            case BattleManager.Turn.EnemyTurn:
+                m_anim.SetBool("IsDamaged", false);
+                break;
+
+            case BattleManager.Turn.TurnEnd:
+                m_anim.SetBool("IsDamaged", false);
+                break;
+
+            case BattleManager.Turn.BattleEnd:
+                break;
         }
     }
 

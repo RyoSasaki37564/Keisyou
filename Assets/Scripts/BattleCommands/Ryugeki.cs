@@ -17,10 +17,14 @@ public class Ryugeki : MonoBehaviour
 
     [SerializeField] Image m_fader = default; //フェードインアウト用スクリーン
 
+    [SerializeField] Animator m_approchTobackWall = default; //接近アニメーション
+    [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
+
     public void RyugekiNoKamae()
     {
         if(m_isHitRyugeki == true)
         {
+            m_approchTobackWall.SetBool("IsApproach", true);
             StartCoroutine(FadeIn());
             m_nineKeysScript.Phaser();
             Debug.Log("龍撃撃った " + BattleManager._theTurn);
@@ -35,6 +39,7 @@ public class Ryugeki : MonoBehaviour
         {
             if(Enemy.m_isRyugekiChance == true)
             {
+                m_syucyusen.SetActive(true);
                 StartCoroutine(FadeIn());
                 BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
                 m_isHitRyugeki = true;

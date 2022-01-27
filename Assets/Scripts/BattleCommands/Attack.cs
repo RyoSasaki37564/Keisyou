@@ -8,7 +8,7 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] Animator m_approchTobackWall = default; //接近アニメーション
 
-    [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
+    [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル。背景の接近アニメーションの終了時に自動で不可視化　＞＞BackWallBacker.cs
 
     [SerializeField] Target m_tergetIndexer = default; //ターゲット番号
 
