@@ -33,8 +33,7 @@ public class Ryugeki : MonoBehaviour
         }
         else
         {
-            if (BattleManager._theTurn == BattleManager.Turn.InputTurn ||
-               Enemy.m_isRyugekiChance == true)
+            if(Enemy.m_isRyugekiChance == true)
             {
                 StartCoroutine(FadeIn());
                 BattleManager._theTurn = BattleManager.Turn.PlayerTurn;

@@ -131,10 +131,12 @@ public class Enemy : MonoBehaviour
         //パリィしたとして、龍撃を行えたかどうかで処理を分ける
         if (Ryugeki.m_isHitRyugeki == true)
         {
+            Debug.Log("龍撃ヒット");
             yield break;
         }
         else
         {
+            Debug.Log("龍撃ヒットしません");
             m_isRyugekiChance = false;
         }
     }
