@@ -16,14 +16,21 @@ public class Attack : MonoBehaviour
 
     public float m_changeValueInterval = 1f; //値の変化速度
 
+    public static bool m_isNomalAttacked = false;
+
     private void Start()
     {
+        m_isNomalAttacked = false;
         m_syucyusen.SetActive(false);
     }
 
     public void AttackAct()
     {
-        if(BattleManager._theTurn == BattleManager.Turn.InputTurn)
+        m_isNomalAttacked = true;
+
+        Debug.Log("通常攻撃んご！");
+
+        if (BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
             BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
 
@@ -57,6 +64,9 @@ public class Attack : MonoBehaviour
             {
                 Player.Instance.m_currentDogePower = 0;
             }
+
+
+
         }
         else
         {

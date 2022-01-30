@@ -27,12 +27,20 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject m_PALLY_TEST_BOTTUN = default; //パリィ処理のテスト用ボタン
 
-    [SerializeField]Animator m_anim = default;
+    [SerializeField] Animator m_anim = default;
+
+    bool m_attackAnimStopper = false;
+
+    [SerializeField] Image m_ryugekiBottun = default; //龍撃ボタンは弾きをしないと出ない
+    [SerializeField] GameObject m_ryugekiButubutu = default; //龍撃ボタンは弾きをしないと出ない
 
     // Start is called before the first frame update
     void Start()
     {
         m_RedShutyuSen.SetActive(false);
+
+        m_ryugekiButubutu.SetActive(false);
+        m_ryugekiBottun.color = new Color(255, 255, 255, 0);
 
         //MonoBehaviourを継承したクラスではListの初期化にコンストラクタが使えないらしい。ので、ここで初期化命令を行う。
         EnemyStuts.m_enemiesStuts = new List<EnemyStuts>();
@@ -87,12 +95,17 @@ public class Enemy : MonoBehaviour
                     m_anim.SetBool("IsDamaged", true);
                 }
                 break;
-
             case BattleManager.Turn.EnemyTurn:
+                if(m_attackAnimStopper == false)
+                {
+                    m_anim.SetInteger("AttackMotion1", 1);
+                    m_attackAnimStopper = true;
+                }
                 m_anim.SetBool("IsDamaged", false);
                 break;
 
             case BattleManager.Turn.TurnEnd:
+                m_attackAnimStopper = false;
                 m_anim.SetBool("IsDamaged", false);
                 break;
 
@@ -146,8 +159,13 @@ public class Enemy : MonoBehaviour
     {
         m_isRyugekiChance = true;
         //パリィは強制的にプレイヤーターンにする
+        m_anim.SetBool("IsDamaged", false);
+        m_anim.SetInteger("AttackMotion1", 0);
         BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
         Debug.Log("パリィ下　" + BattleManager._theTurn);
+
+        m_ryugekiBottun.color = new Color(255, 255, 255, 255);
+        m_ryugekiButubutu.SetActive(true);
 
         StartCoroutine(Pallied());
     }
@@ -163,7 +181,9 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("龍撃ヒットしません");
+            m_ryugekiBottun.color = new Color(255, 255, 255, 0);
+            m_ryugekiButubutu.SetActive(false);
+            Debug.Log("龍撃しませんでした");
             m_isRyugekiChance = false;
         }
     }

@@ -20,6 +20,10 @@ public class Ryugeki : MonoBehaviour
     [SerializeField] Animator m_approchTobackWall = default; //接近アニメーション
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
 
+
+    [SerializeField] Image m_ryugekiBottun = default; //龍撃ボタン1
+    [SerializeField] GameObject m_ryugekiButubutu = default; //龍撃ボタン2
+
     public void RyugekiNoKamae()
     {
         if(m_isHitRyugeki == true)
@@ -28,12 +32,14 @@ public class Ryugeki : MonoBehaviour
             StartCoroutine(FadeIn());
             m_nineKeysScript.Phaser();
             Debug.Log("龍撃撃った " + BattleManager._theTurn);
-            m_isHitRyugeki = false;
             foreach (var i in m_playerCommandsUI)
             {
                 i.SetActive(true);
             }
             m_nines.SetActive(false);
+            m_ryugekiBottun.color = new Color(255, 255, 255, 0);
+            m_ryugekiButubutu.SetActive(false);
+            m_isHitRyugeki = false;
         }
         else
         {

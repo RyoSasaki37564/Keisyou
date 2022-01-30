@@ -12,7 +12,7 @@ public class QTE : MonoBehaviour
     public void QTEBited()
     {
         Player.Instance.Damage(m_damage, false);
-        Debug.Log(Player.Instance.m_currentHP);
+        //Debug.Log(Player.Instance.m_currentHP);
         Destroy(this.gameObject);
     }
 

@@ -9,8 +9,11 @@ public class BackWallBacker : MonoBehaviour
 
     public void Backer()
     {
-        BattleManager._theTurn = BattleManager.Turn.EnemyTurn;
-        Debug.LogWarning("Hey");
+        if(Attack.m_isNomalAttacked == true)
+        {
+            BattleManager._theTurn = BattleManager.Turn.EnemyTurn;
+            Attack.m_isNomalAttacked = false;
+        }
 
         m_back.SetBool("IsDoge", false);
         m_back.SetBool("IsApproach", false);
