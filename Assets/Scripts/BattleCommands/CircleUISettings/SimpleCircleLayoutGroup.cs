@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup, IPointerDownHandler, IPointerUpHandler
+public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 {
 	public float m_radius = 100;
 	public float m_offsetAngle;
@@ -11,6 +11,8 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup, IPointerDownHa
 	Vector2 m_mouseEntPos; //クリック地点
 
 	bool m_clickFrg = false;
+
+	[SerializeField] float m_speedRate = 1.5f;
 
 	protected override void OnValidate()
 	{
@@ -39,23 +41,22 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup, IPointerDownHa
 			child.anchoredPosition = new Vector2(
 				Mathf.Cos(currentAngle * Mathf.Deg2Rad),
 				Mathf.Sin(currentAngle * Mathf.Deg2Rad)) * m_radius;
+
+			child.transform.rotation = new Quaternion(0, 0, currentAngle, m_radius);
 		}
 	}
 
-    public void OnPointerDown(PointerEventData eventData)
-	{
-		if(m_clickFrg == false)
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
 		{
 			m_mouseEntPos = Input.mousePosition;
-			m_clickFrg = true;
+			Debug.Log(m_mouseEntPos);
 		}
-		m_offsetAngle += (m_mouseEntPos.y - Input.mousePosition.y) / m_radius;
-		Arrange();
-	}
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-		m_clickFrg = false;
-		m_mouseEntPos = default;
-	}
+		else if(Input.GetMouseButton(0))
+		{
+			m_offsetAngle -= (m_mouseEntPos.y - Input.mousePosition.y) / (m_radius / m_speedRate);
+			Arrange();
+		}
+    }
 }
