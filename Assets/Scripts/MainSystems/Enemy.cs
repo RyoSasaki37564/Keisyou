@@ -126,12 +126,16 @@ public class Enemy : MonoBehaviour
                 {
                     m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName +"の攻撃を回避 ▽";
 
+                    yield return new WaitForSeconds(1.5f);
+                    m_diaLog.text = "";
+                    /*
                     //  テストが終わったらこのボタンに関連する行は消すこと
                     m_PALLY_TEST_BOTTUN.SetActive(true);
 
                     yield return new WaitForSeconds(1.5f);
                     m_diaLog.text = "";
                     m_PALLY_TEST_BOTTUN.SetActive(false);
+                    */
                 }
                 else
                 {
