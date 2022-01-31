@@ -117,10 +117,10 @@ TextureImporter:
       name: ShinzuiBottun_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 103
-        width: 253
-        height: 538
+        x: 103
+        y: 1410
+        width: 538
+        height: 225
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,10 +138,10 @@ TextureImporter:
       name: ShinzuiBottun_1
       rect:
         serializedVersion: 2
-        x: 390
-        y: 101
-        width: 253
-        height: 538
+        x: 101
+        y: 1059
+        width: 538
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: ShinzuiBottun_2
       rect:
         serializedVersion: 2
-        x: 743
-        y: 101
-        width: 253
-        height: 538
+        x: 101
+        y: 704
+        width: 538
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,10 +180,10 @@ TextureImporter:
       name: ShinzuiBottun_3
       rect:
         serializedVersion: 2
-        x: 1062
-        y: 101
-        width: 253
-        height: 539
+        x: 101
+        y: 388
+        width: 539
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,10 +201,10 @@ TextureImporter:
       name: ShinzuiBottun_4
       rect:
         serializedVersion: 2
-        x: 1373
-        y: 101
-        width: 253
-        height: 542
+        x: 101
+        y: 71
+        width: 542
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -10,8 +10,6 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 
 	Vector2 m_mouseEntPos; //クリック地点
 
-	bool m_clickFrg = false;
-
 	[SerializeField] float m_speedRate = 1.5f;
 
 	protected override void OnValidate()
@@ -32,7 +30,7 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 	void Arrange()
 	{
 		float splitAngle = 360 / transform.childCount;
-		var rect = transform as RectTransform;
+		//var rect = transform as RectTransform;
 
 		for (int elementId = 0; elementId < transform.childCount; elementId++)
 		{
@@ -42,7 +40,6 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 				Mathf.Cos(currentAngle * Mathf.Deg2Rad),
 				Mathf.Sin(currentAngle * Mathf.Deg2Rad)) * m_radius;
 
-			child.transform.rotation = new Quaternion(0, 0, currentAngle, m_radius);
 		}
 	}
 
