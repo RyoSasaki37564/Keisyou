@@ -69,20 +69,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        TouchManager.Began += (info) =>
-        {
-
-        }; //Beganはタッチマネージャーのインスタンス生成も持ってる
-
-        TouchManager.Moved += (info) =>
-        {
-
-        };
-
-        TouchManager.Ended += (info) =>
-        {
-
-        };
     }
 
 

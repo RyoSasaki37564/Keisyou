@@ -31,10 +31,6 @@ public class Enemy : MonoBehaviour
 
     bool m_attackAnimStopper = false;
 
-    /*
-    [SerializeField] Image m_ryugekiBottun = default; //龍撃ボタンは弾きをしないと出ない
-    [SerializeField] GameObject m_ryugekiButubutu = default; //龍撃ボタンは弾きをしないと出ない
-    */
     [SerializeField] GameObject m_ryugekiBottun = default;
 
     // Start is called before the first frame update
@@ -43,10 +39,6 @@ public class Enemy : MonoBehaviour
         m_RedShutyuSen.SetActive(false);
 
         m_ryugekiBottun.SetActive(false);
-        /*
-        m_ryugekiButubutu.SetActive(false);
-        m_ryugekiBottun.color = new Color(255, 255, 255, 0);
-        */
 
         //MonoBehaviourを継承したクラスではListの初期化にコンストラクタが使えないらしい。ので、ここで初期化命令を行う。
         EnemyStuts.m_enemiesStuts = new List<EnemyStuts>();
@@ -179,7 +171,6 @@ public class Enemy : MonoBehaviour
         m_anim.SetBool("IsDamaged", false);
         m_anim.SetInteger("AttackMotion1", 0);
         BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
-        Debug.Log("パリィ下　" + BattleManager._theTurn);
         m_ryugekiBottun.SetActive(true);
 
         m_PALLY_TEST_BOTTUN.SetActive(false);

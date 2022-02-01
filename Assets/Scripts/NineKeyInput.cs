@@ -61,28 +61,9 @@ public class NineKeyInput : MonoBehaviour
 
     private void Start()
     {
-
-        TouchManager.Began += (info) =>
-        {
-
-        }; //Beganはタッチマネージャーのインスタンス生成も持ってる
-
         TouchManager.Moved += (info) =>
         {
-
-        };
-
-        TouchManager.Ended += (info) =>
-        {
-
-        };
-    }
-
-    void Update()
-    {
-        if(m_phase == false)
-        {
-            if (Input.GetButton("Fire1"))
+            if (m_phase == false)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
@@ -91,9 +72,9 @@ public class NineKeyInput : MonoBehaviour
                 {
                     //Debug.Log("接触情報：" + hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
                     int i = int.Parse(hit.collider.gameObject.name); //接触位置
-                    CommandCode m_CC = new CommandCode(int.Parse(hit.collider.gameObject.transform.parent.name), i) ;
+                    CommandCode m_CC = new CommandCode(int.Parse(hit.collider.gameObject.transform.parent.name), i);
 
-                    if(i == 5) //5は刺突
+                    if (i == 5) //5は刺突
                     {
                         m_srasts[m_srastIndexer].SetActive(true);
                         m_srasts[m_srastIndexer].transform.position = hit.collider.gameObject.transform.parent.position;
@@ -141,7 +122,8 @@ public class NineKeyInput : MonoBehaviour
                     m_commandList.Add(m_CC);
                 }
             }
-        }
+        };
+
     }
 
     public void Phaser()

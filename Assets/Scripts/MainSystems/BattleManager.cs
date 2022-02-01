@@ -38,6 +38,14 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         Debug.Log("やってまいりました。");
+        TouchManager.Began += (info) =>
+        {
+            if(_theTurn == Turn.AwakeTurn)
+            {
+                _theTurn = Turn.InputTurn;
+                m_diaLogText.text = "どうする？　▽";
+            }
+        };
     }
 
     // Update is called once per frame
@@ -48,11 +56,6 @@ public class BattleManager : MonoBehaviour
         {
             case Turn.AwakeTurn:
                 m_diaLogText.text = "狩りだ　▽";
-                if(Input.GetButton("Fire1"))
-                {
-                    _theTurn = Turn.InputTurn;
-                    m_diaLogText.text = "どうする？　▽";
-                }
                 break;
 
             case Turn.InputTurn:

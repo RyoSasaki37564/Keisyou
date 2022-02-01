@@ -12,15 +12,43 @@ public class QTE : MonoBehaviour
     public void QTEBited()
     {
         Player.Instance.Damage(m_damage, false);
-        //Debug.Log(Player.Instance.m_currentHP);
         Destroy(this.gameObject);
     }
 
-    private void OnMouseEnter()
+    private void Start()
     {
-        m_utuwa = Player.Instance.m_playerLevel / 2f;
-        Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
-        Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
-        Destroy(this.gameObject);
+        TouchManager.Began += (info) =>
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(info.screenPoint), Vector2.zero);
+            if (hit.collider != null)
+            {
+                GameObject hitObj = hit.collider.gameObject;
+                //ヒットしたオブジェクトのタグがQTEだったら消して集中と回避を付与 
+                if (hitObj.tag == "QTE")
+                {
+                    Destroy(hitObj.gameObject);
+                    m_utuwa = Player.Instance.m_playerLevel / 2f;
+                    Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
+                    Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
+                }
+            }
+        };
+
+        TouchManager.Moved += (info) =>
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(info.screenPoint), Vector2.zero);
+            if (hit.collider != null)
+            {
+                GameObject hitObj = hit.collider.gameObject;
+                //ヒットしたオブジェクトのタグがQTEだったら消して集中と回避を付与 
+                if (hitObj.tag == "QTE")
+                {
+                    Destroy(hitObj.gameObject);
+                    m_utuwa = Player.Instance.m_playerLevel / 2f;
+                    Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
+                    Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
+                }
+            }
+        };
     }
 }
