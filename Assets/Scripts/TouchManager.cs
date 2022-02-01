@@ -25,6 +25,9 @@ public class TouchManager : MonoBehaviour
     private event System.Action<TouchInfo> _begane;
     private event System.Action<TouchInfo> _moved;
     private event System.Action<TouchInfo> _ended;
+
+    int fingerCount = 0;
+
     //タッチ開始のイベント
     public static event System.Action<TouchInfo> Began
     {
@@ -63,7 +66,7 @@ public class TouchManager : MonoBehaviour
     {
         get
         {
-#if IS_EDITOR || UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_WEBGL
             if (Input.GetMouseButtonDown(0))
             {
                 return TouchState.Began;
@@ -76,22 +79,29 @@ public class TouchManager : MonoBehaviour
             {
                 return TouchState.Ended;
             }
-#else
-            if (Input.touchCount > 0)
+#elif UNITY_ANDROID || UNITY_ANDROID_API || IS_EDITOR
+
+            foreach (Touch touch in Input.touches)
             {
-                switch (Input.GetTouch(0).phase)
+                /*
+                if (Input.touchCount > 0)
                 {
-                    case TouchPhase.Began:
-                        return TouchState.Began;
-                    case TouchPhase.Moved:
+                */
+                switch (touch.phase)//switch (Input.GetTouch(0).phase)
+                {
+                        case TouchPhase.Began:
+                        Debug.Log(touch.fingerId);
+                            return TouchState.Began;
+                        case TouchPhase.Moved:
                     case TouchPhase.Stationary:
                         return TouchState.Moved;
-                    case TouchPhase.Canceled:
-                    case TouchPhase.Ended:
-                        return TouchState.Ended;
-                    default:
-                        break;
-                }
+                        case TouchPhase.Canceled:
+                        case TouchPhase.Ended:
+                            return TouchState.Ended;
+                        default:
+                            break;
+                    }
+                //}
             }
 #endif
             return TouchState.None;
@@ -103,11 +113,11 @@ public class TouchManager : MonoBehaviour
     {
         get
         {
-#if IS_EDITOR || UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_WEBGL
             return State == TouchState.None ?
                 Vector2.zero : (Vector2)Input.mousePosition;   //三項演算子
-#else
-            return Input.GetTouch(0).position;
+#elif UNITY_ANDROID || UNITY_ANDROID_API || IS_EDITOR
+            return Input.GetTouch(Input.touches).position;
 
 #endif
 
@@ -116,37 +126,42 @@ public class TouchManager : MonoBehaviour
 
     private void Update()
     {
-        if (State == TouchState.Began)
+        fingerCount = 0;
+        foreach (Touch touch in Input.touches)
         {
-            _info.screenPoint = Position;
-            _info.deltaScreenPoint = Vector2.zero;
-            if (_begane != null)
+            if (State == TouchState.Began)
             {
-                _begane(_info);
+                _info.screenPoints.Add(touch.position);
+                _info.deltaScreenPoint = Vector2.zero;
+                if (_begane != null)
+                {
+                    _begane(_info);
+                }
             }
-        }
-        else if (State == TouchState.Moved)
-        {
-            _info.deltaScreenPoint = Position - _info.screenPoint;
-            _info.screenPoint = Position;
-            if (_moved != null)
+            else if (State == TouchState.Moved)
             {
-                _moved(_info);
+                _info.deltaScreenPoint = Position - _info.screenPoint;
+                _info.screenPoint = Position;
+                if (_moved != null)
+                {
+                    _moved(_info);
+                }
             }
-        }
-        else if (State == TouchState.Ended)
-        {
-            _info.deltaScreenPoint = Position - _info.screenPoint;
-            _info.screenPoint = Position;
-            if (_ended != null)
+            else if (State == TouchState.Ended)
             {
-                _ended(_info);
+                _info.deltaScreenPoint = Position - _info.screenPoint;
+                _info.screenPoint = Position;
+                if (_ended != null)
+                {
+                    _ended(_info);
+                }
             }
-        }
-        else
-        {
-            _info.screenPoint = Vector2.zero;
-            _info.deltaScreenPoint = Vector2.zero;
+            else
+            {
+                _info.screenPoint = Vector2.zero;
+                _info.deltaScreenPoint = Vector2.zero;
+            }
+            fingerCount++;
         }
     }
 
@@ -156,7 +171,8 @@ public class TouchManager : MonoBehaviour
 public class TouchInfo
 {
     //タッチされたスクリーン座標
-    public Vector2 screenPoint;
+    public List<Vector2> screenPoints = new List<Vector2>();
+    //public Vector2 screenPoint;
     //１フレーム前のスクリーン座標との差分
     public Vector2 deltaScreenPoint;
     //タッチされたビューポート座標
