@@ -66,7 +66,7 @@ public class TouchManager : MonoBehaviour
     {
         get
         {
-#if UNITY_STANDALONE || UNITY_WEBGL
+#if UNITY_STANDALONE || UNITY_WEBGL || IS_EDITOR
             if (Input.GetMouseButtonDown(0))
             {
                 return TouchState.Began;
@@ -79,7 +79,7 @@ public class TouchManager : MonoBehaviour
             {
                 return TouchState.Ended;
             }
-#elif UNITY_ANDROID || UNITY_ANDROID_API || IS_EDITOR
+#elif UNITY_ANDROID || UNITY_ANDROID_API
 
             foreach (Touch touch in Input.touches)
             {
@@ -113,11 +113,11 @@ public class TouchManager : MonoBehaviour
     {
         get
         {
-#if UNITY_STANDALONE || UNITY_WEBGL
+#if UNITY_STANDALONE || UNITY_WEBGL || IS_EDITOR
             return State == TouchState.None ?
                 Vector2.zero : (Vector2)Input.mousePosition;   //三項演算子
-#elif UNITY_ANDROID || UNITY_ANDROID_API || IS_EDITOR
-            return Input.GetTouch(Input.touches).position;
+#elif UNITY_ANDROID || UNITY_ANDROID_API
+            return Input.GetTouch(0).position;
 
 #endif
 
@@ -126,12 +126,12 @@ public class TouchManager : MonoBehaviour
 
     private void Update()
     {
-        fingerCount = 0;
-        foreach (Touch touch in Input.touches)
-        {
+    //    fingerCount = 0;
+    //    foreach (Touch touch in Input.touches)
+    //    {
             if (State == TouchState.Began)
             {
-                _info.screenPoints.Add(touch.position);
+                _info.screenPoint = Position;
                 _info.deltaScreenPoint = Vector2.zero;
                 if (_begane != null)
                 {
@@ -161,8 +161,8 @@ public class TouchManager : MonoBehaviour
                 _info.screenPoint = Vector2.zero;
                 _info.deltaScreenPoint = Vector2.zero;
             }
-            fingerCount++;
-        }
+            //fingerCount++;
+        //}
     }
 
 }
@@ -172,7 +172,7 @@ public class TouchInfo
 {
     //タッチされたスクリーン座標
     public List<Vector2> screenPoints = new List<Vector2>();
-    //public Vector2 screenPoint;
+    public Vector2 screenPoint;
     //１フレーム前のスクリーン座標との差分
     public Vector2 deltaScreenPoint;
     //タッチされたビューポート座標
