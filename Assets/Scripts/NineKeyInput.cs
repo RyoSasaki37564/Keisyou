@@ -59,6 +59,25 @@ public class NineKeyInput : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+
+        TouchManager.Began += (info) =>
+        {
+
+        }; //Beganはタッチマネージャーのインスタンス生成も持ってる
+
+        TouchManager.Moved += (info) =>
+        {
+
+        };
+
+        TouchManager.Ended += (info) =>
+        {
+
+        };
+    }
+
     void Update()
     {
         if(m_phase == false)

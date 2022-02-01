@@ -4,44 +4,40 @@ using UnityEngine;
 
 public class Shinzui : MonoBehaviour
 {
-    [SerializeField] GameObject m_pannel = default;
+    [SerializeField] GameObject m_circle = default;
 
     [SerializeField] List<GameObject> m_otherCommands = new List<GameObject>();
+
+    [SerializeField] Animator m_ainm = default;
+
+    bool m_dashiireFlg = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_pannel.SetActive(false);
+        m_circle.SetActive(false);
     }
 
     public void Panneling()
     {
-        if (m_pannel.activeSelf == true)
+        if (m_dashiireFlg == true)
         {
-            m_pannel.SetActive(false);
+            m_ainm.SetBool("IsShinzui", false);
             foreach(var i in m_otherCommands)
             {
                 i.SetActive(true);
             }
+            m_dashiireFlg = false;
         }
         else
         {
-            m_pannel.SetActive(true);
+            m_circle.SetActive(true);
+            m_dashiireFlg = true;
+            m_ainm.SetBool("IsShinzui", true);
             foreach (var i in m_otherCommands)
             {
                 i.SetActive(false);
             }
         }
     }
-
-    public void PannelOpen()
-    {
-        m_pannel.SetActive(true);
-    }
-
-    public void PannelClose()
-    {
-        m_pannel.SetActive(false);
-    }
-
 }

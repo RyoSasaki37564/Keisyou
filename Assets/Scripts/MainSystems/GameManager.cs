@@ -68,6 +68,21 @@ public class GameManager : MonoBehaviour
                 Debug.LogError("ますたーがないですます");
             }
         }
+
+        TouchManager.Began += (info) =>
+        {
+
+        }; //Beganはタッチマネージャーのインスタンス生成も持ってる
+
+        TouchManager.Moved += (info) =>
+        {
+
+        };
+
+        TouchManager.Ended += (info) =>
+        {
+
+        };
     }
 
 

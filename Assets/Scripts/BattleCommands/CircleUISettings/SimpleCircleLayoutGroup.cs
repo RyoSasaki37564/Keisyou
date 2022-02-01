@@ -43,17 +43,22 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 		}
 	}
 
-    private void Update()
+    protected override void Start()
     {
-        if(Input.GetMouseButtonDown(0))
+		TouchManager.Began += (info) =>
 		{
 			m_mouseEntPos = Input.mousePosition;
-			Debug.Log(m_mouseEntPos);
-		}
-		else if(Input.GetMouseButton(0))
+		}; //Beganはタッチマネージャーのインスタンス生成も持ってる
+
+		TouchManager.Moved += (info) =>
 		{
 			m_offsetAngle -= (m_mouseEntPos.y - Input.mousePosition.y) / (m_radius / m_speedRate);
 			Arrange();
-		}
-    }
+		};
+
+		TouchManager.Ended += (info) =>
+		{
+
+		};
+	}
 }

@@ -22,7 +22,7 @@ public class TouchManager : MonoBehaviour
         }
     }
     private TouchInfo _info = new TouchInfo();
-    private event System.Action<TouchInfo> _began;
+    private event System.Action<TouchInfo> _begane;
     private event System.Action<TouchInfo> _moved;
     private event System.Action<TouchInfo> _ended;
     //タッチ開始のイベント
@@ -30,11 +30,11 @@ public class TouchManager : MonoBehaviour
     {
         add
         {
-            Instance._began += value;
+            Instance._begane += value;
         }
         remove
         {
-            Instance._began -= value;
+            Instance._begane -= value;
         }
     }
     public static event System.Action<TouchInfo> Moved
@@ -120,9 +120,9 @@ public class TouchManager : MonoBehaviour
         {
             _info.screenPoint = Position;
             _info.deltaScreenPoint = Vector2.zero;
-            if (_began != null)
+            if (_begane != null)
             {
-                _began(_info);
+                _begane(_info);
             }
         }
         else if (State == TouchState.Moved)

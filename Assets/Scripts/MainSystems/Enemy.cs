@@ -31,16 +31,22 @@ public class Enemy : MonoBehaviour
 
     bool m_attackAnimStopper = false;
 
+    /*
     [SerializeField] Image m_ryugekiBottun = default; //龍撃ボタンは弾きをしないと出ない
     [SerializeField] GameObject m_ryugekiButubutu = default; //龍撃ボタンは弾きをしないと出ない
+    */
+    [SerializeField] GameObject m_ryugekiBottun = default;
 
     // Start is called before the first frame update
     void Start()
     {
         m_RedShutyuSen.SetActive(false);
 
+        m_ryugekiBottun.SetActive(false);
+        /*
         m_ryugekiButubutu.SetActive(false);
         m_ryugekiBottun.color = new Color(255, 255, 255, 0);
+        */
 
         //MonoBehaviourを継承したクラスではListの初期化にコンストラクタが使えないらしい。ので、ここで初期化命令を行う。
         EnemyStuts.m_enemiesStuts = new List<EnemyStuts>();
@@ -118,40 +124,47 @@ public class Enemy : MonoBehaviour
     {
         for (var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
         {
-            int rand = Random.Range(0, 1);
-            if (rand == 0)
+            int dogeJadge = Random.Range(0, 100);
+            if (dogeJadge < Player.Instance.m_currentDogePower)
             {
-                int dogeJadge = Random.Range(0, 100);
-                if(dogeJadge < Player.Instance.m_currentDogePower)
-                {
-                    m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName +"の攻撃を回避 ▽";
+                m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "の攻撃を回避 ▽";
 
-                    yield return new WaitForSeconds(1.5f);
-                    m_diaLog.text = "";
-                    /*
+                yield return new WaitForSeconds(1.5f);
+                m_diaLog.text = "";
+            }
+            else
+            {
+                m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "の攻撃　▽";
+                m_RedShutyuSen.SetActive(true);
+
+                //三割でパリィチャンス発生
+                int rand = Random.Range(0, 10);// Random.Range(0, 10);
+                if (rand < 3)
+                {
                     //  テストが終わったらこのボタンに関連する行は消すこと
                     m_PALLY_TEST_BOTTUN.SetActive(true);
 
                     yield return new WaitForSeconds(1.5f);
-                    m_diaLog.text = "";
-                    m_PALLY_TEST_BOTTUN.SetActive(false);
-                    */
+                    if(m_PALLY_TEST_BOTTUN.activeSelf == true)
+                    {
+                        m_diaLog.text = "";
+                        m_PALLY_TEST_BOTTUN.SetActive(false);
+                        Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
+                        m_RedShutyuSen.SetActive(false);
+                    }
+                    else
+                    {
+                        m_diaLog.text = "";
+                        m_RedShutyuSen.SetActive(false);
+                    }
                 }
                 else
                 {
-                    m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName +"の攻撃　▽";
-                    m_RedShutyuSen.SetActive(true);
                     yield return new WaitForSeconds(1.5f);
                     m_diaLog.text = "";
                     Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
                     m_RedShutyuSen.SetActive(false);
                 }
-            }
-            else
-            {
-                m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "は様子を見ている　▽";
-                yield return new WaitForSeconds(1.5f);
-                m_diaLog.text = "";
             }
         }
         BattleManager._theTurn = BattleManager.Turn.TurnEnd;
@@ -167,9 +180,9 @@ public class Enemy : MonoBehaviour
         m_anim.SetInteger("AttackMotion1", 0);
         BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
         Debug.Log("パリィ下　" + BattleManager._theTurn);
+        m_ryugekiBottun.SetActive(true);
 
-        m_ryugekiBottun.color = new Color(255, 255, 255, 255);
-        m_ryugekiButubutu.SetActive(true);
+        m_PALLY_TEST_BOTTUN.SetActive(false);
 
         StartCoroutine(Pallied());
     }
@@ -185,10 +198,10 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            m_ryugekiBottun.color = new Color(255, 255, 255, 0);
-            m_ryugekiButubutu.SetActive(false);
-            Debug.Log("龍撃しませんでした");
             m_isRyugekiChance = false;
+            m_ryugekiBottun.SetActive(false);
+
+            Debug.Log("龍撃しませんでした");
         }
     }
 
