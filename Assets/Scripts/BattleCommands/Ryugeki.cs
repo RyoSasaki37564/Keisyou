@@ -47,6 +47,7 @@ public class Ryugeki : MonoBehaviour
         {
             if(Enemy.m_isRyugekiChance == true)
             {
+                Time.timeScale = 1f;
                 m_syucyusen.SetActive(true);
                 StartCoroutine(FadeIn());
                 BattleManager._theTurn = BattleManager.Turn.PlayerTurn;

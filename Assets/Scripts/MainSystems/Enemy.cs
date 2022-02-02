@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour
 
                 //三割でパリィチャンス発生
                 int rand = Random.Range(0, 10);// Random.Range(0, 10);
-                if (rand < 3)
+                if (rand < 10)
                 {
                     //  テストが終わったらこのボタンに関連する行は消すこと
                     m_PALLY_TEST_BOTTUN.SetActive(true);
@@ -176,11 +176,12 @@ public class Enemy : MonoBehaviour
         m_PALLY_TEST_BOTTUN.SetActive(false);
 
         StartCoroutine(Pallied());
+        StartCoroutine(TimeNomalizer());
     }
 
     IEnumerator Pallied()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.06f);
         //パリィしたとして、龍撃を行えたかどうかで処理を分ける
         if (Ryugeki.m_isHitRyugeki == true)
         {
@@ -194,6 +195,13 @@ public class Enemy : MonoBehaviour
 
             Debug.Log("龍撃しませんでした");
         }
+    }
+
+    IEnumerator TimeNomalizer()
+    {
+        Time.timeScale = 0.01f;
+        yield return new WaitForSeconds(0.03f);
+        Time.timeScale = 1f;
     }
 
     public void EnemyGenerate()

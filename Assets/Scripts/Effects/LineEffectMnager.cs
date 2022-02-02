@@ -17,8 +17,7 @@ public class LineEffectMnager : MonoBehaviour
 
     float rand;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         // m_lineCount の数だけ線をプールする
         for (var i = 0; i < m_lineCount; i++)
@@ -27,11 +26,13 @@ public class LineEffectMnager : MonoBehaviour
             x.transform.SetParent(this.gameObject.transform);
             x.SetActive(false);
         }
+        m_indexer = 0;
         Liner();
     }
 
     void Liner()
     {
+        Debug.Log("Line");
         rand = Random.Range(m_minHeight.transform.position.y, m_maxHeight.transform.position.y);
         StartCoroutine(SpeedLiner());
     }
