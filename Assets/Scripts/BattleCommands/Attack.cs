@@ -52,11 +52,11 @@ public class Attack : MonoBehaviour
             //残り回避率に応じて集中力を増加
             if (Player.Instance.m_currentDogePower > 0)
             {
-                Player.Instance.m_currentConcentlate += (Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax)*3;
+                Player.Instance.m_currentConcentlate += (Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax) * 3;
             }
 
             //攻撃するたび回避率を減少
-            if(Player.Instance.m_currentDogePower >= 5)
+            if (Player.Instance.m_currentDogePower >= 5)
             {
                 Player.Instance.m_currentDogePower -= 5;
             }
