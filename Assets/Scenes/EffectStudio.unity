@@ -1423,6 +1423,8 @@ PlayableDirector:
     value: {fileID: 1975657784}
   - key: {fileID: 1583595443853801259, guid: 28bc643529c8d45458e3499ee35e4dfa, type: 2}
     value: {fileID: 53718313}
+  - key: {fileID: -4664479663611369445, guid: 28bc643529c8d45458e3499ee35e4dfa, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1260915692
@@ -2177,7 +2179,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.6
+  m_Time: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -2243,7 +2245,7 @@ Transform:
   m_GameObject: {fileID: 1964695371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1260915692}
   m_RootOrder: 0
