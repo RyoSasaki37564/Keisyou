@@ -25,6 +25,8 @@ public class NineKeyInput : MonoBehaviour
     [SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
     [SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
 
+    [SerializeField] Animator m_enemyAnim = default;
+
     public struct CommandCode
     {
         public int Number { get; set; }
@@ -231,9 +233,6 @@ public class NineKeyInput : MonoBehaviour
     public void RGAgito()
     {
         RyugekiDamage(Player.Instance.m_attack * 10 * GameManager.Instance.m_enemyMaster[0].e_attack, false);
-    }
-    public void AgitoOff()
-    {
-        m_ryugekiEffectsList[0].SetActive(false);
+        m_enemyAnim.SetBool("IsDamaged", true);
     }
 }
