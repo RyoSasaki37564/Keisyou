@@ -32,7 +32,6 @@ public class LineEffectMnager : MonoBehaviour
 
     void Liner()
     {
-        Debug.Log("Line");
         rand = Random.Range(m_minHeight.transform.position.y, m_maxHeight.transform.position.y);
         StartCoroutine(SpeedLiner());
     }

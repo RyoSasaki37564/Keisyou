@@ -30,8 +30,8 @@ public class Ryugeki : MonoBehaviour
 
         if(m_isHitRyugeki == true)
         {
+            m_syucyusen.SetActive(false);
             m_flg = true;
-            m_approchTobackWall.SetBool("IsApproach", true);
             StartCoroutine(FadeIn());
             m_nineKeysScript.Phaser();
             Debug.Log("龍撃撃った " + BattleManager._theTurn);

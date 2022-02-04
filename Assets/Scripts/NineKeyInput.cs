@@ -22,6 +22,9 @@ public class NineKeyInput : MonoBehaviour
 
     public float m_changeValueInterval = 1f; //値の変化速度
 
+    [SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
+    [SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
+
     public struct CommandCode
     {
         public int Number { get; set; }
@@ -44,8 +47,13 @@ public class NineKeyInput : MonoBehaviour
 
     private void Awake()
     {
-        //マーカーエフェクトを生成しプール
-        for(var i = 0; i < 9; i++)
+        m_akiCutIn.SetActive(false);
+        foreach (var x in m_ryugekiEffectsList)
+        {
+            x.SetActive(false);
+        }
+            //マーカーエフェクトを生成しプール
+            for (var i = 0; i < 9; i++)
         {
             var x = Instantiate(m_effectSlash);
             m_slashs[i] = x;
@@ -160,46 +168,51 @@ public class NineKeyInput : MonoBehaviour
 
     public void Ryuugeki(List<CommandCode> commands)
     {
-        if(commands.Count == 0)
+        if (commands.Count == 0)
         {
             m_dialog.text = "失敗";
         }
-        else if(commands.Count == 3)
-        {
-            if(commands[0].Number == 2 &&
-               commands[1].Number == 5 &&
-               commands[2].Number == 8 && commands[2].Contact == 5) //顎門落とし
-            {
-                RyugekiDamage(Player.Instance.m_attack * 10 * GameManager.Instance.m_enemyMaster[0].e_attack, false);
-                m_dialog.text = "顎門落とし";
-            }
-            else
-            {
-                m_dialog.text = "ガチビンタ";
-            }
-        }
-        else if(commands.Count == 9)
-        {
-            if (commands[0].Number == 1 &&
-                commands[1].Number == 2 &&
-                commands[2].Number == 3 &&
-                commands[3].Number == 6 &&
-                commands[4].Number == 9 &&
-                commands[5].Number == 8 &&
-                commands[6].Number == 7 &&
-                commands[7].Number == 4 &&
-                commands[8].Number == 5 && commands[8].Contact == 5)
-            {
-                m_dialog.text = "とぐろ回し";
-            }
-            else
-            {
-                m_dialog.text = "ガチビンタ";
-            }
-        }
         else
         {
-            m_dialog.text = "ガチビンタ";
+            if (commands.Count == 3)
+            {
+                if (commands[0].Number == 2 &&
+                   commands[1].Number == 5 &&
+                   commands[2].Number == 8 && commands[2].Contact == 5) //顎門落とし
+                {
+                    m_ryugekiEffectsList[0].SetActive(true);
+                    m_dialog.text = "顎門落とし";
+                }
+                else
+                {
+                    m_dialog.text = "ガチビンタ";
+                }
+            }
+            else if (commands.Count == 9)
+            {
+                if (commands[0].Number == 1 &&
+                    commands[1].Number == 2 &&
+                    commands[2].Number == 3 &&
+                    commands[3].Number == 6 &&
+                    commands[4].Number == 9 &&
+                    commands[5].Number == 8 &&
+                    commands[6].Number == 7 &&
+                    commands[7].Number == 4 &&
+                    commands[8].Number == 5 && commands[8].Contact == 5)
+                {
+                    m_dialog.text = "とぐろ回し";
+                }
+                else
+                {
+                    m_dialog.text = "ガチビンタ";
+                }
+            }
+            else
+            {
+                m_dialog.text = "ガチビンタ";
+            }
+
+            m_akiCutIn.SetActive(true);
         }
         m_phase = false;
         commands.Clear();
@@ -213,5 +226,14 @@ public class NineKeyInput : MonoBehaviour
         //Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
         DOTween.To(() => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = x,
             Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - _iryoku, m_changeValueInterval);
+    }
+
+    public void RGAgito()
+    {
+        RyugekiDamage(Player.Instance.m_attack * 10 * GameManager.Instance.m_enemyMaster[0].e_attack, false);
+    }
+    public void AgitoOff()
+    {
+        m_ryugekiEffectsList[0].SetActive(false);
     }
 }
