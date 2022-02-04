@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1523,7 +1523,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2423,6 +2423,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemyAnim: {fileID: 1739012102}
+  m_playerCommandsUI:
+  - {fileID: 1841896864}
+  - {fileID: 1661699636}
+  - {fileID: 86995857}
+  - {fileID: 348994058}
+  - {fileID: 709636831}
 --- !u!1 &1101715783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,6 +3746,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3784858424064587354, guid: 8e8415330fb813c4d88d6da0ee2b1044,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1852397640}
+    - target: {fileID: 3784858424064587354, guid: 8e8415330fb813c4d88d6da0ee2b1044,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784858424064587354, guid: 8e8415330fb813c4d88d6da0ee2b1044,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784858424064587354, guid: 8e8415330fb813c4d88d6da0ee2b1044,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784858424064587354, guid: 8e8415330fb813c4d88d6da0ee2b1044,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 918457103
+      objectReference: {fileID: 0}
     - target: {fileID: 3784858424998442443, guid: 8e8415330fb813c4d88d6da0ee2b1044,
         type: 3}
       propertyPath: m_Name
@@ -3870,7 +3901,7 @@ GameObject:
   - component: {fileID: 1749486984}
   - component: {fileID: 1749486983}
   m_Layer: 5
-  m_Name: =Canvas=
+  m_Name: =Canvass=
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3934,7 +3965,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 918457103
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1749486986
 RectTransform:
@@ -3981,6 +4012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemyAnim: {fileID: 1739012102}
+  m_playerCommandsUI: []
 --- !u!1 &1793087714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8747164252598640343, guid: a7dd399d9b018b146ad81567bdf7a34f,
@@ -4422,6 +4454,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5094551360994797425, guid: dea7a63c63e0e7142bcad14f2f5b29f6,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1852397640}
+    - target: {fileID: 5094551360994797425, guid: dea7a63c63e0e7142bcad14f2f5b29f6,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094551360994797425, guid: dea7a63c63e0e7142bcad14f2f5b29f6,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 918457103
+      objectReference: {fileID: 0}
     - target: {fileID: 5094551360994797430, guid: dea7a63c63e0e7142bcad14f2f5b29f6,
         type: 3}
       propertyPath: m_IsActive
@@ -6293,9 +6340,24 @@ PrefabInstance:
       objectReference: {fileID: 743884480}
     - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
         type: 3}
+      propertyPath: m_playerCommandsUI.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
+        type: 3}
       propertyPath: m_ryugekiEffectsList.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
+        type: 3}
+      propertyPath: m_playerCommandsUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 1841896864}
+    - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
+        type: 3}
+      propertyPath: m_playerCommandsUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1661699636}
     - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
         type: 3}
       propertyPath: m_ryugekiEffectsList.Array.data[0]
@@ -6587,6 +6649,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OtherComand
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667783093758944243, guid: db3e916d676b2b94a96f662be671998e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6667783093758944252, guid: db3e916d676b2b94a96f662be671998e,
         type: 3}

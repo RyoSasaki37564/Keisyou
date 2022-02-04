@@ -35,10 +35,6 @@ public class Ryugeki : MonoBehaviour
             StartCoroutine(FadeIn());
             m_nineKeysScript.Phaser();
             Debug.Log("龍撃撃った " + BattleManager._theTurn);
-            foreach (var i in m_playerCommandsUI)
-            {
-                i.SetActive(true);
-            }
             m_nines.SetActive(false);
 
             m_isHitRyugeki = false;
