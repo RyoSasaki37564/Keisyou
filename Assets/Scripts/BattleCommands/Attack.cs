@@ -18,6 +18,9 @@ public class Attack : MonoBehaviour
 
     public static bool m_isNomalAttacked = false;
 
+    //属性補正。
+    float m_zokuseiHosei = 0;
+
     private void Start()
     {
         m_isNomalAttacked = false;
@@ -28,8 +31,6 @@ public class Attack : MonoBehaviour
     {
         m_isNomalAttacked = true;
 
-        Debug.Log("通常攻撃んご！");
-
         if (BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
             BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
@@ -39,11 +40,68 @@ public class Attack : MonoBehaviour
 
             m_diaLog.text = "～　<color=#8b0000>攻撃</color>　～　▽"; //赤字だぜ～
 
-            float ite = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(Player.Instance.m_attack, false); //標的に対して通常攻撃
+            //ダメージ与えてゃう～～～～～～属性相性を参照してナ！！！！
+            switch (Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type)
+            {
+                case 0:
+                    switch(EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_type)
+                    {
+                        case 0:
+                            m_zokuseiHosei = 1f;
+                            break;
+                        case 1:
+                            m_zokuseiHosei = 2f;
+                            break;
+                        case 2:
+                            m_zokuseiHosei = 0.5f;
+                            break;
+                        case 3:
+                            m_zokuseiHosei = 2f;
+                            break;
+                    }
+                    break;
+                case 1:
+                    switch (EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_type)
+                    {
+                        case 0:
+                            m_zokuseiHosei = 0.5f;
+                            break;
+                        case 1:
+                            m_zokuseiHosei = 1f;
+                            break;
+                        case 2:
+                            m_zokuseiHosei = 2f;
+                            break;
+                        case 3:
+                            m_zokuseiHosei = 2f;
+                            break;
+                    }
+                    break;
+                case 2:
+                    switch (EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_type)
+                    {
+                        case 0:
+                            m_zokuseiHosei = 2f;
+                            break;
+                        case 1:
+                            m_zokuseiHosei = 0.5f;
+                            break;
+                        case 2:
+                            m_zokuseiHosei = 1f;
+                            break;
+                        case 3:
+                            m_zokuseiHosei = 2f;
+                            break;
+                    }
+                    break;
+                case 3:
+                    m_zokuseiHosei = 2f;
+                    break;
+            }
 
-            //UI反映
-            //Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
-
+            float ite = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage((Player.Instance.m_attack +
+                Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._atk) * m_zokuseiHosei
+                , false);
 
             DOTween.To(() => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = x,
                 Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - ite, m_changeValueInterval);
@@ -52,7 +110,7 @@ public class Attack : MonoBehaviour
             //残り回避率に応じて集中力を増加
             if (Player.Instance.m_currentDogePower > 0)
             {
-                Player.Instance.m_currentConcentlate += (Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax) * 3;
+                Player.Instance.m_currentConcentlate += (int)(Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax) * 3;
             }
 
             //攻撃するたび回避率を減少
@@ -64,9 +122,6 @@ public class Attack : MonoBehaviour
             {
                 Player.Instance.m_currentDogePower = 0;
             }
-
-
-
         }
         else
         {

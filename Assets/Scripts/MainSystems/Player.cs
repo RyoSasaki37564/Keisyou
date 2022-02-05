@@ -14,10 +14,10 @@ public class Player : BattleChara
     public float m_offenseOfPlayer { get; set; }
 
     /// <summary> 集中力の最大 </summary>
-    public float m_maxConcentlate { get; set; }
+    public int m_maxConcentlate { get; set; }
 
     /// <summary> 集中力の現在量 </summary>
-    public float m_currentConcentlate { get; set; }
+    public int m_currentConcentlate { get; set; }
 
     /// <summary> レベルテーブルのCSV </summary>
     [SerializeField] TextAsset m_playerLevelTableText = default;
@@ -55,9 +55,9 @@ public class Player : BattleChara
         public float p_attack;
         public float p_deffence;
         public float p_doge;
-        public float p_concentlate;
+        public int p_concentlate;
 
-        public PlayerStatus(int lv, float hp, float atk, float def, float dog, float con)
+        public PlayerStatus(int lv, float hp, float atk, float def, float dog, int con)
         {
             this.p_level = lv;
             this.p_hp = hp;
@@ -97,7 +97,7 @@ public class Player : BattleChara
 
     [SerializeField] int m_nowArmsID { get; set; } //現在の装備中武器ID
 
-    [SerializeField] Text m_armsNameNow = default; //現在の武器名
+
 
 
     private void Awake()
@@ -122,7 +122,7 @@ public class Player : BattleChara
                 {
                     line = sr.ReadLine().Split(',');
                     m_playerLevelTable[i] = new PlayerStatus(int.Parse(line[0]), float.Parse(line[1]),
-                        float.Parse(line[2]), float.Parse(line[3]), float.Parse(line[4]), float.Parse(line[5]));
+                        float.Parse(line[2]), float.Parse(line[3]), float.Parse(line[4]), int.Parse(line[5]));
                 }
             }
             else
@@ -158,6 +158,7 @@ public class Player : BattleChara
                     m_armsMasterTable[i]._isGet = true;
 
                 }
+                m_nowArmsID = ArmsSys.m_carsol;
             }
             else
             {

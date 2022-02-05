@@ -29,7 +29,7 @@ public class Doge : MonoBehaviour
         //残り回避率に応じて集中力を増加
         if (Player.Instance.m_currentDogePower > 0)
         {
-            Player.Instance.m_currentConcentlate += (Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax);
+            Player.Instance.m_currentConcentlate += (int)(Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax);
         }
 
         yield return new WaitForSeconds(1f);

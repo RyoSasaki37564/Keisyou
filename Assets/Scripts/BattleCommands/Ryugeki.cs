@@ -24,9 +24,12 @@ public class Ryugeki : MonoBehaviour
 
     bool m_flg = false;
 
+    bool m_isRyugekiNyuryoku = false;
+
+    float m_time = 0;
+
     public void RyugekiNoKamae()
     {
-        Debug.Log("龍撃ボタン反応はしています");
 
         if(m_isHitRyugeki == true)
         {
@@ -34,10 +37,10 @@ public class Ryugeki : MonoBehaviour
             m_flg = true;
             StartCoroutine(FadeIn());
             m_nineKeysScript.Phaser();
-            Debug.Log("龍撃撃った " + BattleManager._theTurn);
             m_nines.SetActive(false);
 
             m_isHitRyugeki = false;
+            m_isRyugekiNyuryoku = false;
         }
         else
         {
@@ -54,9 +57,27 @@ public class Ryugeki : MonoBehaviour
                 }
                 m_nines.SetActive(true);
                 m_dialog.text = "";
+                m_isRyugekiNyuryoku = true;
             }
         }
 
+    }
+
+    private void Update()
+    {
+        if(m_isRyugekiNyuryoku == true && Player.Instance.m_currentConcentlate >= 0)
+        {
+            m_time += Time.deltaTime;
+            if(m_time > 1)
+            {
+                Player.Instance.m_currentConcentlate -= 1;
+                if (Player.Instance.m_currentConcentlate <= 0)
+                {
+                    Player.Instance.m_currentConcentlate = 0;
+                }
+                m_time = 0;
+            }
+        }
     }
 
     IEnumerator FadeIn()

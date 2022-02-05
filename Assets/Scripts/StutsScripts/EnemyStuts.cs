@@ -9,15 +9,17 @@ public class EnemyStuts : BattleChara
     public string m_enemyName = default; //おなまえ
 
     public int m_statmina { get; set; }
+    public int m_type { get; set; }
 
     /// <summary> なまえ　たいりょく　こうげき　ぼうぎょ すたみな</summary>
-    public EnemyStuts(string name, float hp, float atk, float def, int stamina)
+    public EnemyStuts(string name, float hp, float atk, float def, int stamina, int type)
     {
         this.m_enemyName = name;
         this.m_maxHP = hp;
         this.m_attack = atk;
         this.m_deffence = def;
         this.m_statmina = stamina;
+        this.m_type = type;
     }
 
     public static EnemyStuts EnemyStutsGenerate(int id)
@@ -29,7 +31,8 @@ public class EnemyStuts : BattleChara
                 GameManager.Instance.m_enemyMaster[Enemy.m_encountEnemyID[id]].e_hp,
                 GameManager.Instance.m_enemyMaster[Enemy.m_encountEnemyID[id]].e_attack,
                 GameManager.Instance.m_enemyMaster[Enemy.m_encountEnemyID[id]].e_deffence,
-                GameManager.Instance.m_enemyMaster[Enemy.m_encountEnemyID[id]].e_stamina);
+                GameManager.Instance.m_enemyMaster[Enemy.m_encountEnemyID[id]].e_stamina,
+                GameManager.Instance.m_enemyMaster[Enemy.m_encountEnemyID[id]].e_type);
 
             Debug.Log("Enemy LogIn");
 

@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class ArmsSys : MonoBehaviour
 {
+    //public static ArmsSys Instance = default;
+
     [SerializeField] List<Sprite> m_armsSpriteMaster = new List<Sprite>();
+
+    [SerializeField] Sprite[] m_typeSpriteMaster = new Sprite[4];
+    [SerializeField] Image m_mainArmType = default;
 
     [SerializeField] Image m_mainArm = default;
     [SerializeField] Image m_rightArm = default;
@@ -27,13 +33,21 @@ public class ArmsSys : MonoBehaviour
     }
     public void ArmsCycleL()
     {
-        m_carsol--;
+        if(m_carsol != 0)
+        {
+            m_carsol--;
+        }
+        else
+        {
+            m_carsol = m_armsSpriteMaster.Count - 1;
+        }
         m_carsol = m_carsol % m_armsSpriteMaster.Count;
         ArmsCicleDrow();
     }
 
     void ArmsCicleDrow()
     {
+        m_carsol = m_carsol % m_armsSpriteMaster.Count;
         m_mainArm.sprite = m_armsSpriteMaster[m_carsol];
         if (m_carsol == 0)
         {
@@ -50,5 +64,6 @@ public class ArmsSys : MonoBehaviour
             m_rightArm.sprite = m_armsSpriteMaster[m_carsol + 1];
             m_leftArm.sprite = m_armsSpriteMaster[m_carsol - 1];
         }
+        m_mainArmType.sprite = m_typeSpriteMaster[Player.Instance.m_armsMasterTable[m_carsol]._type];
     }
 }
