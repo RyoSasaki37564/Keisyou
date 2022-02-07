@@ -48,7 +48,7 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 		TouchManager.Began += (info) =>
 		{
 			m_mouseEntPos = Input.mousePosition;
-		}; //Beganはタッチマネージャーのインスタンス生成も持ってる
+		};
 
 		TouchManager.Moved += (info) =>
 		{

@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject m_ryugekiBottun = default;
 
+    [SerializeField] SkillOfJiga m_jiga = default; //自我の使用状態を見るために参照
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,7 +119,16 @@ public class Enemy : MonoBehaviour
         for (var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)
         {
             int dogeJadge = Random.Range(0, 100);
-            if (dogeJadge < Player.Instance.m_currentDogePower)
+            if(m_jiga.m_zettaiKaihi == true)
+            {
+                m_diaLog.text =  "自我による回避 ▽";
+
+                yield return new WaitForSeconds(1.5f);
+                m_diaLog.text = "";
+
+                m_jiga.m_zettaiKaihi = false;
+            }
+            else if (dogeJadge < Player.Instance.m_currentDogePower)
             {
                 m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "の攻撃を回避 ▽";
 

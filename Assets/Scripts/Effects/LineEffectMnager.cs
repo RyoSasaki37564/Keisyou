@@ -17,6 +17,8 @@ public class LineEffectMnager : MonoBehaviour
 
     float rand;
 
+    [SerializeField] public bool m_isTate = false;
+
     private void OnEnable()
     {
         // m_lineCount の数だけ線をプールする
@@ -32,8 +34,16 @@ public class LineEffectMnager : MonoBehaviour
 
     void Liner()
     {
-        rand = Random.Range(m_minHeight.transform.position.y, m_maxHeight.transform.position.y);
-        StartCoroutine(SpeedLiner());
+        if(m_isTate == false)
+        {
+            rand = Random.Range(m_minHeight.transform.position.y, m_maxHeight.transform.position.y);
+            StartCoroutine(SpeedLiner());
+        }
+        else
+        {
+            rand = Random.Range(m_minHeight.transform.position.x, m_maxHeight.transform.position.x);
+            StartCoroutine(UpperLiner());
+        }
     }
 
     IEnumerator SpeedLiner()
@@ -41,6 +51,19 @@ public class LineEffectMnager : MonoBehaviour
         yield return new WaitForSeconds(m_interval);
         var x = this.gameObject.transform.GetChild(m_indexer).gameObject;
         x.transform.position = new Vector3(this.transform.position.x, rand, this.transform.position.z);
+        x.SetActive(true);
+        m_indexer++;
+        if (m_indexer == m_lineCount)
+        {
+            m_indexer = 0;
+        }
+        Liner();
+    }
+    IEnumerator UpperLiner()
+    {
+        yield return new WaitForSeconds(m_interval);
+        var x = this.gameObject.transform.GetChild(m_indexer).gameObject;
+        x.transform.position = new Vector3(rand, this.transform.position.y, this.transform.position.z);
         x.SetActive(true);
         m_indexer++;
         if (m_indexer == m_lineCount)

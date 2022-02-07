@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 
 public class ArmsSys : MonoBehaviour
 {
-    //public static ArmsSys Instance = default;
-
     [SerializeField] List<Sprite> m_armsSpriteMaster = new List<Sprite>();
 
     [SerializeField] Sprite[] m_typeSpriteMaster = new Sprite[4];
@@ -28,7 +25,6 @@ public class ArmsSys : MonoBehaviour
     public void ArmsCycleR()
     {
         m_carsol++;
-        m_carsol = m_carsol % m_armsSpriteMaster.Count;
         ArmsCicleDrow();
     }
     public void ArmsCycleL()
@@ -41,7 +37,6 @@ public class ArmsSys : MonoBehaviour
         {
             m_carsol = m_armsSpriteMaster.Count - 1;
         }
-        m_carsol = m_carsol % m_armsSpriteMaster.Count;
         ArmsCicleDrow();
     }
 
