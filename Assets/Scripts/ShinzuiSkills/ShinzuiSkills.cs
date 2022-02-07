@@ -9,6 +9,9 @@ public abstract class ShinzuiSkills : MonoBehaviour
     [SerializeField] Text m_skillName = default;
     [SerializeField] Text m_skillSetumei = default;
     [SerializeField] Text m_skillCoolTimeNowCount = default;
+    [SerializeField] GameObject m_kaihouBottun = default;
+    [SerializeField] GameObject m_kaihouBottunParent = default;
+    List<GameObject> m_children = new List<GameObject>();
 
     [SerializeField] GameObject m_shinzui = default; //スキル演出
 
@@ -24,8 +27,13 @@ public abstract class ShinzuiSkills : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for(var i = 0; i < m_kaihouBottunParent.transform.childCount; i++)
+        {
+            m_children.Add(m_kaihouBottunParent.transform.GetChild(i).gameObject);
+        }
         m_shinzui.SetActive(false);
         m_skillPannel.SetActive(false);
+        m_kaihouBottun.SetActive(false);
         m_canUse = false;
     }
 
@@ -74,11 +82,18 @@ public abstract class ShinzuiSkills : MonoBehaviour
             {
                 m_skillCoolTimeNowCount.text = "使用後再使用まで " + m_coolTime.ToString() + " ターン";
             }
+            foreach(var x in m_children)
+            {
+                x.SetActive(false);
+            }
+            m_kaihouBottun.SetActive(true);
             m_skillPannel.SetActive(true);
+            m_isOpen = true;
         }
         else
         {
             m_skillPannel.SetActive(false);
+            m_isOpen = false;
         }
     }
 }
