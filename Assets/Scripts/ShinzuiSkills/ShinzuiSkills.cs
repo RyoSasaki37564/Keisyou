@@ -24,9 +24,13 @@ public abstract class ShinzuiSkills : MonoBehaviour
 
     bool m_isOpen = false;
 
+    Text m_dialog = default;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_dialog = GameObject.Find("DiaText").GetComponent<Text>();
+
         for(var i = 0; i < m_kaihouBottunParent.transform.childCount; i++)
         {
             m_children.Add(m_kaihouBottunParent.transform.GetChild(i).gameObject);
@@ -64,8 +68,10 @@ public abstract class ShinzuiSkills : MonoBehaviour
     {
         if(m_canUse == true)
         {
+            m_dialog.text = "";
             Debug.Log("解放");
             m_shinzuiEnsyutu.SetActive(true);
+            m_skillPannel.SetActive(false);
         }
     }
 
