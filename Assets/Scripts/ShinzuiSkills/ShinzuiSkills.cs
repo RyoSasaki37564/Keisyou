@@ -69,9 +69,10 @@ public abstract class ShinzuiSkills : MonoBehaviour
         if(m_canUse == true)
         {
             m_dialog.text = "";
-            Debug.Log("解放");
             m_shinzuiEnsyutu.SetActive(true);
             m_skillPannel.SetActive(false);
+            m_timeCounter = m_coolTime;
+            m_canUse = false;
         }
     }
 

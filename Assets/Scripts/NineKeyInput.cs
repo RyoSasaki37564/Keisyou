@@ -183,11 +183,31 @@ public class NineKeyInput : MonoBehaviour
                    commands[2].Number == 8 && commands[2].Contact == 5) //顎門落とし
                 {
                     m_ryugekiEffectsList[0].SetActive(true);
-                    m_dialog.text = "顎門落とし";
+                    m_dialog.text = " ～ 顎門落とし ～ ";
+                }
+                else if(commands[0].Number == 4 &&commands[0].Contact == 1 &&
+                        commands[1].Number == 6 && commands[1].Contact == 3 &&
+                        commands[2].Number == 5 && commands[2].Contact == 5)
+                {
+                    //m_ryugekiEffectsList[1].SetActive(true);
+                    m_dialog.text = " ～ 徹甲突 ～ ";
                 }
                 else
                 {
                     m_dialog.text = "ガチビンタ";
+                }
+            }
+            else if(commands.Count == 6)
+            {
+                if(commands[0].Number == 7 && commands[0].Contact == 8 &&
+                   commands[1].Number == 4 && commands[1].Contact == 8 &&
+                   commands[2].Number == 5 && commands[2].Contact == 2 &&
+                   commands[3].Number == 8 && commands[3].Contact == 2 &&
+                   commands[4].Number == 9 && commands[4].Contact == 8 &&
+                   commands[5].Number == 6 && commands[5].Contact == 8)
+                {
+                    //m_ryugekiEffectsList[2].SetActive(true);
+                    m_dialog.text = " ～ 爬行連裂 ～ ";
                 }
             }
             else if (commands.Count == 9)
