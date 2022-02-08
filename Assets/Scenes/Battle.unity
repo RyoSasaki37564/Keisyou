@@ -1071,6 +1071,12 @@ MonoBehaviour:
   m_tergetIndexer: {fileID: 743884480}
   m_diaLog: {fileID: 646176109}
   m_changeValueInterval: 1
+--- !u!1 &369049305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4763999868890627491, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 782193616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &371419719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1542,12 +1548,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1919552064}
+        m_MethodName: UseSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2071,6 +2077,12 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!1 &697029439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4763999869544293482, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 782193616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &708055232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2261,12 +2273,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 2109069132}
+        m_MethodName: UseSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2407,6 +2419,145 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 609447447}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &782193616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4763999868890627491, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293398, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293399, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1852397640}
+    - target: {fileID: 4763999869544293399, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293399, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1992143297
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999869544293482, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_Name
+      value: CanvasShinzuiEffects
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f22b0b7801f038648ae4c150b2a6e7e7, type: 3}
 --- !u!1 &785790430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,8 +3318,9 @@ GameObject:
   - component: {fileID: 1022362125}
   - component: {fileID: 1022362124}
   - component: {fileID: 1022362123}
+  - component: {fileID: 1022362126}
   m_Layer: 0
-  m_Name: ShinzuiButton (2)
+  m_Name: ShinzuiButtonSyokeisya
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3236,7 +3388,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1022362124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1022362126}
+        m_MethodName: Kakunin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1022362124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3275,6 +3438,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022362121}
   m_CullTransparentMesh: 0
+--- !u!114 &1022362126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022362121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b0a447e82b8bc4ca01e8a61fe28368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_skillPannel: {fileID: 1923529951}
+  m_skillName: {fileID: 1487294960}
+  m_skillSetumei: {fileID: 1007306628}
+  m_skillCoolTimeNowCount: {fileID: 183763120}
+  m_kaihouBottun: {fileID: 2141783488}
+  m_kaihouBottunParent: {fileID: 2139458359}
+  m_shinzuiEnsyutu: {fileID: 369049305}
+  m_coolTime: 0
+  m_canUse: 0
+  m_syokeisya: "\u771F\u9AC4\u89E3\u653E\u30FB\u51E6\u5211\u8005"
+  m_setumei: "\u56DE\u907F\u7387\u3092\u5168\u6D88\u8CBB\u3057\u3001\u6B21\u306E\u653B\u6483\u306E\u5A01\u529B\u30922\u500D\u306B\u3059\u308B\u3002"
 --- !u!1 &1029329764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3784858424998442443, guid: 8e8415330fb813c4d88d6da0ee2b1044,
@@ -3830,8 +4016,9 @@ GameObject:
   - component: {fileID: 1291916945}
   - component: {fileID: 1291916944}
   - component: {fileID: 1291916943}
+  - component: {fileID: 1291916946}
   m_Layer: 0
-  m_Name: ShinzuiButton (1)
+  m_Name: ShinzuiButtonInga
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3899,7 +4086,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1291916944}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1291916946}
+        m_MethodName: Kakunin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1291916944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3938,6 +4136,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291916941}
   m_CullTransparentMesh: 0
+--- !u!114 &1291916946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291916941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487cfcb426b65304ab8ba32e7a0f9e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_skillPannel: {fileID: 1923529951}
+  m_skillName: {fileID: 1487294960}
+  m_skillSetumei: {fileID: 1007306628}
+  m_skillCoolTimeNowCount: {fileID: 183763120}
+  m_kaihouBottun: {fileID: 1709103626}
+  m_kaihouBottunParent: {fileID: 2139458359}
+  m_shinzuiEnsyutu: {fileID: 697029439}
+  m_coolTime: 0
+  m_canUse: 0
+  m_inga: "\u771F\u9AC4\u89E3\u653E\u30FB\u56E0\u679C"
+  m_setumei: "\u6B21\u306E\u653B\u6483\u3092\u53D7\u3051\u305F\u6642\u3001\u81EA\u8EAB\u306E\u4F53\u529B\u304C3\u5272\u4EE5\u4E0B\u306A\u3089\u9F8D\u6483\u3002"
 --- !u!1 &1338195987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6667783092326555865, guid: db3e916d676b2b94a96f662be671998e,
@@ -4668,80 +4889,6 @@ RectTransform:
   m_AnchoredPosition: {x: -111, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1591240310
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1591240311}
-  - component: {fileID: 1591240313}
-  - component: {fileID: 1591240312}
-  m_Layer: 5
-  m_Name: TestPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1591240311
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591240310}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1923529952}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 135, y: 365}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1591240312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591240310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1591240313
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591240310}
-  m_CullTransparentMesh: 0
 --- !u!1 &1607513143
 GameObject:
   m_ObjectHideFlags: 0
@@ -5143,12 +5290,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1291916946}
+        m_MethodName: UseSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5950,7 +6097,7 @@ GameObject:
   - component: {fileID: 1883935758}
   - component: {fileID: 1883935761}
   m_Layer: 0
-  m_Name: ShinzuiButton
+  m_Name: ShinzuiButtonJiga
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6085,7 +6232,7 @@ MonoBehaviour:
   m_skillCoolTimeNowCount: {fileID: 183763120}
   m_kaihouBottun: {fileID: 909378217}
   m_kaihouBottunParent: {fileID: 2139458359}
-  m_shinzui: {fileID: 1591240310}
+  m_shinzuiEnsyutu: {fileID: 369049305}
   m_coolTime: 8
   m_canUse: 0
   m_jiga: "\u771F\u9AC4\u89E3\u653E\u30FB\u81EA\u6211"
@@ -6300,8 +6447,9 @@ GameObject:
   - component: {fileID: 1919552063}
   - component: {fileID: 1919552062}
   - component: {fileID: 1919552061}
+  - component: {fileID: 1919552064}
   m_Layer: 0
-  m_Name: ShinzuiButton (3)
+  m_Name: ShinzuiButtonShirogane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6369,7 +6517,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1919552062}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1919552064}
+        m_MethodName: Kakunin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1919552062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6408,6 +6567,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919552059}
   m_CullTransparentMesh: 0
+--- !u!114 &1919552064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919552059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4950eb28e17c82046858e53fecb00cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_skillPannel: {fileID: 1923529951}
+  m_skillName: {fileID: 1487294960}
+  m_skillSetumei: {fileID: 1007306628}
+  m_skillCoolTimeNowCount: {fileID: 183763120}
+  m_kaihouBottun: {fileID: 537117369}
+  m_kaihouBottunParent: {fileID: 2139458359}
+  m_shinzuiEnsyutu: {fileID: 369049305}
+  m_coolTime: 0
+  m_canUse: 0
+  m_shirogane: "\u771F\u9AC4\u89E3\u653E\u30FB\u767D\u9280"
+  m_setumei: "\u3053\u306E\u30BF\u30FC\u30F3\u653B\u6483\u3067\u304D\u306A\u304F\u306A\u308B\u304C\u3001\u6B21\u306E\u30BF\u30FC\u30F3\u3053\u306E\u6B66\u5668\u306E\u5A01\u529B\u306E3\u500D\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u3002"
 --- !u!1 &1923529951
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,7 +6622,6 @@ RectTransform:
   - {fileID: 1487294959}
   - {fileID: 1007306627}
   - {fileID: 183763119}
-  - {fileID: 1591240311}
   - {fileID: 2139458360}
   m_Father: {fileID: 1749486986}
   m_RootOrder: 7
@@ -7039,8 +7220,9 @@ GameObject:
   - component: {fileID: 2109069131}
   - component: {fileID: 2109069130}
   - component: {fileID: 2109069129}
+  - component: {fileID: 2109069132}
   m_Layer: 0
-  m_Name: ShinzuiButton (4)
+  m_Name: ShinzuiButtonEva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7108,7 +7290,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2109069130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2109069132}
+        m_MethodName: Kakunin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2109069130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7147,6 +7340,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109069127}
   m_CullTransparentMesh: 0
+--- !u!114 &2109069132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109069127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b020b6201002e40ba348aa4cc133c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_skillPannel: {fileID: 1923529951}
+  m_skillName: {fileID: 1487294960}
+  m_skillSetumei: {fileID: 1007306628}
+  m_skillCoolTimeNowCount: {fileID: 183763120}
+  m_kaihouBottun: {fileID: 727620284}
+  m_kaihouBottunParent: {fileID: 2139458359}
+  m_shinzuiEnsyutu: {fileID: 369049305}
+  m_coolTime: 0
+  m_canUse: 0
+  m_eva: "\u771F\u9AC4\u89E3\u653E\u30FB\u7D75\u6B6F"
+  m_setumei: "\u3053\u306E\u30BF\u30FC\u30F3\u306B\u3053\u306E\u6B66\u5668\u306E\u653B\u6483\u304C\u6210\u529F\u3057\u305F\u6642\u3001\u6BD2\u72B6\u614B(3
+    x 30s)\u3092\u4ED8\u4E0E"
 --- !u!1 &2117003961
 GameObject:
   m_ObjectHideFlags: 0
@@ -7258,7 +7475,7 @@ RectTransform:
   - {fileID: 537117370}
   - {fileID: 727620285}
   m_Father: {fileID: 1923529952}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7347,12 +7564,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1022362126}
+        m_MethodName: UseSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

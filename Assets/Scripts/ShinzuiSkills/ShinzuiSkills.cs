@@ -13,7 +13,7 @@ public abstract class ShinzuiSkills : MonoBehaviour
     [SerializeField] GameObject m_kaihouBottunParent = default;
     List<GameObject> m_children = new List<GameObject>();
 
-    [SerializeField] GameObject m_shinzui = default; //スキル演出
+    [SerializeField] GameObject m_shinzuiEnsyutu = default; //スキル演出
 
     [SerializeField] int m_coolTime = 0; //再使用可能までのターン
     int m_timeCounter; //ターン計測用変数
@@ -31,10 +31,10 @@ public abstract class ShinzuiSkills : MonoBehaviour
         {
             m_children.Add(m_kaihouBottunParent.transform.GetChild(i).gameObject);
         }
-        m_shinzui.SetActive(false);
+        m_shinzuiEnsyutu.SetActive(false);
         m_skillPannel.SetActive(false);
         m_kaihouBottun.SetActive(false);
-        m_canUse = false;
+        m_canUse = true;//false;
     }
 
     void Update()
@@ -64,7 +64,7 @@ public abstract class ShinzuiSkills : MonoBehaviour
     {
         if(m_canUse)
         {
-            m_shinzui.SetActive(true);
+            m_shinzuiEnsyutu.SetActive(true);
         }
     }
 
