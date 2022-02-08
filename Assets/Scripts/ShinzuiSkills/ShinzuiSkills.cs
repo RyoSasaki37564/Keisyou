@@ -62,8 +62,9 @@ public abstract class ShinzuiSkills : MonoBehaviour
 
     public virtual void UseSkill()
     {
-        if(m_canUse)
+        if(m_canUse == true)
         {
+            Debug.Log("解放");
             m_shinzuiEnsyutu.SetActive(true);
         }
     }

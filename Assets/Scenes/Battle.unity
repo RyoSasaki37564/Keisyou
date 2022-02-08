@@ -2077,12 +2077,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!1 &697029439 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4763999869544293482, guid: f22b0b7801f038648ae4c150b2a6e7e7,
-    type: 3}
-  m_PrefabInstance: {fileID: 782193616}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &708055232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +2420,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4763999867783444637, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999867818820214, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999867946018763, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999868271648200, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763999868284455830, guid: f22b0b7801f038648ae4c150b2a6e7e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4763999868890627491, guid: f22b0b7801f038648ae4c150b2a6e7e7,
         type: 3}
       propertyPath: m_IsActive
@@ -4154,7 +4173,7 @@ MonoBehaviour:
   m_skillCoolTimeNowCount: {fileID: 183763120}
   m_kaihouBottun: {fileID: 1709103626}
   m_kaihouBottunParent: {fileID: 2139458359}
-  m_shinzuiEnsyutu: {fileID: 697029439}
+  m_shinzuiEnsyutu: {fileID: 369049305}
   m_coolTime: 0
   m_canUse: 0
   m_inga: "\u771F\u9AC4\u89E3\u653E\u30FB\u56E0\u679C"
@@ -6607,7 +6626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1923529952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6628,7 +6647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.440399, y: -182}
+  m_AnchoredPosition: {x: 6.4404297, y: -182}
   m_SizeDelta: {x: -406.95657, y: -381.96637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1923529953
