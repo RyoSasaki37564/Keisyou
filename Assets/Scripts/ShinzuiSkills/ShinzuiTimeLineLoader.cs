@@ -10,7 +10,6 @@ public class ShinzuiTimeLineLoader : MonoBehaviour
 
     private void Start()
     {
-        skillEffectsID = 0;
         foreach(var i in m_ensyutuTimeLineList)
         {
             i.SetActive(false);

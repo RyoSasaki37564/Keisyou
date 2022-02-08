@@ -6453,7 +6453,7 @@ MonoBehaviour:
   m_PALLY_TEST_BOTTUN: {fileID: 1902110746}
   m_anim: {fileID: 1739012102}
   m_ryugekiBottun: {fileID: 709636831}
-  m_jiga: {fileID: 0}
+  m_jiga: {fileID: 1883935761}
 --- !u!1 &1919552059
 GameObject:
   m_ObjectHideFlags: 0
