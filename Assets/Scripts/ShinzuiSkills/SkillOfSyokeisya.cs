@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class SkillOfSyokeisya : ShinzuiSkills
 {
-    [SerializeField] string m_jiga = "真髄解放・自我";
+    [SerializeField] string m_syokeisya = "真髄解放・処刑者";
 
-    [SerializeField] string m_setumei = "次に受ける攻撃を回避する。";
-
-    public bool m_zettaiKaihi = false;
+    [SerializeField] string m_setumei = "回避率を全消費し、次の攻撃の威力を2倍にする。";
 
     public override void UseSkill()
     {
         base.UseSkill();
-        m_zettaiKaihi = true;
     }
 
     public void Kakunin()
     {
-        base.Panneler(m_jiga, m_setumei);
+        base.Panneler(m_syokeisya, m_setumei);
     }
 }

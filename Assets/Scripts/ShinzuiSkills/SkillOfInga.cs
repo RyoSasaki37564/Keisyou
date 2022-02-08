@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class SkillOfInga : ShinzuiSkills
 {
-    [SerializeField] string m_jiga = "真髄解放・自我";
+    [SerializeField] string m_inga = "真髄解放・因果";
 
-    [SerializeField] string m_setumei = "次に受ける攻撃を回避する。";
-
-    public bool m_zettaiKaihi = false;
+    [SerializeField] string m_setumei = "次の攻撃を受けた時、自身の体力が3割以下なら龍撃。";
 
     public override void UseSkill()
     {
         base.UseSkill();
-        m_zettaiKaihi = true;
     }
 
     public void Kakunin()
     {
-        base.Panneler(m_jiga, m_setumei);
+        base.Panneler(m_inga, m_setumei);
     }
 }
+
