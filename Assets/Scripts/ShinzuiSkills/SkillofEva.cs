@@ -10,6 +10,10 @@ public class SkillofEva : ShinzuiSkills
 
     public override void UseSkill()
     {
+        if (this.m_canUse == true)
+        {
+            ShinzuiTimeLineLoader.skillEffectsID = 4;
+        }
         base.UseSkill();
     }
 

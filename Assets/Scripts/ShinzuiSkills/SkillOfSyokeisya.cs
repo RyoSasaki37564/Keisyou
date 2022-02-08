@@ -10,6 +10,10 @@ public class SkillOfSyokeisya : ShinzuiSkills
 
     public override void UseSkill()
     {
+        if (this.m_canUse == true)
+        {
+            ShinzuiTimeLineLoader.skillEffectsID = 2;
+        }
         base.UseSkill();
     }
 

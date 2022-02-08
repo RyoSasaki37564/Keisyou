@@ -10,6 +10,10 @@ public class SkillOfInga : ShinzuiSkills
 
     public override void UseSkill()
     {
+        if (this.m_canUse == true)
+        {
+            ShinzuiTimeLineLoader.skillEffectsID = 1;
+        }
         base.UseSkill();
     }
 

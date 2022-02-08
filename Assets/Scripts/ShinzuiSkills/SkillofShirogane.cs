@@ -10,6 +10,10 @@ public class SkillofShirogane : ShinzuiSkills
 
     public override void UseSkill()
     {
+        if (this.m_canUse == true)
+        {
+            ShinzuiTimeLineLoader.skillEffectsID = 3;
+        }
         base.UseSkill();
     }
 
