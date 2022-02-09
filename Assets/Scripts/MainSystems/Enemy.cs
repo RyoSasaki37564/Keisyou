@@ -142,7 +142,7 @@ public class Enemy : MonoBehaviour
 
                 //三割でパリィチャンス発生
                 int rand = Random.Range(0, 10);// Random.Range(0, 10);
-                if (rand < 10)
+                if (rand < 10)//テスト中につき確定パリィチャンス
                 {
                     //  テストが終わったらこのボタンに関連する行は消すこと
                     m_PALLY_TEST_BOTTUN.SetActive(true);
