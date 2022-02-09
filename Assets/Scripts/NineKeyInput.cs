@@ -221,7 +221,7 @@ public class NineKeyInput : MonoBehaviour
                    commands[2].Number == 3 && commands[2].Contact == 4 &&
                    commands[3].Number == 5 &&
                    commands[4].Number == 7 &&
-                   commands[5].Number == 8 && commands[6].Contact == 7 &&
+                   commands[5].Number == 8 && commands[5].Contact == 7 &&
                    commands[6].Number == 6 && commands[6].Contact == 7)
                 {
                     m_ryugekiEffectsList[2].SetActive(true);

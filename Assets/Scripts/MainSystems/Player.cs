@@ -10,9 +10,6 @@ public class Player : BattleChara
 
     [ContextMenuItem("レベル+１", "LevelUP")] public int m_playerLevel;
 
-    /// <summary> プレイヤーの合計攻撃力。自身のステータスと武器の威力の合計 </summary>
-    public float m_offenseOfPlayer { get; set; }
-
     /// <summary> 集中力の最大 </summary>
     public int m_maxConcentlate { get; set; }
 

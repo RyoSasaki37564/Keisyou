@@ -229,9 +229,8 @@ public class Enemy : MonoBehaviour
     void IngaOho()
     {
         //因果応報
-        if (m_inga.m_ingaOho == true && Player.Instance.m_currentHP <= Player.Instance.m_maxHP * 0.5f)
+        if (m_inga.m_ingaOho == true && Player.Instance.m_isDead == false && Player.Instance.m_currentHP <= Player.Instance.m_maxHP * 0.5f)
         {
-            Debug.LogError("因果応報0");
             m_isRyugekiChance = true;
             m_anim.SetInteger("AttackMotion1", 0);
             BattleManager._theTurn = BattleManager.Turn.PlayerTurn;

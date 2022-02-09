@@ -26,8 +26,6 @@ public class TouchManager : MonoBehaviour
     private event System.Action<TouchInfo> _moved;
     private event System.Action<TouchInfo> _ended;
 
-    int fingerCount = 0;
-
     //タッチ開始のイベント
     public static event System.Action<TouchInfo> Began
     {

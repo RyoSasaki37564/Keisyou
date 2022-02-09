@@ -17,7 +17,6 @@ public class Ryugeki : MonoBehaviour
 
     [SerializeField] Image m_fader = default; //フェードインアウト用スクリーン
 
-    [SerializeField] Animator m_approchTobackWall = default; //接近アニメーション
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
 
     [SerializeField] GameObject m_ryugekiBottun = default; //このボタン
