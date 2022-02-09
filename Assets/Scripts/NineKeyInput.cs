@@ -209,6 +209,28 @@ public class NineKeyInput : MonoBehaviour
                     m_ryugekiEffectsList[1].SetActive(true);
                     m_dialog.text = " ～ 爬行連裂 ～ ";
                 }
+                else
+                {
+                    m_dialog.text = "ガチビンタ";
+                }
+            }
+            else if (commands.Count == 7)
+            {
+                if (commands[0].Number == 1 && commands[0].Contact == 4 &&
+                   commands[1].Number == 2 && commands[1].Contact == 4 &&
+                   commands[2].Number == 3 && commands[2].Contact == 4 &&
+                   commands[3].Number == 5 &&
+                   commands[4].Number == 7 &&
+                   commands[5].Number == 8 && commands[6].Contact == 7 &&
+                   commands[6].Number == 6 && commands[6].Contact == 7)
+                {
+                    m_ryugekiEffectsList[2].SetActive(true);
+                    m_dialog.text = " ～ 打尾払い ～ ";
+                }
+                else
+                {
+                    m_dialog.text = "ガチビンタ";
+                }
             }
             else if (commands.Count == 9)
             {
@@ -271,6 +293,27 @@ public class NineKeyInput : MonoBehaviour
         float rand = Random.Range(0.9f, 1.5f);
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false);
         m_enemyAnim.SetBool("IsDamaged", true);
+    }
+
+    public void RGDabi()
+    {
+        //四回呼んでね
+        RGDabiPart();
+    }
+
+    public IEnumerator RGDabiPart()
+    {
+        float rand = Random.Range(0.9f, 1.2f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false);
+        m_enemyAnim.SetBool("IsDamaged", true);
+        yield return null;
+        rand = Random.Range(0.9f, 1.2f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false);
+        yield return null;
+        rand = Random.Range(0.9f, 1.5f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true);
+        yield return null;
+        RGDabiPart().Reset();
     }
 
     public void RG_0()
