@@ -72,6 +72,7 @@ public abstract class ShinzuiSkills : MonoBehaviour
             m_shinzuiEnsyutu.SetActive(true);
             m_skillPannel.SetActive(false);
             m_timeCounter = m_coolTime;
+            m_isOpen = false;
             m_canUse = false;
         }
     }
