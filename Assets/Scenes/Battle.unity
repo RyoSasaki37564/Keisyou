@@ -347,6 +347,7 @@ MonoBehaviour:
   - {fileID: 348994058}
   m_ainm: {fileID: 1564256177}
   m_setumei: {fileID: 1923529951}
+  m_platinamCannan: {fileID: 1919552064}
 --- !u!1 &121048132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,7 +2785,6 @@ MonoBehaviour:
   - {fileID: 86995857}
   m_nineKeysScript: {fileID: 2003855786}
   m_fader: {fileID: 731633057}
-  m_approchTobackWall: {fileID: 1189412522}
   m_syucyusen: {fileID: 517052460}
   m_ryugekiBottun: {fileID: 709636831}
 --- !u!1 &727620284
@@ -7723,6 +7723,8 @@ MonoBehaviour:
   m_coolTime: 9
   m_canUse: 0
   m_shirogane: "\u771F\u9AC4\u89E3\u653E\u30FB\u767D\u9280"
+  m_platinumCannan: {fileID: 1029329764}
+  m_turnCount: 0
 --- !u!1 &1923529951
 GameObject:
   m_ObjectHideFlags: 0

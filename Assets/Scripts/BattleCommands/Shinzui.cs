@@ -12,6 +12,8 @@ public class Shinzui : MonoBehaviour
 
     [SerializeField] GameObject m_setumei = default; //内容説明のやつ 
 
+    [SerializeField] SkillofShirogane m_platinamCannan = default;
+
     bool m_dashiireFlg = false;
 
     // Start is called before the first frame update
@@ -26,9 +28,12 @@ public class Shinzui : MonoBehaviour
         {
             m_setumei.SetActive(false);
             m_ainm.SetBool("IsShinzui", false);
-            foreach(var i in m_otherCommands)
+            if(m_platinamCannan.m_turnCount == 2)
             {
-                i.SetActive(true);
+                foreach (var i in m_otherCommands)
+                {
+                    i.SetActive(true);
+                }
             }
             m_dashiireFlg = false;
         }
