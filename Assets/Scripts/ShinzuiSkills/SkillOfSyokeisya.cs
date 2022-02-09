@@ -6,7 +6,7 @@ public class SkillOfSyokeisya : ShinzuiSkills
 {
     [SerializeField] string m_syokeisya = "真髄解放・処刑者";
 
-    [SerializeField] string m_setumei = "回避率を全消費し、次の攻撃の威力を2倍にする。";
+    string m_setumei = "回避率を全消費\n次の攻撃の威力を2倍にする";
 
     public override void UseSkill()
     {
@@ -19,6 +19,6 @@ public class SkillOfSyokeisya : ShinzuiSkills
 
     public void Kakunin()
     {
-        base.Panneler(m_syokeisya, m_setumei);
+        base.Panneler(m_syokeisya, m_setumei, PannelingSkillKarsol.syokeisya);
     }
 }

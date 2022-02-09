@@ -6,7 +6,7 @@ public class SkillofShirogane : ShinzuiSkills
 {
     [SerializeField] string m_shirogane = "真髄解放・白銀";
 
-    [SerializeField] string m_setumei = "このターン攻撃できなくなるが、次のターンこの武器の威力の3倍のダメージを与える。";
+    string m_setumei = "このターン攻撃できなくなり、\n次のターン武器威力x3のダメージ";
 
     public override void UseSkill()
     {
@@ -19,6 +19,6 @@ public class SkillofShirogane : ShinzuiSkills
 
     public void Kakunin()
     {
-        base.Panneler(m_shirogane, m_setumei);
+        base.Panneler(m_shirogane, m_setumei, PannelingSkillKarsol.shirogane);
     }
 }

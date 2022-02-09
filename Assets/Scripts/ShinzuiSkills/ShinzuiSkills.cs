@@ -22,9 +22,18 @@ public abstract class ShinzuiSkills : MonoBehaviour
 
     bool m_flgStopper = false; 
 
-    bool m_isOpen = false;
-
     Text m_dialog = default;
+
+    public enum PannelingSkillKarsol
+    {
+        jiga,
+        inga,
+        syokeisya,
+        shirogane,
+        eva,
+        _default,
+    }
+    static PannelingSkillKarsol nowPannelingSkillInfo = PannelingSkillKarsol._default; 
 
     // Start is called before the first frame update
     void Start()
@@ -72,24 +81,23 @@ public abstract class ShinzuiSkills : MonoBehaviour
             m_shinzuiEnsyutu.SetActive(true);
             m_skillPannel.SetActive(false);
             m_timeCounter = m_coolTime;
-            m_isOpen = false;
             m_canUse = false;
         }
     }
 
-    public virtual void Panneler(string name, string setumei)
+    public virtual void Panneler(string name, string setumei, PannelingSkillKarsol karsol)
     {
-        if(m_isOpen == false)
+        if( m_skillPannel.activeSelf == false || karsol != nowPannelingSkillInfo)
         {
             m_skillName.text = name;
             m_skillSetumei.text = setumei;
             if(m_timeCounter > 0)
             {
-                m_skillCoolTimeNowCount.text = "使用可能まで " + m_timeCounter.ToString() + " ターン";
+                m_skillCoolTimeNowCount.text = "残り " + m_timeCounter.ToString() + " ターン";
             }
             else
             {
-                m_skillCoolTimeNowCount.text = "使用後再使用まで " + m_coolTime.ToString() + " ターン";
+                m_skillCoolTimeNowCount.text = "再使用 " + m_coolTime.ToString() + " ターン";
             }
             foreach(var x in m_children)
             {
@@ -97,12 +105,11 @@ public abstract class ShinzuiSkills : MonoBehaviour
             }
             m_kaihouBottun.SetActive(true);
             m_skillPannel.SetActive(true);
-            m_isOpen = true;
+            nowPannelingSkillInfo = karsol;
         }
         else
         {
             m_skillPannel.SetActive(false);
-            m_isOpen = false;
         }
     }
 }

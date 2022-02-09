@@ -7679,7 +7679,7 @@ MonoBehaviour:
   m_coolTime: 0
   m_canUse: 0
   m_shirogane: "\u771F\u9AC4\u89E3\u653E\u30FB\u767D\u9280"
-  m_setumei: "\u3053\u306E\u30BF\u30FC\u30F3\u653B\u6483\u3067\u304D\u306A\u304F\u306A\u308B\u304C\u3001\u6B21\u306E\u30BF\u30FC\u30F3\u3053\u306E\u6B66\u5668\u306E\u5A01\u529B\u306E3\u500D\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u3002"
+  m_setumei: "\u3053\u306E\u30BF\u30FC\u30F3\u653B\u6483\u3067\u304D\u306A\u304F\u306A\u308A\u3001\u6B21\u306E\u30BF\u30FC\u30F3\u6B66\u5668\u5A01\u529Bx3\u306E\u30C0\u30E1\u30FC\u30B8"
 --- !u!1 &1923529951
 GameObject:
   m_ObjectHideFlags: 0
@@ -7718,7 +7718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.4404297, y: -182}
+  m_AnchoredPosition: {x: 6.4404297, y: -181.99998}
   m_SizeDelta: {x: -406.95657, y: -381.96637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1923529953
@@ -8261,6 +8261,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 807761644969776089, guid: df1a170b195cd8f44a753f5249588319,
+        type: 3}
+      propertyPath: m_Time
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 807761645507086650, guid: df1a170b195cd8f44a753f5249588319,
         type: 3}
       propertyPath: m_Name
@@ -8625,11 +8630,10 @@ MonoBehaviour:
   m_kaihouBottun: {fileID: 727620284}
   m_kaihouBottunParent: {fileID: 2139458359}
   m_shinzuiEnsyutu: {fileID: 369049305}
-  m_coolTime: 0
+  m_coolTime: 10
   m_canUse: 0
   m_eva: "\u771F\u9AC4\u89E3\u653E\u30FB\u7D75\u6B6F"
-  m_setumei: "\u3053\u306E\u30BF\u30FC\u30F3\u306B\u3053\u306E\u6B66\u5668\u306E\u653B\u6483\u304C\u6210\u529F\u3057\u305F\u6642\u3001\u6BD2\u72B6\u614B(3
-    x 30s)\u3092\u4ED8\u4E0E"
+  m_setumei: "\u6575\u306B\u6BD2\u72B6\u614B(3 x 30s)\u3092\u4ED8\u4E0E"
 --- !u!1 &2117003961
 GameObject:
   m_ObjectHideFlags: 0
