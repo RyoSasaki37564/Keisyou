@@ -298,7 +298,7 @@ public class NineKeyInput : MonoBehaviour
     public void RGDabi()
     {
         //四回呼んでね
-        RGDabiPart();
+        RGDabiPart().MoveNext();
     }
 
     public IEnumerator RGDabiPart()
