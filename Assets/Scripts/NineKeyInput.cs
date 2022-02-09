@@ -263,27 +263,27 @@ public class NineKeyInput : MonoBehaviour
         commands.Clear();
     }
 
-    void RyugekiDamage(float _iryoku, bool _isKantsu)
+    void RyugekiDamage(float _iryoku, bool _isKantsu, float _interval)
     {
         EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(_iryoku, _isKantsu); //標的に対して通常攻撃
 
         //UI反映
         //Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
         DOTween.To(() => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = x,
-            Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - _iryoku, m_changeValueInterval);
+            Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - _iryoku, _interval);
     }
 
 
     //龍撃ダメージ関数は 演出用TimeLine のシングルレシーバーから呼び出してる
     public void RGAgito()
     {
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, false);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, false, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     public void RGTekkou()
     {
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, true);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, true, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
@@ -291,7 +291,7 @@ public class NineKeyInput : MonoBehaviour
     {
         //四回呼び出してね
         float rand = Random.Range(0.9f, 1.5f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false, m_changeValueInterval / 8);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
@@ -304,22 +304,22 @@ public class NineKeyInput : MonoBehaviour
     public IEnumerator RGDabiPart()
     {
         float rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
         m_enemyAnim.SetBool("IsDamaged", true);
         yield return null;
         rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
         yield return null;
         rand = Random.Range(0.9f, 1.5f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true);
-        yield return null;
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true, m_changeValueInterval * 1.5f);
         RGDabiPart().Reset();
+        yield return null;
     }
 
     public void RG_0()
     {
         float rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, false);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, false, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 }

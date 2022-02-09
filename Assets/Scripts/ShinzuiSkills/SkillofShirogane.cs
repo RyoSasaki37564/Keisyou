@@ -13,8 +13,8 @@ public class SkillofShirogane : ShinzuiSkills
         if (this.m_canUse == true)
         {
             ShinzuiTimeLineLoader.skillEffectsID = 3;
+            base.UseSkill();
         }
-        base.UseSkill();
     }
 
     public void Kakunin()

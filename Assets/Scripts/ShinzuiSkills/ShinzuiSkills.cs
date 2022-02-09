@@ -75,14 +75,11 @@ public abstract class ShinzuiSkills : MonoBehaviour
 
     public virtual void UseSkill()
     {
-        if(m_canUse == true)
-        {
-            m_dialog.text = "";
-            m_shinzuiEnsyutu.SetActive(true);
-            m_skillPannel.SetActive(false);
-            m_timeCounter = m_coolTime;
-            m_canUse = false;
-        }
+        m_dialog.text = "";
+        m_shinzuiEnsyutu.SetActive(true);
+        m_skillPannel.SetActive(false);
+        m_timeCounter = m_coolTime;
+        m_canUse = false;
     }
 
     public virtual void Panneler(string name, string setumei, PannelingSkillKarsol karsol)

@@ -16,8 +16,8 @@ public class SkillOfJiga : ShinzuiSkills
         {
             m_zettaiKaihi = true;
             ShinzuiTimeLineLoader.skillEffectsID = 0;
+            base.UseSkill();
         }
-        base.UseSkill();
     }
 
     public void Kakunin()

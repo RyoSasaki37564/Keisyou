@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_jiga.m_canUse = false;
+
         m_RedShutyuSen.SetActive(false);
 
         m_ryugekiBottun.SetActive(false);

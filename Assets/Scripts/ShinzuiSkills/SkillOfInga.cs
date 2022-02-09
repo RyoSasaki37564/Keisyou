@@ -13,8 +13,8 @@ public class SkillOfInga : ShinzuiSkills
         if (this.m_canUse == true)
         {
             ShinzuiTimeLineLoader.skillEffectsID = 1;
+            base.UseSkill();
         }
-        base.UseSkill();
     }
 
     public void Kakunin()

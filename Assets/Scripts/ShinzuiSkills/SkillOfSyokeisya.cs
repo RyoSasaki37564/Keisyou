@@ -13,8 +13,8 @@ public class SkillOfSyokeisya : ShinzuiSkills
         if (this.m_canUse == true)
         {
             ShinzuiTimeLineLoader.skillEffectsID = 2;
+            base.UseSkill();
         }
-        base.UseSkill();
     }
 
     public void Kakunin()

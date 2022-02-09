@@ -13,8 +13,8 @@ public class SkillofEva : ShinzuiSkills
         if (this.m_canUse == true)
         {
             ShinzuiTimeLineLoader.skillEffectsID = 4;
+            base.UseSkill();
         }
-        base.UseSkill();
     }
 
     public void Kakunin()
