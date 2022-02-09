@@ -35,6 +35,10 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] SkillOfJiga m_jiga = default; //自我の使用状態を見るために参照
 
+    [SerializeField] SkillOfInga m_inga = default;
+
+    [SerializeField] Ryugeki m_ryugekiCS = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -153,9 +157,12 @@ public class Enemy : MonoBehaviour
                     if(m_PALLY_TEST_BOTTUN.activeSelf == true)
                     {
                         m_diaLog.text = "";
-                        m_PALLY_TEST_BOTTUN.SetActive(false);
                         Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
                         m_RedShutyuSen.SetActive(false);
+
+                        IngaOho();
+
+                        m_PALLY_TEST_BOTTUN.SetActive(false);
                     }
                     else
                     {
@@ -169,6 +176,8 @@ public class Enemy : MonoBehaviour
                     m_diaLog.text = "";
                     Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
                     m_RedShutyuSen.SetActive(false);
+
+                    IngaOho();
                 }
             }
         }
@@ -215,6 +224,21 @@ public class Enemy : MonoBehaviour
         Time.timeScale = 0.01f;
         yield return new WaitForSeconds(0.03f);
         Time.timeScale = 1f;
+    }
+
+    void IngaOho()
+    {
+        //因果応報
+        if (m_inga.m_ingaOho == true && Player.Instance.m_currentHP <= Player.Instance.m_maxHP * 0.5f)
+        {
+            Debug.LogError("因果応報0");
+            m_isRyugekiChance = true;
+            m_anim.SetInteger("AttackMotion1", 0);
+            BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
+            m_ryugekiBottun.SetActive(true);
+            m_ryugekiCS.RyugekiNoKamae();
+            m_inga.m_ingaOho = false;
+        }
     }
 
     public void EnemyGenerate()

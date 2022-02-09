@@ -4959,9 +4959,10 @@ MonoBehaviour:
   m_kaihouBottun: {fileID: 1709103626}
   m_kaihouBottunParent: {fileID: 2139458359}
   m_shinzuiEnsyutu: {fileID: 369049305}
-  m_coolTime: 0
+  m_coolTime: 6
   m_canUse: 0
   m_inga: "\u771F\u9AC4\u89E3\u653E\u30FB\u56E0\u679C"
+  m_ingaOho: 0
 --- !u!1 &1338195987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6667783092326555865, guid: db3e916d676b2b94a96f662be671998e,
@@ -7566,6 +7567,8 @@ MonoBehaviour:
   m_anim: {fileID: 1739012102}
   m_ryugekiBottun: {fileID: 709636831}
   m_jiga: {fileID: 1883935761}
+  m_inga: {fileID: 1291916946}
+  m_ryugekiCS: {fileID: 709636836}
 --- !u!1 &1919552059
 GameObject:
   m_ObjectHideFlags: 0
@@ -7717,7 +7720,7 @@ MonoBehaviour:
   m_kaihouBottun: {fileID: 537117369}
   m_kaihouBottunParent: {fileID: 2139458359}
   m_shinzuiEnsyutu: {fileID: 369049305}
-  m_coolTime: 0
+  m_coolTime: 9
   m_canUse: 0
   m_shirogane: "\u771F\u9AC4\u89E3\u653E\u30FB\u767D\u9280"
 --- !u!1 &1923529951
