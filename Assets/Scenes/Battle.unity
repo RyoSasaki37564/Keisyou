@@ -346,6 +346,7 @@ MonoBehaviour:
   m_otherCommands:
   - {fileID: 348994058}
   m_ainm: {fileID: 1564256177}
+  m_setumei: {fileID: 1923529951}
 --- !u!1 &121048132
 GameObject:
   m_ObjectHideFlags: 0
@@ -8672,7 +8673,7 @@ MonoBehaviour:
   m_coolTime: 10
   m_canUse: 0
   m_eva: "\u771F\u9AC4\u89E3\u653E\u30FB\u7D75\u6B6F"
-  m_setumei: "\u6575\u306B\u6BD2\u72B6\u614B(3 x 30s)\u3092\u4ED8\u4E0E"
+  m_target: {fileID: 743884480}
 --- !u!1 &2117003961
 GameObject:
   m_ObjectHideFlags: 0

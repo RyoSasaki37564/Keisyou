@@ -10,6 +10,8 @@ public class Shinzui : MonoBehaviour
 
     [SerializeField] Animator m_ainm = default;
 
+    [SerializeField] GameObject m_setumei = default; //内容説明のやつ 
+
     bool m_dashiireFlg = false;
 
     // Start is called before the first frame update
@@ -22,6 +24,7 @@ public class Shinzui : MonoBehaviour
     {
         if (m_dashiireFlg == true)
         {
+            m_setumei.SetActive(false);
             m_ainm.SetBool("IsShinzui", false);
             foreach(var i in m_otherCommands)
             {
