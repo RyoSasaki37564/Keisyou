@@ -40,7 +40,7 @@ public class Attack : MonoBehaviour
 
             m_diaLog.text = "～　<color=#8b0000>攻撃</color>　～　▽"; //赤字だぜ～
 
-            //ダメージ与えてゃう～～～～～～属性相性を参照してナ！！！！
+            //ダメ与えてゃ～属性相性を参照してオクラホマミキサ！！！！
             switch (Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type)
             {
                 case 0:
@@ -110,7 +110,7 @@ public class Attack : MonoBehaviour
             //残り回避率に応じて集中力を増加
             if (Player.Instance.m_currentDogePower > 0)
             {
-                Player.Instance.m_currentConcentlate += (int)(Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax) * 3;
+                Player.Instance.m_currentConcentlate += 3;
             }
 
             //攻撃するたび回避率を減少

@@ -81,14 +81,16 @@ public class Player : BattleChara
         /// 相性は　0 > 1 > 2 > 0。　月(3)は全属性と有利を取り合う。
         /// </summary>
         public int _type;
+        public int _ryugeki; //龍撃補正値
         public bool _isGet; //所持の有無
 
-        public ToryuguStuts(int id, string name, int atk, int type, bool get)
+        public ToryuguStuts(int id, string name, int atk, int type, int ryu, bool get)
         {
             this._id = id;
             this._name = name;
             this._atk = atk;
             this._type = type;
+            this._ryugeki = ryu;
             this._isGet = get;
         }
     }
@@ -146,13 +148,13 @@ public class Player : BattleChara
                 //初期装備のみ解放しておく
                 line = armsSR.ReadLine().Split(',');
                 m_armsMasterTable[0] = new ToryuguStuts(int.Parse(line[0]), line[1],
-                    int.Parse(line[2]), int.Parse(line[3]), true);
+                    int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), true);
 
                 for (var i = 1; i < m_armsTableLineMax; i++)
                 {
                     line = armsSR.ReadLine().Split(',');
                     m_armsMasterTable[i] = new ToryuguStuts(int.Parse(line[0]), line[1],
-                        int.Parse(line[2]), int.Parse(line[3]), false);
+                        int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), false);
 
                     //開発用に今だけ全開放
                     m_armsMasterTable[i]._isGet = true;

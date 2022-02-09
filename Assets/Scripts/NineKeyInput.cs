@@ -180,7 +180,7 @@ public class NineKeyInput : MonoBehaviour
             {
                 if (commands[0].Number == 2 &&
                    commands[1].Number == 5 &&
-                   commands[2].Number == 8 && commands[2].Contact == 5) //顎門落とし
+                   commands[2].Number == 8 && commands[2].Contact == 5)
                 {
                     m_ryugekiEffectsList[0].SetActive(true);
                     m_dialog.text = " ～ 顎門落とし ～ ";
@@ -250,9 +250,32 @@ public class NineKeyInput : MonoBehaviour
             Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - _iryoku, m_changeValueInterval);
     }
 
+
+    //龍撃ダメージ関数は 演出用TimeLine のシングルレシーバーから呼び出してる
     public void RGAgito()
     {
-        RyugekiDamage(Player.Instance.m_attack * 10 * GameManager.Instance.m_enemyMaster[0].e_attack, false);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, false);
+        m_enemyAnim.SetBool("IsDamaged", true);
+    }
+
+    public void RGTekkou()
+    {
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, true);
+        m_enemyAnim.SetBool("IsDamaged", true);
+    }
+
+    public void RGHakou()
+    {
+        //四回呼び出してね
+        float rand = Random.Range(0.9f, 1.5f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false);
+        m_enemyAnim.SetBool("IsDamaged", true);
+    }
+
+    public void RG_0()
+    {
+        float rand = Random.Range(0.9f, 1.2f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, false);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 }
