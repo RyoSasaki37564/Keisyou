@@ -206,7 +206,7 @@ public class NineKeyInput : MonoBehaviour
                    commands[4].Number == 9 && commands[4].Contact == 8 &&
                    commands[5].Number == 6 && commands[5].Contact == 8)
                 {
-                    //m_ryugekiEffectsList[2].SetActive(true);
+                    m_ryugekiEffectsList[1].SetActive(true);
                     m_dialog.text = " ～ 爬行連裂 ～ ";
                 }
             }
