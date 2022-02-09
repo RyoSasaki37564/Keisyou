@@ -295,25 +295,28 @@ public class NineKeyInput : MonoBehaviour
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
+
+    int m_dabiCount = 0; //コード長いしここでしか使わない変数のためここに書こう
     public void RGDabi()
     {
-        //四回呼んでね
-        RGDabiPart().MoveNext();
-    }
-
-    public IEnumerator RGDabiPart()
-    {
         float rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
-        m_enemyAnim.SetBool("IsDamaged", true);
-        yield return null;
-        rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
-        yield return null;
-        rand = Random.Range(0.9f, 1.5f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true, m_changeValueInterval * 1.5f);
-        RGDabiPart().Reset();
-        yield return null;
+        switch (m_dabiCount)
+        {
+            case 0:
+                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
+                m_enemyAnim.SetBool("IsDamaged", true);
+                break;
+            case 1:
+                rand = 0.9f;
+                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
+                break;
+            case 2:
+                rand = Random.Range(0.9f, 1.4f);
+                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true, m_changeValueInterval * 1.5f);
+                m_dabiCount = 0;
+                break;
+        }
+        m_dabiCount++;
     }
 
     public void RG_0()

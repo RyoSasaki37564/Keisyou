@@ -14,6 +14,8 @@ public class Attack : MonoBehaviour
 
     [SerializeField] Text m_diaLog = default;
 
+    [SerializeField] SkillOfSyokeisya m_syokeisya = default;
+
     public float m_changeValueInterval = 1f; //値の変化速度
 
     public static bool m_isNomalAttacked = false;
@@ -102,6 +104,13 @@ public class Attack : MonoBehaviour
             float ite = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage((Player.Instance.m_attack +
                 Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._atk) * m_zokuseiHosei
                 , false);
+
+            if(m_syokeisya.m_iryokuNibai == true)
+            {
+                //処刑者の真髄使ったかどうか
+                ite = ite * 2;
+                m_syokeisya.m_iryokuNibai = false;
+            }
 
             DOTween.To(() => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = x,
                 Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - ite, m_changeValueInterval);

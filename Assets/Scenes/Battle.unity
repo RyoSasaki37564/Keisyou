@@ -1199,6 +1199,7 @@ MonoBehaviour:
   m_syucyusen: {fileID: 517052460}
   m_tergetIndexer: {fileID: 743884480}
   m_diaLog: {fileID: 646176109}
+  m_syokeisya: {fileID: 1022362126}
   m_changeValueInterval: 1
 --- !u!1 &369049305 stripped
 GameObject:
@@ -4158,9 +4159,10 @@ MonoBehaviour:
   m_kaihouBottun: {fileID: 2141783488}
   m_kaihouBottunParent: {fileID: 2139458359}
   m_shinzuiEnsyutu: {fileID: 369049305}
-  m_coolTime: 0
+  m_coolTime: 13
   m_canUse: 0
   m_syokeisya: "\u771F\u9AC4\u89E3\u653E\u30FB\u51E6\u5211\u8005"
+  m_iryokuNibai: 0
 --- !u!1 &1029329764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3784858424998442443, guid: 8e8415330fb813c4d88d6da0ee2b1044,
@@ -5076,6 +5078,36 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1992143297
       objectReference: {fileID: 0}
+    - target: {fileID: 1498158988993296543, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158988993296543, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1992143297
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158989248254181, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158989248254181, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1992143297
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158989359114628, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158989359114628, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1992143297
+      objectReference: {fileID: 0}
     - target: {fileID: 1498158989777571064, guid: 115add96bed48254ea79b6a6c485b5a1,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[5].value
@@ -5150,6 +5182,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158989806901229, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158989806901229, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1992143297
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 115add96bed48254ea79b6a6c485b5a1, type: 3}
