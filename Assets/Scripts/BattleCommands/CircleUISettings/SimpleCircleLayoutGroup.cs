@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 {
 	public float m_radius = 100;
-	public float m_offsetAngle;
+	public float m_offsetAngle; //そのボタンのいる角度
 
 	Vector2 m_mouseEntPos; //クリック地点
 
@@ -30,7 +30,6 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 	void Arrange()
 	{
 		float splitAngle = 360 / transform.childCount;
-		//var rect = transform as RectTransform;
 
 		for (int elementId = 0; elementId < transform.childCount; elementId++)
 		{
@@ -39,7 +38,6 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 			child.anchoredPosition = new Vector2(
 				Mathf.Cos(currentAngle * Mathf.Deg2Rad),
 				Mathf.Sin(currentAngle * Mathf.Deg2Rad)) * m_radius;
-
 		}
 	}
 
@@ -54,11 +52,6 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 		{
 			m_offsetAngle -= (m_mouseEntPos.y - Input.mousePosition.y) / (m_radius / m_speedRate);
 			Arrange();
-		};
-
-		TouchManager.Ended += (info) =>
-		{
-
 		};
 	}
 }

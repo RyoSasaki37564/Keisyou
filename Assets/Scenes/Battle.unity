@@ -7939,6 +7939,26 @@ PrefabInstance:
       propertyPath: m_enemyAnim
       value: 
       objectReference: {fileID: 1739012102}
+    - target: {fileID: 1978516437, guid: df1a170b195cd8f44a753f5249588319, type: 3}
+      propertyPath: m_playerCommandsUI.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978516437, guid: df1a170b195cd8f44a753f5249588319, type: 3}
+      propertyPath: m_playerCommandsUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 1841896864}
+    - target: {fileID: 1978516437, guid: df1a170b195cd8f44a753f5249588319, type: 3}
+      propertyPath: m_playerCommandsUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1661699636}
+    - target: {fileID: 1978516437, guid: df1a170b195cd8f44a753f5249588319, type: 3}
+      propertyPath: m_playerCommandsUI.Array.data[2]
+      value: 
+      objectReference: {fileID: 86995857}
+    - target: {fileID: 1978516437, guid: df1a170b195cd8f44a753f5249588319, type: 3}
+      propertyPath: m_playerCommandsUI.Array.data[3]
+      value: 
+      objectReference: {fileID: 348994058}
     - target: {fileID: 807761644103613566, guid: df1a170b195cd8f44a753f5249588319,
         type: 3}
       propertyPath: m_Camera
@@ -8016,9 +8036,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7198007271176940642, guid: df1a170b195cd8f44a753f5249588319,
         type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198007271176940642, guid: df1a170b195cd8f44a753f5249588319,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198007271176940642, guid: df1a170b195cd8f44a753f5249588319,
+        type: 3}
       propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2003855786}
+    - target: {fileID: 7198007271176940642, guid: df1a170b195cd8f44a753f5249588319,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1777135306}
+    - target: {fileID: 7198007271176940642, guid: df1a170b195cd8f44a753f5249588319,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198007271176940642, guid: df1a170b195cd8f44a753f5249588319,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ThisOffMetthod
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198007271176940642, guid: df1a170b195cd8f44a753f5249588319,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df1a170b195cd8f44a753f5249588319, type: 3}
 --- !u!1 &2062225445
