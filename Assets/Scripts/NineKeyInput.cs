@@ -186,10 +186,10 @@ public class NineKeyInput : MonoBehaviour
                     m_dialog.text = " ～ 顎門落とし ～ ";
                 }
                 else if(commands[0].Number == 4 &&commands[0].Contact == 1 &&
-                        commands[1].Number == 6 && commands[1].Contact == 3 &&
+                        commands[1].Number == 6 && commands[1].Contact == 7 &&
                         commands[2].Number == 5 && commands[2].Contact == 5)
                 {
-                    //m_ryugekiEffectsList[1].SetActive(true);
+                    //m_ryugekiEffectsList[].SetActive(true);
                     m_dialog.text = " ～ 徹甲突 ～ ";
                 }
                 else
@@ -222,6 +222,7 @@ public class NineKeyInput : MonoBehaviour
                     commands[7].Number == 4 &&
                     commands[8].Number == 5 && commands[8].Contact == 5)
                 {
+                    //m_ryugekiEffectsList[].SetActive(true);
                     m_dialog.text = "とぐろ回し";
                 }
                 else
