@@ -245,7 +245,20 @@ public class NineKeyInput : MonoBehaviour
                     commands[8].Number == 5 && commands[8].Contact == 5)
                 {
                     //m_ryugekiEffectsList[].SetActive(true);
-                    m_dialog.text = "とぐろ回し";
+                    m_dialog.text = " ～ とぐろ回し ～ ";
+                }
+                else if (commands[0].Number == 3 && commands[0].Contact == 3 &&
+                    commands[1].Number == 7 && commands[1].Contact == 7 &&
+                    commands[2].Number == 6 && commands[2].Contact == 6 &&
+                    commands[3].Number == 4 && commands[3].Contact == 4 &&
+                    commands[4].Number == 9 && commands[4].Contact == 9 &&
+                    commands[5].Number == 1 && commands[5].Contact == 1 &&
+                    commands[6].Number == 8 && commands[6].Contact == 8 &&
+                    commands[7].Number == 2 && commands[7].Contact == 2 &&
+                    commands[8].Number == 5 && commands[8].Contact == 5)
+                {
+                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_dialog.text = " ～ クズ涼閃 ～ ";
                 }
                 else
                 {
