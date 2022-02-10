@@ -6,13 +6,13 @@ public class Shinzui : MonoBehaviour
 {
     [SerializeField] GameObject m_circle = default;
 
-    [SerializeField] List<GameObject> m_otherCommands = new List<GameObject>();
+    [SerializeField] List<GameObject> m_otherCommands = new List<GameObject>(); //いまアタックボタンしか入っとらん
 
     [SerializeField] Animator m_ainm = default;
 
     [SerializeField] GameObject m_setumei = default; //内容説明のやつ 
 
-    [SerializeField] SkillofShirogane m_platinamCannan = default;
+    //[SerializeField] SkillofShirogane m_platinamCannan = default;
 
     bool m_dashiireFlg = false;
 
@@ -22,18 +22,28 @@ public class Shinzui : MonoBehaviour
         m_circle.SetActive(false);
     }
 
+    /*
+    private void Update()
+    {
+        if (m_flg == false && m_platinamCannan.m_turnCount == 2)
+        {
+            foreach (var i in m_otherCommands)
+            {
+                i.SetActive(true);
+            }
+            m_flg = true;
+        }
+    }*/
+
     public void Panneling()
     {
         if (m_dashiireFlg == true)
         {
             m_setumei.SetActive(false);
             m_ainm.SetBool("IsShinzui", false);
-            if(m_platinamCannan.m_turnCount == 2)
+            foreach (var i in m_otherCommands)
             {
-                foreach (var i in m_otherCommands)
-                {
-                    i.SetActive(true);
-                }
+                i.SetActive(true);
             }
             m_dashiireFlg = false;
         }

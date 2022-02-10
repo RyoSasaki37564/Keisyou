@@ -291,7 +291,7 @@ public class NineKeyInput : MonoBehaviour
     {
         //四回呼び出してね
         float rand = Random.Range(0.9f, 1.5f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false, m_changeValueInterval / 8);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false, m_changeValueInterval / 10);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 

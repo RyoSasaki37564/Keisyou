@@ -21,9 +21,6 @@ public abstract class ShinzuiSkills : MonoBehaviour
     public bool m_canUse = false;
 
     bool m_flgStopper = false; 
-
-    Text m_dialog = default;
-
     public enum PannelingSkillKarsol
     {
         jiga,
@@ -38,8 +35,6 @@ public abstract class ShinzuiSkills : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_dialog = GameObject.Find("DiaText").GetComponent<Text>();
-
         for(var i = 0; i < m_kaihouBottunParent.transform.childCount; i++)
         {
             m_children.Add(m_kaihouBottunParent.transform.GetChild(i).gameObject);
@@ -50,7 +45,7 @@ public abstract class ShinzuiSkills : MonoBehaviour
         m_canUse = true;//false;
     }
 
-    void Update()
+    public virtual void Update()
     {
         if(BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
@@ -75,7 +70,6 @@ public abstract class ShinzuiSkills : MonoBehaviour
 
     public virtual void UseSkill()
     {
-        m_dialog.text = "";
         m_shinzuiEnsyutu.SetActive(true);
         m_skillPannel.SetActive(false);
         m_timeCounter = m_coolTime;
@@ -90,11 +84,11 @@ public abstract class ShinzuiSkills : MonoBehaviour
             m_skillSetumei.text = setumei;
             if(m_timeCounter > 0)
             {
-                m_skillCoolTimeNowCount.text = "残り " + m_timeCounter.ToString() + " ターン";
+                m_skillCoolTimeNowCount.text = "使用可能まで " + m_timeCounter.ToString();
             }
             else
             {
-                m_skillCoolTimeNowCount.text = "再使用 " + m_coolTime.ToString() + " ターン";
+                m_skillCoolTimeNowCount.text = "使用可能 / 再使用" + m_coolTime.ToString();
             }
             foreach(var x in m_children)
             {
