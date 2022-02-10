@@ -232,6 +232,24 @@ public class NineKeyInput : MonoBehaviour
                     m_dialog.text = "ガチビンタ";
                 }
             }
+            else if(commands.Count == 8)
+            {
+                if (commands[0].Number != 5 && commands[0].Contact != 5 &&
+                    commands[1].Number != 5 && commands[1].Contact != 5 &&
+                    commands[2].Number != 5 && commands[2].Contact != 5 &&
+                    commands[3].Number != 5 && commands[3].Contact != 5 &&
+                    commands[4].Number != 5 && commands[4].Contact != 5 &&
+                    commands[5].Number != 5 && commands[5].Contact != 5 &&
+                    commands[6].Number != 5 && commands[6].Contact != 5 &&
+                    commands[7].Number != 5 && commands[7].Contact != 5 &&
+                    Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 0)
+                {
+                    //すべての入力が斬撃であり、中央には不接触であり、使用している屠龍具が花属性である
+                    m_ryugekiEffectsList[3].SetActive(true);
+                    m_dialog.text = " ～ 月下美人 ～ ";
+
+                }
+            }
             else if (commands.Count == 9)
             {
                 if (commands[0].Number == 1 &&
@@ -258,7 +276,7 @@ public class NineKeyInput : MonoBehaviour
                     commands[8].Number == 5 && commands[8].Contact == 5)
                 {
                     //m_ryugekiEffectsList[].SetActive(true);
-                    m_dialog.text = " ～ クズ涼閃 ～ ";
+                    m_dialog.text = " ～ カス龍閃 ～ ";
                 }
                 else
                 {
@@ -330,6 +348,12 @@ public class NineKeyInput : MonoBehaviour
                 break;
         }
         m_dabiCount++;
+    }
+    public void RG_GekkaBijin()
+    {
+        float rand = Random.Range(0.9f, 1.2f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 6, false, m_changeValueInterval * 1.5f);
+        m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     public void RG_0()
