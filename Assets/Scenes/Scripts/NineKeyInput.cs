@@ -216,13 +216,13 @@ public class NineKeyInput : MonoBehaviour
             }
             else if (commands.Count == 7)
             {
-                if (commands[0].Number == 1 && commands[0].Contact == 4 &&
-                   commands[1].Number == 2 && commands[1].Contact == 4 &&
-                   commands[2].Number == 3 && commands[2].Contact == 4 &&
+                if (commands[0].Number == 1 &&
+                   commands[1].Number == 2 &&
+                   commands[2].Number == 3 &&
                    commands[3].Number == 5 &&
                    commands[4].Number == 7 &&
-                   commands[5].Number == 8 && commands[5].Contact == 7 &&
-                   commands[6].Number == 6 && commands[6].Contact == 7)
+                   commands[5].Number == 8 &&
+                   commands[6].Number == 6)
                 {
                     m_ryugekiEffectsList[2].SetActive(true);
                     m_dialog.text = " ～ 打尾払い ～ ";
