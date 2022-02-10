@@ -30,15 +30,16 @@ public class SkillofEva : ShinzuiSkills
         base.Panneler(m_eva, m_setumei, PannelingSkillKarsol.eva);
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         if(m_dokusu == true)
         {
             m_time += Time.deltaTime;
             if (m_time >= 1)
             {
                 float x = 3f;
-                Debug.LogError("Poison");
                 m_sCount++;
                 EnemyStuts.m_enemiesStuts[m_target.m_tergetNum].Damage(x, true);
                 Enemy.m_enemies[m_target.m_tergetNum].m_enemyHPSL.value = Enemy.m_enemies[m_target.m_tergetNum].m_enemyHPSL.value -= x;

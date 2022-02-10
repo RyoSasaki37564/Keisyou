@@ -6,16 +6,17 @@ public class SkillofShirogane : ShinzuiSkills
 {
     [SerializeField] string m_shirogane = "真髄解放・白銀";
 
-    string m_setumei = "このターン攻撃できなくなり、\n次のターン武器威力x3のダメージ";
+    string m_setumei = "3ターン後、武器威力x3のダメージ";
 
     [SerializeField] GameObject m_platinumCannan = default; //白銀真髄攻撃演出
 
     public int m_turnCount = 0;
 
-    bool m_flg = false;
+    public bool m_flg = false;
 
     private void Start()
     {
+        m_turnCount = 0;
         m_platinumCannan.SetActive(false);
     }
 
@@ -29,8 +30,10 @@ public class SkillofShirogane : ShinzuiSkills
         }
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         if (m_flg == false && BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
             if (m_turnCount > 0)
@@ -44,7 +47,7 @@ public class SkillofShirogane : ShinzuiSkills
             }
             m_flg = true;
         }
-        else
+        else if(m_flg == true && BattleManager._theTurn == BattleManager.Turn.PlayerTurn)
         {
             m_flg = false;
         }

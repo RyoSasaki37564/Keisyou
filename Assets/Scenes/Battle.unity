@@ -347,7 +347,6 @@ MonoBehaviour:
   - {fileID: 348994058}
   m_ainm: {fileID: 1564256177}
   m_setumei: {fileID: 1923529951}
-  m_platinamCannan: {fileID: 1919552064}
 --- !u!1 &121048132
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,6 +5076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1498158988366382399, guid: 115add96bed48254ea79b6a6c485b5a1,
         type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498158988366382399, guid: 115add96bed48254ea79b6a6c485b5a1,
+        type: 3}
       propertyPath: m_SortingLayerID
       value: -1992143297
       objectReference: {fileID: 0}
@@ -7720,11 +7724,12 @@ MonoBehaviour:
   m_kaihouBottun: {fileID: 537117369}
   m_kaihouBottunParent: {fileID: 2139458359}
   m_shinzuiEnsyutu: {fileID: 369049305}
-  m_coolTime: 9
-  m_canUse: 0
+  m_coolTime: 11
+  m_canUse: 1
   m_shirogane: "\u771F\u9AC4\u89E3\u653E\u30FB\u767D\u9280"
   m_platinumCannan: {fileID: 1029329764}
   m_turnCount: 0
+  m_flg: 0
 --- !u!1 &1923529951
 GameObject:
   m_ObjectHideFlags: 0
