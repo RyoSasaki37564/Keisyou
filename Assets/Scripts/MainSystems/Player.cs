@@ -28,6 +28,11 @@ public class Player : BattleChara
     /// </summary>
     int m_armsTableLineMax;
 
+    /// <summary> アイテムのマスターテーブルのCSV </summary>
+    [SerializeField] TextAsset m_itemMasterTableText = default;
+    StringReader itemSR;
+    int m_itemTableLineMax;
+
     /// <summary> 回避率の最大 </summary>
     public float m_dogePowerMax { get; set; }
     /// <summary> 回避率の現在量 </summary>
@@ -94,9 +99,26 @@ public class Player : BattleChara
     /// <summary> 武器データテーブルの本体 </summary>
     public ToryuguStuts[] m_armsMasterTable;
 
-    [SerializeField] int m_nowArmsID { get; set; } //現在の装備中武器ID
+    /// <summary> アイテムデータ内容 </summary>
+    public struct ItemStuts
+    {
+        public int _id;
+        public string _name;
+        public string _InfoText;
+        public string _frvText;
+        public int _weight;
 
-
+        public ItemStuts(int id, string name, string info, string frv, int weight)
+        {
+            this._id = id;
+            this._name = name;
+            this._InfoText = info;
+            this._frvText = frv;
+            this._weight = weight;
+        }
+    }
+    /// <summary> アイテムマスターの本体 </summary>
+    public ItemStuts[] m_itemMasterTable;
 
 
     private void Awake()
@@ -109,6 +131,7 @@ public class Player : BattleChara
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
+
             //レベルマスターデータ格納
             sr = new StringReader(m_playerLevelTableText.text);
             m_playerLevelTableLineMax = int.Parse(sr.ReadLine());
@@ -157,11 +180,29 @@ public class Player : BattleChara
                     m_armsMasterTable[i]._isGet = true;
 
                 }
-                m_nowArmsID = ArmsSys.m_carsol;
             }
             else
             {
                 Debug.LogError("bukiますたーがないですます");
+            }
+
+            //アイテムマスター格納
+            itemSR = new StringReader(m_itemMasterTableText.text);
+            m_itemTableLineMax = int.Parse(itemSR.ReadLine());
+            m_itemMasterTable = new ItemStuts[m_itemTableLineMax];
+            line = itemSR.ReadLine().Split(',');
+            //アイテムマスターデータ作成
+            if(itemSR != null)
+            {
+                for(var i = 0; i < m_armsTableLineMax; i++)
+                {
+                    line = itemSR.ReadLine().Split(',');
+                    m_itemMasterTable[i] = new ItemStuts(int.Parse(line[0]), line[1], line[2], line[3], int.Parse(line[4]));
+                }
+            }
+            else
+            {
+                Debug.LogError("アイテムマスターがねーぞオイ！");
             }
         }
     }
