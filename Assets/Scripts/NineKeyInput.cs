@@ -318,7 +318,7 @@ public class NineKeyInput : MonoBehaviour
                     commands[7].Number == 2 && commands[7].Contact == 2 &&
                     commands[8].Number == 5 && commands[8].Contact == 5)
                 {
-                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_ryugekiEffectsList[4].SetActive(true);
                     m_dialog.text = " ～ カス龍閃 ～ ";
                 }
                 else if(commands[0].Contact == 5 &&
@@ -417,15 +417,8 @@ public class NineKeyInput : MonoBehaviour
     public void RG_Kuzuryu()
     {
         float rand = Random.Range(1f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 2, true, m_changeValueInterval);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 1.5f, true, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
-        StartCoroutine(ItamiModoru());
-    }
-
-    IEnumerator ItamiModoru()
-    {
-        yield return new WaitForSeconds(2f);
-        m_enemyAnim.SetBool("IsDamaged", false);
     }
 
     public void RG_0()
