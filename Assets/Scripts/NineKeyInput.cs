@@ -427,4 +427,12 @@ public class NineKeyInput : MonoBehaviour
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, false, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
+
+
+    public void ShinzuiDusk()
+    {
+        //白銀の真髄解放ダメージ
+        RyugekiDamage(Player.Instance.m_armsMasterTable[4]._atk * 3, true, m_changeValueInterval);
+        m_enemyAnim.SetBool("IsDamaged", true);
+    }
 }
