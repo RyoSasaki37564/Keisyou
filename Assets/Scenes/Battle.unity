@@ -2024,6 +2024,7 @@ Transform:
   - {fileID: 384909534}
   - {fileID: 1978516436}
   - {fileID: 1294576312}
+  - {fileID: 1439552254}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5460,6 +5461,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425371644}
   m_CullTransparentMesh: 0
+--- !u!1001 &1439552253
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 496211796}
+    m_Modifications:
+    - target: {fileID: 3224239165581832938, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_Name
+      value: RGTimeLine_KasuRyusen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832938, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21ba0a2453b77e241b26f513ea5c9026, type: 3}
+--- !u!4 &1439552254 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3224239165581832941, guid: 21ba0a2453b77e241b26f513ea5c9026,
+    type: 3}
+  m_PrefabInstance: {fileID: 1439552253}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1439552255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3224239165581832938, guid: 21ba0a2453b77e241b26f513ea5c9026,
+    type: 3}
+  m_PrefabInstance: {fileID: 1439552253}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1439552256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439552255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51f0c438eff0ae4785a3d3687f0f9d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemyAnim: {fileID: 1739012102}
+  m_playerCommandsUI:
+  - {fileID: 348994058}
+  - {fileID: 1841896864}
+  - {fileID: 1661699636}
+  - {fileID: 86995857}
+--- !u!114 &1439552257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439552255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 964f54bb4562ed548bf83c3384e7613a, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2003855786}
+          m_MethodName: RG_Kuzuryu
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1469555635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8747164252954224006, guid: a7dd399d9b018b146ad81567bdf7a34f,

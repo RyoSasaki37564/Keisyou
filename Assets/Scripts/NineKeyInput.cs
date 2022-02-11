@@ -414,6 +414,20 @@ public class NineKeyInput : MonoBehaviour
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
+    public void RG_Kuzuryu()
+    {
+        float rand = Random.Range(1f, 1.2f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 2, true, m_changeValueInterval);
+        m_enemyAnim.SetBool("IsDamaged", true);
+        StartCoroutine(ItamiModoru());
+    }
+
+    IEnumerator ItamiModoru()
+    {
+        yield return new WaitForSeconds(2f);
+        m_enemyAnim.SetBool("IsDamaged", false);
+    }
+
     public void RG_0()
     {
         float rand = Random.Range(0.9f, 1.2f);
