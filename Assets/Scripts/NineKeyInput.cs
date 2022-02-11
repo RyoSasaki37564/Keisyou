@@ -176,7 +176,34 @@ public class NineKeyInput : MonoBehaviour
         }
         else
         {
-            if (commands.Count == 3)
+            if(commands.Count == 1)
+            {
+                if(commands[0].Number == 2 && commands[0].Contact == 5)
+                {
+                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_dialog.text = " ～ 点睛 ～ ";
+                }
+                else
+                {
+                    m_dialog.text = "ガチビンタ";
+                }
+            }
+            else if(commands.Count == 2)
+            {
+                if(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 1 &&
+                    commands[0].Number == 1 && commands[0].Contact == 1 &&
+                    commands[1].Number == 9 && commands[1].Contact == 9)
+                {
+                    //使用武器が鳥属性の時のみ可能
+                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_dialog.text = " ～ 燕返し ～ ";
+                }
+                else
+                {
+                    m_dialog.text = "ガチビンタ";
+                }
+            }
+            else if (commands.Count == 3)
             {
                 if (commands[0].Number == 2 &&
                    commands[1].Number == 5 &&
@@ -208,6 +235,18 @@ public class NineKeyInput : MonoBehaviour
                 {
                     m_ryugekiEffectsList[1].SetActive(true);
                     m_dialog.text = " ～ 爬行連裂 ～ ";
+                }
+                else if(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 2 &&
+                   commands[0].Number == 9 && commands[0].Contact == 5 &&
+                   commands[1].Number == 4 && commands[1].Contact == 5 &&
+                   commands[2].Number == 3 && commands[2].Contact == 5 &&
+                   commands[3].Number == 2 && commands[3].Contact == 2 &&
+                   commands[4].Number == 5 && commands[4].Contact == 2 &&
+                   commands[5].Number == 8 && commands[5].Contact == 2)
+                {
+                    //使用属性が風の時のみ
+                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_dialog.text = " ～ 龍巻 ～ ";
                 }
                 else
                 {
@@ -242,12 +281,16 @@ public class NineKeyInput : MonoBehaviour
                     commands[5].Number != 5 && commands[5].Contact != 5 &&
                     commands[6].Number != 5 && commands[6].Contact != 5 &&
                     commands[7].Number != 5 && commands[7].Contact != 5 &&
-                    Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 0)
+                    Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 0 || Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 3)
                 {
-                    //すべての入力が斬撃であり、中央には不接触であり、使用している屠龍具が花属性である
+                    //すべての入力が斬撃であり、中央には不接触であり、使用している屠龍具が花か月属性である
                     m_ryugekiEffectsList[3].SetActive(true);
                     m_dialog.text = " ～ 月下美人 ～ ";
 
+                }
+                else
+                {
+                    m_dialog.text = "ガチビンタ";
                 }
             }
             else if (commands.Count == 9)
@@ -278,6 +321,21 @@ public class NineKeyInput : MonoBehaviour
                     //m_ryugekiEffectsList[].SetActive(true);
                     m_dialog.text = " ～ カス龍閃 ～ ";
                 }
+                else if(commands[0].Contact == 5 &&
+                    commands[1].Contact == 5 &&
+                    commands[2].Contact == 5 &&
+                    commands[3].Contact == 5 &&
+                    commands[4].Contact == 5 &&
+                    commands[5].Contact == 5 &&
+                    commands[6].Contact == 5 &&
+                    commands[7].Contact == 5 &&
+                    commands[8].Contact == 5)
+                {
+                    //全部突きにすると出る
+                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_dialog.text = " ～ 蜂ノ巣 ～ ";
+
+                }
                 else
                 {
                     m_dialog.text = "ガチビンタ";
@@ -305,7 +363,7 @@ public class NineKeyInput : MonoBehaviour
     }
 
 
-    //龍撃ダメージ関数は 演出用TimeLine のシングルレシーバーから呼び出してる
+    //各種龍撃に対応するダメージ関数は 演出用TimeLine のシングルレシーバーから呼び出してる
     public void RGAgito()
     {
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, false, m_changeValueInterval);
@@ -326,8 +384,7 @@ public class NineKeyInput : MonoBehaviour
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
-
-    int m_dabiCount = 0; //コード長いしここでしか使わない変数のためここに書こう
+    int m_dabiCount = 0; //コード長いしこの関数でしか使わないメンバーのためここに書こう
     public void RGDabi()
     {
         float rand = Random.Range(0.9f, 1.2f);
@@ -349,10 +406,11 @@ public class NineKeyInput : MonoBehaviour
         }
         m_dabiCount++;
     }
+
     public void RG_GekkaBijin()
     {
-        float rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 6, false, m_changeValueInterval * 1.5f);
+        float rand = Random.Range(1f, 1.2f);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5.5f, false, m_changeValueInterval * 1.5f);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 

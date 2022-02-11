@@ -7,14 +7,14 @@ public class ArmsSys : MonoBehaviour
 {
     [SerializeField] List<Sprite> m_armsSpriteMaster = new List<Sprite>();
 
-    [SerializeField] Sprite[] m_typeSpriteMaster = new Sprite[4];
-    [SerializeField] Image m_mainArmType = default;
+    [SerializeField] Sprite[] m_typeSpriteMaster = new Sprite[4]; //属性アイコン
+    [SerializeField] Image m_mainArmType = default; //装備中の属性
 
     [SerializeField] Image m_mainArm = default;
     [SerializeField] Image m_rightArm = default;
     [SerializeField] Image m_leftArm = default;
 
-    public static int m_carsol = 0;
+    public static int m_carsol = 0; //現在使用中の武器情報を指すID
 
     // Start is called before the first frame update
     void Start()
