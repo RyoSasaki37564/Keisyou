@@ -107,14 +107,16 @@ public class Player : BattleChara
         public string _InfoText;
         public string _frvText;
         public int _weight;
+        public int _count;
 
-        public ItemStuts(int id, string name, string info, string frv, int weight)
+        public ItemStuts(int id, string name, string info, string frv, int weight, int count)
         {
             this._id = id;
             this._name = name;
             this._InfoText = info;
             this._frvText = frv;
             this._weight = weight;
+            this._count = count;
         }
     }
     /// <summary> アイテムマスターの本体 </summary>
@@ -197,7 +199,7 @@ public class Player : BattleChara
                 for(var i = 0; i < m_armsTableLineMax; i++)
                 {
                     line = itemSR.ReadLine().Split(',');
-                    m_itemMasterTable[i] = new ItemStuts(int.Parse(line[0]), line[1], line[2], line[3], int.Parse(line[4]));
+                    m_itemMasterTable[i] = new ItemStuts(int.Parse(line[0]), line[1], line[2], line[3], int.Parse(line[4]), 3);
                 }
             }
             else
