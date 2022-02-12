@@ -1616,7 +1616,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_approchTobackWall: {fileID: 1189412522}
   m_syucyusen: {fileID: 517052460}
-  m_tergetIndexer: {fileID: 743884480}
   m_diaLog: {fileID: 646176109}
   m_syokeisya: {fileID: 1022362126}
   m_changeValueInterval: 1
@@ -3943,7 +3942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36d8ae8d89cc084db30819930d10cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_target: {fileID: 743884480}
 --- !u!4 &749100821
 Transform:
   m_ObjectHideFlags: 0
@@ -9513,10 +9511,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_QTEEffects:
   - {fileID: 7979998217591712419, guid: 0b9b315202417584d854ebc745cffff4, type: 3}
+  - {fileID: 1934190585316502292, guid: 525cb777a3ea1284cad48fe0208a4615, type: 3}
   m_waitTime: 3
   m_pulusPos: {fileID: 959559432}
   m_minusPos: {fileID: 335316467}
   m_isQTETime: 1
+  m_anim: {fileID: 1739012102}
 --- !u!1001 &1870493403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11285,7 +11285,6 @@ MonoBehaviour:
   m_coolTime: 10
   m_canUse: 0
   m_eva: "\u771F\u9AC4\u89E3\u653E\u30FB\u7D75\u6B6F"
-  m_target: {fileID: 743884480}
 --- !u!1 &2117003961
 GameObject:
   m_ObjectHideFlags: 0

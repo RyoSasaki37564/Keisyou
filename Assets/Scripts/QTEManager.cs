@@ -17,6 +17,8 @@ public class QTEManager : MonoBehaviour
 
     [SerializeField] bool m_isQTETime = false;
 
+    [SerializeField] Animator m_anim = default;
+
     void Start()
     {
         StartCoroutine(QTESys(m_waitTime));
@@ -42,7 +44,12 @@ public class QTEManager : MonoBehaviour
             m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
             m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
             m_effectPos = new Vector2(m_posXRand, m_posYRand);
-            var x = Instantiate(m_QTEEffects[0]);
+            int rand = Random.Range(0, m_QTEEffects.Length);
+
+            var x = Instantiate(m_QTEEffects[rand]);
+
+            m_anim.SetInteger("AttackMotion1", 1);
+
             x.transform.position = m_effectPos;
             m_isQTETime = false;
             StartCoroutine(QTESys(m_waitTime));

@@ -18,8 +18,6 @@ public class NineKeyInput : MonoBehaviour
     GameObject[] m_srasts = new GameObject[9]; //刺突のオブジェクトプール
     int m_srastIndexer = 0;
 
-    [SerializeField] Target m_tergetIndexer = default; //標的
-
     public float m_changeValueInterval = 1f; //値の変化速度
 
     [SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
@@ -354,12 +352,12 @@ public class NineKeyInput : MonoBehaviour
 
     void RyugekiDamage(float _iryoku, bool _isKantsu, float _interval)
     {
-        EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage(_iryoku, _isKantsu); //標的に対して通常攻撃
+        EnemyStuts.m_enemiesStuts[Target.m_tergetNum].Damage(_iryoku, _isKantsu); //標的に対して通常攻撃
 
         //UI反映
         //Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
-        DOTween.To(() => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = x,
-            Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - _iryoku, _interval);
+        DOTween.To(() => Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value = x,
+            Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value - _iryoku, _interval);
     }
 
 

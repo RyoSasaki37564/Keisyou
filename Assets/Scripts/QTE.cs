@@ -11,7 +11,7 @@ public class QTE : MonoBehaviour
 
     public void QTEBited()
     {
-        Player.Instance.Damage(m_damage, false);
+        Player.Instance.Damage(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_attack, false);
         Destroy(this.gameObject);
     }
 

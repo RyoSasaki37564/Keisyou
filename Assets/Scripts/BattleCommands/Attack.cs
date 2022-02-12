@@ -10,8 +10,6 @@ public class Attack : MonoBehaviour
 
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル。背景の接近アニメーションの終了時に自動で不可視化　＞＞BackWallBacker.cs
 
-    [SerializeField] Target m_tergetIndexer = default; //ターゲット番号
-
     [SerializeField] Text m_diaLog = default;
 
     [SerializeField] SkillOfSyokeisya m_syokeisya = default;
@@ -46,7 +44,7 @@ public class Attack : MonoBehaviour
             switch (Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type)
             {
                 case 0:
-                    switch(EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_type)
+                    switch(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_type)
                     {
                         case 0:
                             m_zokuseiHosei = 1f;
@@ -63,7 +61,7 @@ public class Attack : MonoBehaviour
                     }
                     break;
                 case 1:
-                    switch (EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_type)
+                    switch (EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_type)
                     {
                         case 0:
                             m_zokuseiHosei = 0.5f;
@@ -80,7 +78,7 @@ public class Attack : MonoBehaviour
                     }
                     break;
                 case 2:
-                    switch (EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_type)
+                    switch (EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_type)
                     {
                         case 0:
                             m_zokuseiHosei = 2f;
@@ -101,7 +99,7 @@ public class Attack : MonoBehaviour
                     break;
             }
 
-            float ite = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].Damage((Player.Instance.m_attack +
+            float ite = EnemyStuts.m_enemiesStuts[Target.m_tergetNum].Damage((Player.Instance.m_attack +
                 Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._atk) * m_zokuseiHosei
                 , false);
 
@@ -112,8 +110,8 @@ public class Attack : MonoBehaviour
                 m_syokeisya.m_iryokuNibai = false;
             }
 
-            DOTween.To(() => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = x,
-                Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value - ite, m_changeValueInterval);
+            DOTween.To(() => Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value = x,
+                Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value - ite, m_changeValueInterval);
 
 
             //残り回避率に応じて集中力を増加

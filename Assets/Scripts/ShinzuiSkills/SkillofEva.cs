@@ -8,8 +8,6 @@ public class SkillofEva : ShinzuiSkills
 
     string m_setumei = "敵に毒状態(3 x 10s)を付与";
 
-    [SerializeField] Target m_target = default;
-
     bool m_dokusu = false;
 
     int m_sCount = 0;
@@ -41,8 +39,8 @@ public class SkillofEva : ShinzuiSkills
             {
                 float x = 3f;
                 m_sCount++;
-                EnemyStuts.m_enemiesStuts[m_target.m_tergetNum].Damage(x, true);
-                Enemy.m_enemies[m_target.m_tergetNum].m_enemyHPSL.value = Enemy.m_enemies[m_target.m_tergetNum].m_enemyHPSL.value -= x;
+                EnemyStuts.m_enemiesStuts[Target.m_tergetNum].Damage(x, true);
+                Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value = Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value -= x;
                 m_time = 0;
             }
 
