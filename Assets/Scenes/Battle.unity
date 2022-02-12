@@ -347,6 +347,8 @@ MonoBehaviour:
   - {fileID: 348994058}
   m_ainm: {fileID: 1564256177}
   m_setumei: {fileID: 1923529951}
+  m_dashiireFlg: 0
+  m_item: {fileID: 1989518431}
 --- !u!1 &121048132
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.4404297, y: -182}
+  m_AnchoredPosition: {x: 6.4404297, y: -181.99998}
   m_SizeDelta: {x: -406.95657, y: -381.96637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276771733
@@ -8314,7 +8316,7 @@ GameObject:
   - component: {fileID: 1798366730}
   - component: {fileID: 1798366731}
   m_Layer: 5
-  m_Name: ItemsCircle
+  m_Name: ====ItemsCircle====
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9650,7 +9652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.4404297, y: -182}
+  m_AnchoredPosition: {x: 6.4404297, y: -181.99998}
   m_SizeDelta: {x: -406.95657, y: -381.96637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1923529953
@@ -9907,6 +9909,8 @@ MonoBehaviour:
   - {fileID: 1338195987}
   m_ainm: {fileID: 1798366731}
   m_setumei: {fileID: 276771731}
+  m_dashiireFlg: 0
+  m_shinzui: {fileID: 86995862}
 --- !u!1 &2003855785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3141967484390417108, guid: 697b1e752e5cdbc4ba70f6097e3f495a,

@@ -12,7 +12,9 @@ public class Shinzui : MonoBehaviour
 
     [SerializeField] GameObject m_setumei = default; //内容説明のやつ 
 
-    bool m_dashiireFlg = false;
+    public bool m_dashiireFlg = false;
+
+    [SerializeField] Item m_item = default;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,12 @@ public class Shinzui : MonoBehaviour
             {
                 i.SetActive(false);
             }
+        }
+        
+
+        if(m_item.m_dashiireFlg == true)
+        {
+            m_item.Panneling();
         }
     }
 }

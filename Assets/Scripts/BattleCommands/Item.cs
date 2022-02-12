@@ -6,13 +6,15 @@ public class Item : MonoBehaviour
 {
     [SerializeField] GameObject m_circle = default;
 
-    [SerializeField] List<GameObject> m_otherCommands = new List<GameObject>(); //いまアタックボタンしか入っとらん
+    [SerializeField] List<GameObject> m_otherCommands = new List<GameObject>(); //いま回避ボタンしか入っとらん
 
     [SerializeField] Animator m_ainm = default;
 
     [SerializeField] GameObject m_setumei = default; //内容説明のやつ 
 
-    bool m_dashiireFlg = false;
+    public bool m_dashiireFlg = false;
+
+    [SerializeField] Shinzui m_shinzui = default;    
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,11 @@ public class Item : MonoBehaviour
             {
                 i.SetActive(false);
             }
+        }
+
+        if (m_shinzui.m_dashiireFlg == true)
+        {
+            m_shinzui.Panneling();
         }
     }
 }

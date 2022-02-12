@@ -196,7 +196,7 @@ public class Player : BattleChara
             //アイテムマスターデータ作成
             if(itemSR != null)
             {
-                for(var i = 0; i < m_armsTableLineMax; i++)
+                for(var i = 0; i < m_itemTableLineMax; i++)
                 {
                     line = itemSR.ReadLine().Split(',');
                     m_itemMasterTable[i] = new ItemStuts(int.Parse(line[0]), line[1], line[2], line[3], int.Parse(line[4]), 3);
