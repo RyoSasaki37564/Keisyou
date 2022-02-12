@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Poisonics : MonoBehaviour
 {
-    bool m_dokusu = false;
-
     int m_sCount = 0;
     float m_time = 0;
 

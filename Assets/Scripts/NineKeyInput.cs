@@ -237,12 +237,12 @@ public class NineKeyInput : MonoBehaviour
                     m_dialog.text = " ～ 爬行連裂 ～ ";
                 }
                 else if(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 2 &&
-                   commands[0].Number == 9 && commands[0].Contact == 5 &&
-                   commands[1].Number == 4 && commands[1].Contact == 5 &&
-                   commands[2].Number == 3 && commands[2].Contact == 5 &&
-                   commands[3].Number == 2 && commands[3].Contact == 2 &&
-                   commands[4].Number == 5 && commands[4].Contact == 2 &&
-                   commands[5].Number == 8 && commands[5].Contact == 2)
+                   commands[0].Number == 9 && commands[0].Contact == 6 &&
+                   commands[1].Number == 4 && commands[1].Contact == 4 &&
+                   commands[2].Number == 3 && commands[2].Contact == 6 &&
+                   commands[3].Number == 2 &&
+                   commands[4].Number == 5 &&
+                   commands[5].Number == 8)
                 {
                     //使用属性が風の時のみ
                     //m_ryugekiEffectsList[].SetActive(true);
