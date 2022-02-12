@@ -33,5 +33,6 @@ public class QTEPatterner : MonoBehaviour
         yield return new WaitForSeconds(m_interval);
         m_QTEs[m_indexer].SetActive(true);
         m_indexer++;
+        QTEActivate();
     }
 }
