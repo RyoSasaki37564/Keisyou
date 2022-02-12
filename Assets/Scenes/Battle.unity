@@ -8312,6 +8312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1798366729}
   - component: {fileID: 1798366730}
+  - component: {fileID: 1798366731}
   m_Layer: 5
   m_Name: ItemsCircle
   m_TagString: Untagged
@@ -8356,6 +8357,25 @@ MonoBehaviour:
   m_radius: 130.96
   m_offsetAngle: 0
   m_speedRate: 1.5
+--- !u!95 &1798366731
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798366728}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc14bd45fb78ca64c8e4e04c51a3dae2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1802067194
 GameObject:
   m_ObjectHideFlags: 0
@@ -9885,7 +9905,7 @@ MonoBehaviour:
   m_circle: {fileID: 1798366728}
   m_otherCommands:
   - {fileID: 1338195987}
-  m_ainm: {fileID: 0}
+  m_ainm: {fileID: 1798366731}
   m_setumei: {fileID: 276771731}
 --- !u!1 &2003855785 stripped
 GameObject:
@@ -12086,7 +12106,7 @@ PrefabInstance:
     - target: {fileID: 6667783093251782330, guid: db3e916d676b2b94a96f662be671998e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Inbentry
+      value: Panneling
       objectReference: {fileID: 0}
     - target: {fileID: 6667783093251782330, guid: db3e916d676b2b94a96f662be671998e,
         type: 3}
