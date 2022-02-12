@@ -10,6 +10,15 @@ public class SkillOfSyokeisya : ShinzuiSkills
 
     public bool m_iryokuNibai = false;
 
+    public override void Update()
+    {
+        base.Update();
+        if(m_iryokuNibai = true && BattleManager._theTurn == BattleManager.Turn.TurnEnd)
+        {
+            m_iryokuNibai = false;
+        }
+    }
+
     public override void UseSkill()
     {
         if (this.m_canUse == true)

@@ -34,6 +34,6 @@ public class Doge : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        BattleManager._theTurn = BattleManager.Turn.InputTurn;
+        BattleManager._theTurn = BattleManager.Turn.TurnEnd;
     }
 }

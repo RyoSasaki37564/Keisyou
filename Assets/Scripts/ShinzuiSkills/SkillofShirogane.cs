@@ -14,8 +14,9 @@ public class SkillofShirogane : ShinzuiSkills
 
     public bool m_flg = false;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         m_turnCount = 0;
         m_platinumCannan.SetActive(false);
     }

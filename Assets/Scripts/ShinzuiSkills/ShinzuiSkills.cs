@@ -33,7 +33,7 @@ public abstract class ShinzuiSkills : MonoBehaviour
     static PannelingSkillKarsol nowPannelingSkillInfo = PannelingSkillKarsol._default; 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         for(var i = 0; i < m_kaihouBottunParent.transform.childCount; i++)
         {
