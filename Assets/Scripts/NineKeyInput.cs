@@ -226,12 +226,12 @@ public class NineKeyInput : MonoBehaviour
             }
             else if(commands.Count == 6)
             {
-                if(commands[0].Number == 7 && commands[0].Contact == 8 &&
-                   commands[1].Number == 4 && commands[1].Contact == 8 &&
-                   commands[2].Number == 5 && commands[2].Contact == 2 &&
-                   commands[3].Number == 8 && commands[3].Contact == 2 &&
-                   commands[4].Number == 9 && commands[4].Contact == 8 &&
-                   commands[5].Number == 6 && commands[5].Contact == 8)
+                if(commands[0].Number == 7 && commands[0].Contact != 5 &&
+                   commands[1].Number == 4 && commands[1].Contact != 5 &&
+                   commands[2].Number == 5 && commands[2].Contact != 5 &&
+                   commands[3].Number == 8 && commands[3].Contact != 5 &&
+                   commands[4].Number == 9 && commands[4].Contact != 5 &&
+                   commands[5].Number == 6 && commands[5].Contact != 5)
                 {
                     m_ryugekiEffectsList[1].SetActive(true);
                     m_dialog.text = " ～ 爬行連裂 ～ ";
