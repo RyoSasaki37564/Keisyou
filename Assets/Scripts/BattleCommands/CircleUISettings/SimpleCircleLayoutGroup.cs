@@ -51,6 +51,10 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 		TouchManager.Moved += (info) =>
 		{
 			m_offsetAngle -= (m_mouseEntPos.y - Input.mousePosition.y) / (m_radius / m_speedRate);
+			if (m_offsetAngle > 360 || m_offsetAngle < -360)
+			{
+				m_offsetAngle /= 360;
+			}
 			Arrange();
 		};
 	}

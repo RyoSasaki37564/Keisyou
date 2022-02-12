@@ -4,51 +4,43 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] GameObject m_inbentry = default; //インベントリのパネル
+    [SerializeField] GameObject m_circle = default;
 
-    [SerializeField] List<GameObject> m_otherUI = new List<GameObject>(); //攻撃系ボタンとか
+    [SerializeField] List<GameObject> m_otherCommands = new List<GameObject>(); //いまアタックボタンしか入っとらん
 
-    bool m_flg = false;
+    [SerializeField] Animator m_ainm = default;
 
-    static int? itemKarsol = null; //選択中のアイテムを指し示すカーソル変数
+    [SerializeField] GameObject m_setumei = default; //内容説明のやつ 
 
-    private void Start()
+    bool m_dashiireFlg = false;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        itemKarsol = null;
-        m_inbentry.SetActive(false);
+        m_circle.SetActive(false);
     }
 
-    public void Inbentry()
+    public void Panneling()
     {
-        if(m_flg == false)
+        if (m_dashiireFlg == true)
         {
-            Open();
-            m_flg = true;
+            m_setumei.SetActive(false);
+            m_ainm.SetBool("IsItem", false);
+            foreach (var i in m_otherCommands)
+            {
+                i.SetActive(true);
+            }
+            m_dashiireFlg = false;
         }
         else
         {
-            Close();
-            m_flg = false;
-        }
-    }
-
-
-    void Open()
-    {
-        m_inbentry.SetActive(true);
-
-        foreach (var x in m_otherUI)
-        {
-            x.SetActive(false);
-        }
-    }
-    void Close()
-    {
-        m_inbentry.SetActive(false);
-
-        foreach (var x in m_otherUI)
-        {
-            x.SetActive(true);
+            m_circle.SetActive(true);
+            m_dashiireFlg = true;
+            m_ainm.SetBool("IsItem", true);
+            foreach (var i in m_otherCommands)
+            {
+                i.SetActive(false);
+            }
         }
     }
 }
