@@ -199,7 +199,7 @@ public class Player : BattleChara
                 for(var i = 0; i < m_itemTableLineMax; i++)
                 {
                     line = itemSR.ReadLine().Split(',');
-                    m_itemMasterTable[i] = new ItemStuts(int.Parse(line[0]), line[1], line[2], line[3], int.Parse(line[4]), 3);
+                    m_itemMasterTable[i] = new ItemStuts(int.Parse(line[0]), line[1], line[2], line[3], int.Parse(line[4]), 2);
                 }
             }
             else
@@ -312,5 +312,19 @@ public class Player : BattleChara
         m_dgSlider.maxValue = m_dogePowerMax;
         m_currentDogePower = m_dogePowerMax;
         m_dgSlider.value = m_currentDogePower;
+    }
+
+
+    /// <summary>
+    /// 集中回復処理
+    /// </summary>
+    /// <param name="medic"></param>
+    public void Relax(int rel)
+    {
+        m_currentConcentlate += rel;
+        if (m_currentConcentlate > m_maxConcentlate)
+        {
+            m_currentConcentlate = m_maxConcentlate;
+        }
     }
 }
