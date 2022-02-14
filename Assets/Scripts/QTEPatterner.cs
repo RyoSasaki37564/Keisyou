@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class QTEPatterner : MonoBehaviour
 {
-    [SerializeField] List<GameObject> m_QTEs = new List<GameObject>();
+    public List<GameObject> m_QTEs = new List<GameObject>();
 
-    int m_indexer = 0;
+    public int m_indexer = 0;
 
     [SerializeField] float m_interval = 1f;
 
@@ -20,7 +20,7 @@ public class QTEPatterner : MonoBehaviour
         QTEActivate();
     }
 
-    void QTEActivate()
+    public void QTEActivate()
     {
         if(m_indexer != m_QTEs.Count)
         {
@@ -28,7 +28,7 @@ public class QTEPatterner : MonoBehaviour
         }
     }
 
-    IEnumerator QTERoader()
+    public virtual IEnumerator QTERoader()
     {
         yield return new WaitForSeconds(m_interval);
         m_QTEs[m_indexer].SetActive(true);

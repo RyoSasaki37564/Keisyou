@@ -39,7 +39,7 @@ public class QTEManager : MonoBehaviour
             m_isQTETime = true;
         }
 
-        if(m_isQTETime == true && BattleManager._theTurn == BattleManager.Turn.InputTurn)
+        if(m_isQTETime == true && BattleManager._theTurn == BattleManager.Turn.InputTurn && Ryugeki.m_isHitRyugeki == false)
         {
             m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
             m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);

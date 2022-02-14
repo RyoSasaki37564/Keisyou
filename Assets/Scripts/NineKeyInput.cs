@@ -76,7 +76,7 @@ public class NineKeyInput : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
                 //キー番号とキーに対する接触情報から入力IDを生成しリストに格納
-                if (hit.collider)
+                if (hit.collider && hit.transform.tag == "NineKey")
                 {
                     //Debug.Log("接触情報：" + hit.collider.gameObject.transform.parent.name + " " + hit.collider.gameObject.name);
                     int i = int.Parse(hit.collider.gameObject.name); //接触位置
