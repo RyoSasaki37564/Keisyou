@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
         }
 
         /*
-        //敵インスタンスはstaticなので、死亡したタイミングでリストから消去
+        //敵インスタンスリストはstatic、死亡したタイミングでリストから消去
         if(BattleManager._theTurn == BattleManager.Turn.PlayerTurn)
         {
             for (var i = 0; i < EnemyStuts.m_enemiesStuts.Count; i++)

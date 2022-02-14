@@ -10,10 +10,9 @@ public class QTEPatterner : MonoBehaviour
 
     [SerializeField] float m_interval = 1f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        foreach(var i in m_QTEs)
+        foreach (var i in m_QTEs)
         {
             i.SetActive(false);
         }
