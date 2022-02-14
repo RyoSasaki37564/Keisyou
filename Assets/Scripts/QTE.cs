@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QTE : MonoBehaviour
 {
@@ -9,8 +8,12 @@ public class QTE : MonoBehaviour
 
     float m_utuwa; //いったんfloatにして、インクリメントintキャストで四捨五入する。
 
+    [SerializeField] AudioClip m_seKaihi = default;
+    [SerializeField] AudioClip m_damaged = default;
+
     public void QTEBited()
     {
+        AudioSource.PlayClipAtPoint(m_damaged, Camera.main.transform.position);
         Player.Instance.Damage(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_attack, false);
         Destroy(this.gameObject);
     }
@@ -26,10 +29,9 @@ public class QTE : MonoBehaviour
                 //ヒットしたオブジェクトのタグがQTEだったら消して集中と回避を付与 
                 if (hitObj.tag == "QTE")
                 {
+                    AudioSource.PlayClipAtPoint(m_seKaihi, Camera.main.transform.position);
+                    DodgeSuccess();
                     Destroy(hitObj.gameObject);
-                    m_utuwa = Player.Instance.m_playerLevel / 2f;
-                    Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
-                    Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
                 }
             }
         };
@@ -43,12 +45,18 @@ public class QTE : MonoBehaviour
                 //ヒットしたオブジェクトのタグがQTEだったら消して集中と回避を付与 
                 if (hitObj.tag == "QTE")
                 {
+                    AudioSource.PlayClipAtPoint(m_seKaihi, Camera.main.transform.position);
+                    DodgeSuccess();
                     Destroy(hitObj.gameObject);
-                    m_utuwa = Player.Instance.m_playerLevel / 2f;
-                    Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
-                    Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
                 }
             }
         };
+    }
+
+    void DodgeSuccess()
+    {
+        m_utuwa = Player.Instance.m_playerLevel / 2f;
+        Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
+        Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
     }
 }

@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_damage: 1
+  m_seKaihi: {fileID: 8300000, guid: 41246dbf3f6b59246b3898e5ec77e7ec, type: 3}
+  m_damaged: {fileID: 8300000, guid: 5a9bd1c1c3b4b0248a5abf25e02f2979, type: 3}
 --- !u!58 &7237083674011172948
 CircleCollider2D:
   m_ObjectHideFlags: 0

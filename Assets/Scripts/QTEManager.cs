@@ -44,7 +44,17 @@ public class QTEManager : MonoBehaviour
             m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
             m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
             m_effectPos = new Vector2(m_posXRand, m_posYRand);
-            int rand = Random.Range(0, m_QTEEffects.Length);
+
+            int rand;
+
+            if (EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP > EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_maxHP / 2)
+            {
+                rand = Random.Range(0, m_QTEEffects.Length / 2);
+            }
+            else
+            {
+                rand = Random.Range(m_QTEEffects.Length / 2, m_QTEEffects.Length);
+            }
 
             var x = Instantiate(m_QTEEffects[rand]);
 

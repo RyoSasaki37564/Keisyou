@@ -67,12 +67,14 @@ public class Ryugeki : MonoBehaviour
         if(m_isRyugekiNyuryoku == true && Player.Instance.m_currentConcentlate >= 0)
         {
             m_time += Time.deltaTime;
-            if(m_time > 1)
+            if(m_time > 0.5f)
             {
                 Player.Instance.m_currentConcentlate -= 1;
                 if (Player.Instance.m_currentConcentlate <= 0)
                 {
                     Player.Instance.m_currentConcentlate = 0;
+
+                    RyugekiNoKamae();
                 }
                 m_time = 0;
             }

@@ -29,8 +29,6 @@ public class QTEPersonalManager : QTEPatterner
         while (!(pos.x < m_frame.transform.position.x && pos.x > -m_frame.transform.position.x
                 && pos.y < m_frame.transform.position.y && pos.y > -m_frame.transform.position.y));
 
-
-        Debug.Log("現在インデクサー" + m_indexer);
         m_QTEs[m_indexer].transform.position = pos;
         return base.QTERoader();
     }
