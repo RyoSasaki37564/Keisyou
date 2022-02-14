@@ -15,7 +15,7 @@ public class Doge : MonoBehaviour
         if (BattleManager._theTurn == BattleManager.Turn.InputTurn)
         {
             m_LeaveTobackWall.SetBool("IsDoge", true);
-            BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
+            BattleManager._theTurn = BattleManager.Turn.InputTurn;
             StartCoroutine(TurnSkip());
         }
     }
