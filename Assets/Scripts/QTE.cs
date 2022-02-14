@@ -13,10 +13,12 @@ public class QTE : MonoBehaviour
 
     public static bool isKaihi = false;
 
+    [SerializeField] float m_biteRate = 0.5f;
+
     public void QTEBited()
     {
         AudioSource.PlayClipAtPoint(m_damaged, Camera.main.transform.position);
-        Player.Instance.Damage(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_attack, false);
+        Player.Instance.Damage(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_attack * m_biteRate, false);
         Destroy(this.gameObject);
     }
 
