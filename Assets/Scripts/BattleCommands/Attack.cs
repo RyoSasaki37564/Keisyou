@@ -35,6 +35,7 @@ public class Attack : MonoBehaviour
         {
             BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
 
+            m_approchTobackWall.SetInteger("SideStep", 0);
             m_approchTobackWall.SetBool("IsApproach", true);
             m_syucyusen.SetActive(true);
 
