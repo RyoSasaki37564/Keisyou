@@ -11,6 +11,8 @@ public class QTE : MonoBehaviour
     [SerializeField] AudioClip m_seKaihi = default;
     [SerializeField] AudioClip m_damaged = default;
 
+    public static bool isKaihi = false;
+
     public void QTEBited()
     {
         AudioSource.PlayClipAtPoint(m_damaged, Camera.main.transform.position);
@@ -58,5 +60,6 @@ public class QTE : MonoBehaviour
         m_utuwa = Player.Instance.m_playerLevel / 2f;
         Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
         Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
+        isKaihi = true;
     }
 }

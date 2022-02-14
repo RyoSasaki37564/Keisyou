@@ -20,4 +20,15 @@ public class BackWallBacker : MonoBehaviour
         m_syucyusen.SetActive(false);
 
     }
+
+    private void Update()
+    {
+        if(QTE.isKaihi == true)
+        {
+            int rand = Random.Range(1, 2);
+            m_back.SetInteger("SideStep", rand);
+            QTE.isKaihi = false;
+        }
+    }
+
 }
