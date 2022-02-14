@@ -178,7 +178,7 @@ public class NineKeyInput : MonoBehaviour
             {
                 if(commands[0].Number == 2 && commands[0].Contact == 5)
                 {
-                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 点睛 ～ ";
                 }
                 else
@@ -193,7 +193,7 @@ public class NineKeyInput : MonoBehaviour
                     commands[1].Number == 9 && commands[1].Contact == 9)
                 {
                     //使用武器が鳥属性の時のみ可能
-                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 燕返し ～ ";
                 }
                 else
@@ -214,7 +214,7 @@ public class NineKeyInput : MonoBehaviour
                         commands[1].Number == 6 && commands[1].Contact == 7 &&
                         commands[2].Number == 5 && commands[2].Contact == 5)
                 {
-                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 徹甲突 ～ ";
                 }
                 else
@@ -243,7 +243,7 @@ public class NineKeyInput : MonoBehaviour
                    commands[5].Number == 8)
                 {
                     //使用属性が風の時のみ
-                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 龍巻 ～ ";
                 }
                 else
@@ -303,7 +303,7 @@ public class NineKeyInput : MonoBehaviour
                     commands[7].Number == 4 &&
                     commands[8].Number == 5 && commands[8].Contact == 5)
                 {
-                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ とぐろ回し ～ ";
                 }
                 else if (commands[0].Number == 3 && commands[0].Contact == 3 &&
@@ -330,7 +330,7 @@ public class NineKeyInput : MonoBehaviour
                     commands[8].Contact == 5)
                 {
                     //全部突きにすると出る
-                    //m_ryugekiEffectsList[].SetActive(true);
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 蜂ノ巣 ～ ";
 
                 }
@@ -422,7 +422,7 @@ public class NineKeyInput : MonoBehaviour
     public void RG_0()
     {
         float rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, false, m_changeValueInterval);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki / 3.5f * rand, false, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
