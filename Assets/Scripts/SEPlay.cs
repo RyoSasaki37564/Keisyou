@@ -20,9 +20,4 @@ public class SEPlay : MonoBehaviour
         m_seObj.SetActive(false);
         m_seObj.SetActive(true);
     }
-
-    private void OnEnable()
-    {
-        MyPlayOneShot();
-    }
 }

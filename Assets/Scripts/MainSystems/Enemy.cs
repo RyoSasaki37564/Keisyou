@@ -148,28 +148,31 @@ public class Enemy : MonoBehaviour
                 m_diaLog.text = EnemyStuts.m_enemiesStuts[i].m_enemyName + "の攻撃　▽";
                 m_RedShutyuSen.SetActive(true);
 
-                //三割でパリィチャンス発生
-                int rand = Random.Range(0, 10);// Random.Range(0, 10);
-                if (rand < 10)//テスト中につき確定パリィチャンス
+                if(Player.Instance.m_currentConcentlate > 10) //集中力が10以上の時
                 {
-                    //  テストが終わったらこのボタンに関連する行は消すこと
-                    m_PALLY_TEST_BOTTUN.SetActive(true);
-
-                    yield return new WaitForSeconds(1.5f);
-                    if(m_PALLY_TEST_BOTTUN.activeSelf == true)
+                    //三割でパリィチャンス発生
+                    int rand = Random.Range(0, 10);// Random.Range(0, 10);
+                    if (rand < 10)//テスト中につき確定パリィチャンス
                     {
-                        m_diaLog.text = "";
-                        Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
-                        m_RedShutyuSen.SetActive(false);
+                        //  テストが終わったらこのボタンに関連する行は消すこと
+                        m_PALLY_TEST_BOTTUN.SetActive(true);
 
-                        IngaOho();
+                        yield return new WaitForSeconds(1.5f);
+                        if (m_PALLY_TEST_BOTTUN.activeSelf == true)
+                        {
+                            m_diaLog.text = "";
+                            Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
+                            m_RedShutyuSen.SetActive(false);
 
-                        m_PALLY_TEST_BOTTUN.SetActive(false);
-                    }
-                    else
-                    {
-                        m_diaLog.text = "";
-                        m_RedShutyuSen.SetActive(false);
+                            IngaOho();
+
+                            m_PALLY_TEST_BOTTUN.SetActive(false);
+                        }
+                        else
+                        {
+                            m_diaLog.text = "";
+                            m_RedShutyuSen.SetActive(false);
+                        }
                     }
                 }
                 else
