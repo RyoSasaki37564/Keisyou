@@ -23,7 +23,13 @@ public class NineKeyInput : MonoBehaviour
     [SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
     [SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
 
+    [SerializeField] ThisOff m_akiOff = default;
+    [SerializeField] ThisOff m_RG_0Off = default;
+
     [SerializeField] Animator m_enemyAnim = default;
+
+    [SerializeField] SEPlay m_zangekiSE = default;
+    [SerializeField] SEPlay m_shitotsuSE = default; 
 
     public struct CommandCode
     {
@@ -84,12 +90,14 @@ public class NineKeyInput : MonoBehaviour
 
                     if (i == 5) //5は刺突
                     {
+                        m_shitotsuSE.MyPlayOneShot();
                         m_srasts[m_srastIndexer].SetActive(true);
                         m_srasts[m_srastIndexer].transform.position = hit.collider.gameObject.transform.parent.position;
                         m_srastIndexer++;
                     }
                     else //それ以外は斬撃
                     {
+                        m_zangekiSE.MyPlayOneShot();
                         m_slashs[m_slashIndexer].SetActive(true);
                         m_slashs[m_slashIndexer].transform.position = hit.collider.gameObject.transform.parent.position;
                         //斬撃の角度を調節
@@ -170,6 +178,8 @@ public class NineKeyInput : MonoBehaviour
     {
         if (commands.Count == 0)
         {
+            m_akiOff.ThisOffMetthod();
+            m_RG_0Off.ThisOffMetthod();
             m_dialog.text = "失敗";
         }
         else
