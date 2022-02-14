@@ -7,6 +7,8 @@ public class BackWallBacker : MonoBehaviour
     [SerializeField] Animator m_back = default;
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル
 
+    int m_kaihiVec = 1;
+
     public void Backer()
     {
         if(Attack.m_isNomalAttacked == true)
@@ -25,8 +27,15 @@ public class BackWallBacker : MonoBehaviour
     {
         if(QTE.isKaihi == true)
         {
-            int rand = (int)Random.Range(1, 2.9f);
-            m_back.SetInteger("SideStep", rand);
+            if(m_kaihiVec == 1)
+            {
+                m_kaihiVec = 2;
+            }
+            else
+            {
+                m_kaihiVec = 1;
+            }
+            m_back.SetInteger("SideStep", m_kaihiVec);
             QTE.isKaihi = false;
         }
     }

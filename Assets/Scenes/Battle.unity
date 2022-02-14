@@ -4192,7 +4192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5913857, g: 0.2787469, b: 0.6792453, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6310,6 +6310,7 @@ GameObject:
   - component: {fileID: 1190483593}
   - component: {fileID: 1190483595}
   - component: {fileID: 1190483594}
+  - component: {fileID: 1190483596}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6349,7 +6350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.4528302, b: 0.0016190151, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6377,6 +6378,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190483592}
   m_CullTransparentMesh: 0
+--- !u!114 &1190483596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190483592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.1792453, g: 0.13781595, b: 0.17255485, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1208012500
 GameObject:
   m_ObjectHideFlags: 0
@@ -9168,7 +9184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.8337937, b: 0.8773585, a: 1}
+  m_Color: {r: 0.72820747, g: 0, b: 0.8784314, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9857,7 +9873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.8337937, b: 0.8773585, a: 1}
+  m_Color: {r: 0.8784314, g: 0.04049243, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12910,7 +12926,7 @@ PrefabInstance:
     - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
         type: 3}
       propertyPath: m_ryugekiEffectsList.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
         type: 3}
@@ -12947,6 +12963,11 @@ PrefabInstance:
       propertyPath: m_ryugekiEffectsList.Array.data[4]
       value: 
       objectReference: {fileID: 1439552255}
+    - target: {fileID: 3141967484390417110, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
+        type: 3}
+      propertyPath: m_ryugekiEffectsList.Array.data[5]
+      value: 
+      objectReference: {fileID: 64036914}
     - target: {fileID: 6002087631734794057, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
         type: 3}
       propertyPath: m_TagString

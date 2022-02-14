@@ -183,6 +183,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -198,6 +199,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -219,6 +221,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -248,6 +251,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -266,6 +270,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -288,6 +293,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -336,11 +342,13 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
             else
             {
+                m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                 m_dialog.text = "ガチビンタ";
             }
 
