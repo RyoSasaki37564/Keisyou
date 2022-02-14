@@ -25,10 +25,15 @@ public class BackWallBacker : MonoBehaviour
     {
         if(QTE.isKaihi == true)
         {
-            int rand = Random.Range(1, 2);
+            int rand = (int)Random.Range(1, 2.9f);
             m_back.SetInteger("SideStep", rand);
             QTE.isKaihi = false;
         }
+    }
+
+    public void ResetBySideStep()
+    {
+        m_back.SetInteger("SideStep", 0);
     }
 
 }
