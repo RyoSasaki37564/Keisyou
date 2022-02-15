@@ -37,7 +37,7 @@ public class Attack : MonoBehaviour
 
         if (BattleManager._theTurn == BattleManager.Turn.InputTurn || Enemy.m_isRyugekiChance == true)
         {
-            if(Enemy.m_isRyugekiChance == true)
+            if (Enemy.m_isRyugekiChance == true)
             {
                 Time.timeScale = 1;
                 Enemy.m_isRyugekiChance = false;
@@ -144,6 +144,9 @@ public class Attack : MonoBehaviour
             {
                 Player.Instance.m_currentDogePower = 0;
             }
+
+            Debug.Log(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP);
+
         }
         else
         {

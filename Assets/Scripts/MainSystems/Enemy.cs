@@ -64,10 +64,18 @@ public class Enemy : MonoBehaviour
         //攻撃処理
         if (BattleManager._theTurn == BattleManager.Turn.EnemyTurn)
         {
-            if(m_moveStopper == false)
+            if(Player.Instance.DeadOrAlive() == true ||
+                EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
             {
-                StartCoroutine(NomalEnemyTurn());
-                m_moveStopper = true;
+                BattleManager._theTurn = BattleManager.Turn.BattleEnd;
+            }
+            else
+            {
+                if (m_moveStopper == false)
+                {
+                    StartCoroutine(NomalEnemyTurn());
+                    m_moveStopper = true;
+                }
             }
         }
 

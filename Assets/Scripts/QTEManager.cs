@@ -33,43 +33,47 @@ public class QTEManager : MonoBehaviour
 
     void QTEGeneration()
     {
-        var r = Random.Range(1, 3);
-        if(r == 1)
+        if(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == false &&
+            Player.Instance.DeadOrAlive() == false)
         {
-            m_isQTETime = true;
-        }
-
-        if(m_isQTETime == true && 
-            BattleManager._theTurn == BattleManager.Turn.InputTurn || 
-            BattleManager._theTurn == BattleManager.Turn.EnemyTurn && 
-            Ryugeki.m_isHitRyugeki == false)
-        {
-            m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
-            m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
-            m_effectPos = new Vector2(m_posXRand, m_posYRand);
-
-            int rand;
-
-            if (EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP > EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_maxHP / 2)
+            var r = Random.Range(1, 3);
+            if (r == 1)
             {
-                rand = Random.Range(0, m_QTEEffects.Length / 2);
+                m_isQTETime = true;
+            }
+
+            if (m_isQTETime == true &&
+                BattleManager._theTurn == BattleManager.Turn.InputTurn ||
+                BattleManager._theTurn == BattleManager.Turn.EnemyTurn &&
+                Ryugeki.m_isHitRyugeki == false)
+            {
+                m_posXRand = Random.Range(m_minusPos.transform.position.x, m_pulusPos.transform.position.x);
+                m_posYRand = Random.Range(m_minusPos.transform.position.y, m_pulusPos.transform.position.y);
+                m_effectPos = new Vector2(m_posXRand, m_posYRand);
+
+                int rand;
+
+                if (EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP > EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_maxHP / 2)
+                {
+                    rand = Random.Range(0, m_QTEEffects.Length / 2);
+                }
+                else
+                {
+                    rand = Random.Range(m_QTEEffects.Length / 2, m_QTEEffects.Length);
+                }
+
+                var x = Instantiate(m_QTEEffects[rand]);
+
+                m_anim.SetInteger("AttackMotion1", 1);
+
+                x.transform.position = m_effectPos;
+                m_isQTETime = false;
+                StartCoroutine(QTESys(m_waitTime));
             }
             else
             {
-                rand = Random.Range(m_QTEEffects.Length / 2, m_QTEEffects.Length);
+                StartCoroutine(QTESys(m_waitTime));
             }
-
-            var x = Instantiate(m_QTEEffects[rand]);
-
-            m_anim.SetInteger("AttackMotion1", 1);
-
-            x.transform.position = m_effectPos;
-            m_isQTETime = false;
-            StartCoroutine(QTESys(m_waitTime));
-        }
-        else
-        {
-            StartCoroutine(QTESys(m_waitTime));
         }
     }
 }

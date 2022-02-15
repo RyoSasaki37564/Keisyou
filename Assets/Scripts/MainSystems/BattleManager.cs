@@ -64,9 +64,19 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.InputTurn:
+                if (Player.Instance.DeadOrAlive() == true ||
+                    EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
+                {
+                    _theTurn = Turn.BattleEnd;
+                }
                 break;
 
             case Turn.PlayerTurn:
+                if (Player.Instance.DeadOrAlive() == true ||
+                    EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
+                {
+                    _theTurn = Turn.BattleEnd;
+                }
                 break;
 
             case Turn.EnemyTurn:
@@ -79,7 +89,8 @@ public class BattleManager : MonoBehaviour
 
             case Turn.TurnEnd:
                 m_diaLogStopper = false;
-                if(Player.Instance.m_currentHP <= 0)
+                if(Player.Instance.DeadOrAlive() == true ||
+                    EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
                 {
                     _theTurn = Turn.BattleEnd;
                 }
@@ -91,7 +102,14 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.BattleEnd:
-                m_diaLogText.text = " <color=#8b0000>死</color>　▽";
+                if (Player.Instance.DeadOrAlive() == true)
+                {
+                    m_diaLogText.text = " <color=#8b0000>死</color>　▽";
+                }
+                else if(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
+                {
+                    m_diaLogText.text = " <color=#8b0000>狩りは完遂した</color>　▽";
+                }
                 break;
         }
     }

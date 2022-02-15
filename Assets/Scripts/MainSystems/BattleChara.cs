@@ -59,7 +59,7 @@ public class BattleChara : MonoBehaviour
     /// <summary>
     /// 生死判定
     /// </summary>
-    /// <returns></returns>
+    /// <returns>true == 死, false == 生</returns>
     public virtual bool DeadOrAlive()
     {
         if (m_currentHP <= 0)
