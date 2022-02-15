@@ -7,6 +7,13 @@ public class Pally : MonoBehaviour
 {
     [SerializeField] Enemy m_ene;
 
+    [SerializeField] GameObject m_effects = default;
+
+    private void Awake()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     private void Start()
     {
         TouchManager.Began += (info) =>
@@ -17,6 +24,7 @@ public class Pally : MonoBehaviour
                 GameObject hitObj = hit.collider.gameObject;
                 if (hitObj.tag == "Danger")
                 {
+                    m_effects.SetActive(true);
                     m_ene.PallyTest();
                 }
             }
@@ -30,6 +38,7 @@ public class Pally : MonoBehaviour
                 GameObject hitObj = hit.collider.gameObject;
                 if (hitObj.tag == "Danger")
                 {
+                    m_effects.SetActive(true);
                     m_ene.PallyTest();
                 }
             }

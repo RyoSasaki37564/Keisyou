@@ -31,7 +31,7 @@ public class Attack : MonoBehaviour
     {
         m_isNomalAttacked = true;
 
-        if (BattleManager._theTurn == BattleManager.Turn.InputTurn)
+        if (BattleManager._theTurn == BattleManager.Turn.InputTurn || Enemy.m_isRyugekiChance == true)
         {
             BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
 
