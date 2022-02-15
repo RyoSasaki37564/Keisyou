@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sp: 0.5
   m_goal: {fileID: 2414295814731991396}
+  m_Mana: {fileID: 2414295815564361696}
 --- !u!96 &2414295815059738656
 TrailRenderer:
   serializedVersion: 2
@@ -256,6 +257,7 @@ MonoBehaviour:
   m_maxHeight: {fileID: 2414295816714999914}
   m_minHeight: {fileID: 2414295816510578712}
   m_interval: 0.05
+  m_isTate: 0
 --- !u!1 &2414295816510578712
 GameObject:
   m_ObjectHideFlags: 0
