@@ -44,6 +44,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_enemies.Clear();
+
         m_jiga.m_canUse = false;
 
         m_RedShutyuSen.SetActive(false);
@@ -54,6 +56,7 @@ public class Enemy : MonoBehaviour
         EnemyStuts.m_enemiesStuts = new List<EnemyStuts>();
 
         //テスト用エンカウント
+        m_encountEnemyID.Clear();
         m_encountEnemyID.Add(0);
 
         EnemyGenerate();
