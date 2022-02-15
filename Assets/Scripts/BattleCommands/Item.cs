@@ -14,7 +14,9 @@ public class Item : MonoBehaviour
 
     public bool m_dashiireFlg = false;
 
-    [SerializeField] Shinzui m_shinzui = default;    
+    [SerializeField] Shinzui m_shinzui = default;
+
+    [SerializeField] SEPlay[] m_SEs = new SEPlay[2];
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class Item : MonoBehaviour
     {
         if (m_dashiireFlg == true)
         {
+            m_SEs[1].MyPlayOneShot();
             m_setumei.SetActive(false);
             m_ainm.SetBool("IsItem", false);
             foreach (var i in m_otherCommands)
@@ -36,6 +39,7 @@ public class Item : MonoBehaviour
         }
         else
         {
+            m_SEs[0].MyPlayOneShot();
             m_circle.SetActive(true);
             m_dashiireFlg = true;
             m_ainm.SetBool("IsItem", true);

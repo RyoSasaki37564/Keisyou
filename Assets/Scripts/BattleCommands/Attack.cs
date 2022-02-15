@@ -37,6 +37,12 @@ public class Attack : MonoBehaviour
 
         if (BattleManager._theTurn == BattleManager.Turn.InputTurn || Enemy.m_isRyugekiChance == true)
         {
+            if(Enemy.m_isRyugekiChance == true)
+            {
+                Time.timeScale = 1;
+                Enemy.m_isRyugekiChance = false;
+            }
+
             m_SE.MyPlayOneShot();
 
             m_slashAnime.SetActive(true);

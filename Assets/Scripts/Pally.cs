@@ -9,6 +9,8 @@ public class Pally : MonoBehaviour
 
     [SerializeField] GameObject m_effects = default;
 
+    [SerializeField] SEPlay m_SE = default;
+
     private void Awake()
     {
         this.gameObject.SetActive(false);
@@ -24,6 +26,7 @@ public class Pally : MonoBehaviour
                 GameObject hitObj = hit.collider.gameObject;
                 if (hitObj.tag == "Danger")
                 {
+                    m_SE.MyPlayOneShot();
                     m_effects.SetActive(true);
                     m_ene.PallyTest();
                 }
@@ -38,6 +41,7 @@ public class Pally : MonoBehaviour
                 GameObject hitObj = hit.collider.gameObject;
                 if (hitObj.tag == "Danger")
                 {
+                    m_SE.MyPlayOneShot();
                     m_effects.SetActive(true);
                     m_ene.PallyTest();
                 }
