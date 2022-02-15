@@ -52,9 +52,9 @@ public class Player : BattleChara
     [SerializeField] SpriteRenderer m_Chishibuki = default;
 
     /// <summary>
-    /// 0 = ダメージ, 1 = HP回復, 2 = 集中回復, 
+    /// 0 = ダメージ, 1 = HP回復, 2 = 集中回復, 3 = 死
     /// </summary>
-    [SerializeField] SEPlay[] m_SEs = new SEPlay[3]; 
+    [SerializeField] SEPlay[] m_SEs = new SEPlay[4]; 
 
     /// <summary>　レベルテーブルマスターデータの内容　</summary>
     public struct PlayerStatus
@@ -129,10 +129,13 @@ public class Player : BattleChara
     /// <summary> アイテムマスターの本体 </summary>
     public ItemStuts[] m_itemMasterTable;
 
+    [SerializeField] GameObject m_fadeOut = default;
 
     private void Awake()
     {
-        if(Instance)
+        m_fadeOut.SetActive(false);
+
+        if (Instance)
         {
             Destroy(this.gameObject);
         }
@@ -226,6 +229,13 @@ public class Player : BattleChara
                                         m_Chishibuki.color.g,
                                         m_Chishibuki.color.b, 
                                         m_Chishibuki.color.a + x/2);
+
+        if(DeadOrAlive() == true)
+        {
+            m_SEs[3].MyPlayOneShot();
+            m_fadeOut.SetActive(true);
+        }
+
         return base.Damage(damage, isUnDeffencive);
     }
 
@@ -252,7 +262,7 @@ public class Player : BattleChara
     void Update()
     {
         //ステータスUI描画
-        if (m_currentHP < 0)
+        if (m_currentHP <= 0)
         {
             m_hpSlider.value = m_currentHP;
             m_hpText.text = "<color=#8b0000>死</color>";
@@ -361,4 +371,5 @@ public class Player : BattleChara
             m_currentConcentlate = m_maxConcentlate;
         }
     }
+
 }

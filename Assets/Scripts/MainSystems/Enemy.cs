@@ -126,6 +126,7 @@ public class Enemy : MonoBehaviour
                 break;
 
             case BattleManager.Turn.BattleEnd:
+                m_anim.SetBool("IsDead", true);
                 break;
         }
     }

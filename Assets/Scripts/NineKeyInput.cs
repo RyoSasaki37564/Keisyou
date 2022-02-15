@@ -376,6 +376,9 @@ public class NineKeyInput : MonoBehaviour
         //Enemy.m_enemies[m_tergetIndexer.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[m_tergetIndexer.m_tergetNum].m_currentHP;
         DOTween.To(() => Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value, x => Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value = x,
             Enemy.m_enemies[Target.m_tergetNum].m_enemyHPSL.value - _iryoku, _interval);
+
+
+        Debug.Log(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP);
     }
 
 

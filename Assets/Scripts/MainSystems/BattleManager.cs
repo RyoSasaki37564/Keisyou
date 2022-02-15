@@ -7,6 +7,10 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField] Text m_diaLogText = default; //戦闘中のダイアログ
 
+    [SerializeField] List<SpriteRenderer> m_ryuunoko = new List<SpriteRenderer>();
+    float m_offPoint = 0.01f;
+    [SerializeField] float m_push = 0.01f;
+
     /// <summary>
     /// 戦闘シーンにおけるシーン定義。
     /// </summary>
@@ -109,8 +113,22 @@ public class BattleManager : MonoBehaviour
                 else if(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
                 {
                     m_diaLogText.text = " <color=#8b0000>狩りは完遂した</color>　▽";
+                    if (m_offPoint <= 254)
+                    {
+                        AlfaDown();
+                    }
                 }
                 break;
         }
+    }
+
+    void AlfaDown()
+    {
+        foreach (var i in m_ryuunoko)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - m_offPoint);
+        }
+        m_offPoint += m_push;
+
     }
 }
