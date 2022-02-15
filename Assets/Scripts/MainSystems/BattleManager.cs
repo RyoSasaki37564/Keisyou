@@ -29,6 +29,8 @@ public class BattleManager : MonoBehaviour
 
     bool m_diaLogStopper = false;
 
+    [SerializeField] GameObject m_UICanvas = default;
+
     private void Awake()
     {
         _theTurn = Turn.AwakeTurn;
@@ -46,12 +48,15 @@ public class BattleManager : MonoBehaviour
                 m_diaLogText.text = "どうする？　▽";
             }
         };
+
+
+        m_UICanvas.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
         switch (_theTurn)
         {
             case Turn.AwakeTurn:

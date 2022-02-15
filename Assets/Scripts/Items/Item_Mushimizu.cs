@@ -6,6 +6,8 @@ public class Item_Mushimizu : ItemBase
 {
     [SerializeField] GameObject m_poisonObj = default;
 
+    [SerializeField] SEPlay m_SE = default;
+
     public override void Start()
     {
         base.Start();
@@ -18,6 +20,7 @@ public class Item_Mushimizu : ItemBase
         {
             base.UseItem();
             var x = Instantiate(m_poisonObj);
+            m_SE.MyPlayOneShot();
             x.SetActive(true);
         }
     }
