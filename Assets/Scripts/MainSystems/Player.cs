@@ -49,6 +49,13 @@ public class Player : BattleChara
     /// <summary> プレイヤーレベルテーブルの最大行数＆レベル上限 開発段階では99 </summary>
     int m_playerLevelTableLineMax;
 
+    [SerializeField] SpriteRenderer m_Chishibuki = default;
+
+    /// <summary>
+    /// 0 = ダメージ, 1 = HP回復, 2 = 集中回復, 
+    /// </summary>
+    [SerializeField] SEPlay[] m_SEs = new SEPlay[3]; 
+
     /// <summary>　レベルテーブルマスターデータの内容　</summary>
     public struct PlayerStatus
     {
@@ -209,6 +216,32 @@ public class Player : BattleChara
         }
     }
 
+    public override float Damage(float damage, bool isUnDeffencive)
+    {
+        m_SEs[0].MyPlayOneShot();
+
+        float x = (damage - (damage * m_deffence)) / this.m_maxHP;
+
+        m_Chishibuki.color = new Color(m_Chishibuki.color.r,
+                                        m_Chishibuki.color.g,
+                                        m_Chishibuki.color.b, 
+                                        m_Chishibuki.color.a + x/2);
+        return base.Damage(damage, isUnDeffencive);
+    }
+
+    public override void Healing(float medic)
+    {
+        m_SEs[1].MyPlayOneShot();
+
+        float x = medic / this.m_maxHP;
+
+        m_Chishibuki.color = new Color(m_Chishibuki.color.r,
+                                        m_Chishibuki.color.g,
+                                        m_Chishibuki.color.b,
+                                        m_Chishibuki.color.a - x);
+        base.Healing(medic);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -321,6 +354,7 @@ public class Player : BattleChara
     /// <param name="medic"></param>
     public void Relax(int rel)
     {
+        m_SEs[2].MyPlayOneShot();
         m_currentConcentlate += rel;
         if (m_currentConcentlate > m_maxConcentlate)
         {

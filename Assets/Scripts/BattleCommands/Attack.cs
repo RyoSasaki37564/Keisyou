@@ -10,9 +10,13 @@ public class Attack : MonoBehaviour
 
     [SerializeField] GameObject m_syucyusen = default; // 集中線パーティクル。背景の接近アニメーションの終了時に自動で不可視化　＞＞BackWallBacker.cs
 
+    [SerializeField] GameObject m_slashAnime = default;
+
     [SerializeField] Text m_diaLog = default;
 
     [SerializeField] SkillOfSyokeisya m_syokeisya = default;
+
+    [SerializeField] SEPlay m_SE = default;
 
     public float m_changeValueInterval = 1f; //値の変化速度
 
@@ -33,6 +37,10 @@ public class Attack : MonoBehaviour
 
         if (BattleManager._theTurn == BattleManager.Turn.InputTurn || Enemy.m_isRyugekiChance == true)
         {
+            m_SE.MyPlayOneShot();
+
+            m_slashAnime.SetActive(true);
+
             BattleManager._theTurn = BattleManager.Turn.PlayerTurn;
 
             m_approchTobackWall.SetInteger("SideStep", 0);
