@@ -39,6 +39,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] Ryugeki m_ryugekiCS = default;
 
+    bool m_refactorer = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,12 +105,26 @@ public class Enemy : MonoBehaviour
                 break;
 
             case BattleManager.Turn.InputTurn:
+                if(m_refactorer == false)
+                {
+                    //悪魔に魂売った
+                    m_enemies[Target.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP;
+                    m_refactorer = true;
+                    Debug.LogError(m_enemies[Target.m_tergetNum].m_enemyHPSL.value + "反省しろよ");
+                }
                 break;
 
             case BattleManager.Turn.PlayerTurn:
                 if(Ryugeki.m_isHitRyugeki == true)
                 {
                     m_anim.SetBool("IsDamaged", true);
+                }
+                if (m_refactorer == true)
+                {
+                    //悪魔に魂売った
+                    m_enemies[Target.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP;
+                    m_refactorer = false;
+                    Debug.LogError(m_enemies[Target.m_tergetNum].m_enemyHPSL.value + "反省しろよ");
                 }
                 break;
             case BattleManager.Turn.EnemyTurn:

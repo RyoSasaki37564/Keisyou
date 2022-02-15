@@ -202,6 +202,24 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 4779105035545927855}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &49867776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2416072952215778691, guid: 352b077827d65264a96db9909b20f8b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2091344476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &49867781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49867776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d68ae3c31f99964b8a65171c9f78d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &64036912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5500,6 +5518,7 @@ MonoBehaviour:
   - {fileID: 809447831}
   - {fileID: 575274528}
   m_push: 0.001
+  m_MAKUHIKI: {fileID: 2114827090}
   m_UICanvas: {fileID: 1749486982}
 --- !u!212 &809447831 stripped
 SpriteRenderer:

@@ -142,7 +142,7 @@ public class Player : BattleChara
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
 
             //レベルマスターデータ格納
             sr = new StringReader(m_playerLevelTableText.text);

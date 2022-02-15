@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
 
             //マスター格納処理
             sr = new StringReader(m_master.text);
