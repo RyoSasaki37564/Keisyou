@@ -189,7 +189,7 @@ public class Enemy : MonoBehaviour
                         if (m_PALLY_TEST_BOTTUN.activeSelf == true)
                         {
                             m_diaLog.text = "";
-                            Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
+                            Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack * 1.2f, false);
                             m_RedShutyuSen.SetActive(false);
 
                             IngaOho();

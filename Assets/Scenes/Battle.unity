@@ -12821,7 +12821,7 @@ MonoBehaviour:
   m_coolTime: 11
   m_canUse: 1
   m_shirogane: "\u771F\u9AC4\u89E3\u653E\u30FB\u767D\u9280"
-  m_platinumCannan: {fileID: 1029329764}
+  m_platinumCannan: {fileID: 64036914}
   m_turnCount: 0
   m_flg: 0
 --- !u!1 &1923529951
@@ -15519,7 +15519,7 @@ PrefabInstance:
     - target: {fileID: 3141967484390417108, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3141967484390417109, guid: 697b1e752e5cdbc4ba70f6097e3f495a,
         type: 3}

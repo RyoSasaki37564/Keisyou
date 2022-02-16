@@ -131,8 +131,11 @@ public class Player : BattleChara
 
     [SerializeField] GameObject m_fadeOut = default;
 
+    bool m_goTitle = false;
+
     private void Awake()
     {
+        m_goTitle = false;
         m_fadeOut.SetActive(false);
 
         if (Instance)
@@ -230,12 +233,6 @@ public class Player : BattleChara
                                         m_Chishibuki.color.b, 
                                         m_Chishibuki.color.a + x/2);
 
-        if(DeadOrAlive() == true)
-        {
-            m_SEs[3].MyPlayOneShot();
-            m_fadeOut.SetActive(true);
-        }
-
         return base.Damage(damage, isUnDeffencive);
     }
 
@@ -266,6 +263,14 @@ public class Player : BattleChara
         {
             m_hpSlider.value = m_currentHP;
             m_hpText.text = "<color=#8b0000>死</color>";
+            //Debug.LogWarning("死に場所は " + BattleManager._theTurn);
+            if (m_goTitle == false)
+            {
+                m_SEs[3].MyPlayOneShot();
+                m_fadeOut.SetActive(true);
+                m_goTitle = true;
+            }
+
 
         }
         else if (m_currentHP <= m_maxHP)

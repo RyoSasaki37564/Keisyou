@@ -29,7 +29,9 @@ public class NineKeyInput : MonoBehaviour
     [SerializeField] Animator m_enemyAnim = default;
 
     [SerializeField] SEPlay m_zangekiSE = default;
-    [SerializeField] SEPlay m_shitotsuSE = default; 
+    [SerializeField] SEPlay m_shitotsuSE = default;
+
+    public static float m_RG0Rate = 1.0f;
 
     public struct CommandCode
     {
@@ -71,6 +73,7 @@ public class NineKeyInput : MonoBehaviour
             m_srasts[i] = x;
             m_srasts[i].SetActive(false);
         }
+        this.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -188,11 +191,13 @@ public class NineKeyInput : MonoBehaviour
             {
                 if(commands[0].Number == 2 && commands[0].Contact == 5)
                 {
+                    m_RG0Rate = 1.3f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 点睛 ～ ";
                 }
                 else
                 {
+                    m_RG0Rate = 1.2f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
@@ -204,11 +209,13 @@ public class NineKeyInput : MonoBehaviour
                     commands[1].Number == 9 && commands[1].Contact == 9)
                 {
                     //使用武器が鳥属性の時のみ可能
+                    m_RG0Rate = 1.3f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 燕返し ～ ";
                 }
                 else
                 {
+                    m_RG0Rate = 1.2f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
@@ -226,6 +233,7 @@ public class NineKeyInput : MonoBehaviour
                         commands[1].Number == 6 && commands[1].Contact == 7 &&
                         commands[2].Number == 5 && commands[2].Contact == 5)
                 {
+                    m_RG0Rate = 1.25f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 徹甲突 ～ ";
                 }
@@ -256,11 +264,13 @@ public class NineKeyInput : MonoBehaviour
                    commands[5].Number == 8)
                 {
                     //使用属性が風の時のみ
+                    m_RG0Rate = 1.4f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 龍巻 ～ ";
                 }
                 else
                 {
+                    m_RG0Rate = 1.2f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
@@ -280,6 +290,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_RG0Rate = 1.25f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
@@ -303,6 +314,7 @@ public class NineKeyInput : MonoBehaviour
                 }
                 else
                 {
+                    m_RG0Rate = 1.3f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
@@ -319,6 +331,7 @@ public class NineKeyInput : MonoBehaviour
                     commands[7].Number == 4 &&
                     commands[8].Number == 5 && commands[8].Contact == 5)
                 {
+                    m_RG0Rate = 1.35f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ とぐろ回し ～ ";
                 }
@@ -346,18 +359,21 @@ public class NineKeyInput : MonoBehaviour
                     commands[8].Contact == 5)
                 {
                     //全部突きにすると出る
+                    m_RG0Rate = 1.5f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 蜂ノ巣 ～ ";
 
                 }
                 else
                 {
+                    m_RG0Rate = 1.4f;
                     m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
             else
             {
+                m_RG0Rate = 1f;
                 m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                 m_dialog.text = "ガチビンタ";
             }
@@ -398,7 +414,7 @@ public class NineKeyInput : MonoBehaviour
     public void RGHakou()
     {
         //四回呼び出してね
-        float rand = Random.Range(0.9f, 1.5f);
+        float rand = Random.Range(0.8f, 1.2f);
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false, m_changeValueInterval / 10);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
@@ -410,16 +426,16 @@ public class NineKeyInput : MonoBehaviour
         switch (m_dabiCount)
         {
             case 0:
-                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
+                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval);
                 m_enemyAnim.SetBool("IsDamaged", true);
                 break;
             case 1:
                 rand = 0.9f;
-                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval / 7);
+                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval);
                 break;
             case 2:
                 rand = Random.Range(0.9f, 1.4f);
-                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true, m_changeValueInterval * 1.5f);
+                RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true, m_changeValueInterval);
                 m_dabiCount = 0;
                 break;
         }
@@ -442,8 +458,7 @@ public class NineKeyInput : MonoBehaviour
 
     public void RG_0()
     {
-        float rand = Random.Range(0.9f, 1.2f);
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki / 3.5f * rand, false, m_changeValueInterval);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki / 3.5f * m_RG0Rate, false, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 

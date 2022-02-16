@@ -24,10 +24,10 @@ public class BattleChara : MonoBehaviour
     /// ダメージ処理。防御無視ならばboolをtrueに。
     /// </summary>
     /// <param name="damage"></param>
-    /// <param name="isUnDeffencive"></param>
-    public virtual float Damage(float damage, bool isUnDeffencive)
+    /// <param name="isUnDeffencable"></param>
+    public virtual float Damage(float damage, bool isUnDeffencable)
     {
-        if(isUnDeffencive == false)
+        if(isUnDeffencable == false)
         {
             m_currentHP -= damage - (damage * m_deffence);
             m_isDead = DeadOrAlive();
