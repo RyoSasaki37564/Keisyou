@@ -88,11 +88,13 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.EnemyTurn:
+                /*
                 if(m_diaLogStopper == false)
                 {
                     m_diaLogText.text = "敵の行動　▽";
                     m_diaLogStopper = true;
                 }
+                */
                 if (Player.Instance.DeadOrAlive() == true ||
                     EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
                 {

@@ -32,7 +32,7 @@ public class Doge : MonoBehaviour
             Player.Instance.m_currentConcentlate += (int)(Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         BattleManager._theTurn = BattleManager.Turn.TurnEnd;
     }

@@ -55,7 +55,7 @@ public class QTEManager : MonoBehaviour
 
                 if (EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP > EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_maxHP / 2)
                 {
-                    rand = Random.Range(0, m_QTEEffects.Length / 2);
+                    rand = Random.Range(0, (int)(m_QTEEffects.Length * 0.7f));
                 }
                 else
                 {

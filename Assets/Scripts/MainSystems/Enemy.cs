@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
                     //悪魔に魂売った
                     m_enemies[Target.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP;
                     m_refactorer = true;
-                    Debug.LogError(m_enemies[Target.m_tergetNum].m_enemyHPSL.value + "反省しろよ");
+                    //Debug.LogError(m_enemies[Target.m_tergetNum].m_enemyHPSL.value + "反省しろよ");
                 }
                 break;
 
@@ -127,7 +127,7 @@ public class Enemy : MonoBehaviour
                     //悪魔に魂売った
                     m_enemies[Target.m_tergetNum].m_enemyHPSL.value = EnemyStuts.m_enemiesStuts[Target.m_tergetNum].m_currentHP;
                     m_refactorer = false;
-                    Debug.LogError(m_enemies[Target.m_tergetNum].m_enemyHPSL.value + "反省しろよ");
+                    //Debug.LogError(m_enemies[Target.m_tergetNum].m_enemyHPSL.value + "反省しろよ");
                 }
                 break;
             case BattleManager.Turn.EnemyTurn:
@@ -158,11 +158,11 @@ public class Enemy : MonoBehaviour
             if(m_jiga.m_zettaiKaihi == true)
             {
                 m_diaLog.text =  "自我による回避 ▽";
+                m_jiga.m_zettaiKaihi = false;
 
                 yield return new WaitForSeconds(1.5f);
                 m_diaLog.text = "";
 
-                m_jiga.m_zettaiKaihi = false;
             }
             else if (dogeJadge < Player.Instance.m_currentDogePower)
             {
@@ -201,6 +201,15 @@ public class Enemy : MonoBehaviour
                             m_diaLog.text = "";
                             m_RedShutyuSen.SetActive(false);
                         }
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(1.5f);
+                        m_diaLog.text = "";
+                        Player.Instance.Damage(EnemyStuts.m_enemiesStuts[i].m_attack, false);
+                        m_RedShutyuSen.SetActive(false);
+
+                        IngaOho();
                     }
                 }
                 else

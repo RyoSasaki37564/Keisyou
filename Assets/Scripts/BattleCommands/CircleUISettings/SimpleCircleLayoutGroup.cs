@@ -11,11 +11,13 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 
 	[SerializeField] float m_speedRate = 1.5f;
 
+#if UNITY_EDITOR
 	protected override void OnValidate()
 	{
 		base.OnValidate();
 		Arrange();
 	}
+#endif
 
 	// 要素数が変わると自動的に呼ばれるコールバック
 	#region ILayoutController implementation

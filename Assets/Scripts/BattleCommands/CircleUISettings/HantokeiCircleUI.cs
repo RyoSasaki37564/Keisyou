@@ -13,15 +13,17 @@ Vector2 m_mouseEntPos; //クリック地点
 
 [SerializeField] float m_speedRate = 1.5f;
 
-protected override void OnValidate()
+#if UNITY_EDITOR
+	protected override void OnValidate()
 {
 	base.OnValidate();
 	Arrange();
 }
+#endif
 
-// 要素数が変わると自動的に呼ばれるコールバック
-#region ILayoutController implementation
-public void SetLayoutHorizontal() { }
+	// 要素数が変わると自動的に呼ばれるコールバック
+	#region ILayoutController implementation
+	public void SetLayoutHorizontal() { }
 public void SetLayoutVertical()
 {
 	Arrange();
