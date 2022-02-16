@@ -178,9 +178,9 @@ public class Enemy : MonoBehaviour
 
                 if(Player.Instance.m_currentConcentlate > 10) //集中力が10以上の時
                 {
-                    //三割でパリィチャンス発生
+                    //7割でパリィチャンス発生
                     int rand = Random.Range(0, 10);// Random.Range(0, 10);
-                    if (rand < 10)//テスト中につき確定パリィチャンス
+                    if (rand < 7)//テスト中につき確定パリィチャンス
                     {
                         //  テストが終わったらこのボタンに関連する行は消すこと
                         m_PALLY_TEST_BOTTUN.SetActive(true);

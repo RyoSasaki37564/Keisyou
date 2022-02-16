@@ -401,7 +401,7 @@ public class NineKeyInput : MonoBehaviour
     //各種龍撃に対応するダメージ関数は 演出用TimeLine のシングルレシーバーから呼び出してる
     public void RGAgito()
     {
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, false, m_changeValueInterval);
+        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * 1.1f, false, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
@@ -434,7 +434,7 @@ public class NineKeyInput : MonoBehaviour
                 RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval);
                 break;
             case 2:
-                rand = Random.Range(0.9f, 1.4f);
+                rand = Random.Range(1f, 1.4f);
                 RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand, true, m_changeValueInterval);
                 m_dabiCount = 0;
                 break;
@@ -444,14 +444,14 @@ public class NineKeyInput : MonoBehaviour
 
     public void RG_GekkaBijin()
     {
-        float rand = Random.Range(1f, 1.2f);
+        float rand = Random.Range(1.3f, 1.6f);
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5.5f, false, m_changeValueInterval * 1.5f);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     public void RG_Kuzuryu()
     {
-        float rand = Random.Range(1f, 1.2f);
+        float rand = Random.Range(1f, 1.5f);
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 1.5f, true, m_changeValueInterval);
         m_enemyAnim.SetBool("IsDamaged", true);
     }
