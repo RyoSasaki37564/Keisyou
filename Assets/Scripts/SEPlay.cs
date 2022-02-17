@@ -11,7 +11,8 @@ public class SEPlay : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        gameObject.SetActive(false);
+        m_seObj = this.gameObject;
+        m_seObj.SetActive(false);
     }
 
     public void MyPlayOneShot()

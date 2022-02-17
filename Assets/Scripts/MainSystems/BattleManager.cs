@@ -11,8 +11,6 @@ public class BattleManager : MonoBehaviour
     float m_offPoint = 0.01f;
     [SerializeField] float m_push = 0.01f;
 
-    [SerializeField] GameObject m_MAKUHIKI = default;
-
     /// <summary>
     /// 戦闘シーンにおけるシーン定義。
     /// </summary>
@@ -33,11 +31,7 @@ public class BattleManager : MonoBehaviour
     }
     public static Turn _theTurn = Turn.AwakeTurn;
 
-    bool m_diaLogStopper = false;
-
     [SerializeField] GameObject m_UICanvas = default;
-
-    bool m_goToTitle = false;
 
     private void Awake()
     {
@@ -103,7 +97,6 @@ public class BattleManager : MonoBehaviour
                 break;
 
             case Turn.TurnEnd:
-                m_diaLogStopper = false;
                 if(Player.Instance.DeadOrAlive() == true ||
                     EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == true)
                 {
@@ -127,11 +120,6 @@ public class BattleManager : MonoBehaviour
                     if (m_offPoint <= 254)
                     {
                         AlfaDown();
-                    }
-                    if(m_goToTitle == false)
-                    {
-                        m_MAKUHIKI.SetActive(true);
-                        m_goToTitle = true;
                     }
                 }
                 break;

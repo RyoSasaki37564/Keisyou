@@ -9,16 +9,18 @@ public class GoToBattle : MonoBehaviour
 
     [SerializeField] GameObject m_fadeOut = default;
 
+    /*
     private void Start()
     {
         m_fadeOut.SetActive(false);
     }
+    */
 
     public void BattleStart()
     {
+        StartCoroutine(BattlePhase());
         m_fadeOut.SetActive(true);
         m_SEs.MyPlayOneShot();
-        StartCoroutine(BattlePhase());
     }
 
     IEnumerator BattlePhase()
