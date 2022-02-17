@@ -4,13 +4,15 @@ using UnityEngine.UI;
 
 public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 {
-	public float m_radius = 100;
+	public float m_radius = 100; //デカさ
 	public float m_offsetAngle; //そのボタンのいる角度
 
 	Vector2 m_mouseEntPos; //クリック地点
 
 	[SerializeField] float m_speedRate = 1.5f;
 
+
+	//ここんとところ、Editorでしか機能しないしビルド時コンパイルエラー吐くぞ。プリプロっとけば安心☆
 #if UNITY_EDITOR
 	protected override void OnValidate()
 	{
@@ -35,6 +37,7 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 		for (int elementId = 0; elementId < transform.childCount; elementId++)
 		{
 			var child = transform.GetChild(elementId) as RectTransform;
+			//要素数とインデックス、三角関数で対応する角度に子を設置
 			float currentAngle = splitAngle * elementId + m_offsetAngle;
 			child.anchoredPosition = new Vector2(
 				Mathf.Cos(currentAngle * Mathf.Deg2Rad),
@@ -51,6 +54,7 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 
 		TouchManager.Moved += (info) =>
 		{
+			//入力位置から移動位置の差で加速
 			m_offsetAngle -= (m_mouseEntPos.y - Input.mousePosition.y) / (m_radius / m_speedRate);
 			if (m_offsetAngle > 360 || m_offsetAngle < -360)
 			{
