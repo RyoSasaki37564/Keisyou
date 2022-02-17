@@ -304,12 +304,14 @@ public class NineKeyInput : MonoBehaviour
                     commands[4].Number != 5 && commands[4].Contact != 5 &&
                     commands[5].Number != 5 && commands[5].Contact != 5 &&
                     commands[6].Number != 5 && commands[6].Contact != 5 &&
-                    commands[7].Number != 5 && commands[7].Contact != 5 &&
-                    Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 0 || Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 3)
+                    commands[7].Number != 5 && commands[7].Contact != 5)
                 {
-                    //すべての入力が斬撃であり、中央には不接触であり、使用している屠龍具が花か月属性である
-                    m_ryugekiEffectsList[3].SetActive(true);
-                    m_dialog.text = " ～ 月下美人 ～ ";
+                    if (Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 0 || Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 3)
+                    {
+                        //すべての入力が斬撃であり、中央には不接触であり、使用している屠龍具が花か月属性である
+                        m_ryugekiEffectsList[3].SetActive(true);
+                        m_dialog.text = " ～ 月下美人 ～ ";
+                    }
 
                 }
                 else

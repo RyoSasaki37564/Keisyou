@@ -5407,6 +5407,7 @@ MonoBehaviour:
   - {fileID: 809447831}
   - {fileID: 575274528}
   m_push: 0.001
+  m_MAKUHIKI: {fileID: 249523028}
   m_UICanvas: {fileID: 1749486982}
 --- !u!212 &809447831 stripped
 SpriteRenderer:
@@ -17341,7 +17342,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SE
       value: 
-      objectReference: {fileID: 1076494238}
+      objectReference: {fileID: 1076494237}
     - target: {fileID: 8162009039019324819, guid: 848624ac35342ac4b814f1f23c838451,
         type: 3}
       propertyPath: m_UICanvas

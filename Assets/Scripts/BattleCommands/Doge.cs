@@ -26,11 +26,13 @@ public class Doge : MonoBehaviour
 
         Player.Instance.m_currentDogePower += Player.Instance.m_dogePowerMax / 10;
 
+        /*
         //残り回避率に応じて集中力を増加
         if (Player.Instance.m_currentDogePower > 0)
         {
             Player.Instance.m_currentConcentlate += (int)(Player.Instance.m_currentDogePower / Player.Instance.m_dogePowerMax);
-        }
+        }//ない方がゲームバランスいいかも
+        */
 
         yield return new WaitForSeconds(0.5f);
 

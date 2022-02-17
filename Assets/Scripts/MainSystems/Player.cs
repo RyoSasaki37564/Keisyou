@@ -263,7 +263,6 @@ public class Player : BattleChara
         {
             m_hpSlider.value = m_currentHP;
             m_hpText.text = "<color=#8b0000>死</color>";
-            //Debug.LogWarning("死に場所は " + BattleManager._theTurn);
             if (m_goTitle == false)
             {
                 m_SEs[3].MyPlayOneShot();
