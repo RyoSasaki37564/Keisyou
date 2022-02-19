@@ -27,6 +27,11 @@ public class Ryugeki : MonoBehaviour
 
     float m_time = 0;
 
+    private void Start()
+    {
+        m_isHitRyugeki = false;
+    }
+
     public void RyugekiNoKamae()
     {
 
