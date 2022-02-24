@@ -14,7 +14,7 @@ public class NineKeyInputNomal : MonoBehaviour
 
     bool m_zangekiFlg = false;
 
-    Vector3 m_lookingPos;
+    float m_zangekiDirection; //斬撃角度
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +60,8 @@ public class NineKeyInputNomal : MonoBehaviour
                 var heading = Input.mousePosition - m_mousePosDelta;
                 var distance = heading.magnitude;
                 var direction = heading / distance;
-                Debug.Log(direction);
+                m_zangekiDirection = Mathf.Atan2(direction.y, direction.x) * (180 / Mathf.PI);
+                Debug.Log(Mathf.Repeat(m_zangekiDirection, 360));
             }
             m_zangekiFlg = false;
             m_slustFlg = false;
