@@ -9,6 +9,7 @@ public class NineKeyInputNomal : MonoBehaviour
     Vector3 m_mousePosDelta;
 
     bool m_isIn = false;
+    bool m_isInStopper = false;
 
     bool m_slustFlg = false;
 
@@ -27,7 +28,7 @@ public class NineKeyInputNomal : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit.collider == m_thisCol)
             {
-                m_thisCol.enabled = false;
+                //m_thisCol.enabled = false;
                 m_isIn = true;
                 m_slustFlg = true;
             }
@@ -39,14 +40,17 @@ public class NineKeyInputNomal : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit.collider == m_thisCol)
             {
-                m_thisCol.enabled = false;
-                m_isIn = true;
+                //m_thisCol.enabled = false;
+                if(m_isInStopper == false)
+                {
+                    m_isIn = true;
+                    m_isInStopper = true;
+                }
             }
         };
 
         TouchManager.Ended += (info) =>
         {
-            m_thisCol.enabled = true;
             m_isIn = false;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -54,6 +58,9 @@ public class NineKeyInputNomal : MonoBehaviour
             if (hit.collider == m_thisCol && m_slustFlg == true)
             {
                 Debug.Log(5);
+                m_thisCol.enabled = false;
+
+                m_thisCol.enabled = true;
             }
             else if (m_zangekiFlg == true)
             {
@@ -61,10 +68,17 @@ public class NineKeyInputNomal : MonoBehaviour
                 var distance = heading.magnitude;
                 var direction = heading / distance;
                 m_zangekiDirection = Mathf.Atan2(direction.y, direction.x) * (180 / Mathf.PI);
-                Debug.Log(Mathf.Repeat(m_zangekiDirection, 360));
+                Debug.Log(Mathf.Repeat(m_zangekiDirection, 360) + "うち");
+
+                m_thisCol.enabled = false;
             }
-            m_zangekiFlg = false;
             m_slustFlg = false;
+            m_zangekiFlg = false;
+
+
+            m_isInStopper = false;
+
+            m_thisCol.enabled = true;
         };
     }
 
@@ -78,16 +92,30 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && m_isIn == true)
         {
+            Debug.LogWarning("入ったー");
             m_isIn = false;
             m_mousePosDelta = Input.mousePosition;
             m_zangekiFlg = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnMouseExit()
     {
-        m_slustFlg = false;
-        m_isIn = false;
-    }
+        if (m_zangekiFlg == true)
+        {
+            var heading = Input.mousePosition - m_mousePosDelta;
+            var distance = heading.magnitude;
+            var direction = heading / distance;
+            m_zangekiDirection = Mathf.Atan2(direction.y, direction.x) * (180 / Mathf.PI);
+            Debug.Log(Mathf.Repeat(m_zangekiDirection, 360) + "ぬけ");
 
+            m_zangekiFlg = false;
+
+            m_isInStopper = false;
+
+            m_thisCol.enabled = false;
+
+            m_thisCol.enabled = true;
+        }
+    }
 }
