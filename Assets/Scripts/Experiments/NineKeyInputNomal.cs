@@ -12,6 +12,10 @@ public class NineKeyInputNomal : MonoBehaviour
 
     bool m_slustFlg = false;
 
+    bool m_zangekiFlg = false;
+
+    Vector3 m_lookingPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,14 @@ public class NineKeyInputNomal : MonoBehaviour
             {
                 Debug.Log(5);
             }
+            else if (m_zangekiFlg == true)
+            {
+                var heading = Input.mousePosition - m_mousePosDelta;
+                var distance = heading.magnitude;
+                var direction = heading / distance;
+                Debug.Log(direction);
+            }
+            m_zangekiFlg = false;
             m_slustFlg = false;
         };
     }
@@ -63,16 +75,18 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(Input.GetMouseButton(0) && m_isIn == true)
+        if (Input.GetMouseButton(0) && m_isIn == true)
         {
             m_isIn = false;
             m_mousePosDelta = Input.mousePosition;
+            m_zangekiFlg = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         m_slustFlg = false;
+        m_isIn = false;
     }
 
 }
