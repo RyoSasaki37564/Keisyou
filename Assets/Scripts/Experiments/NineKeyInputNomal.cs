@@ -58,9 +58,6 @@ public class NineKeyInputNomal : MonoBehaviour
             if (hit.collider == m_thisCol && m_slustFlg == true)
             {
                 Debug.Log(5);
-                m_thisCol.enabled = false;
-
-                m_thisCol.enabled = true;
             }
             else if (m_zangekiFlg == true)
             {
@@ -69,23 +66,17 @@ public class NineKeyInputNomal : MonoBehaviour
                 var direction = heading / distance;
                 m_zangekiDirection = Mathf.Atan2(direction.y, direction.x) * (180 / Mathf.PI);
                 Debug.Log(Mathf.Repeat(m_zangekiDirection, 360) + "うち");
-
-                m_thisCol.enabled = false;
             }
             m_slustFlg = false;
-            m_zangekiFlg = false;
 
+            m_zangekiFlg = false;
 
             m_isInStopper = false;
 
+            m_thisCol.enabled = false;
+
             m_thisCol.enabled = true;
         };
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void LateUpdate()
@@ -118,4 +109,14 @@ public class NineKeyInputNomal : MonoBehaviour
             m_thisCol.enabled = true;
         }
     }
+
+    /*
+    int ZangekiDirection()
+    {
+        var heading = Input.mousePosition - m_mousePosDelta;
+        var distance = heading.magnitude;
+        var direction = heading / distance;
+        m_zangekiDirection = Mathf.Repeat(Mathf.Atan2(direction.y, direction.x) * (180 / Mathf.PI), 360);
+        if()
+    }*/
 }
