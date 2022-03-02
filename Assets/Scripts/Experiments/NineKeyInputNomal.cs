@@ -73,7 +73,7 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if(hit.collider != null && hit.transform.tag == "NineKey") //(hit.collider == m_thisCol)
+            if(hit.collider != null && hit.transform.tag == "NineKey")
             {
                 m_contactNum = hit.collider.gameObject;
                 m_isIn = true;
@@ -95,6 +95,17 @@ public class NineKeyInputNomal : MonoBehaviour
                     m_isInStopper = true;
                 }
             }
+            else if(hit.collider == null && m_zangekiFlg == true)
+            {
+                //コリジョン抜け判定
+
+                Slash(ZangekiDirection());
+
+                m_zangekiFlg = false;
+
+                m_isInStopper = false;
+
+            }
         };
 
         TouchManager.Ended += (info) =>
@@ -103,13 +114,16 @@ public class NineKeyInputNomal : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider != null && m_slustFlg == true)//(hit.collider == m_thisCol && m_slustFlg == true)
+            if (hit.collider != null && m_slustFlg == true)
             {
                 Debug.Log(m_contactNum.name + " " + 5);
+                m_srasts[m_srastIndexer].SetActive(true);
+                m_srasts[m_srastIndexer].transform.position = m_contactNum.transform.position;
+                m_srastIndexer++;
             }
             else if (m_zangekiFlg == true)
             {
-                Debug.Log(m_contactNum.name + " " + ZangekiDirection() + "うち");
+                Slash(ZangekiDirection());
             }
             m_slustFlg = false;
 
@@ -127,19 +141,6 @@ public class NineKeyInputNomal : MonoBehaviour
             m_isIn = false;
             m_mousePosDelta = Input.mousePosition;
             m_zangekiFlg = true;
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        if (m_zangekiFlg == true)
-        {
-            Debug.Log(m_contactNum.name + " " + ZangekiDirection() + "ぬけ");
-
-            m_zangekiFlg = false;
-
-            m_isInStopper = false;
-
         }
     }
 
@@ -198,5 +199,41 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             return 4;
         }
+    }
+
+    void Slash(int i)
+    {
+        m_slashs[m_slashIndexer].SetActive(true);
+        m_slashs[m_slashIndexer].transform.position = m_contactNum.transform.position;
+        //斬撃エフェクトの角度を調節
+        switch (i)
+        {
+            case 1:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 45, 90);
+                break;
+            case 2:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 0, 90);
+                break;
+            case 3:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -45, 90);
+                break;
+            case 4:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 90, 90);
+                break;
+            case 6:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -90, 90);
+                break;
+            case 7:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 165, 90);
+                break;
+            case 8:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 900, 70);
+                break;
+            case 9:
+                m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -165, 90);
+                break;
+        }
+
+        m_slashIndexer++;
     }
 }
