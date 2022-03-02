@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 1204882515}
   - component: {fileID: 1204882518}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: 1
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a8d439f4b71a44aa0d2438f2074977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_effectSlash: {fileID: 1526098251508259421, guid: c4c34ff2697bef848a186a1b6c1f2e16,
+    type: 3}
+  m_effectSrast: {fileID: 8156140928752646913, guid: 771810ef71bd62643a25d4eb47f2e027,
+    type: 3}
 --- !u!58 &1204882516
 CircleCollider2D:
   m_ObjectHideFlags: 0

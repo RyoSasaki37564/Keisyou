@@ -4,12 +4,41 @@ using UnityEngine;
 
 public class NineKeyInputNomal : MonoBehaviour
 {
-    Collider2D m_thisCol;
+
+    [SerializeField] GameObject m_effectSlash = default; //斬撃マーク
+    GameObject[] m_slashs = new GameObject[9]; //斬撃のオブジェクトプール
+    int m_slashIndexer = 0;
+
+    [SerializeField] GameObject m_effectSrast = default; //刺突マーク
+    GameObject[] m_srasts = new GameObject[9]; //刺突のオブジェクトプール
+    int m_srastIndexer = 0;
+
+    public struct CommandCode
+    {
+        public int Number { get; set; }
+        public int Contact { get; set; }
+
+        /// <summary>
+        /// 入力されたキーの番号と接触方向を受け取り、ID情報に変換する
+        /// </summary>
+        /// <param name="numID">キー番号</param>
+        /// <param name="conID">接触方向</param>
+        public CommandCode(int numID, int conID)
+        {
+            Number = numID;
+            Contact = conID;
+        }
+    }
+    List<CommandCode> m_commandList = new List<CommandCode>(); //ここに格納された値を参照し、該当する龍撃の演出を呼び出す。
+
+
 
     Vector3 m_mousePosDelta;
 
     bool m_isIn = false;
     bool m_isInStopper = false;
+
+    bool m_isStart = false;
 
     bool m_slustFlg = false;
 
@@ -19,18 +48,34 @@ public class NineKeyInputNomal : MonoBehaviour
 
     const float c_originDir = 22.5f; //斬撃方向IDをとるための原角度
 
+    private void Awake()
+    {
+        //マーカーエフェクトを生成しプール
+        for (var i = 0; i < 9; i++)
+        {
+            var x = Instantiate(m_effectSlash);
+            m_slashs[i] = x;
+            m_slashs[i].SetActive(false);
+        }
+        for (var i = 0; i < 9; i++)
+        {
+            var x = Instantiate(m_effectSrast);
+            m_srasts[i] = x;
+            m_srasts[i].SetActive(false);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        m_thisCol = this.gameObject.GetComponent<Collider2D>();
+        //m_thisCol = this.gameObject.GetComponent<Collider2D>();
 
         TouchManager.Began += (info) =>
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider == m_thisCol)
+            if(hit.collider != null && hit.transform.tag == "NineKey") //(hit.collider == m_thisCol)
             {
-                //m_thisCol.enabled = false;
                 m_isIn = true;
                 m_slustFlg = true;
             }
@@ -40,9 +85,8 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider == m_thisCol)
+            if (hit.collider != null)
             {
-                //m_thisCol.enabled = false;
                 if(m_isInStopper == false)
                 {
                     m_isIn = true;
@@ -57,13 +101,13 @@ public class NineKeyInputNomal : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider == m_thisCol && m_slustFlg == true)
+            if (hit.collider != null && m_slustFlg == true)//(hit.collider == m_thisCol && m_slustFlg == true)
             {
-                Debug.Log(5);
+                Debug.Log(hit.collider.name + " " + 5);
             }
             else if (m_zangekiFlg == true)
             {
-                Debug.Log(ZangekiDirection() + "うち");
+                Debug.Log(this.gameObject.name + " " + ZangekiDirection() + "うち");
             }
             m_slustFlg = false;
 
@@ -71,9 +115,6 @@ public class NineKeyInputNomal : MonoBehaviour
 
             m_isInStopper = false;
 
-            m_thisCol.enabled = false;
-
-            m_thisCol.enabled = true;
         };
     }
 
@@ -91,15 +132,12 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         if (m_zangekiFlg == true)
         {
-            Debug.Log(ZangekiDirection() + "ぬけ");
+            Debug.Log(this.gameObject.name + " " + ZangekiDirection() + "ぬけ");
 
             m_zangekiFlg = false;
 
             m_isInStopper = false;
 
-            m_thisCol.enabled = false;
-
-            m_thisCol.enabled = true;
         }
     }
 

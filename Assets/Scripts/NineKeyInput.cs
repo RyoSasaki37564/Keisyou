@@ -60,8 +60,8 @@ public class NineKeyInput : MonoBehaviour
         {
             x.SetActive(false);
         }
-            //マーカーエフェクトを生成しプール
-            for (var i = 0; i < 9; i++)
+        //マーカーエフェクトを生成しプール
+        for (var i = 0; i < 9; i++)
         {
             var x = Instantiate(m_effectSlash);
             m_slashs[i] = x;
