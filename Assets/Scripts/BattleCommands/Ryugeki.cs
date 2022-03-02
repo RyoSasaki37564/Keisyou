@@ -13,7 +13,7 @@ public class Ryugeki : MonoBehaviour
 
     public static bool m_isHitRyugeki = false; //龍撃を行っているか否か
 
-    [SerializeField] NineKeyInput m_nineKeysScript = default;
+    [SerializeField] NineKeyInputNomal m_nineKeysScript = default;
 
     [SerializeField] Image m_fader = default; //フェードインアウト用スクリーン
 
