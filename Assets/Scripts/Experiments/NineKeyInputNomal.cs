@@ -47,7 +47,8 @@ public class NineKeyInputNomal : MonoBehaviour
     const float c_originDir = 22.5f; //斬撃方向IDをとるための原角度
 
     GameObject m_contactNum; //現在接触している番号
-    
+
+    List<Collider2D> m_colls = new List<Collider2D>();
 
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class NineKeyInputNomal : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if(hit.collider != null && hit.transform.tag == "NineKey")
             {
+                m_colls.Add(hit.collider);
                 m_contactNum = hit.collider.gameObject;
                 m_isIn = true;
                 m_isInStopper = true;
@@ -90,6 +92,7 @@ public class NineKeyInputNomal : MonoBehaviour
             {
                 if(m_isInStopper == false)
                 {
+                    m_colls.Add(hit.collider);
                     m_contactNum = hit.collider.gameObject;
                     m_isIn = true;
                     m_isInStopper = true;
@@ -100,8 +103,16 @@ public class NineKeyInputNomal : MonoBehaviour
                 //コリジョン抜け判定
 
                 Slash(ZangekiDirection());
-
-                m_zangekiFlg = false;
+                if (m_zangekiFlg == true)
+                {
+                    m_colls[m_colls.Count - 1].enabled = false;
+                    m_zangekiFlg = false;
+                }
+                if (m_slustFlg == true)
+                {
+                    m_colls[m_colls.Count - 1].enabled = false;
+                    m_slustFlg = false;
+                }
 
                 m_isInStopper = false;
 
@@ -116,7 +127,6 @@ public class NineKeyInputNomal : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit.collider != null && m_slustFlg == true)
             {
-                Debug.Log(m_contactNum.name + " " + 5);
                 m_srasts[m_srastIndexer].SetActive(true);
                 m_srasts[m_srastIndexer].transform.position = m_contactNum.transform.position;
                 m_srastIndexer++;
@@ -125,12 +135,19 @@ public class NineKeyInputNomal : MonoBehaviour
             {
                 Slash(ZangekiDirection());
             }
-            m_slustFlg = false;
 
-            m_zangekiFlg = false;
+            if (m_zangekiFlg == true)
+            {
+                m_colls[m_colls.Count - 1].enabled = false;
+                m_zangekiFlg = false;
+            }
+            if (m_slustFlg == true)
+            {
+                m_colls[m_colls.Count - 1].enabled = false;
+                m_slustFlg = false;
+            }
 
             m_isInStopper = false;
-
         };
     }
 
