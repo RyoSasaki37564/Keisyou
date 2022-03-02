@@ -16,17 +16,17 @@ public class NineKeyInputNomal : MonoBehaviour
     public struct CommandCode
     {
         public int Number { get; set; }
-        public int Contact { get; set; }
+        public int Direction { get; set; }
 
         /// <summary>
         /// 入力されたキーの番号と接触方向を受け取り、ID情報に変換する
         /// </summary>
         /// <param name="numID">キー番号</param>
         /// <param name="conID">接触方向</param>
-        public CommandCode(int numID, int conID)
+        public CommandCode(int numID, int dirID)
         {
             Number = numID;
-            Contact = conID;
+            Direction = dirID;
         }
     }
     List<CommandCode> m_commandList = new List<CommandCode>(); //ここに格納された値を参照し、該当する龍撃の演出を呼び出す。
@@ -38,8 +38,6 @@ public class NineKeyInputNomal : MonoBehaviour
     bool m_isIn = false;
     bool m_isInStopper = false;
 
-    bool m_isStart = false;
-
     bool m_slustFlg = false;
 
     bool m_zangekiFlg = false;
@@ -47,6 +45,9 @@ public class NineKeyInputNomal : MonoBehaviour
     float m_zangekiDirection; //斬撃角度
 
     const float c_originDir = 22.5f; //斬撃方向IDをとるための原角度
+
+    GameObject m_contactNum; //現在接触している番号
+    
 
     private void Awake()
     {
@@ -68,15 +69,15 @@ public class NineKeyInputNomal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //m_thisCol = this.gameObject.GetComponent<Collider2D>();
-
         TouchManager.Began += (info) =>
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if(hit.collider != null && hit.transform.tag == "NineKey") //(hit.collider == m_thisCol)
             {
+                m_contactNum = hit.collider.gameObject;
                 m_isIn = true;
+                m_isInStopper = true;
                 m_slustFlg = true;
             }
         };
@@ -85,10 +86,11 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider != null)
+            if (hit.collider != null && hit.transform.tag == "NineKey")
             {
                 if(m_isInStopper == false)
                 {
+                    m_contactNum = hit.collider.gameObject;
                     m_isIn = true;
                     m_isInStopper = true;
                 }
@@ -103,11 +105,11 @@ public class NineKeyInputNomal : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit.collider != null && m_slustFlg == true)//(hit.collider == m_thisCol && m_slustFlg == true)
             {
-                Debug.Log(hit.collider.name + " " + 5);
+                Debug.Log(m_contactNum.name + " " + 5);
             }
             else if (m_zangekiFlg == true)
             {
-                Debug.Log(this.gameObject.name + " " + ZangekiDirection() + "うち");
+                Debug.Log(m_contactNum.name + " " + ZangekiDirection() + "うち");
             }
             m_slustFlg = false;
 
@@ -132,7 +134,7 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         if (m_zangekiFlg == true)
         {
-            Debug.Log(this.gameObject.name + " " + ZangekiDirection() + "ぬけ");
+            Debug.Log(m_contactNum.name + " " + ZangekiDirection() + "ぬけ");
 
             m_zangekiFlg = false;
 
