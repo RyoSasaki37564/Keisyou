@@ -1,23 +1,93 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NineKeyInputNomal : MonoBehaviour
 {
+    //[SerializeField] Text m_dialog = default;
+
+    [SerializeField] GameObject[] m_commands = new GameObject[9];
+
+    [SerializeField] GameObject m_effectSlash = default; //斬撃マーク
+    GameObject[] m_slashs = new GameObject[9]; //斬撃のオブジェクトプール
+    int m_slashIndexer = 0;
+
+    [SerializeField] GameObject m_effectSrast = default; //刺突マーク
+    GameObject[] m_srasts = new GameObject[9]; //刺突のオブジェクトプール
+    int m_srastIndexer = 0;
+
+    public float m_changeValueInterval = 1f; //値の変化速度
+
+    //[SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
+    //[SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
+
+    //[SerializeField] ThisOff m_akiOff = default;
+    //[SerializeField] ThisOff m_RG_0Off = default;
+
+    //[SerializeField] Animator m_enemyAnim = default;
+
+    //[SerializeField] SEPlay m_zangekiSE = default;
+    //[SerializeField] SEPlay m_shitotsuSE = default;
+
+    public static float m_RG0Rate = 1.0f;
+
+    public struct CommandCode
+    {
+        public int Number { get; set; }
+        public int Contact { get; set; }
+
+        /// <summary>
+        /// 入力されたキーの番号と接触方向を受け取り、ID情報に変換する
+        /// </summary>
+        /// <param name="numID">キー番号</param>
+        /// <param name="conID">接触方向</param>
+        public CommandCode(int numID, int conID)
+        {
+            Number = numID;
+            Contact = conID;
+        }
+    }
+    List<CommandCode> m_commandList = new List<CommandCode>(); //ここに格納された値を参照し、該当する龍撃の演出を呼び出す。
+
+    bool m_isReleasePhase = false;
+
+    
+
     Collider2D m_thisCol;
 
     Vector3 m_mousePosDelta;
 
-    bool m_isIn = false;
-    bool m_isInStopper = false;
+    bool m_isIn = false; //デルタ座標の入力開始判定
+    bool m_isInStopper = false; //LateUpdate内で m_isIn を二重ドア化するためのストッパー
 
-    bool m_slustFlg = false;
+    bool m_slustFlg = false; //刺突判定
 
-    bool m_zangekiFlg = false;
+    bool m_zangekiFlg = false; //斬撃判定
 
     float m_zangekiDirection; //斬撃角度
 
-    const float c_originDir = 22.5f; //斬撃方向IDをとるための原角度
+    const float c_originDir = 22.5f; //斬撃方向IDをとるための原角度。
+
+    RaycastHit2D m_hit;
+
+    private void Awake()
+    {
+
+        //マーカーエフェクトを生成しプール
+        for (var i = 0; i < 9; i++)
+        {
+            var x = Instantiate(m_effectSlash);
+            m_slashs[i] = x;
+            m_slashs[i].SetActive(false);
+        }
+        for (var i = 0; i < 9; i++)
+        {
+            var x = Instantiate(m_effectSrast);
+            m_srasts[i] = x;
+            m_srasts[i].SetActive(false);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +98,7 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider == m_thisCol)
+            //if (hit.collider.tag == "NineKey")
             {
                 //m_thisCol.enabled = false;
                 m_isIn = true;
@@ -40,7 +110,7 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider == m_thisCol)
+            //if (hit.collider.tag == "NineKey")
             {
                 //m_thisCol.enabled = false;
                 if(m_isInStopper == false)
@@ -57,13 +127,14 @@ public class NineKeyInputNomal : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider == m_thisCol && m_slustFlg == true)
+            m_hit = hit;
+            if (m_slustFlg == true)
             {
-                Debug.Log(5);
+                IDInput(hit, 5); //刺突!
             }
             else if (m_zangekiFlg == true)
             {
-                Debug.Log(ZangekiDirection() + "うち");
+                IDInput(hit, ZangekiDirection());
             }
             m_slustFlg = false;
 
@@ -71,9 +142,11 @@ public class NineKeyInputNomal : MonoBehaviour
 
             m_isInStopper = false;
 
+            /*
             m_thisCol.enabled = false;
 
             m_thisCol.enabled = true;
+            */
         };
     }
 
@@ -91,15 +164,17 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         if (m_zangekiFlg == true)
         {
-            Debug.Log(ZangekiDirection() + "ぬけ");
+            IDInput(m_hit, ZangekiDirection());
 
             m_zangekiFlg = false;
 
             m_isInStopper = false;
 
+            /*
             m_thisCol.enabled = false;
 
             m_thisCol.enabled = true;
+            */
         }
     }
 
@@ -158,5 +233,58 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             return 4;
         }
+    }
+
+    
+    void IDInput(RaycastHit2D _hit, int _dir)
+    {
+        CommandCode command = new CommandCode(int.Parse(_hit.collider.gameObject.transform.name), _dir);
+
+        if (_dir == 5) //5は刺突
+        {
+            m_srasts[m_srastIndexer].SetActive(true);
+            m_srasts[m_srastIndexer].transform.position = _hit.collider.gameObject.transform.position;
+            m_srastIndexer++;
+        }
+        else //それ以外は斬撃
+        {
+            m_slashs[m_slashIndexer].SetActive(true);
+            m_slashs[m_slashIndexer].transform.position = _hit.collider.gameObject.transform.position;
+            //斬撃エフェクトの角度を調節
+            switch (_dir)
+            {
+                case 1:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 45, 90);
+                    break;
+                case 2:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 0, 90);
+                    break;
+                case 3:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -45, 90);
+                    break;
+                case 4:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 90, 90);
+                    break;
+                case 6:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -90, 90);
+                    break;
+                case 7:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 165, 90);
+                    break;
+                case 8:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, 900, 70);
+                    break;
+                case 9:
+                    m_slashs[m_slashIndexer].transform.rotation = new Quaternion(0, 0, -165, 90);
+                    break;
+            }
+            m_slashIndexer++;
+        }
+
+        _hit.collider.enabled = false; //入力したキーはその龍撃中反応を切る
+
+        m_commandList.Add(command);
+
+        Debug.Log(_hit.collider.gameObject.transform.name + " : " + _dir);
     }
 }
