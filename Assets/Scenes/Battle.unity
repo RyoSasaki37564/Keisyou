@@ -7230,6 +7230,11 @@ PrefabInstance:
       objectReference: {fileID: 2033765748}
     - target: {fileID: 5932554100553391387, guid: 211a97826101e0f4bb2bddead8c80377,
         type: 3}
+      propertyPath: m_zangekiHanteiKyori
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932554100553391387, guid: 211a97826101e0f4bb2bddead8c80377,
+        type: 3}
       propertyPath: m_commands.Array.data[0]
       value: 
       objectReference: {fileID: 1118164990}
@@ -16088,6 +16093,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6823833400699431856, guid: 848624ac35342ac4b814f1f23c838451,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823833400699431857, guid: 848624ac35342ac4b814f1f23c838451,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823833400699431857, guid: 848624ac35342ac4b814f1f23c838451,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.57
+      objectReference: {fileID: 0}
     - target: {fileID: 8162009039019324819, guid: 848624ac35342ac4b814f1f23c838451,
         type: 3}
       propertyPath: m_SE

@@ -129,32 +129,25 @@ public class NineKeyInputNomal : MonoBehaviour
                     m_isInStopper = true;
                 }
             }
-            else if(hit.collider == null && m_slustFlg == true)
-            {
-                m_shitotsuSE.MyPlayOneShot();
-                m_colls[m_colls.Count - 1].enabled = false;
-                m_slustFlg = false;
-                CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), 5); //方向ID 5は中央、刺突を意味する
-                m_commandList.Add(m_CC);
-
-                m_isInStopper = false;
-            }
             else if(hit.collider == null && m_zangekiFlg == true)
             {
                 //コリジョン抜け判定
-
-                if (m_zangekiFlg == true && m_colls[m_colls.Count - 1].enabled == true)
+                if (m_isInStopper == true)
                 {
-                    m_zangekiSE.MyPlayOneShot();
-                    Slash(ZangekiDirection());
-                    m_colls[m_colls.Count - 1].enabled = false;
-                    m_zangekiFlg = false;
-                    CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), ZangekiDirection());
-                    m_commandList.Add(m_CC);
+                    if (m_zangekiFlg == true && m_colls[m_colls.Count - 1].enabled == true)
+                    {
+                        //Debug.LogError("なんでやねん切りmove");
+                        m_zangekiSE.MyPlayOneShot();
+                        Slash(ZangekiDirection());
+                        m_colls[m_colls.Count - 1].enabled = false;
+                        m_zangekiFlg = false;
+                        CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), ZangekiDirection());
+                        m_commandList.Add(m_CC);
+                    }
+
+                    m_isInStopper = false;
+
                 }
-
-                m_isInStopper = false;
-
             }
         };
 
@@ -162,26 +155,21 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             m_isIn = false;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-
-            if (hit.collider.tag == "NineKey")
-            {
-                if (hit.collider != null && m_slustFlg == true)
+                if (m_slustFlg == true && m_isInStopper == true)
                 {
+                    //Debug.LogError("なんでやねん突きend");
                     m_srasts[m_srastIndexer].SetActive(true);
                     m_srasts[m_srastIndexer].transform.position = m_contactNum.transform.position;
                     m_srastIndexer++;
-
                     m_shitotsuSE.MyPlayOneShot();
                     m_colls[m_colls.Count - 1].enabled = false;
                     m_slustFlg = false;
                     CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), 5); //方向ID 5は中央、刺突を意味する
                     m_commandList.Add(m_CC);
                 }
-                else if (m_zangekiFlg == true)
+                else if (m_zangekiFlg == true && m_isInStopper == true)
                 {
-                    Debug.LogError("なんでやねん");
+                    //Debug.LogError("なんでやねん切りend");
                     Slash(ZangekiDirection());
                     m_zangekiSE.MyPlayOneShot();
                     m_colls[m_colls.Count - 1].enabled = false;
@@ -191,7 +179,6 @@ public class NineKeyInputNomal : MonoBehaviour
                 }
 
                 m_isInStopper = false;
-            }
         };
     }
 
