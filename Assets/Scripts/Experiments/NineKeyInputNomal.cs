@@ -416,8 +416,8 @@ public class NineKeyInputNomal : MonoBehaviour
             }
             else if (commands.Count == 3)
             {
-                if (commands[0].Number == 2 &&
-                   commands[1].Number == 5 &&
+                if (commands[0].Number == 2 && commands[2].Direction == 2 &&
+                   commands[1].Number == 5 && commands[2].Direction == 2 &&
                    commands[2].Number == 8 && commands[2].Direction == 5)
                 {
                     m_ryugekiEffectsList[0].SetActive(true);
