@@ -6,6 +6,8 @@ public class StandUp : MonoBehaviour
 {
     [SerializeField] GameObject m_UICanvas = default;
 
+    [SerializeField] GameObject m_StopCanvas = default;
+
     /*
     [SerializeField] AudioSource m_SE = default;
     [SerializeField] AudioClip m_ongen = default;
@@ -16,8 +18,7 @@ public class StandUp : MonoBehaviour
 
     public void BattleStart()
     {
-        
-        //m_SE.PlayOneShot(m_ongen);
+        m_StopCanvas.SetActive(true);
         m_UICanvas.SetActive(true);
         m_parent.SetActive(false);
         m_SE.MyPlayOneShot(); //これがなぁ。

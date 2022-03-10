@@ -15,12 +15,24 @@ public class QTEManager : MonoBehaviour
 
     Vector2 m_effectPos; //生成位置
 
-    [SerializeField] bool m_isQTETime = false;
+    public bool m_isQTETime;
 
     [SerializeField] Animator m_anim = default;
 
+    [SerializeField] Stop m_pr = default;
+
+    void OnEnable()
+    {
+        m_pr.OnPauseResume += PauseResume;
+    }
+    void OnDisable()
+    {
+        m_pr.OnPauseResume -= PauseResume;
+    }
+
     void Start()
     {
+        m_isQTETime = true;
         StartCoroutine(QTESys(m_waitTime));
     }
 
@@ -31,18 +43,34 @@ public class QTEManager : MonoBehaviour
 
     }
 
+    void PauseResume(bool isPause)
+    {
+        if (isPause)
+        {
+            Pause();
+        }
+        else
+        {
+            Resume();
+        }
+    }
+    public void Pause()
+    {
+        m_isQTETime = false;
+    }
+    public void Resume()
+    {
+        m_isQTETime = true;
+    }
+
     void QTEGeneration()
     {
         if(EnemyStuts.m_enemiesStuts[Target.m_tergetNum].DeadOrAlive() == false &&
             Player.Instance.DeadOrAlive() == false)
         {
             var r = Random.Range(1, 3);
-            if (r == 1)
-            {
-                m_isQTETime = true;
-            }
 
-            if (m_isQTETime == true &&
+            if (r == 1 && m_isQTETime == true &&
                 BattleManager._theTurn == BattleManager.Turn.InputTurn ||
                 BattleManager._theTurn == BattleManager.Turn.EnemyTurn &&
                 Ryugeki.m_isHitRyugeki == false)
@@ -67,7 +95,6 @@ public class QTEManager : MonoBehaviour
                 m_anim.SetInteger("AttackMotion1", 1);
 
                 x.transform.position = m_effectPos;
-                m_isQTETime = false;
                 StartCoroutine(QTESys(m_waitTime));
             }
             else

@@ -72,6 +72,10 @@ public class NineKeyInputNomal : MonoBehaviour
 
     List<Collider2D> m_colls = new List<Collider2D>();
 
+    [SerializeField] Stop m_pr = default;
+
+    bool m_yatteYoshi = true; //これはtrueで初期化。参加先のデリゲートの兼ね合い。
+
     private void Awake()
     {
         m_akiCutIn.SetActive(false);
@@ -95,65 +99,103 @@ public class NineKeyInputNomal : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    void OnEnable()
+    {
+        m_pr.OnPauseResume += PauseResume;
+    }
+    void OnDisable()
+    {
+        m_pr.OnPauseResume -= PauseResume;
+    }
+    void PauseResume(bool isPause)
+    {
+        if (isPause)
+        {
+            Pause();
+        }
+        else
+        {
+            Resume();
+        }
+    }
+    public void Pause()
+    {
+        m_yatteYoshi = false;
+    }
+    public void Resume()
+    {
+        m_yatteYoshi = true;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         TouchManager.Began += (info) =>
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if(hit.collider != null && hit.transform.tag == "NineKey")
+            if (m_yatteYoshi == true)
             {
-                //タッチした時点でコリジョン入りしてるパターン
-                m_colls.Add(hit.collider);
-                m_contactNum = hit.collider.gameObject;
-                m_isIn = true;
-                m_isInStopper = true;
-                m_slustFlg = true;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+                if (hit.collider != null && hit.transform.tag == "NineKey")
+                {
+                    //タッチした時点でコリジョン入りしてるパターン
+                    m_colls.Add(hit.collider);
+                    m_contactNum = hit.collider.gameObject;
+                    m_isIn = true;
+                    m_isInStopper = true;
+                    m_slustFlg = true;
+                }
             }
         };
 
         TouchManager.Moved += (info) =>
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            if (m_yatteYoshi == true)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-            if (hit.collider != null && hit.transform.tag == "NineKey")
-            {
-                //動かしてる状態でコリジョン入りしたパターン
-                if (m_isInStopper == false)
+                if (hit.collider != null && hit.transform.tag == "NineKey")
                 {
-                    m_colls.Add(hit.collider);
-                    m_contactNum = hit.collider.gameObject;
-                    m_isIn = true;
-                    m_isInStopper = true;
-                }
-            }
-            else if(hit.collider == null && m_zangekiFlg == true)
-            {
-                //コリジョン抜け判定
-                if (m_isInStopper == true)
-                {
-                    if (m_zangekiFlg == true && m_colls[m_colls.Count - 1].enabled == true)
+                    //動かしてる状態でコリジョン入りしたパターン
+                    if (m_isInStopper == false)
                     {
-                        //Debug.LogError("なんでやねん切りmove");
-                        m_zangekiSE.MyPlayOneShot();
-                        Slash(ZangekiDirection());
-                        m_colls[m_colls.Count - 1].enabled = false;
-                        m_zangekiFlg = false;
-                        CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), ZangekiDirection());
-                        m_commandList.Add(m_CC);
+                        m_colls.Add(hit.collider);
+                        m_contactNum = hit.collider.gameObject;
+                        m_isIn = true;
+                        m_isInStopper = true;
                     }
+                }
+                else if (hit.collider == null && m_zangekiFlg == true)
+                {
+                    //コリジョン抜け判定
+                    if (m_isInStopper == true)
+                    {
+                        if (m_zangekiFlg == true && m_colls[m_colls.Count - 1].enabled == true)
+                        {
+                            //Debug.LogError("なんでやねん切りmove");
+                            m_zangekiSE.MyPlayOneShot();
+                            Slash(ZangekiDirection());
+                            m_colls[m_colls.Count - 1].enabled = false;
+                            m_zangekiFlg = false;
+                            CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), ZangekiDirection());
+                            m_commandList.Add(m_CC);
+                        }
 
-                    m_isInStopper = false;
+                        m_isInStopper = false;
 
+                    }
                 }
             }
         };
 
         TouchManager.Ended += (info) =>
         {
-            m_isIn = false;
+
+            if (m_yatteYoshi == true)
+            {
+                m_isIn = false;
 
                 if (m_slustFlg == true && m_isInStopper == true)
                 {
@@ -179,25 +221,29 @@ public class NineKeyInputNomal : MonoBehaviour
                 }
 
                 m_isInStopper = false;
+            }
         };
     }
 
     private void LateUpdate()
     {
+        if (m_yatteYoshi == true)
+        {
 #if UNITY_STANDALONE || UNITY_WEBGL || IS_EDITOR
-        if (Input.GetMouseButton(0) && m_isIn == true)
-        {
-            m_isIn = false;
-            m_mousePosDelta = Input.mousePosition;
-            m_zangekiFlg = true;
-        }
+            if (Input.GetMouseButton(0) && m_isIn == true)
+            {
+                m_isIn = false;
+                m_mousePosDelta = Input.mousePosition;
+                m_zangekiFlg = true;
+            }
 #elif UNITY_ANDROID || UNITY_ANDROID_API
-        if (Input.GetTouch(0).phase == TouchPhase.Moved && m_isIn == true)
-        {
-            m_mousePosDelta = Input.GetTouch(0).position;
-            m_zangekiFlg = true;
-        }
+            if (Input.GetTouch(0).phase == TouchPhase.Moved && m_isIn == true)
+            {
+                m_mousePosDelta = Input.GetTouch(0).position;
+                m_zangekiFlg = true;
+            }
 #endif
+        }
     }
 
     int ZangekiDirection()

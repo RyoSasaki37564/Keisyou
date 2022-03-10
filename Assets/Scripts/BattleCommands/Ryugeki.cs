@@ -27,9 +27,42 @@ public class Ryugeki : MonoBehaviour
 
     float m_time = 0;
 
+    bool m_HetteYoshi = true; //これはtrueで初期化。参加先のデリゲートの兼ね合い。
+
+    [SerializeField] Stop m_pr = default;
+
+    void OnEnable()
+    {
+        m_pr.OnPauseResume += PauseResume;
+    }
+    void OnDisable()
+    {
+        m_pr.OnPauseResume -= PauseResume;
+    }
+
     private void Start()
     {
         m_isHitRyugeki = false;
+    }
+    void PauseResume(bool isPause)
+    {
+        if (isPause)
+        {
+            Pause();
+        }
+        else
+        {
+            Resume();
+        }
+    }
+    public void Pause()
+    {
+        Debug.Log("とまるはず");
+        m_HetteYoshi = false;
+    }
+    public void Resume()
+    {
+        m_HetteYoshi = true;
     }
 
     public void RyugekiNoKamae()
@@ -69,7 +102,7 @@ public class Ryugeki : MonoBehaviour
 
     private void Update()
     {
-        if(m_isRyugekiNyuryoku == true && Player.Instance.m_currentConcentlate >= 0)
+        if (m_isRyugekiNyuryoku == true && Player.Instance.m_currentConcentlate >= 0 && m_HetteYoshi == true)
         {
             m_time += Time.deltaTime;
             if(m_time > 0.5f)
