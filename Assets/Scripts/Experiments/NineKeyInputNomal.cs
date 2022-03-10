@@ -184,12 +184,20 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void LateUpdate()
     {
+#if UNITY_STANDALONE || UNITY_WEBGL || IS_EDITOR
         if (Input.GetMouseButton(0) && m_isIn == true)
         {
             m_isIn = false;
             m_mousePosDelta = Input.mousePosition;
             m_zangekiFlg = true;
         }
+#elif UNITY_ANDROID || UNITY_ANDROID_API
+        if (Input.GetTouch(0).phase == TouchPhase.Moved && m_isIn == true)
+        {
+            m_mousePosDelta = Input.GetTouch(0).position;
+            m_zangekiFlg = true;
+        }
+#endif
     }
 
     int ZangekiDirection()
