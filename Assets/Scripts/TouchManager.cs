@@ -8,7 +8,7 @@ using UnityEngine;
 public class TouchManager : MonoBehaviour
 {
     //シングルトン
-    private static TouchManager _instance;
+    public static TouchManager _instance;
     private static TouchManager Instance
     {
         get
@@ -21,7 +21,7 @@ public class TouchManager : MonoBehaviour
             return _instance;
         }
     }
-    private TouchInfo _info = new TouchInfo();
+    public TouchInfo _info = new TouchInfo();
     private event System.Action<TouchInfo> _begane;
     private event System.Action<TouchInfo> _moved;
     private event System.Action<TouchInfo> _ended;
@@ -60,7 +60,7 @@ public class TouchManager : MonoBehaviour
             Instance._ended -= value;
         }
     }
-    private TouchState State
+    public TouchState State
     {
         get
         {

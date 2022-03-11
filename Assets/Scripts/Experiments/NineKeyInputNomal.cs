@@ -229,17 +229,17 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         if (m_yatteYoshi == true)
         {
-#if UNITY_STANDALONE || UNITY_WEBGL || IS_EDITOR
+#if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR
             if (Input.GetMouseButton(0) && m_isIn == true)
             {
                 m_isIn = false;
                 m_mousePosDelta = Input.mousePosition;
                 m_zangekiFlg = true;
             }
-#elif UNITY_ANDROID || UNITY_ANDROID_API
-            if (Input.GetTouch(0).phase == TouchPhase.Moved && m_isIn == true)
+#elif UNITY_ANDROID
+            if (TouchManager._instance.State == TouchState.Moved && m_isIn == true)
             {
-                m_mousePosDelta = Input.GetTouch(0).position;
+                m_mousePosDelta = TouchManager._instance._info.screenPoint;
                 m_zangekiFlg = true;
             }
 #endif
@@ -416,8 +416,8 @@ public class NineKeyInputNomal : MonoBehaviour
             }
             else if (commands.Count == 3)
             {
-                if (commands[0].Number == 2 && commands[2].Direction == 2 &&
-                   commands[1].Number == 5 && commands[2].Direction == 2 &&
+                if (commands[0].Number == 2 && commands[0].Direction == 2 &&
+                   commands[1].Number == 5 && commands[1].Direction == 2 &&
                    commands[2].Number == 8 && commands[2].Direction == 5)
                 {
                     m_ryugekiEffectsList[0].SetActive(true);
