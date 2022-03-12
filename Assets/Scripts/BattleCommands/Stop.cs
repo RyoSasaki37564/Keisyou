@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class Stop : MonoBehaviour
@@ -13,6 +14,8 @@ public class Stop : MonoBehaviour
 
     private void Start()
     {
+        m_kirikae = false;
+
         m_panel.SetActive(false);
     }
 
@@ -20,7 +23,11 @@ public class Stop : MonoBehaviour
     {
         m_kirikae = !m_kirikae;
 
-        OnPauseResume(m_kirikae);
+        if (SceneManager.GetActiveScene().name == "Battle")
+        {
+
+            OnPauseResume(m_kirikae);
+        }
 
         m_panel.SetActive(m_kirikae);
     }
