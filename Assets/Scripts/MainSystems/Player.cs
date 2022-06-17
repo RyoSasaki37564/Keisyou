@@ -10,6 +10,9 @@ public class Player : BattleChara
 
     [ContextMenuItem("レベル+１", "LevelUP")] public int m_playerLevel;
 
+    /// <summary> 覚悟値 </summary>
+    public int m_preparedness { get; set; }
+
     /// <summary> 集中力の最大 </summary>
     public int m_maxConcentlate { get; set; }
 
