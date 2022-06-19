@@ -48,6 +48,7 @@ public class Player : BattleChara
     [SerializeField] Text m_hpText = default; //体力の表記
     [SerializeField] Text m_conText = default; //集中の表記
     [SerializeField] Text m_dogeText = default; //回避率の表記
+    [SerializeField] Text m_prepText = default; //覚悟の表記
 
     /// <summary> プレイヤーレベルテーブルの最大行数＆レベル上限 開発段階では99 </summary>
     int m_playerLevelTableLineMax;
@@ -272,8 +273,6 @@ public class Player : BattleChara
                 m_fadeOut.SetActive(true);
                 m_goTitle = true;
             }
-
-
         }
         else if (m_currentHP <= m_maxHP)
         {
@@ -305,6 +304,8 @@ public class Player : BattleChara
             m_currentDogePower = m_dogePowerMax;
         }
     }
+
+    
 
     /// <summary>
     /// レベル指定式。

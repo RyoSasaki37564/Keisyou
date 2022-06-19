@@ -70,8 +70,5 @@ public class GameManager : MonoBehaviour
                 Debug.LogError("ますたーがないですます");
             }
         }
-
     }
-
-
 }

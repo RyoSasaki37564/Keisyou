@@ -6,8 +6,6 @@ public class QTE : MonoBehaviour
 {
     [SerializeField] float m_damage = default;
 
-    float m_utuwa; //いったんfloatにして、インクリメントintキャストで四捨五入する。
-
     [SerializeField] AudioClip m_seKaihi = default;
     [SerializeField] AudioClip m_damaged = default;
 
@@ -59,7 +57,8 @@ public class QTE : MonoBehaviour
 
     void DodgeSuccess()
     {
-        m_utuwa = Player.Instance.m_playerLevel / 2f;
+        //いったんfloatにして、インクリメントintキャストで四捨五入する。
+        float m_utuwa = Player.Instance.m_playerLevel / 2f;
         Player.Instance.m_currentConcentlate += (int)(m_utuwa + 1);
         Player.Instance.m_currentDogePower += (int)(m_utuwa + 1);
         isKaihi = true;
