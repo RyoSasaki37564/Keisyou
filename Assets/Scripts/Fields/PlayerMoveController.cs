@@ -33,9 +33,11 @@ public class PlayerMoveController : MonoBehaviour
         }
 
         //斜めに動ける入力受付
+        /*
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
         /*本来の移動処理。こちらは斜め移動を禁止する。
+        */
         if (v == 0)
         {
             h = Input.GetAxisRaw("Horizontal");
@@ -44,7 +46,6 @@ public class PlayerMoveController : MonoBehaviour
         {
             v = Input.GetAxisRaw("Vertical");
         }
-        */
         if (h != 0 || v != 0)
         {
             if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) //ダッシュ
