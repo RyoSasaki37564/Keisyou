@@ -185,8 +185,6 @@ MonoBehaviour:
     exposedName: d602388add2ba5e4c812dce6a90919b5
     defaultValue: {fileID: 0}
   template:
-    templateGameObject: {fileID: 1788653270683984909, guid: 9d4b677c0419e6147b43ff5cd518ddac,
-      type: 3}
     m_updateSeconds: 0.2
     m_name: "\u30A2\u30AD"
     m_scenario: "\u9F8D\u6EC5\u306E\u5203...?\n\u9F8D\u6EC5\u306E\u5203...!?"
@@ -280,6 +278,98 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: ScenarioText
+  m_Markers:
+    m_Objects: []
+--- !u!114 &-2169681373818952556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82cd92ffc29383742932b27ca414c80f, type: 3}
+  m_Name: Playable Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 2.4166666666666665
+    m_ClipIn: 0
+    m_Asset: {fileID: 5207589367819707278}
+    m_Duration: 13.883333333333335
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -2169681373818952556}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Canvas
   m_Markers:
     m_Objects: []
 --- !u!74 &-1351504804867326941
@@ -546,7 +636,7 @@ MonoBehaviour:
   - {fileID: 2736631202190897681}
   - {fileID: 4461668196277665096}
   - {fileID: -563565075957726484}
-  - {fileID: -2479395263787430523}
+  - {fileID: -2169681373818952556}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -634,6 +724,25 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &5207589367819707278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d86fabbd51f28b45ba6ee6519ab964b, type: 3}
+  m_Name: TimeLineCustomCon
+  m_EditorClassIdentifier: 
+  templateGameObject:
+    exposedName: 473e38afb7364224d832832d07d15e0c
+    defaultValue: {fileID: 0}
+  template:
+    m_updateSeconds: 0.1
+    m_name: "\u30A2\u30AD"
+    m_scenario: "\u9F8D\u6EC5\u306E\u5203...?\n\u9F8D\u6EC5\u306E\u5203...!?"
 --- !u!74 &7983586258183967228
 AnimationClip:
   m_ObjectHideFlags: 0
