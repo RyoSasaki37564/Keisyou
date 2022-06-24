@@ -16,7 +16,7 @@ public class TimeLineCustomCon : PlayableAsset
 
         var behaviour = playable.GetBehaviour();
 
-        behaviour.templateGameObject = templateGameObject.Resolve(graph.GetResolver());
+        behaviour.m_templateGameObject = templateGameObject.Resolve(graph.GetResolver());
 
         return playable;
     }

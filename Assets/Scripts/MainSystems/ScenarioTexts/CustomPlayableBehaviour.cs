@@ -7,21 +7,29 @@ using UnityEngine.Playables;
 [System.Serializable]
 public class CustomPlayableBehaviour : PlayableBehaviour
 {
-    private PlayableDirector director;
-    [System.NonSerialized] public GameObject templateGameObject;
-
-    [SerializeField] float m_updateSeconds = 0.2f; //表示する文字を更新するスパンの秒数
-    float m_time;
+    public static PlayableDirector m_director;
+    [System.NonSerialized] public GameObject m_templateGameObject;
 
     Text m_scenarioText;
     Text m_speakerNameText;
     [SerializeField] string m_name = "しゃべってるやつの名前";
     [SerializeField, TextArea(1, 3)] string m_scenario = "龍滅の刃...?\n" + "龍滅の刃...!?";
-    int m_openedCount = 1; //表示文字数
+
+    [SerializeField] double m_changeSpeed = 1d;
+
+    public bool m_pauseScheduled = false;
+
+    [SerializeField] float m_waitSeconds = 2f;
+
+    public bool m_susumu = false;
 
     public override void OnPlayableCreate(Playable playable)
     {
-        director = playable.GetGraph().GetResolver() as PlayableDirector;
+        if(m_director == null)
+        {
+            m_director = playable.GetGraph().GetResolver() as PlayableDirector;
+        }
+
     }
 
     //タイムライン開始時
@@ -46,7 +54,11 @@ public class CustomPlayableBehaviour : PlayableBehaviour
     //	PlayableTrack停止時
     public override void OnBehaviourPause(Playable playable, FrameData info)
     {
-
+        if(m_pauseScheduled)
+        {
+            m_director.playableGraph.GetRootPlayable(0).SetSpeed(0d);
+            m_pauseScheduled = false;
+        }
     }
 
     /// <summary>
@@ -55,37 +67,33 @@ public class CustomPlayableBehaviour : PlayableBehaviour
     /// </summary>
     public override void PrepareFrame(Playable playable, FrameData info)
     {
-        if(m_scenario != null)
+        if (m_scenario != null)
         {
-            string s = m_scenario.Substring(0, m_openedCount);
+            var progress = (float)(playable.GetTime() / playable.GetDuration());
+            var current = Mathf.Lerp(0, m_scenario.Length, progress);
+            var count = Mathf.CeilToInt(current);
 
-            m_time += Time.deltaTime;
+            string s = m_scenario.Substring(0, count);
+            m_scenarioText.text = s;
 
             if (s[s.Length - 1] == '\n')
             {
-                //改行に際して2秒遅くする
-                if (m_time >= m_updateSeconds + 2)
-                {
-                    m_scenarioText.text = s;
-                    if (s != m_scenario)
-                    {
-                        m_openedCount++;
-                    }
-                    m_time = 0;
-                }
+                m_director.playableGraph.GetRootPlayable(0).SetSpeed(0d);
+                ScenarioManager.PlayableBehaviourCoroutine(AccelSpeed(m_waitSeconds, m_changeSpeed));
             }
-            else
+
+            //シナリオ末に到達
+            if(s == m_scenario)
             {
-                if (m_time >= m_updateSeconds)
-                {
-                    m_scenarioText.text = s;
-                    if (s != m_scenario)
-                    {
-                        m_openedCount++;
-                    }
-                    m_time = 0;
-                }
+                m_pauseScheduled = true;
+                OnBehaviourPause(playable, info);
             }
         }
+    }
+
+    IEnumerator AccelSpeed(float waitTime, double speed)
+    {
+        yield return new WaitForSeconds(waitTime);
+        m_director.playableGraph.GetRootPlayable(0).SetSpeed(speed);
     }
 }

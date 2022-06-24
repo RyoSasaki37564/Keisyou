@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1129438061775393144}
   - component: {fileID: 1129438061775393145}
   - component: {fileID: 1129438061775393150}
+  - component: {fileID: 3134980292426260172}
   m_Layer: 5
   m_Name: ScenarioCanvas
   m_TagString: Untagged
@@ -194,6 +195,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3134980292426260172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129438061775393151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43b3024f6b881b46908300e22840f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1129438061985754414
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +309,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1129438061985754409}
     m_Modifications:
+    - target: {fileID: 2047970300639255080, guid: 17434511fcbfad5479455fb05d8b079f,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[4].key
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2047970300639255080, guid: 17434511fcbfad5479455fb05d8b079f,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[1].value
