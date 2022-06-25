@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class TestQuest : QuestBase
 {
-    TestQuest m_instanse = new TestQuest("テスト", "テストの説明", 3);
+    GameObject m_player;
+
+    private void Awake()
+    {
+        m_player = GameObject.FindGameObjectWithTag("PlayerAvater");
+    }
 
     public TestQuest(string name, string setumei, int flgCount) : base(name, setumei, flgCount)
     {
@@ -18,13 +24,24 @@ public class TestQuest : QuestBase
         switch(m_counter)
         {
             case 0:
-                m_setumei = "クエストスタート";
-                m_counter++;
+                if(m_player.transform.position == new Vector3(28, -2, m_player.transform.position.z))
+                {
+                    m_counter++;
+                    m_setumei = "クエストスタート";
+                }
                 break;
             case 1:
+                if (m_player.transform.position == new Vector3(28, -5, m_player.transform.position.z))
+                {
+                    m_counter++;
+                    m_setumei = "クエストクリア";
+                }
                 break;
             case 2:
-                m_setumei = "クエスト完了";
+                if (m_player.transform.position == new Vector3(28, -4, m_player.transform.position.z))
+                {
+                    base.QuestEnd();
+                }
                 break;
         }
     }

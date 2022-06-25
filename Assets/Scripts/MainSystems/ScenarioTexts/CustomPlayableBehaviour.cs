@@ -23,6 +23,8 @@ public class CustomPlayableBehaviour : PlayableBehaviour
 
     public bool m_susumu = false;
 
+    bool m_isAccel = false;
+
     public override void OnPlayableCreate(Playable playable)
     {
         if(m_director == null)
@@ -49,6 +51,7 @@ public class CustomPlayableBehaviour : PlayableBehaviour
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
         m_speakerNameText.text = m_name;
+        m_susumu = true;
     }
 
     //	PlayableTrack停止時
@@ -76,24 +79,13 @@ public class CustomPlayableBehaviour : PlayableBehaviour
             string s = m_scenario.Substring(0, count);
             m_scenarioText.text = s;
 
-            if (s[s.Length - 1] == '\n')
-            {
-                m_director.playableGraph.GetRootPlayable(0).SetSpeed(0d);
-                ScenarioManager.PlayableBehaviourCoroutine(AccelSpeed(m_waitSeconds, m_changeSpeed));
-            }
-
             //シナリオ末に到達
-            if(s == m_scenario)
+            if(s == m_scenario && m_susumu == true)
             {
                 m_pauseScheduled = true;
                 OnBehaviourPause(playable, info);
+                m_susumu = false;
             }
         }
-    }
-
-    IEnumerator AccelSpeed(float waitTime, double speed)
-    {
-        yield return new WaitForSeconds(waitTime);
-        m_director.playableGraph.GetRootPlayable(0).SetSpeed(speed);
     }
 }
