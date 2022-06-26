@@ -22,6 +22,11 @@ public abstract class AbilityBase : MonoBehaviour
 
     [SerializeField] GameObject m_effect;
 
+    [SerializeField] Text m_flavorText;
+    [SerializeField, TextArea(10, 3)] string m_setumei;
+    [SerializeField] Text m_nameText;
+    [SerializeField] string m_name;
+
     private void Awake()
     {
         m_thisButton = GetComponent<Button>();
@@ -35,19 +40,22 @@ public abstract class AbilityBase : MonoBehaviour
 
     public void OpenOrCloseManue()
     {
-        if(m_selectPanel.activeSelf == false)
+        if (m_nowState != ActivateState.Active)
         {
-            if(m_nowState != ActivateState.Active)
+            if (m_selectPanel.activeSelf == false)
             {
                 m_agreeButton.onClick.AddListener(Activate);
                 m_selectPanel.SetActive(true);
             }
+            else
+            {
+                m_agreeButton.onClick.RemoveListener(Activate);
+                m_selectPanel.SetActive(false);
+            }
         }
-        else
-        {
-            m_agreeButton.onClick.RemoveListener(Activate);
-            m_selectPanel.SetActive(false);
-        }
+
+        m_nameText.text = m_name;
+        m_flavorText.text = m_setumei;
     }
 
     public void Activate()
@@ -57,6 +65,7 @@ public abstract class AbilityBase : MonoBehaviour
             AbilityPlayer();
             NextUnlockablize();
             m_effect.SetActive(true);
+            m_nowState = ActivateState.Active;
         }
         else
         {
