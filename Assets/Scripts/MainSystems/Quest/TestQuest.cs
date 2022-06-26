@@ -7,9 +7,12 @@ public class TestQuest : QuestBase
 {
     GameObject m_player;
 
+    TestAbility0 m_testAbility0;
+
     private void Awake()
     {
         m_player = GameObject.FindGameObjectWithTag("PlayerAvater");
+        m_testAbility0 = FindObjectOfType<TestAbility0>().GetComponent<TestAbility0>();
     }
 
     public TestQuest(string name, string setumei, int flgCount) : base(name, setumei, flgCount)
@@ -40,6 +43,7 @@ public class TestQuest : QuestBase
             case 2:
                 if (m_player.transform.position == new Vector3(28, -4, m_player.transform.position.z))
                 {
+                    m_testAbility0.CanActivateTrue();
                     base.QuestEnd();
                 }
                 break;
