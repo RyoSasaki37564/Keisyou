@@ -18,14 +18,18 @@ public abstract class AbilityBase : MonoBehaviour
 
     Button m_thisButton;
     [SerializeField] Button m_agreeButton;
-    [SerializeField] Button m_cancelButton;
     [SerializeField] GameObject m_selectPanel;
+
+    [SerializeField] GameObject m_effect;
 
     private void Awake()
     {
         m_thisButton = GetComponent<Button>();
         m_thisButton.onClick.AddListener(OpenOrCloseManue);
-        m_cancelButton.onClick.AddListener(OpenOrCloseManue);
+        if(m_nowState != ActivateState.Active)
+        {
+            m_effect.SetActive(false);
+        }
 
     }
 
@@ -33,8 +37,11 @@ public abstract class AbilityBase : MonoBehaviour
     {
         if(m_selectPanel.activeSelf == false)
         {
-            m_agreeButton.onClick.AddListener(Activate);
-            m_selectPanel.SetActive(true);
+            if(m_nowState != ActivateState.Active)
+            {
+                m_agreeButton.onClick.AddListener(Activate);
+                m_selectPanel.SetActive(true);
+            }
         }
         else
         {
@@ -49,6 +56,7 @@ public abstract class AbilityBase : MonoBehaviour
         {
             AbilityPlayer();
             NextUnlockablize();
+            m_effect.SetActive(true);
         }
         else
         {
