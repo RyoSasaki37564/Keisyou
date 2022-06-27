@@ -15,6 +15,7 @@ public abstract class AbilityBase : MonoBehaviour
     [System.NonSerialized] protected bool m_canActivate = false;
 
     [SerializeField] public AbilityBase[] m_nextAbilitys = new AbilityBase[1];
+    [SerializeField] Image[] m_pipes = new Image[0];
 
     Button m_thisButton;
     [SerializeField] Button m_agreeButton;
@@ -35,7 +36,21 @@ public abstract class AbilityBase : MonoBehaviour
         {
             m_effect.SetActive(false);
         }
+        if(m_nowState != ActivateState.Active && m_pipes.Length > 0)
+        {
+            foreach(var i in m_pipes)
+            {
+                i.color = new Color(100f / 255, 100f / 255, 100f / 255);
+            }
+        }
+    }
 
+    private void OnDisable()
+    {
+        if(m_selectPanel.activeSelf)
+        {
+            m_selectPanel.SetActive(false);
+        }
     }
 
     public void OpenOrCloseManue()
@@ -66,6 +81,13 @@ public abstract class AbilityBase : MonoBehaviour
             NextUnlockablize();
             m_effect.SetActive(true);
             m_nowState = ActivateState.Active;
+            if(m_pipes.Length > 0)
+            {
+                foreach (var i in m_pipes)
+                {
+                    i.color = new Color(173f / 255, 222f / 255, 231f / 255);
+                }
+            }
         }
         else
         {
