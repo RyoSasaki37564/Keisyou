@@ -25,5 +25,9 @@ public class FieldEventManager
         {
             m_nowSetEvent.Talk();
         }
+        else
+        {
+            Debug.LogError("イベントが存在しないんだが？");
+        }
     }
 }

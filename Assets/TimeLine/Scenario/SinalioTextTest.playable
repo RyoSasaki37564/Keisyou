@@ -209,7 +209,8 @@ MonoBehaviour:
   m_Children: []
   m_Clips: []
   m_Markers:
-    m_Objects: []
+    m_Objects:
+    - {fileID: 3667320980005110043}
 --- !u!74 &-3437995932799299672
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -382,10 +383,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 2.0833333333333335
+    m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 1863274947720333285}
-    m_Duration: 3.383333333333333
+    m_Duration: 2.05
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3387326448510290027}
     m_EaseInDuration: 0
@@ -450,75 +451,6 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: ScenarioText
-  - m_Version: 1
-    m_Start: 5.466666666666667
-    m_ClipIn: 0
-    m_Asset: {fileID: 432088220441594917}
-    m_Duration: 3.0999999999999996
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -3387326448510290027}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: ScenarioText
   m_Markers:
     m_Objects: []
 --- !u!114 &-3183441035881800112
@@ -538,11 +470,10 @@ MonoBehaviour:
     defaultValue: {fileID: 0}
   template:
     m_name: "\u30A2\u30AD"
-    m_scenario: "\u9F8D\u6EC5\u306E\u5203...?\n\u9F8D\u6EC5\u306E\u5203...!?"
+    m_scenario: []
     m_changeSpeed: 1
     m_pauseScheduled: 0
     m_waitSeconds: 2
-    m_susumu: 0
 --- !u!114 &-2479395263787430523
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1179,12 +1110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
-  - {fileID: 2736631202190897681}
-  - {fileID: 4461668196277665096}
-  - {fileID: -563565075957726484}
   - {fileID: -3387326448510290027}
-  - {fileID: -7004586074281667070}
-  - {fileID: -2056314699690601119}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -1207,11 +1133,10 @@ MonoBehaviour:
     defaultValue: {fileID: 0}
   template:
     m_name: "\u30A2\u30AD"
-    m_scenario: "...\u9F8D\u6EC5\u306E\u5203\u3063\u3066\u306A\u3093\u3060\u3088?\n...\u306A\u3093\u306A\u3093\u3060\u3088"
+    m_scenario: []
     m_changeSpeed: 1
     m_pauseScheduled: 0
     m_waitSeconds: 2
-    m_susumu: 0
 --- !u!114 &1863274947720333285
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1229,11 +1154,16 @@ MonoBehaviour:
     defaultValue: {fileID: 0}
   template:
     m_name: "\u30A2\u30AD"
-    m_scenario: "\u9F8D\u6EC5\u306E\u5203...?\n\u9F8D\u6EC5\u306E\u5203...!?"
+    m_scenario:
+    - "\u304A\u3044"
+    - "\u9F8D\u6EC5\u306E\u5203\u3063\u3066\u306A\u3093\u3060\u3088..."
+    - "\u306A\u3093\u3060\u3088......"
+    - "\u304A\u3044\u304A\u3044\u304A\u3044\u304A\u3044"
+    - "\u306A\u3093\u306A\u3093\u3060\u3088"
+    - end
     m_changeSpeed: 1
     m_pauseScheduled: 0
     m_waitSeconds: 1.5
-    m_susumu: 0
 --- !u!114 &2736631202190897681
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1275,6 +1205,22 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &3667320980005110043
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 2.8333333333333335
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: e7ab3d619827f78459d441f30b3d94b3, type: 2}
 --- !u!114 &4461668196277665096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1333,11 +1279,44 @@ MonoBehaviour:
     defaultValue: {fileID: 0}
   template:
     m_name: "\u30A2\u30AD"
-    m_scenario: "\u9F8D\u6EC5\u306E\u5203...?\n\u9F8D\u6EC5\u306E\u5203...!?"
+    m_scenario:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
     m_changeSpeed: 1
     m_pauseScheduled: 0
     m_waitSeconds: 2
-    m_susumu: 0
 --- !u!74 &7983586258183967228
 AnimationClip:
   m_ObjectHideFlags: 0
