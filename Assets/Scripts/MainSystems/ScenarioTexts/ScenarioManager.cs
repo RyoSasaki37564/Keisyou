@@ -31,7 +31,6 @@ public class ScenarioManager : MonoBehaviour
         if(!m_instance)
         {
             m_instance = this;
-            Debug.LogError("yo");
         }
     }
 
@@ -43,8 +42,7 @@ public class ScenarioManager : MonoBehaviour
             //テキストを進める。m_isEndがtrueならそのまま終わらせる。
             if(m_isEnd == true)
             {
-                Debug.Log("おわれ");
-                CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(1d);
+                CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(5d);
             }
             else
             {

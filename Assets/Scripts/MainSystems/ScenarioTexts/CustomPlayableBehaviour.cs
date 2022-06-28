@@ -42,7 +42,6 @@ public class CustomPlayableBehaviour : PlayableBehaviour
             if(m_scenarios[i] == "end")
             {
                 m_endPoint = i;
-                Debug.Log(i);
             }
         }
     }
@@ -90,12 +89,9 @@ public class CustomPlayableBehaviour : PlayableBehaviour
             //シナリオ末に到達
             if(s == m_scenarios[scenarioTextIndexer] && ScenarioManager.Instance.m_isEnd == false)
             {
-                Debug.Log($"Index{scenarioTextIndexer}");
                 if (scenarioTextIndexer == m_endPoint - 1)
                 {
-                    Debug.Log("最終文");
                     ScenarioManager.Instance.m_isEnd = true;
-                    Debug.Log($"{ScenarioManager.Instance.gameObject.name} {ScenarioManager.Instance.m_isEnd}");
                 }
                 m_pauseScheduled = true;
                 OnBehaviourPause(playable, info);
