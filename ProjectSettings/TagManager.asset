@@ -8,6 +8,7 @@ TagManager:
   - NineKey
   - Danger
   - PlayerAvater
+  - NPC
   layers:
   - Default
   - TransparentFX
