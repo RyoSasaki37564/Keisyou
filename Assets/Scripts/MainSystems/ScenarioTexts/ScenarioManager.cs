@@ -13,6 +13,7 @@ public class ScenarioManager : MonoBehaviour
         {
             if(m_instance == null)
             {
+                Debug.LogWarning("インスタンスがなーい");
                 m_instance = new ScenarioManager();
             }
             return m_instance;
@@ -25,20 +26,30 @@ public class ScenarioManager : MonoBehaviour
 
     public bool m_isEnd = false;
 
+    private void Awake()
+    {
+        if(!m_instance)
+        {
+            m_instance = this;
+            Debug.LogError("yo");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space) && m_scenarioFlg)
         {
             //テキストを進める。m_isEndがtrueならそのまま終わらせる。
-            if(m_isEnd == false)
+            if(m_isEnd == true)
             {
-                CustomPlayableBehaviour.scenarioTextIndexer++;
-                CustomPlayableBehaviour.m_director.time = 0;
+                Debug.Log("おわれ");
                 CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(1d);
             }
             else
             {
+                CustomPlayableBehaviour.scenarioTextIndexer++;
+                CustomPlayableBehaviour.m_director.time = 0;
                 CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(1d);
             }
         }
