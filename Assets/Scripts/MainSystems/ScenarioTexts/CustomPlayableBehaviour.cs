@@ -12,8 +12,6 @@ public class CustomPlayableBehaviour : PlayableBehaviour
 
     Text m_scenarioText;
     Text m_speakerNameText;
-    [SerializeField] string m_name = "しゃべってるやつの名前";
-    [SerializeField, TextArea(1, 3)] string[] m_scenarios = new string[3];
     public static int scenarioTextIndexer = 0;
 
     [SerializeField] double m_changeSpeed = 1d;
@@ -37,9 +35,9 @@ public class CustomPlayableBehaviour : PlayableBehaviour
         m_speakerNameText = GameObject.Find("SpeakerName").GetComponent<Text>();
         m_scenarioText = GameObject.Find("ScenarioText").GetComponent<Text>();
 
-        for(var i = 0; i < m_scenarios.Length; i++)
+        for(var i = 0; i < ScenarioManager.Instance.m_scenariosArray.Length; i++)
         {
-            if(m_scenarios[i] == "end")
+            if(ScenarioManager.Instance.m_scenariosArray[i] == "end")
             {
                 m_endPoint = i;
             }
@@ -55,7 +53,7 @@ public class CustomPlayableBehaviour : PlayableBehaviour
     //このPlayableTrack再生時
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
-        m_speakerNameText.text = m_name;
+        m_speakerNameText.text = ScenarioManager.Instance.m_name;
     }
 
     //	PlayableTrack停止時
@@ -75,20 +73,20 @@ public class CustomPlayableBehaviour : PlayableBehaviour
     /// </summary>
     public override void PrepareFrame(Playable playable, FrameData info)
     {
-        if (m_scenarios[scenarioTextIndexer] != null && 
+        if (ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer] != null && 
             m_director.playableGraph.GetRootPlayable(0).GetSpeed() > 0)
         {
             var progress = (float)(playable.GetTime() / playable.GetDuration());
-            var rate = m_scenarios[scenarioTextIndexer].Length / (float)playable.GetDuration();
+            var rate = ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer].Length / (float)playable.GetDuration();
             var speed = progress * rate;
-            var current = Mathf.Lerp(0, m_scenarios[scenarioTextIndexer].Length, speed);
+            var current = Mathf.Lerp(0, ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer].Length, speed);
             var count = Mathf.CeilToInt(current);
 
-            string s = m_scenarios[scenarioTextIndexer].Substring(0, count);
+            string s = ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer].Substring(0, count);
             m_scenarioText.text = s;
 
             //シナリオ末に到達
-            if(s == m_scenarios[scenarioTextIndexer] && ScenarioManager.Instance.m_isEnd == false)
+            if(s == ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer] && ScenarioManager.Instance.m_isEnd == false)
             {
                 if (scenarioTextIndexer == m_endPoint - 1)
                 {

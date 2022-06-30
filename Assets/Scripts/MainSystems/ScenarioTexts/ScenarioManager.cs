@@ -22,6 +22,8 @@ public class ScenarioManager : MonoBehaviour
 
     [System.NonSerialized] public bool m_scenarioFlg;
 
+    public string[] m_scenariosArray; //会話内容
+    public string m_name = "しゃべってるやつの名前";
     [SerializeField] Text[] m_texts = new Text[2];
 
     public bool m_isEnd = false;
