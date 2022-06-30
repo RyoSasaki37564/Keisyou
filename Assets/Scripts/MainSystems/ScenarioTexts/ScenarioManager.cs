@@ -20,11 +20,13 @@ public class ScenarioManager : MonoBehaviour
         }
     }
 
-    [SerializeField] bool m_scenarioFlg;
+    [System.NonSerialized] public bool m_scenarioFlg;
 
     [SerializeField] Text[] m_texts = new Text[2];
 
     public bool m_isEnd = false;
+
+    public bool m_canNext = false;
 
     [SerializeField] Animator m_anim;
 
@@ -41,10 +43,11 @@ public class ScenarioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && m_scenarioFlg)
+        if(Input.GetKeyDown(KeyCode.Space) && m_scenarioFlg && m_canNext == true)
         {
+            m_canNext = false;
             //テキストを進める。m_isEndがtrueならそのまま終わらせる。
-            if(m_isEnd == true)
+            if (m_isEnd == true)
             {
                 CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(5d);
             }
@@ -60,10 +63,13 @@ public class ScenarioManager : MonoBehaviour
     public void ScenarioModeON()
     {
         m_anim.SetBool("AnimFlg", true);
+        m_scenarioFlg = true;
     }
 
+    //タイムライントラック末尾にシグナルを置き、これをセット。
     public void ScenarioModeOFF()
     {
+        m_scenarioFlg = false;
         m_anim.SetBool("AnimFlg", false);
     }
 
@@ -78,5 +84,7 @@ public class ScenarioManager : MonoBehaviour
         {
             t.text = "";
         }
+        CustomPlayableBehaviour.scenarioTextIndexer = 0;
+        m_isEnd = false;
     }
 }

@@ -57,7 +57,7 @@ public class PlayerMoveController : MonoBehaviour
                 m_gridMove.Move((int)h, (int)v, m_moveTime);
             }
         }
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(!ScenarioManager.Instance.m_scenarioFlg && Input.GetKeyDown(KeyCode.Q))
         {
             FieldEventManager.Instance.EventLoad();
         }

@@ -6,6 +6,6 @@ public class NPCEventOchiai : FieldEventUnit
 {
     public override void FieldEvent()
     {
-        Debug.Log("よし");
+        ScenarioManager.Instance.ScenarioModeON();
     }
 }

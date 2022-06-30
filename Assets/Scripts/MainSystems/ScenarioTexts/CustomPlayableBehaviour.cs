@@ -63,6 +63,7 @@ public class CustomPlayableBehaviour : PlayableBehaviour
     {
         if(m_pauseScheduled)
         {
+            ScenarioManager.Instance.m_canNext = true;
             m_director.playableGraph.GetRootPlayable(0).SetSpeed(0d);
             m_pauseScheduled = false;
         }
