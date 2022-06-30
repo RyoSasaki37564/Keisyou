@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// 単純にテキスト送りがしたいときのためのやつ。
-/// 
+/// タイムラインとの連携を考えないもの。
 /// </summary>
 public class ScenarioPlayer : MonoBehaviour
 {
