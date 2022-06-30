@@ -51,6 +51,10 @@ public class GridMoveController : MonoBehaviour
         {
             m_isMoving = true;
             StartCoroutine(MoveRoutine(x, y, moveTime));
+            if(FieldEventManager.Instance.m_nowSetEvent)
+            {
+                FieldEventManager.Instance.m_nowSetEvent = null;
+            }
         }
         else
         {

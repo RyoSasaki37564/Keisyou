@@ -59,7 +59,7 @@ public class PlayerMoveController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            FieldEventManager.Instance.TalkEvent();
+            FieldEventManager.Instance.EventLoad();
         }
     }
     private void LateUpdate()

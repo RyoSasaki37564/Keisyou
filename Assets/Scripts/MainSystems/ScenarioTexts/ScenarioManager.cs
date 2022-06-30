@@ -26,6 +26,10 @@ public class ScenarioManager : MonoBehaviour
 
     public bool m_isEnd = false;
 
+    [SerializeField] Animator m_anim;
+
+    [SerializeField] PlayableDirector m_director;
+
     private void Awake()
     {
         if(!m_instance)
@@ -51,6 +55,21 @@ public class ScenarioManager : MonoBehaviour
                 CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(1d);
             }
         }
+    }
+
+    public void ScenarioModeON()
+    {
+        m_anim.SetBool("AnimFlg", true);
+    }
+
+    public void ScenarioModeOFF()
+    {
+        m_anim.SetBool("AnimFlg", false);
+    }
+
+    public void TextStart()
+    {
+        m_director.Play();
     }
 
     public void TextEnd()
