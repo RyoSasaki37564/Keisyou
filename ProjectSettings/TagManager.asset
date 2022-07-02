@@ -9,6 +9,7 @@ TagManager:
   - Danger
   - PlayerAvater
   - NPC
+  - Enemy
   layers:
   - Default
   - TransparentFX

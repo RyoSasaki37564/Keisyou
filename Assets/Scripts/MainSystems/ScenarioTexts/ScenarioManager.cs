@@ -98,7 +98,6 @@ public class ScenarioManager : MonoBehaviour
         {
             textSpeed = (float)(m_speedBaseLength / s.Length);
         }
-        Debug.Log(textSpeed);
         return textSpeed;
     }
 }
