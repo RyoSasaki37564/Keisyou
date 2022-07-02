@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class FieldEventUnit : MonoBehaviour
 {
-    public abstract void FieldEvent();
+    public abstract void FieldEvent(GameObject caller);
 }

@@ -19,11 +19,11 @@ public class FieldEventManager
 
     public FieldEventUnit m_nowSetEvent;
 
-    public void EventLoad()
+    public void EventLoad(GameObject player)
     {
         if(m_nowSetEvent)
         {
-            m_nowSetEvent.FieldEvent();
+            m_nowSetEvent.FieldEvent(player);
         }
         else
         {
