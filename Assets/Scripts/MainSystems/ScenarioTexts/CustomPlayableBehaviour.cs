@@ -14,8 +14,6 @@ public class CustomPlayableBehaviour : PlayableBehaviour
     Text m_speakerNameText;
     public static int scenarioTextIndexer = 0;
 
-    [SerializeField] double m_changeSpeed = 1d;
-
     public bool m_pauseScheduled = false;
 
     int m_endPoint;
@@ -42,6 +40,7 @@ public class CustomPlayableBehaviour : PlayableBehaviour
                 m_endPoint = i;
             }
         }
+        m_director.playableGraph.GetRootPlayable(0).SetSpeed(ScenarioManager.Instance.SpeedByLength(ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer]));
     }
 
     //	タイムライン停止時
@@ -77,9 +76,7 @@ public class CustomPlayableBehaviour : PlayableBehaviour
             m_director.playableGraph.GetRootPlayable(0).GetSpeed() > 0)
         {
             var progress = (float)(playable.GetTime() / playable.GetDuration());
-            var rate = ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer].Length / (float)playable.GetDuration();
-            var speed = progress * rate;
-            var current = Mathf.Lerp(0, ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer].Length, speed);
+            var current = Mathf.Lerp(0, ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer].Length, progress);
             var count = Mathf.CeilToInt(current);
 
             string s = ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer].Substring(0, count);

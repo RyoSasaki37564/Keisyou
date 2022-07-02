@@ -34,6 +34,8 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField] PlayableDirector m_director;
 
+    [SerializeField] int m_speedBaseLength = 30;
+
     private void Awake()
     {
         if(!m_instance)
@@ -57,7 +59,7 @@ public class ScenarioManager : MonoBehaviour
             {
                 CustomPlayableBehaviour.scenarioTextIndexer++;
                 CustomPlayableBehaviour.m_director.time = 0;
-                CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(1d);
+                CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(SpeedByLength(m_scenariosArray[CustomPlayableBehaviour.scenarioTextIndexer]));
             }
         }
     }
@@ -88,5 +90,15 @@ public class ScenarioManager : MonoBehaviour
         }
         CustomPlayableBehaviour.scenarioTextIndexer = 0;
         m_isEnd = false;
+    }
+    public double SpeedByLength(string s)
+    {
+        double textSpeed = 1d;
+        if (s.Length < m_speedBaseLength)
+        {
+            textSpeed = (float)(m_speedBaseLength / s.Length);
+        }
+        Debug.Log(textSpeed);
+        return textSpeed;
     }
 }
