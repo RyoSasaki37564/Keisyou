@@ -53,13 +53,13 @@ public class ScenarioManager : MonoBehaviour
             //テキストを進める。m_isEndがtrueならそのまま終わらせる。
             if (m_isEnd == true)
             {
-                CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(5d);
+                TextCustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(5d);
             }
             else
             {
-                CustomPlayableBehaviour.scenarioTextIndexer++;
-                CustomPlayableBehaviour.m_director.time = 0;
-                CustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(SpeedByLength(m_scenariosArray[CustomPlayableBehaviour.scenarioTextIndexer]));
+                TextCustomPlayableBehaviour.scenarioTextIndexer++;
+                TextCustomPlayableBehaviour.m_director.time = 0;
+                TextCustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(SpeedByLength(m_scenariosArray[TextCustomPlayableBehaviour.scenarioTextIndexer]));
             }
         }
     }
@@ -88,7 +88,7 @@ public class ScenarioManager : MonoBehaviour
         {
             t.text = "";
         }
-        CustomPlayableBehaviour.scenarioTextIndexer = 0;
+        TextCustomPlayableBehaviour.scenarioTextIndexer = 0;
         m_isEnd = false;
     }
     public double SpeedByLength(string s)

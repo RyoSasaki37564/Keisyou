@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: TimeLineCustomNPCMove
   m_EditorClassIdentifier: 
   templateGameObject:
-    exposedName: f49ef1d888621f84395de80db62252e3
+    exposedName: bf1b1a4d395404541a1dd4e0305d340e
     defaultValue: {fileID: 0}
   template:
     m_speedRate: 3
@@ -156,6 +156,6 @@ MonoBehaviour:
     v: 0
     m_goalX: 0
     m_goalY: 0
-    m_charactor: {fileID: 2873997264575170045, guid: 8205a7bc7af30ea448c6073708640041,
+    m_charactor: {fileID: 5770330148491460865, guid: 115904f8706db5d4c87b6f783beae4df,
       type: 3}
-    m_genePos: {x: 0, y: 0, z: 0}
+    m_genePos: {x: 22, y: -4, z: 0}

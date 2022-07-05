@@ -33,6 +33,7 @@ public class NPCEventOchiai : FieldEventUnit
         {
             m_spriteRenderer.sprite = m_angleSprites[0];
         }
+
         ScenarioManager.Instance.m_name = m_charaName;
         ScenarioManager.Instance.m_scenariosArray = m_scenarios;
         ScenarioManager.Instance.ScenarioModeON();

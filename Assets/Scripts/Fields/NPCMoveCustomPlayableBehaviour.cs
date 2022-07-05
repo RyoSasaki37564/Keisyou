@@ -69,7 +69,6 @@ public class NPCMoveCustomPlayableBehaviour : PlayableBehaviour
 
     /// <summary>
     /// PlayableTrack再生時毎フレーム
-    /// つまりUpdate()みてーなもんだな～？多分、メイビー、恐らく、きっと。
     /// </summary>
     public override void PrepareFrame(Playable playable, FrameData info)
     {
