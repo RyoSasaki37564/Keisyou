@@ -5,9 +5,6 @@ using UnityEngine;
 public class FuzzyTest : MonoBehaviour
 {
     [SerializeField] GameObject[] m_blocks = new GameObject[4];
-    //[SerializeField] GameObject m_OtherCharactor;
-
-
 
     private void Start()
     {

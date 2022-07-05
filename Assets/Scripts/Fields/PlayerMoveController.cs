@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ターンベースでのプレイヤー移動を制御するコンポーネント
-/// </summary>
 [RequireComponent(typeof(GridMoveController))]
 public class PlayerMoveController : MonoBehaviour
 {
