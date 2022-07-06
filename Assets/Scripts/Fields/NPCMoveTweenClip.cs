@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
+[System.Serializable]
 public class NPCMoveTweenClip : PlayableBehaviour
 {
     public static PlayableDirector m_director;
@@ -10,9 +11,8 @@ public class NPCMoveTweenClip : PlayableBehaviour
 
     [SerializeField] GameObject m_charactor;
 
-    [SerializeField] Transform m_startPos;
-    
-    [SerializeField] Transform m_goalPos;
+    [SerializeField] Vector3 m_startPos;
+    [SerializeField] Vector3 m_goalPos;
 
     public override void OnPlayableCreate(Playable playable)
     {
@@ -51,6 +51,10 @@ public class NPCMoveTweenClip : PlayableBehaviour
     /// </summary>
     public override void PrepareFrame(Playable playable, FrameData info)
     {
+        var progress = (float)(playable.GetTime() / playable.GetDuration());
+        var currentX = Mathf.Lerp(m_startPos.x, m_goalPos.x, progress);
+        var currentY = Mathf.Lerp(m_startPos.y, m_goalPos.y, progress);
 
+        m_charactor.transform.position = new Vector3(currentX, currentY, m_charactor.transform.position.z);
     }
 }

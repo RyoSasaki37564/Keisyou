@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
-public class TimeLineCustomNPCMove : PlayableAsset
+[TrackColor(0.855f, 0.8623f, 0.870f)]
+[TrackClipType(typeof(NPCMoveTweenClip))]
+[TrackBindingType(typeof(GameObject))]
+public class TimeLineCustomNPCMove : TrackAsset
 {
     [SerializeField] private ExposedReference<GameObject> templateGameObject;
 
-    public NPCMoveCustomPlayableBehaviour template = new NPCMoveCustomPlayableBehaviour();
+    public NPCMoveTweenClip template = new NPCMoveTweenClip();
 
-    public override Playable CreatePlayable(PlayableGraph graph, GameObject go)
+    public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int input)
     {
-        var playable = ScriptPlayable<NPCMoveCustomPlayableBehaviour>.Create(graph, template);
+        var playable = ScriptPlayable<NPCMoveTweenClip>.Create(graph, template);
 
         var behaviour = playable.GetBehaviour();
 
