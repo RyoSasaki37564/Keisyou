@@ -2,50 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 [System.Serializable]
-public class NPCMoveTweenClip : PlayableBehaviour
+public class NPCMoveTweenClip : PlayableAsset, ITimelineClipAsset
 {
-    public static PlayableDirector m_director;
-    [System.NonSerialized] public GameObject m_templateGameObject;
+    public NPCMoveTweenBehaviour m_template = new NPCMoveTweenBehaviour();
+    public ExposedReference<Transform> m_startPoint;
+    public ExposedReference<Transform> m_endPoint;
 
-    [SerializeField] GameObject m_charactor;
-
-    [SerializeField] Vector3 m_startPos;
-    [SerializeField] Vector3 m_goalPos;
-
-    public override void OnPlayableCreate(Playable playable)
+    public ClipCaps clipCaps
     {
-        if (m_director == null)
-        {
-            m_director = playable.GetGraph().GetResolver() as PlayableDirector;
-        }
+        get { return ClipCaps.Blending; }
     }
 
-    //タイムライン開始時
-    public override void OnGraphStart(Playable playable)
+    public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
-
+        var playable = ScriptPlayable<NPCMoveTweenBehaviour>.Create(graph, m_template);
+        NPCMoveTweenBehaviour clone = playable.GetBehaviour();
+        clone.m_startLocation = m_startPoint.Resolve(graph.GetResolver());
+        clone.m_endLocation = m_endPoint.Resolve(graph.GetResolver());
+        return playable;
     }
 
-    //	タイムライン停止時
-    public override void OnGraphStop(Playable playable)
-    {
 
-    }
 
-    //このPlayableTrack再生時
-    public override void OnBehaviourPlay(Playable playable, FrameData info)
-    {
-
-    }
-
-    //	PlayableTrack停止時
-    public override void OnBehaviourPause(Playable playable, FrameData info)
-    {
-
-    }
-
+    /*
     /// <summary>
     /// PlayableTrack再生時毎フレーム
     /// </summary>
@@ -57,4 +39,5 @@ public class NPCMoveTweenClip : PlayableBehaviour
 
         m_charactor.transform.position = new Vector3(currentX, currentY, m_charactor.transform.position.z);
     }
+    */
 }

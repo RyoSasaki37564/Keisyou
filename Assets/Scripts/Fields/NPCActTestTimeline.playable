@@ -287,8 +287,7 @@ MonoBehaviour:
   m_Name: NPCActTestTimeline
   m_EditorClassIdentifier: 
   m_Version: 0
-  m_Tracks:
-  - {fileID: 7145019458819783594}
+  m_Tracks: []
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -421,6 +420,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6297947f264df45ba884f171e9a6f5, type: 3}
   m_Name: TimeLineCustomNPCMove
   m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 0}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
   templateGameObject:
     exposedName: 9a59d8ae96fc2eb41a88a68ea5409412
     defaultValue: {fileID: 0}

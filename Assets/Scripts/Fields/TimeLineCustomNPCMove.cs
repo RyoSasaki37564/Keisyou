@@ -15,12 +15,30 @@ public class TimeLineCustomNPCMove : TrackAsset
 
     public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int input)
     {
-        var playable = ScriptPlayable<NPCMoveTweenClip>.Create(graph, template);
+        var playable = ScriptPlayable<NPCMoveTweenClip>.Create(graph, input);
 
         var behaviour = playable.GetBehaviour();
 
         behaviour.m_templateGameObject = templateGameObject.Resolve(graph.GetResolver());
 
         return playable;
+    }
+
+    public override void GatherProperties(PlayableDirector director, IPropertyCollector driver)
+    {
+#if UNITY_EDITOR
+        var comp = director.GetGenericBinding(this) as GameObject;
+        if (comp == null)
+            return;
+        var so = new UnityEditor.SerializedObject(comp);
+        var iter = so.GetIterator();
+        while (iter.NextVisible(true))
+        {
+            if (iter.hasVisibleChildren)
+                continue;
+            driver.AddFromName(comp.gameObject, iter.propertyPath);
+        }
+#endif
+        base.GatherProperties(director, driver);
     }
 }
