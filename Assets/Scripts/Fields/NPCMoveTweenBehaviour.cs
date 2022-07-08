@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Playables;
 
-[System.Serializable]
 public class NPCMoveTweenBehaviour : PlayableBehaviour
 {
     public Transform m_startLocation;

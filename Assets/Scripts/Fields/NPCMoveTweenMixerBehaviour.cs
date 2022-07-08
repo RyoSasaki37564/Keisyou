@@ -7,6 +7,8 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 {
     bool m_FirstFrameHappened;
 
+    Animator m_walkingAnim;
+
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
         GameObject trackBinding = playerData as GameObject;
@@ -26,6 +28,22 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             if (input.m_endLocation == null)
                 continue;
 
+            if(!m_FirstFrameHappened)
+            {
+                m_walkingAnim = trackBinding.GetComponent<Animator>();
+                var moveVector = input.m_startLocation.position - input.m_endLocation.position;
+                float animValue = Mathf.Abs(moveVector.x) > Mathf.Abs(moveVector.y) ? moveVector.x : moveVector.y;
+
+                if(animValue == moveVector.x)
+                {
+                    m_walkingAnim.SetFloat("SetWalkH", -moveVector.x);
+                }
+                else
+                {
+                    m_walkingAnim.SetFloat("SetWalkV", -moveVector.y);
+                }
+            }
+
             if (!m_FirstFrameHappened && !input.m_startLocation)
             {
                 input.m_startingPosition = defaultPosition;
@@ -35,6 +53,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
             var currentX = Mathf.Lerp(input.m_startLocation.position.x, input.m_endLocation.position.x, progress);
             var currentY = Mathf.Lerp(input.m_startLocation.position.y, input.m_endLocation.position.y, progress);
+
             trackBinding.transform.position = new Vector3(currentX, currentY, trackBinding.transform.position.z);
         }
 
