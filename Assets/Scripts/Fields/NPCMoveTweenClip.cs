@@ -24,20 +24,4 @@ public class NPCMoveTweenClip : PlayableAsset, ITimelineClipAsset
         clone.m_endLocation = m_endPoint.Resolve(graph.GetResolver());
         return playable;
     }
-
-
-
-    /*
-    /// <summary>
-    /// PlayableTrack再生時毎フレーム
-    /// </summary>
-    public override void PrepareFrame(Playable playable, FrameData info)
-    {
-        var progress = (float)(playable.GetTime() / playable.GetDuration());
-        var currentX = Mathf.Lerp(m_startPos.x, m_goalPos.x, progress);
-        var currentY = Mathf.Lerp(m_startPos.y, m_goalPos.y, progress);
-
-        m_charactor.transform.position = new Vector3(currentX, currentY, m_charactor.transform.position.z);
-    }
-    */
 }
