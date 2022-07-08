@@ -5,17 +5,16 @@ using UnityEngine.Playables;
 
 public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 {
-    float m_progress = 0;
     bool m_FirstFrameHappened;
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
-        Transform trackBinding = playerData as Transform;
+        GameObject trackBinding = playerData as GameObject;
 
         if (trackBinding == null)
             return;
 
-        Vector3 defaultPosition = trackBinding.position;
+        Vector3 defaultPosition = trackBinding.transform.position;
 
         int inputCount = playable.GetInputCount();
 
@@ -32,25 +31,14 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                 input.m_startingPosition = defaultPosition;
             }
 
-            //var progress = (float)(playable.GetTime() / playable.GetDuration());
+            var progress = (float)(playableInput.GetTime() / playableInput.GetDuration());
 
-            m_progress = (float)(playableInput.GetTime() / playableInput.GetDuration());
-            Debug.Log(m_progress + "=" + (float)playableInput.GetTime() + "/" + (float)playableInput.GetDuration());
-
-            var currentX = Mathf.Lerp(input.m_startLocation.position.x, input.m_endLocation.position.x, m_progress);
-            var currentY = Mathf.Lerp(input.m_startLocation.position.y, input.m_endLocation.position.y, m_progress);
-            trackBinding.position = new Vector3(currentX, currentY, trackBinding.position.z);
+            var currentX = Mathf.Lerp(input.m_startLocation.position.x, input.m_endLocation.position.x, progress);
+            var currentY = Mathf.Lerp(input.m_startLocation.position.y, input.m_endLocation.position.y, progress);
+            trackBinding.transform.position = new Vector3(currentX, currentY, trackBinding.transform.position.z);
         }
 
-        //blendedPosition += defaultPosition * (1f - positionTotalWeight);
-
-        //trackBinding.position = blendedPosition;
 
         m_FirstFrameHappened = true;
-    }
-
-    public override void PrepareFrame(Playable playable, FrameData info)
-    {
-        //m_progress = (float)(playable.GetTime() / playable.GetDuration());
     }
 }

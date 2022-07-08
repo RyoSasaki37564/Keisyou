@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[TrackColor(0.855f, 0.8623f, 0.870f)]
+[TrackColor(0f, 0.4f, 0.4f)]
 [TrackClipType(typeof(NPCMoveTweenClip))]
-[TrackBindingType(typeof(Transform))]
+[TrackBindingType(typeof(GameObject))]
 public class TimeLineCustomNPCMove : TrackAsset
 {
     public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int input)
