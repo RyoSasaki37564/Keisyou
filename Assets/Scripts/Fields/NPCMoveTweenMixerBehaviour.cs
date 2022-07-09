@@ -33,7 +33,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             if(!m_FirstFrameHappened)
             {
                 m_walkingAnim = trackBinding.GetComponent<Animator>();
-                AnimChange(input);
+                AnimChange(input, m_walkingAnim);
                 if(!input.m_spots[input.m_turningCount - 1])
                 {
                     input.m_startingPosition = defaultPosition;
@@ -44,26 +44,27 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
             var currentX = Mathf.Lerp(input.m_spots[input.m_turningCount - 1].position.x,
                 input.m_spots[input.m_turningCount].position.x,
-                progress);// * input.m_spots.Length);
+                progress);
 
             var currentY = Mathf.Lerp(input.m_spots[input.m_turningCount - 1].position.y,
                 input.m_spots[input.m_turningCount].position.y,
-                progress);// * input.m_spots.Length);
+                progress);
 
             trackBinding.transform.position = new Vector3(currentX, currentY, trackBinding.transform.position.z);
 
             if(trackBinding.transform.position == input.m_spots[input.m_turningCount].position)
             {
-                if (input.m_turningCount == input.m_spots.Length)
+                if (input.m_turningCount == input.m_spots.Length - 1)
                 {
+                    Debug.Log("End");
                     m_walkingAnim.SetBool("SetIdle", true);
                 }
                 else
                 {
+                    m_walkingAnim.SetBool("SetIdle", false);
                     input.m_turningCount++;
                     m_deltaTime = (float)playableInput.GetTime();
-                    AnimChange(input);
-                    Debug.Log(m_deltaTime);
+                    AnimChange(input, m_walkingAnim);
                 }
             }
         }
@@ -71,18 +72,34 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
         m_FirstFrameHappened = true;
     }
 
-    void AnimChange(NPCMoveTweenBehaviour behaviour)
+    void AnimChange(NPCMoveTweenBehaviour behaviour, Animator anim)
     {
         var moveVector = behaviour.m_spots[behaviour.m_turningCount - 1].position - behaviour.m_spots[behaviour.m_turningCount].position;
         float animValue = Mathf.Abs(moveVector.x) <= Mathf.Abs(moveVector.y) ? moveVector.y : moveVector.x;
 
         if (animValue == moveVector.x)
         {
-            m_walkingAnim.SetFloat("SetWalkH", -moveVector.x);
+            if (animValue < 0)
+            {
+                anim.CrossFade("WalkRightAnimation", 0, 0, 0);
+            }
+            else
+            {
+                anim.CrossFade("WalkLeftAnimation", 0, 0, 0);
+            }
+            Debug.Log(-moveVector.x);
         }
         else
         {
-            m_walkingAnim.SetFloat("SetWalkV", -moveVector.y);
+            if(animValue < 0)
+            {
+                anim.CrossFade("WalkFrontAnimation", 0, 0, 0);
+            }
+            else
+            {
+                anim.CrossFade("WalkBackAnimation", 0, 0, 0);
+            }
+            Debug.Log(-moveVector.y);
         }
     }
 }
