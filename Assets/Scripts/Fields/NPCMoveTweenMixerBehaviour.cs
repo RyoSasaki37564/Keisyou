@@ -56,7 +56,6 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             {
                 if (input.m_turningCount == input.m_spots.Length - 1)
                 {
-                    Debug.Log("End");
                     m_walkingAnim.SetBool("SetIdle", true);
                 }
                 else
@@ -68,38 +67,25 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                 }
             }
         }
-
         m_FirstFrameHappened = true;
+    }
+
+    public override void OnGraphStop(Playable playable)
+    {
+        m_walkingAnim.SetBool("SetIdle", true);
     }
 
     void AnimChange(NPCMoveTweenBehaviour behaviour, Animator anim)
     {
         var moveVector = behaviour.m_spots[behaviour.m_turningCount - 1].position - behaviour.m_spots[behaviour.m_turningCount].position;
         float animValue = Mathf.Abs(moveVector.x) <= Mathf.Abs(moveVector.y) ? moveVector.y : moveVector.x;
-
         if (animValue == moveVector.x)
         {
-            if (animValue < 0)
-            {
-                anim.CrossFade("WalkRightAnimation", 0, 0, 0);
-            }
-            else
-            {
-                anim.CrossFade("WalkLeftAnimation", 0, 0, 0);
-            }
-            Debug.Log(-moveVector.x);
+            anim.CrossFade(animValue < 0 ? "WalkRightAnimation" : "WalkLeftAnimation", 0, 0, 0);
         }
         else
         {
-            if(animValue < 0)
-            {
-                anim.CrossFade("WalkFrontAnimation", 0, 0, 0);
-            }
-            else
-            {
-                anim.CrossFade("WalkBackAnimation", 0, 0, 0);
-            }
-            Debug.Log(-moveVector.y);
+            anim.CrossFade(animValue < 0 ? "WalkFrontAnimation" : "WalkBackAnimation", 0, 0, 0);
         }
     }
 }
