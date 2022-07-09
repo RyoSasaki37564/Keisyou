@@ -126,12 +126,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99017149cfdf7c0478edc2b18cc119dd, type: 3}
   m_Name: NPCMoveTweenClip
   m_EditorClassIdentifier: 
-  m_startPoint:
-    exposedName: 557a2fa1391aca040b52972a293c4c50
-    defaultValue: {fileID: 0}
-  m_endPoint:
-    exposedName: 9e2f4bb48cb81c74e92d702d2a369bd4
-    defaultValue: {fileID: 0}
+  m_turningPoints:
+  - m_spot:
+      exposedName: 631211848c91bf64cae9728b37447c02
+      defaultValue: {fileID: 0}
+  - m_spot:
+      exposedName: 2c9a8d0385c1ab14c816ae51815a82fd
+      defaultValue: {fileID: 0}
+  - m_spot:
+      exposedName: f9246ea374c62ac468e7630f22cc5574
+      defaultValue: {fileID: 0}
+  - m_spot:
+      exposedName: c05369300dee51a4ab0ce4def6ab90e0
+      defaultValue: {fileID: 0}
+  - m_spot:
+      exposedName: 85f1381856ee30546a30db9473eb4453
+      defaultValue: {fileID: 0}
 --- !u!114 &-2073720768224588331
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -357,10 +367,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 1
+    m_Start: 0.6
     m_ClipIn: 0
     m_Asset: {fileID: -3782918927980469847}
-    m_Duration: 5
+    m_Duration: 6.816666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6357543335825515850}
     m_EaseInDuration: 0

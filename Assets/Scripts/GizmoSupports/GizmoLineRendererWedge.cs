@@ -8,7 +8,10 @@ public class GizmoLineRendererWedge : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(this.transform.position, m_linkedWedge.transform.position);
+        if(m_linkedWedge)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(this.transform.position, m_linkedWedge.transform.position);
+        }
     }
 }
