@@ -56,6 +56,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             {
                 if (input.m_turningCount == input.m_spots.Length - 1)
                 {
+                    Debug.Log("End");
                     m_walkingAnim.SetBool("SetIdle", true);
                 }
                 else
@@ -68,11 +69,6 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             }
         }
         m_FirstFrameHappened = true;
-    }
-
-    public override void OnGraphStop(Playable playable)
-    {
-        m_walkingAnim.SetBool("SetIdle", true);
     }
 
     void AnimChange(NPCMoveTweenBehaviour behaviour, Animator anim)
