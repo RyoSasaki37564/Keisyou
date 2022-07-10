@@ -7,8 +7,6 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 {
     bool m_FirstFrameHappened;
 
-    float m_deltaTime;
-
     Animator m_walkingAnim;
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
@@ -40,7 +38,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                 }
             }
 
-            var progress = (float)((playableInput.GetTime() - m_deltaTime) / playableInput.GetDuration() *  input.m_fullLenge / input.m_lenges[input.m_turningCount - 1]);
+            var progress = (float)((playableInput.GetTime() - input.m_deltaTime) / playableInput.GetDuration() *  input.m_fullLenge / input.m_lenges[input.m_turningCount - 1]);
 
             var currentX = Mathf.Lerp(input.m_spots[input.m_turningCount - 1].position.x,
                 input.m_spots[input.m_turningCount].position.x,
@@ -56,14 +54,13 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             {
                 if (input.m_turningCount == input.m_spots.Length - 1)
                 {
-                    Debug.Log("End");
                     m_walkingAnim.SetBool("SetIdle", true);
                 }
                 else
                 {
                     m_walkingAnim.SetBool("SetIdle", false);
                     input.m_turningCount++;
-                    m_deltaTime = (float)playableInput.GetTime();
+                    input.m_deltaTime = (float)playableInput.GetTime();
                     AnimChange(input, m_walkingAnim);
                 }
             }

@@ -5,6 +5,7 @@ public class NPCMoveTweenBehaviour : PlayableBehaviour
 {
     public Vector3 m_startingPosition;
     public Transform[] m_spots;
+    public float m_deltaTime;
     public int[] m_lenges;
     public int m_fullLenge;
     /// <summary>
