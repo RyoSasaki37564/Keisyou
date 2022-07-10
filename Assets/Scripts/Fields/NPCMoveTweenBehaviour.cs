@@ -10,9 +10,9 @@ public class NPCMoveTweenBehaviour : PlayableBehaviour
     public int m_fullLenge;
     /// <summary> １スタートのカウンター。 </summary>
     public int m_turningCount = 1;
-    public static int m_zone = 0;
     public bool m_isEnd;
-    public Animator m_anim;
+    int m_onBehaviourPlayCount;
+    public int m_countOfOnBehaviourPlay { get => m_onBehaviourPlayCount; }
 
     public override void PrepareFrame(Playable playable, FrameData info)
     {
@@ -24,7 +24,6 @@ public class NPCMoveTweenBehaviour : PlayableBehaviour
 
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
-        NPCMoveTweenMixerBehaviour.m_walkingAnim.SetBool("SetIdle", false);
-        NPCMoveTweenMixerBehaviour.AnimChange(this, NPCMoveTweenMixerBehaviour.m_walkingAnim);
+        m_onBehaviourPlayCount++;
     }
 }

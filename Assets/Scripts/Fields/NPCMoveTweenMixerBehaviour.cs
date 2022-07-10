@@ -7,10 +7,12 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 {
     bool m_FirstFrameHappened;
 
-    bool[] m_FirstFrameByTrack;
+    int m_zone;
 
     Animator m_anim;
-    public static Animator m_walkingAnim;// { get => m_anim; }
+    public Animator m_walkingAnim { get => m_anim; }
+
+    int m_nowOnPlay = 1;
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
@@ -25,7 +27,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
         for (int i = 0; i < inputCount; i++)
         {
-            if(i != NPCMoveTweenBehaviour.m_zone)
+            if(i != m_zone)
             {
                 continue;
             }
@@ -38,25 +40,21 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
             if(!m_FirstFrameHappened)
             {
-                m_FirstFrameByTrack = new bool[inputCount];
-                m_FirstFrameByTrack[0] = true;
-                //m_anim = trackBinding.GetComponent<Animator>();
-                m_walkingAnim = trackBinding.GetComponent<Animator>();
+                m_anim = trackBinding.GetComponent<Animator>();
                 AnimChange(input, m_walkingAnim);
                 if(!input.m_spots[0])
                 {
                     input.m_startingPosition = defaultPosition;
                 }
+                m_FirstFrameHappened = true;
             }
 
-            /*
-            if(!m_FirstFrameByTrack[NPCMoveTweenBehaviour.m_zone])
+            if(m_nowOnPlay < input.m_countOfOnBehaviourPlay)
             {
                 m_walkingAnim.SetBool("SetIdle", false);
                 AnimChange(input, m_walkingAnim);
-                m_FirstFrameByTrack[NPCMoveTweenBehaviour.m_zone] = true;
+                m_nowOnPlay = input.m_countOfOnBehaviourPlay;
             }
-            */
 
             var progress = (float)((playableInput.GetTime() - input.m_deltaTime) / playableInput.GetDuration() *  input.m_fullLenge / input.m_lenges[input.m_turningCount - 1]);
 
@@ -81,12 +79,12 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
             if(trackBinding.transform.position == input.m_spots[input.m_turningCount].position)
             {
-                Debug.LogWarning(input.m_turningCount + "/" + (input.m_spots.Length - 1));
                 if (input.m_turningCount == input.m_spots.Length - 1)
                 {
                     if(!input.m_isEnd)
                     {
-                        NPCMoveTweenBehaviour.m_zone++;
+                        m_zone++;
+                        m_nowOnPlay = 0;
                         m_walkingAnim.SetBool("SetIdle", true);
                         input.m_isEnd = true;
                     }
@@ -100,12 +98,10 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                 }
             }
         }
-        m_FirstFrameHappened = true;
     }
 
     public static void AnimChange(NPCMoveTweenBehaviour behaviour, Animator anim)
     {
-        Debug.Log("animC");
         var moveVector = behaviour.m_spots[behaviour.m_turningCount - 1].position - behaviour.m_spots[behaviour.m_turningCount].position;
         float animValue = Mathf.Abs(moveVector.x) <= Mathf.Abs(moveVector.y) ? moveVector.y : moveVector.x;
         if (animValue == moveVector.x)

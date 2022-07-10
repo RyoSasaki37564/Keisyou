@@ -19,7 +19,6 @@ public class NPCMoveTweenClip : PlayableAsset, ITimelineClipAsset
 
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
-        Debug.LogWarning("p");
         var playable = ScriptPlayable<NPCMoveTweenBehaviour>.Create(graph, m_template);
         NPCMoveTweenBehaviour clone = playable.GetBehaviour();
         m_lenges = new int[m_turningPoints.Count - 1];
