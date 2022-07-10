@@ -8,10 +8,9 @@ public class NPCMoveTweenBehaviour : PlayableBehaviour
     public float m_deltaTime;
     public int[] m_lenges;
     public int m_fullLenge;
-    /// <summary>
-    /// １スタートのカウンター。
-    /// </summary>
+    /// <summary> １スタートのカウンター。 </summary>
     public int m_turningCount = 1;
+    public static int m_zone = 0;
 
     public override void PrepareFrame(Playable playable, FrameData info)
     {

@@ -22,6 +22,11 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
         for (int i = 0; i < inputCount; i++)
         {
+            if(i > NPCMoveTweenBehaviour.m_zone)
+            {
+                return;
+            }
+
             ScriptPlayable<NPCMoveTweenBehaviour> playableInput = (ScriptPlayable<NPCMoveTweenBehaviour>)playable.GetInput(i);
             NPCMoveTweenBehaviour input = playableInput.GetBehaviour();
 
@@ -32,7 +37,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             {
                 m_walkingAnim = trackBinding.GetComponent<Animator>();
                 AnimChange(input, m_walkingAnim);
-                if(!input.m_spots[input.m_turningCount - 1])
+                if(!input.m_spots[0])
                 {
                     input.m_startingPosition = defaultPosition;
                 }
@@ -48,12 +53,24 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                 input.m_spots[input.m_turningCount].position.y,
                 progress);
 
+            if(Mathf.Abs(Mathf.Abs(currentX) - Mathf.Abs(input.m_spots[input.m_turningCount].position.x)) < 0.1f)
+            {
+                currentX = input.m_spots[input.m_turningCount].position.x;
+            }
+            if (Mathf.Abs(Mathf.Abs(currentY) - Mathf.Abs(input.m_spots[input.m_turningCount].position.y)) < 0.1f)
+            {
+                currentY = input.m_spots[input.m_turningCount].position.y;
+            }
+
             trackBinding.transform.position = new Vector3(currentX, currentY, trackBinding.transform.position.z);
 
             if(trackBinding.transform.position == input.m_spots[input.m_turningCount].position)
             {
+                Debug.LogWarning(input.m_turningCount + "/" + (input.m_spots.Length - 1));
                 if (input.m_turningCount == input.m_spots.Length - 1)
                 {
+                    Debug.LogWarning("Zone");
+                    NPCMoveTweenBehaviour.m_zone++;
                     m_walkingAnim.SetBool("SetIdle", true);
                 }
                 else
