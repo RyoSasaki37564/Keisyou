@@ -12,6 +12,7 @@ public class NPCMoveTweenBehaviour : PlayableBehaviour
     public int m_turningCount = 1;
     public static int m_zone = 0;
     public bool m_isEnd;
+    public Animator m_anim;
 
     public override void PrepareFrame(Playable playable, FrameData info)
     {
@@ -19,5 +20,11 @@ public class NPCMoveTweenBehaviour : PlayableBehaviour
         {
             m_startingPosition = m_spots[0].position;
         }
+    }
+
+    public override void OnBehaviourPlay(Playable playable, FrameData info)
+    {
+        NPCMoveTweenMixerBehaviour.m_walkingAnim.SetBool("SetIdle", false);
+        NPCMoveTweenMixerBehaviour.AnimChange(this, NPCMoveTweenMixerBehaviour.m_walkingAnim);
     }
 }

@@ -7,7 +7,10 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 {
     bool m_FirstFrameHappened;
 
-    Animator m_walkingAnim;
+    bool[] m_FirstFrameByTrack;
+
+    Animator m_anim;
+    public static Animator m_walkingAnim;// { get => m_anim; }
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
@@ -22,11 +25,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
         for (int i = 0; i < inputCount; i++)
         {
-            if(i < NPCMoveTweenBehaviour.m_zone)
-            {
-                continue;
-            }
-            if(i > NPCMoveTweenBehaviour.m_zone)
+            if(i != NPCMoveTweenBehaviour.m_zone)
             {
                 continue;
             }
@@ -39,6 +38,9 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
             if(!m_FirstFrameHappened)
             {
+                m_FirstFrameByTrack = new bool[inputCount];
+                m_FirstFrameByTrack[0] = true;
+                //m_anim = trackBinding.GetComponent<Animator>();
                 m_walkingAnim = trackBinding.GetComponent<Animator>();
                 AnimChange(input, m_walkingAnim);
                 if(!input.m_spots[0])
@@ -46,6 +48,15 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                     input.m_startingPosition = defaultPosition;
                 }
             }
+
+            /*
+            if(!m_FirstFrameByTrack[NPCMoveTweenBehaviour.m_zone])
+            {
+                m_walkingAnim.SetBool("SetIdle", false);
+                AnimChange(input, m_walkingAnim);
+                m_FirstFrameByTrack[NPCMoveTweenBehaviour.m_zone] = true;
+            }
+            */
 
             var progress = (float)((playableInput.GetTime() - input.m_deltaTime) / playableInput.GetDuration() *  input.m_fullLenge / input.m_lenges[input.m_turningCount - 1]);
 
@@ -92,8 +103,9 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
         m_FirstFrameHappened = true;
     }
 
-    void AnimChange(NPCMoveTweenBehaviour behaviour, Animator anim)
+    public static void AnimChange(NPCMoveTweenBehaviour behaviour, Animator anim)
     {
+        Debug.Log("animC");
         var moveVector = behaviour.m_spots[behaviour.m_turningCount - 1].position - behaviour.m_spots[behaviour.m_turningCount].position;
         float animValue = Mathf.Abs(moveVector.x) <= Mathf.Abs(moveVector.y) ? moveVector.y : moveVector.x;
         if (animValue == moveVector.x)
