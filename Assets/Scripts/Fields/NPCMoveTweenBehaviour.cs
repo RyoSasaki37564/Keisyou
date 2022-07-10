@@ -11,6 +11,7 @@ public class NPCMoveTweenBehaviour : PlayableBehaviour
     /// <summary> １スタートのカウンター。 </summary>
     public int m_turningCount = 1;
     public static int m_zone = 0;
+    public bool m_isEnd;
 
     public override void PrepareFrame(Playable playable, FrameData info)
     {

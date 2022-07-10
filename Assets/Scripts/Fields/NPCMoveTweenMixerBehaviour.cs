@@ -22,9 +22,13 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
         for (int i = 0; i < inputCount; i++)
         {
+            if(i < NPCMoveTweenBehaviour.m_zone)
+            {
+                continue;
+            }
             if(i > NPCMoveTweenBehaviour.m_zone)
             {
-                return;
+                continue;
             }
 
             ScriptPlayable<NPCMoveTweenBehaviour> playableInput = (ScriptPlayable<NPCMoveTweenBehaviour>)playable.GetInput(i);
@@ -69,9 +73,12 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                 Debug.LogWarning(input.m_turningCount + "/" + (input.m_spots.Length - 1));
                 if (input.m_turningCount == input.m_spots.Length - 1)
                 {
-                    Debug.LogWarning("Zone");
-                    NPCMoveTweenBehaviour.m_zone++;
-                    m_walkingAnim.SetBool("SetIdle", true);
+                    if(!input.m_isEnd)
+                    {
+                        NPCMoveTweenBehaviour.m_zone++;
+                        m_walkingAnim.SetBool("SetIdle", true);
+                        input.m_isEnd = true;
+                    }
                 }
                 else
                 {
