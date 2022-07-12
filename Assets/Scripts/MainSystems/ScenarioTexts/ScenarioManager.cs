@@ -36,6 +36,8 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField] int m_speedBaseLength = 30;
 
+    public double m_timeHead;
+
     private void Awake()
     {
         if(!m_instance)
@@ -58,7 +60,7 @@ public class ScenarioManager : MonoBehaviour
             else
             {
                 TextCustomPlayableBehaviour.scenarioTextIndexer++;
-                TextCustomPlayableBehaviour.m_director.time = 0;
+                TextCustomPlayableBehaviour.m_director.time = m_timeHead;//そのクリップのはじめを検出し格納しなくてhならない。
                 TextCustomPlayableBehaviour.m_director.playableGraph.GetRootPlayable(0).SetSpeed(SpeedByLength(m_scenariosArray[TextCustomPlayableBehaviour.scenarioTextIndexer]));
             }
         }
@@ -73,6 +75,7 @@ public class ScenarioManager : MonoBehaviour
     //タイムライントラック末尾にシグナルを置き、これをセット。
     public void ScenarioModeOFF()
     {
+        m_director.playableGraph.GetRootPlayable(0).SetSpeed(1d);
         m_scenarioFlg = false;
         m_anim.SetBool("AnimFlg", false);
     }

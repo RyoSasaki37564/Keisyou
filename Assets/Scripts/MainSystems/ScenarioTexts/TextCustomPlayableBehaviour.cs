@@ -18,6 +18,8 @@ public class TextCustomPlayableBehaviour : PlayableBehaviour
 
     int m_endPoint;
 
+    bool m_headFlg;
+
     public override void OnPlayableCreate(Playable playable)
     {
         if(m_director == null)
@@ -30,28 +32,36 @@ public class TextCustomPlayableBehaviour : PlayableBehaviour
     //タイムライン開始時
     public override void OnGraphStart(Playable playable)
     {
-        m_speakerNameText = GameObject.Find("SpeakerName").GetComponent<Text>();
-        m_scenarioText = GameObject.Find("ScenarioText").GetComponent<Text>();
 
-        for(var i = 0; i < ScenarioManager.Instance.m_scenariosArray.Length; i++)
-        {
-            if(ScenarioManager.Instance.m_scenariosArray[i] == "end")
-            {
-                m_endPoint = i;
-            }
-        }
-        m_director.playableGraph.GetRootPlayable(0).SetSpeed(ScenarioManager.Instance.SpeedByLength(ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer]));
     }
 
     //	タイムライン停止時
     public override void OnGraphStop(Playable playable)
     {
-
+        m_headFlg = false;
     }
 
     //このPlayableTrack再生時
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
+        if(!m_headFlg)
+        {
+            m_speakerNameText = GameObject.Find("SpeakerName").GetComponent<Text>();
+            m_scenarioText = GameObject.Find("ScenarioText").GetComponent<Text>();
+
+            for (var i = 0; i < ScenarioManager.Instance.m_scenariosArray.Length; i++)
+            {
+                if (ScenarioManager.Instance.m_scenariosArray[i] == "end")
+                {
+                    m_endPoint = i;
+                }
+            }
+            Debug.LogWarning(scenarioTextIndexer + "/" + ScenarioManager.Instance.m_scenariosArray.Length);
+            m_director.playableGraph.GetRootPlayable(0).SetSpeed(ScenarioManager.Instance.SpeedByLength(ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer]));
+
+            ScenarioManager.Instance.m_timeHead = m_director.time;
+            m_headFlg = true;
+        }
         m_speakerNameText.text = ScenarioManager.Instance.m_name;
     }
 
