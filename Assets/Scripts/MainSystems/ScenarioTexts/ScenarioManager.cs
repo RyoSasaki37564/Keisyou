@@ -32,7 +32,7 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField] Animator m_anim;
 
-    [SerializeField] PlayableDirector m_director;
+    [SerializeField] public PlayableDirector m_director;
 
     [SerializeField] int m_speedBaseLength = 30;
 

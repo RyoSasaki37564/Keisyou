@@ -56,8 +56,8 @@ public class TextCustomPlayableBehaviour : PlayableBehaviour
                     m_endPoint = i;
                 }
             }
-            Debug.LogWarning(scenarioTextIndexer + "/" + ScenarioManager.Instance.m_scenariosArray.Length);
-            m_director.playableGraph.GetRootPlayable(0).SetSpeed(ScenarioManager.Instance.SpeedByLength(ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer]));
+            m_director.playableGraph.GetRootPlayable(0).SetSpeed
+                (ScenarioManager.Instance.SpeedByLength(ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer]));
 
             ScenarioManager.Instance.m_timeHead = m_director.time;
             m_headFlg = true;
