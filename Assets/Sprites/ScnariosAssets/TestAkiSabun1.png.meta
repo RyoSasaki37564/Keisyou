@@ -1,0 +1,500 @@
+fileFormatVersion: 2
+guid: 44c43e17cfecdaa4898b6690f53ad22d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6591842639883045715
+    second: TestAkiSabun1_0
+  - first:
+      213: 76906172426284653
+    second: TestAkiSabun1_1
+  - first:
+      213: 5589113797495280384
+    second: TestAkiSabun1_2
+  - first:
+      213: 6959537058322948690
+    second: TestAkiSabun1_3
+  - first:
+      213: 5469129783359316040
+    second: TestAkiSabun1_4
+  - first:
+      213: -2942898480951735502
+    second: TestAkiSabun1_5
+  - first:
+      213: 4273971801924538192
+    second: TestAkiSabun1_6
+  - first:
+      213: -2435044829189782158
+    second: TestAkiSabun1_7
+  - first:
+      213: -2841818516927573978
+    second: TestAkiSabun1_8
+  - first:
+      213: -7253431934114379155
+    second: TestAkiSabun1_9
+  - first:
+      213: -8104670123486564527
+    second: TestAkiSabun1_10
+  - first:
+      213: -4973261900853225626
+    second: TestAkiSabun1_11
+  - first:
+      213: 4435259418325610253
+    second: TestAkiSabun1_12
+  - first:
+      213: -3696589520724800967
+    second: TestAkiSabun1_13
+  - first:
+      213: -4706076908506574212
+    second: TestAkiSabun1_14
+  - first:
+      213: -6998490921125209270
+    second: TestAkiSabun1_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TestAkiSabun1_0
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 3135
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b8085b4fdea7b50800000000000000
+      internalID: 6591842639883045715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_1
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 3135
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ee080a1c9311100800000000000000
+      internalID: 76906172426284653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_2
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 3135
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003d0fce265809d40800000000000000
+      internalID: 5589113797495280384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_3
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 3135
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 252a182d41e359060800000000000000
+      internalID: 6959537058322948690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_4
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 2111
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84024afaf8046eb40800000000000000
+      internalID: 5469129783359316040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_5
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 2111
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23bc5d87c69b827d0800000000000000
+      internalID: -2942898480951735502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_6
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 2111
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f8fb995b2305b30800000000000000
+      internalID: 4273971801924538192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_7
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 2111
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 275cdf711abf43ed0800000000000000
+      internalID: -2435044829189782158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_8
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1087
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 620976e8d15df88d0800000000000000
+      internalID: -2841818516927573978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_9
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1087
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a43a41612a65b90800000000000000
+      internalID: -7253431934114379155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_10
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 1087
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15facdb867d668f80800000000000000
+      internalID: -8104670123486564527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_11
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 1087
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 667d8a096ac6bfab0800000000000000
+      internalID: -4973261900853225626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_12
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 63
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0fe00421f43d8d30800000000000000
+      internalID: 4435259418325610253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_13
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 63
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a44c09a6313bcc0800000000000000
+      internalID: -3696589520724800967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_14
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 63
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c721cce4cf7a0beb0800000000000000
+      internalID: -4706076908506574212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestAkiSabun1_15
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 63
+        width: 341
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b198a369d50ee90800000000000000
+      internalID: -6998490921125209270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

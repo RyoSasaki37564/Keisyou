@@ -274,6 +274,25 @@ MonoBehaviour:
   - m_spot:
       exposedName: 85f1381856ee30546a30db9473eb4453
       defaultValue: {fileID: 0}
+--- !u!114 &-2830269323576275877
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99017149cfdf7c0478edc2b18cc119dd, type: 3}
+  m_Name: NPCMoveTweenClip
+  m_EditorClassIdentifier: 
+  m_turningPoints:
+  - m_spot:
+      exposedName: 249ff43bcf7980042a7f0031f68da42c
+      defaultValue: {fileID: 0}
+  - m_spot:
+      exposedName: ea6df10ce9694024d9bf948c572b2253
+      defaultValue: {fileID: 0}
 --- !u!114 &-2637727662872945361
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -561,11 +580,31 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: 8601700096889563610}
   - {fileID: -2637727662872945361}
+  - {fileID: 6277901059334732369}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 2911483726755436045}
+--- !u!114 &1815733663771235224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99017149cfdf7c0478edc2b18cc119dd, type: 3}
+  m_Name: NPCMoveTweenClip
+  m_EditorClassIdentifier: 
+  m_turningPoints:
+  - m_spot:
+      exposedName: 686bc93034f3d3d47aaa893edb74af54
+      defaultValue: {fileID: 0}
+  - m_spot:
+      exposedName: d8c7098e670f69f4da6fb62e854dbbcc
+      defaultValue: {fileID: 0}
 --- !u!114 &2911483726755436045
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,6 +666,167 @@ MonoBehaviour:
     defaultValue: {fileID: 0}
   template:
     m_pauseScheduled: 0
+--- !u!114 &6277901059334732369
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6297947f264df45ba884f171e9a6f5, type: 3}
+  m_Name: Time Line Custom NPC Move (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: 1815733663771235224}
+    m_Duration: 9.566666666666666
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6277901059334732369}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: NPCMoveTweenClip
+  - m_Version: 1
+    m_Start: 15.45
+    m_ClipIn: 0
+    m_Asset: {fileID: -2830269323576275877}
+    m_Duration: 3.383333333333333
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6277901059334732369}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: NPCMoveTweenClip
+  m_Markers:
+    m_Objects: []
 --- !u!114 &6357543335825515850
 MonoBehaviour:
   m_ObjectHideFlags: 1

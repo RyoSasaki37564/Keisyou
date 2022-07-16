@@ -1,0 +1,428 @@
+fileFormatVersion: 2
+guid: 360962a7e3624a24ea1a5b137107aff2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6356323824821372763
+    second: TokikoNPC_0
+  - first:
+      213: -1941694268813057713
+    second: TokikoNPC_1
+  - first:
+      213: 8216274933484927029
+    second: TokikoNPC_2
+  - first:
+      213: -4589995218261744875
+    second: TokikoNPC_3
+  - first:
+      213: -6573697454494818385
+    second: TokikoNPC_4
+  - first:
+      213: 6212306386241155375
+    second: TokikoNPC_5
+  - first:
+      213: 9028799837155427794
+    second: TokikoNPC_6
+  - first:
+      213: -6913354265119106500
+    second: TokikoNPC_7
+  - first:
+      213: -914665179108737650
+    second: TokikoNPC_8
+  - first:
+      213: 2144239094783600930
+    second: TokikoNPC_9
+  - first:
+      213: 3107748540022012912
+    second: TokikoNPC_10
+  - first:
+      213: 7288347396378044496
+    second: TokikoNPC_11
+  - first:
+      213: 534643305520302798
+    second: TokikoNPC_12
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TokikoNPC_0
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 828
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5784d767d2363850800000000000000
+      internalID: 6356323824821372763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 832
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f416cfc9957bd05e0800000000000000
+      internalID: -1941694268813057713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 828
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538b0533582160270800000000000000
+      internalID: 8216274933484927029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1023
+        width: 1
+        height: 1
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51364c6faaf0d40c0800000000000000
+      internalID: -4589995218261744875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_4
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 576
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf52fb7ef885c4a0800000000000000
+      internalID: -6573697454494818385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_5
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 572
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f217bcb7ebb863650800000000000000
+      internalID: 6212306386241155375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 576
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d501c18d9dbc4d70800000000000000
+      internalID: 9028799837155427794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_7
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 320
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3ad425ace4de00a0800000000000000
+      internalID: -6913354265119106500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_8
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 316
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8dfdce9dd47e43f0800000000000000
+      internalID: -914665179108737650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_9
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 320
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229e416981ed1cd10800000000000000
+      internalID: 2144239094783600930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_10
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 64
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fb3043e4d0f02b20800000000000000
+      internalID: 3107748540022012912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_11
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 64
+        width: 80
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 058a1c87759652560800000000000000
+      internalID: 7288347396378044496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TokikoNPC_12
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 0
+        width: 1
+        height: 1
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca0413f04f6b6700800000000000000
+      internalID: 534643305520302798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
