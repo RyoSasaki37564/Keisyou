@@ -26,7 +26,6 @@ public class TextCustomPlayableBehaviour : PlayableBehaviour
         {
             m_director = playable.GetGraph().GetResolver() as PlayableDirector;
         }
-
     }
 
     //タイムライン開始時

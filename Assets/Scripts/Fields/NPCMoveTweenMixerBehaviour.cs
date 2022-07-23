@@ -41,6 +41,10 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             if(!m_FirstFrameHappened)
             {
                 m_anim = trackBinding.GetComponent<Animator>();
+                if(!m_walkingAnim.enabled)
+                {
+                    m_walkingAnim.enabled = true;
+                }
                 AnimChange(input, m_walkingAnim);
                 if(!input.m_spots[0])
                 {
@@ -51,6 +55,10 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
 
             if(m_nowOnPlay < input.m_countOfOnBehaviourPlay)
             {
+                if (!m_walkingAnim.enabled)
+                {
+                    m_walkingAnim.enabled = true;
+                }
                 m_walkingAnim.SetBool("SetIdle", false);
                 AnimChange(input, m_walkingAnim);
                 m_nowOnPlay = input.m_countOfOnBehaviourPlay;
@@ -83,12 +91,20 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
                     {
                         m_zone++;
                         m_nowOnPlay = 0;
+                        if (!m_walkingAnim.enabled)
+                        {
+                            m_walkingAnim.enabled = true;
+                        }
                         m_walkingAnim.SetBool("SetIdle", true);
                         input.m_isEnd = true;
                     }
                 }
                 else
                 {
+                    if (!m_walkingAnim.enabled)
+                    {
+                        m_walkingAnim.enabled = true;
+                    }
                     m_walkingAnim.SetBool("SetIdle", false);
                     input.m_turningCount++;
                     input.m_deltaTime = (float)playableInput.GetTime();

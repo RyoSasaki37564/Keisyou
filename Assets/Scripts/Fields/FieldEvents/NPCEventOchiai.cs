@@ -10,13 +10,18 @@ public class NPCEventOchiai : FieldEventUnit
     [SerializeField, Tooltip("0:↓, 1:↑, 2:→, 3:←")] Sprite[] m_angleSprites = new Sprite[4];
     SpriteRenderer m_spriteRenderer;
 
+    Animator m_anim;
+
     private void Start()
     {
+        m_anim = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public override void FieldEvent(GameObject caller)
     {
+        m_anim.enabled = false;
+
         if(this.transform.position.x < caller.transform.position.x)
         {
             m_spriteRenderer.sprite = m_angleSprites[2];
