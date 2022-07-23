@@ -59,12 +59,10 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
             var progress = (float)((playableInput.GetTime() - input.m_deltaTime) / playableInput.GetDuration() *  input.m_fullLenge / input.m_lenges[input.m_turningCount - 1]);
 
             var currentX = Mathf.Lerp(input.m_spots[input.m_turningCount - 1].position.x,
-                input.m_spots[input.m_turningCount].position.x,
-                progress);
+                input.m_spots[input.m_turningCount].position.x, progress);
 
             var currentY = Mathf.Lerp(input.m_spots[input.m_turningCount - 1].position.y,
-                input.m_spots[input.m_turningCount].position.y,
-                progress);
+                input.m_spots[input.m_turningCount].position.y, progress);
 
             if(Mathf.Abs(Mathf.Abs(currentX) - Mathf.Abs(input.m_spots[input.m_turningCount].position.x)) < 0.1f)
             {
@@ -103,7 +101,7 @@ public class NPCMoveTweenMixerBehaviour : PlayableBehaviour
     public static void AnimChange(NPCMoveTweenBehaviour behaviour, Animator anim)
     {
         var moveVector = behaviour.m_spots[behaviour.m_turningCount - 1].position - behaviour.m_spots[behaviour.m_turningCount].position;
-        float animValue = Mathf.Abs(moveVector.x) <= Mathf.Abs(moveVector.y) ? moveVector.y : moveVector.x;
+        float animValue = Mathf.Abs(moveVector.y) >= Mathf.Abs(moveVector.x) ? moveVector.y : moveVector.x;
         if (animValue == moveVector.x)
         {
             anim.CrossFade(animValue < 0 ? "WalkRightAnimation" : "WalkLeftAnimation", 0, 0, 0);

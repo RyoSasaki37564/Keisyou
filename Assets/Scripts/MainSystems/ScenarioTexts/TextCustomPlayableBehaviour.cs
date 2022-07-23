@@ -56,8 +56,9 @@ public class TextCustomPlayableBehaviour : PlayableBehaviour
                     m_endPoint = i;
                 }
             }
-            m_director.playableGraph.GetRootPlayable(0).SetSpeed
-                (ScenarioManager.Instance.SpeedByLength(ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer]));
+
+            m_director = playable.GetGraph().GetResolver() as PlayableDirector;
+            m_director.playableGraph.GetRootPlayable(0).SetSpeed(ScenarioManager.Instance.SpeedByLength(ScenarioManager.Instance.m_scenariosArray[scenarioTextIndexer]));
 
             ScenarioManager.Instance.m_timeHead = m_director.time;
             m_headFlg = true;
