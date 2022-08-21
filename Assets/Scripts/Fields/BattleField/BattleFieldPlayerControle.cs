@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BattleFieldPlayerControle : MonoBehaviour
 {
     Animator m_anim;
     Rigidbody2D m_rb;
+    Collider2D m_col;
 
     [SerializeField] float m_speedRate = 2f;
     [SerializeField] float m_dashRate = 2f;
@@ -47,6 +49,8 @@ public class BattleFieldPlayerControle : MonoBehaviour
 
     Slider m_staminaBar;
 
+    public Vector3 m_surpriseAttackTargrtPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +59,7 @@ public class BattleFieldPlayerControle : MonoBehaviour
         m_staminaBar.value = m_stamina;
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
+        m_col = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -218,9 +223,14 @@ public class BattleFieldPlayerControle : MonoBehaviour
                 m_rb.velocity = move * m_dogeSpeed;
 
                 break;
+
+            case MoveState.dropAttack:
+                break;
         }
 
     }
+
+
 
     public void DogeEnd()
     {
@@ -256,5 +266,14 @@ public class BattleFieldPlayerControle : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void Kishu()
+    {
+        m_col.isTrigger = true;
+        m_nowState = MoveState.dropAttack;
+        m_anim.CrossFade("FieldAvaterDropAttackAnimation", 0);
+        transform.DOLocalMove(m_surpriseAttackTargrtPos/transform.localScale.x, 1f);//なぜかスケール倍率を受けてゴールがずれるので、スケールで割るとうまくいく。
+
     }
 }

@@ -8,9 +8,11 @@ public class SurpriseAttackEventTriggerE : MonoBehaviour
 
     public bool m_onTrriger;
 
+    [SerializeField] BattleFieldPlayerControle m_BFPC;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             m_onTrriger = true;
         }
@@ -18,15 +20,16 @@ public class SurpriseAttackEventTriggerE : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if(collision.gameObject.tag == "Enemy")
         {
             m_targetPos = collision.transform.position;
+            m_BFPC.m_surpriseAttackTargrtPos = m_targetPos;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             m_onTrriger = false;
         }
