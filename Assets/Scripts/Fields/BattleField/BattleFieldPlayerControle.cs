@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BattleFieldPlayerControle : MonoBehaviour
@@ -37,9 +38,21 @@ public class BattleFieldPlayerControle : MonoBehaviour
     }
     StandbyDirection m_nowDirection = StandbyDirection.down;
 
+    float m_stamina = 20f;
+    bool m_cantHealigStamina;
+    bool m_cantUseStamina;
+    [SerializeField] float m_dashCostStamina = 0.2f;
+    [SerializeField] float m_dogeCostStamina = 5f;
+    [SerializeField] float m_staminaHealpoint = 0.1f;
+
+    Slider m_staminaBar;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_staminaBar = GameObject.Find("StaminaSlider").GetComponent<Slider>();
+        m_staminaBar.maxValue = m_stamina;
+        m_staminaBar.value = m_stamina;
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
     }
@@ -47,17 +60,38 @@ public class BattleFieldPlayerControle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(m_stamina < m_staminaBar.maxValue && !m_cantHealigStamina && !m_dogeIntervalFlg)
+        {
+            m_stamina += m_staminaHealpoint;
+            m_staminaBar.value = m_stamina;
+            if (m_stamina >= m_staminaBar.maxValue)
+            {
+                m_stamina = m_staminaBar.maxValue;
+                m_staminaBar.value = m_stamina;
+                m_cantUseStamina = false;
+            }
+        }
+
         bool dash = false;
+
         if(m_nowState == MoveState.stop || m_nowState == MoveState.walk)
         {
             m_h = Input.GetAxisRaw("Horizontal");
             m_v = Input.GetAxisRaw("Vertical");
             bool doge = Input.GetKeyDown(KeyCode.LeftControl);
-            dash = Input.GetKey(KeyCode.LeftShift);
+
+            if(!m_cantUseStamina)
+            {
+                dash = Input.GetKey(KeyCode.LeftShift);
+            }
+            
             if (!m_dogeIntervalFlg && doge && (m_nowState == MoveState.stop || m_nowState == MoveState.walk))
             {
-                m_nowState = MoveState.doge;
-                m_dogeIntervalFlg = true;
+                if(!m_cantUseStamina)
+                {
+                    m_nowState = MoveState.doge;
+                    m_dogeIntervalFlg = true;
+                }
             }
             else if (m_h != 0 || m_v != 0)
             {
@@ -68,16 +102,35 @@ public class BattleFieldPlayerControle : MonoBehaviour
                 m_nowState = MoveState.stop;
             }
         }
+
         switch (m_nowState)
         {
             case MoveState.stop:
+                m_cantHealigStamina = false;
                 m_rb.velocity = Vector2.zero;
                 break;
+
             case MoveState.walk:
                 Vector2 move = new Vector2(m_h, m_v);
                 move.Normalize();
                 float speed = m_speedRate * (dash ? m_dashRate : 1);
                 m_rb.velocity = move * speed;
+
+                if(dash)
+                {
+                    m_cantHealigStamina = true;
+                    m_stamina -= m_dashCostStamina;
+                    if(m_stamina < 0)
+                    {
+                        m_stamina = 0;
+                        m_cantUseStamina = true;
+                    }
+                    m_staminaBar.value = m_stamina;
+                }
+                else
+                {
+                    m_cantHealigStamina = false;
+                }
 
                 if (m_h > 0)
                 {
@@ -99,9 +152,10 @@ public class BattleFieldPlayerControle : MonoBehaviour
                     m_nowDirection = StandbyDirection.down;
                     m_anim.CrossFade("FieldAvaterWalkBackAnimation", 0);
                 }
-
                 break;
+
             case MoveState.doge:
+                m_cantHealigStamina = true;
                 float dogeVecX = 0;
                 float dogeVecY = 0;
                 if(m_h == 0 && m_v == 0)
@@ -128,8 +182,15 @@ public class BattleFieldPlayerControle : MonoBehaviour
                     dogeVecY = m_v;
                 }
 
-                if(!m_nowDoge)
+                if(!m_nowDoge && m_stamina >= 0)
                 {
+                    m_stamina -= m_dogeCostStamina;
+                    if(m_stamina < 0)
+                    {
+                        m_stamina = 0;
+                        m_cantUseStamina = true;
+                    }
+                    m_staminaBar.value = m_stamina;
                     if (dogeVecX > 0)
                     {
                         m_nowDirection = StandbyDirection.right;
