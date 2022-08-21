@@ -35,7 +35,6 @@ namespace Network
                 Instance.Worker = GameObject.FindObjectOfType<HTTPRequest>();
                 if (Instance.Worker == null) return;
             }
-
             Instance.Worker.Request<T>(uri, type, dlg);
         }
     }
