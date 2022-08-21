@@ -52,7 +52,7 @@ public class BattleFieldPlayerControle : MonoBehaviour
         {
             m_h = Input.GetAxisRaw("Horizontal");
             m_v = Input.GetAxisRaw("Vertical");
-            bool doge = Input.GetKeyDown(KeyCode.Space);
+            bool doge = Input.GetKeyDown(KeyCode.LeftControl);
             dash = Input.GetKey(KeyCode.LeftShift);
             if (!m_dogeIntervalFlg && doge && (m_nowState == MoveState.stop || m_nowState == MoveState.walk))
             {
