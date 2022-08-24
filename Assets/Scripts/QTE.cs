@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class QTE : MonoBehaviour
 {
-    [SerializeField] float m_damage = default;
 
     [SerializeField] AudioClip m_seKaihi = default;
     [SerializeField] AudioClip m_damaged = default;
