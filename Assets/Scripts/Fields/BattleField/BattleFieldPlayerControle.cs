@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+public enum StandbyDirection
+{
+    up,
+    down,
+    right,
+    left,
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class BattleFieldPlayerControle : MonoBehaviour
 {
@@ -31,13 +39,6 @@ public class BattleFieldPlayerControle : MonoBehaviour
     }
     MoveState m_nowState = MoveState.stop;
 
-    enum StandbyDirection
-    {
-        up,
-        down,
-        right,
-        left,
-    }
     StandbyDirection m_nowDirection = StandbyDirection.down;
 
     float m_stamina = 20f;
@@ -50,6 +51,8 @@ public class BattleFieldPlayerControle : MonoBehaviour
     Slider m_staminaBar;
 
     public Vector3 m_surpriseAttackTargrtPos;
+
+    [SerializeField] Encount m_encount;
 
     // Start is called before the first frame update
     void Start()
@@ -268,12 +271,33 @@ public class BattleFieldPlayerControle : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            m_encount.EnemyEncount();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            m_encount.EnemyEncount();
+        }
+    }
+
     public void Kishu()
     {
         m_col.isTrigger = true;
         m_nowState = MoveState.dropAttack;
         m_anim.CrossFade("FieldAvaterDropAttackAnimation", 0);
-        transform.DOLocalMove(m_surpriseAttackTargrtPos/transform.localScale.x, 1f);//なぜかスケール倍率を受けてゴールがずれるので、スケールで割るとうまくいく。
+        StartCoroutine(DropAttackTween());
+    }
 
+    IEnumerator DropAttackTween()
+    {
+        yield return new WaitForSeconds(0.5f);
+        transform.DOLocalMove(m_surpriseAttackTargrtPos / transform.localScale.x, 1f);//なぜかスケール倍率を受けてゴールがずれるので、スケールで割るとうまくいく。
     }
 }

@@ -182,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34900042}
   m_LocalRotation: {x: 0, y: 1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -1.05, y: 12.719999, z: -10}
+  m_LocalPosition: {x: -7.7999997, y: 6.2475, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 612663872}
@@ -4317,6 +4317,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &523241332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523241333}
+  - component: {fileID: 523241334}
+  - component: {fileID: 523241335}
+  m_Layer: 10
+  m_Name: Serch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &523241333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523241332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 685320182}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &523241334
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523241332}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.32
+--- !u!114 &523241335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523241332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8583521814fdec4588b12949926628d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FEMC: {fileID: 685320186}
+  m_shiya: 30
 --- !u!1 &612663871
 GameObject:
   m_ObjectHideFlags: 3
@@ -8309,6 +8371,7 @@ GameObject:
   - component: {fileID: 685320183}
   - component: {fileID: 685320184}
   - component: {fileID: 685320185}
+  - component: {fileID: 685320186}
   m_Layer: 10
   m_Name: RyuField
   m_TagString: Enemy
@@ -8330,6 +8393,7 @@ Transform:
   - {fileID: 520258817}
   - {fileID: 867159319}
   - {fileID: 666264415}
+  - {fileID: 523241333}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8429,6 +8493,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &685320186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685320181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efb92d726a5c3f439598a35c3fb4306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nowDirection: 1
 --- !u!1 &856692545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9392,7 +9469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929756048}
   m_LocalRotation: {x: 0, y: 1e-45, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0500004, y: 7.896908, z: -10}
+  m_LocalPosition: {x: -4.7490373, y: 6.2475, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -20490,6 +20567,7 @@ GameObject:
   - component: {fileID: 1296153722}
   - component: {fileID: 1296153721}
   - component: {fileID: 1296153720}
+  - component: {fileID: 1296153723}
   m_Layer: 12
   m_Name: FieldAvater
   m_TagString: PlayerAvater
@@ -20575,7 +20653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296153716}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4, y: 16.96, z: 0}
+  m_LocalPosition: {x: -10.4, y: 8.33, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 1486832088}
@@ -20627,6 +20705,7 @@ MonoBehaviour:
   m_dogeCostStamina: 5
   m_staminaHealpoint: 0.1
   m_surpriseAttackTargrtPos: {x: 0, y: 0, z: 0}
+  m_encount: {fileID: 1296153723}
 --- !u!50 &1296153722
 Rigidbody2D:
   serializedVersion: 4
@@ -20648,6 +20727,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1296153723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296153716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3fdf4d8f9ec6a4fa473688dcb12db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fade: {fileID: 1296153716}
 --- !u!1 &1412088170
 GameObject:
   m_ObjectHideFlags: 0

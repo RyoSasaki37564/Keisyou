@@ -14,7 +14,7 @@ public class Encount : MonoBehaviour
 
     private void Awake()
     {
-        //DontDestroyOnLoad(gameObject);
+
     }
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class Encount : MonoBehaviour
     public void EnemyEncount()
     {
         ObjectsOff();
-        SceneManager.LoadScene("Encount", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
 
         //Task t = PreviousSceneOffAsync();
     }
@@ -45,7 +45,7 @@ public class Encount : MonoBehaviour
         });
 
         Debug.Log("ロード完了");
-        SceneManager.LoadScene("Encount", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
     }
 
     void ObjectsOff()
