@@ -58,7 +58,8 @@ public class PlayerDataAlfa : MonoBehaviour
                 }
             }
 
-            m_stuts = m_playerLevelTable[0]; //外部保存したレベル-1をインデックスに入れる
+            m_stuts = m_playerLevelTable[9]; //外部保存したレベルデータをインデックスに入れる
+            Debug.Log(m_stuts);
 
             DontDestroyOnLoad(gameObject);
         }

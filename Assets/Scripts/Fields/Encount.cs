@@ -32,7 +32,7 @@ public class Encount : MonoBehaviour
     public void EnemyEncount()
     {
         ObjectsOff();
-        SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
+        SceneManager.LoadScene("BattleAlfa", LoadSceneMode.Additive);
 
         //Task t = PreviousSceneOffAsync();
     }

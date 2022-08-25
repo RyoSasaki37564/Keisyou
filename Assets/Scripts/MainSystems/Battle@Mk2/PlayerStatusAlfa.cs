@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerStatusAlfa
+﻿public class PlayerStatusAlfa
 {
     public readonly int m_level;
     public readonly int m_hp;

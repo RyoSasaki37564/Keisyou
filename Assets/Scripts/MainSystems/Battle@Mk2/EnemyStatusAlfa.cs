@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-public class EnemyStatusAlfa
+﻿public class EnemyStatusAlfa
 {
     int m_hp;
     int m_stamina;
