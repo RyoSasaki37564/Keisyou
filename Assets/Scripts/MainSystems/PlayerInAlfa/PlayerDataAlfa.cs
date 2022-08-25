@@ -35,6 +35,9 @@ public class PlayerDataAlfa : MonoBehaviour
     PlayerStatusAlfa m_stuts;
     public PlayerStatusAlfa GetStuts { get => m_stuts; }
 
+    int m_nowKakugo;
+    public int GetKakugo { get => m_nowKakugo; }
+
     private void Awake()
     {
         if(m_instance == null)
@@ -58,8 +61,9 @@ public class PlayerDataAlfa : MonoBehaviour
                 }
             }
 
-            m_stuts = m_playerLevelTable[9]; //外部保存したレベルデータをインデックスに入れる
-            Debug.Log(m_stuts);
+            m_stuts = m_playerLevelTable[9]; //実際には外部保存したステータスを入れる
+
+            m_nowKakugo = m_stuts.m_kakugo;
 
             DontDestroyOnLoad(gameObject);
         }

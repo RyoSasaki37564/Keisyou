@@ -32,10 +32,10 @@ public class BatteManagerAlfa : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StatusStartUP();
+        PlayerStatusSetUP();
     }
 
-    void StatusStartUP()
+    void PlayerStatusSetUP()
     {
         m_playerHP = PlayerDataAlfa.Instance.GetStuts.m_hp;
         m_playerCon = PlayerDataAlfa.Instance.GetStuts.m_con;
@@ -61,7 +61,6 @@ public class BatteManagerAlfa : MonoBehaviour
         //パラメータに応じてゲージの長さ600まで変化。なお回避ゲージはこれを通さないこと
         RectTransform rect = slider.gameObject.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(stuts / 2 < 600 ? stuts - (stuts - 100) / 2 : 600, rect.sizeDelta.y);
-        Debug.Log($"{rect.sizeDelta.x}, {stuts}");
         rect.localPosition = new Vector3(-300f + ((rect.sizeDelta.x - 100) / 2), rect.localPosition.y, rect.localPosition.z);
     }
 

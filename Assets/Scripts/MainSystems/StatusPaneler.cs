@@ -15,6 +15,6 @@ public class StatusPaneler : MonoBehaviour
         m_stastusText[3].text = "防御:" + PlayerDataAlfa.Instance.GetStuts.m_def.ToString();
         m_stastusText[4].text = "集中:" + PlayerDataAlfa.Instance.GetStuts.m_con.ToString();
         m_stastusText[5].text = "回避:" + PlayerDataAlfa.Instance.GetStuts.m_dodge.ToString();
-        m_stastusText[6].text = "覚悟:" + PlayerDataAlfa.Instance.GetStuts.m_kakugo.ToString();
+        m_stastusText[6].text = "覚悟:" + PlayerDataAlfa.Instance.GetKakugo.ToString();
     }
 }
