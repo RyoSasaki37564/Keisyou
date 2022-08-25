@@ -35,8 +35,6 @@ public class PlayerDataAlfa : MonoBehaviour
     PlayerStatusAlfa m_stuts;
     public PlayerStatusAlfa GetStuts { get => m_stuts; }
 
-    [SerializeField] int[] m_testStuts = new int[7];
-
     private void Awake()
     {
         if(m_instance == null)
@@ -55,8 +53,8 @@ public class PlayerDataAlfa : MonoBehaviour
                 for (var i = 0; i < m_playerLevelTableLineMax; i++)
                 {
                     line = sr.ReadLine().Split(',');
-                    m_playerLevelTable[i] = new PlayerStatusAlfa (int.Parse(line[0]), int.Parse(line[1]),
-                        int.Parse(line[2]), int.Parse(line[3]), int.Parse(line[4]), int.Parse(line[5]), int.Parse(line[6]));
+                    m_playerLevelTable[i] = new PlayerStatusAlfa ((int)float.Parse(line[0]), (int)float.Parse(line[1]),
+                        (int)float.Parse(line[2]), (int)float.Parse(line[3]), (int)float.Parse(line[4]), (int)float.Parse(line[5]), (int)float.Parse(line[6]));
                 }
             }
 

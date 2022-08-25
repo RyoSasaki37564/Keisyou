@@ -16,6 +16,9 @@ public class PlayerMoveController : MonoBehaviour
     float h; // 横
     float v; // 縦
 
+    public StandbyDirection m_dire = StandbyDirection.down;
+    [SerializeField] BoxCollider2D m_eventSerchTrigger;
+
     void Start()
     {
         m_gridMove = GetComponent<GridMoveController>();
@@ -38,14 +41,47 @@ public class PlayerMoveController : MonoBehaviour
         if (v == 0)
         {
             h = Input.GetAxisRaw("Horizontal");
+            if(h < 0)
+            {
+                m_dire = StandbyDirection.left;
+            }
+            else if(h > 0)
+            {
+                m_dire = StandbyDirection.right;
+            }
         }
         if(h == 0)
         {
             v = Input.GetAxisRaw("Vertical");
+            if(v < 0)
+            {
+                m_dire = StandbyDirection.down;
+            }
+            else if(v > 0)
+            {
+                m_dire = StandbyDirection.up;
+            }
         }
+
+        switch(m_dire)
+        {
+            case StandbyDirection.up:
+                m_eventSerchTrigger.offset = new Vector2(0f, 1f);
+                break;
+            case StandbyDirection.right:
+                m_eventSerchTrigger.offset = new Vector2(1f, 0f);
+                break;
+            case StandbyDirection.left:
+                m_eventSerchTrigger.offset = new Vector2(-1f, 0f);
+                break;
+            case StandbyDirection.down:
+                m_eventSerchTrigger.offset = new Vector2(0f, -1f);
+                break;
+        }
+
         if (h != 0 || v != 0)
         {
-            if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) //ダッシュ
+            if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) //ダッシュ
             {
                 m_gridMove.Move((int)h, (int)v, m_moveTime/m_dash);
             }

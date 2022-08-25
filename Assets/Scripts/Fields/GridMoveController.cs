@@ -1,20 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-enum CharactorType
-{
-    Player,
-    NPC,
-    Enemy,
-}
-
 /// <summary>
 /// グリッド移動を制御するコンポーネント。移動させる時は Move 関数を使う。
 /// </summary>
 public class GridMoveController : MonoBehaviour
 {
-    [SerializeField] CharactorType m_charactorType = CharactorType.NPC;
-
     /// <summary>移動を妨害するコライダーが所属するレイヤーを指定する</summary>
     [SerializeField] LayerMask m_walkableLayerMask;
 
@@ -51,29 +42,6 @@ public class GridMoveController : MonoBehaviour
         {
             m_isMoving = true;
             StartCoroutine(MoveRoutine(x, y, moveTime));
-            if(FieldEventManager.Instance.m_nowSetEvent)
-            {
-                FieldEventManager.Instance.m_nowSetEvent = null;
-            }
-        }
-        else
-        {
-            switch(m_charactorType)
-            {
-                case CharactorType.Player:
-                    if(col.tag == "NPC")
-                    {
-                        FieldEventManager.Instance.m_nowSetEvent = col.gameObject.GetComponent<FieldEventUnit>();
-                    }
-
-                    break;
-                case CharactorType.NPC:
-                    
-                    break;
-                case CharactorType.Enemy:
-
-                    break;
-            }
         }
 
         return m_isMoving;
