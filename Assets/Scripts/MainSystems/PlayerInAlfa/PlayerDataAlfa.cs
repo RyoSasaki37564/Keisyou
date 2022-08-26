@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-
 /// <summary>
 /// シーン間で持ち越したいデータの支配クラス
 /// </summary>
@@ -50,7 +49,6 @@ public class PlayerDataAlfa : MonoBehaviour
         {
             m_instance = this;
 
-
             //レベルマスターデータ格納
             sr = new StringReader(m_playerLevelTableText.text);
             int playerLevelTableLineMax = int.Parse(sr.ReadLine());
@@ -70,7 +68,6 @@ public class PlayerDataAlfa : MonoBehaviour
             m_stuts = m_playerLevelTable[9]; //実際には外部保存したステータスを入れる
 
             m_nowKakugo = m_stuts.m_kakugo;
-
 
             sr = new StringReader(m_enemyMasterAlfaText.text);
             int eneLineMax = int.Parse(sr.ReadLine());

@@ -17,11 +17,17 @@ public class BatteManagerAlfa : MonoBehaviour
     [SerializeField] Slider m_playerDodgSlider;
 
     [SerializeField] GameObject m_battleUICanvas;
+    [SerializeField] GameObject m_resultUICanvas;
 
     [SerializeField] GameObject m_tempEnemyHPSlider;
     List<EnemyStatusAlfa> m_enemyInstanceList = new List<EnemyStatusAlfa>();
     List<Slider> m_enemyHPBarList = new List<Slider>();
+    List<GameObject> m_enemyTargettingMarkerList = new List<GameObject>();
     public List<int> m_enemyEncountIDList = new List<int>();
+
+    int m_target;
+    public int GetTarget { get => m_target; }
+    public int SetTarget { set => m_target = value; }
 
     int m_playerHP;
     public int GetPHP { get => m_playerHP; }
@@ -41,8 +47,8 @@ public class BatteManagerAlfa : MonoBehaviour
     {
         //テストエンカウント
         m_enemyEncountIDList.Add(0);
-        m_enemyEncountIDList.Add(5);
-        m_enemyEncountIDList.Add(6);
+        m_enemyEncountIDList.Add(0);
+        m_enemyEncountIDList.Add(0);
 
         PlayerStatusSetUP();
         EnemyStatusSetUP(m_enemyEncountIDList);
@@ -50,13 +56,22 @@ public class BatteManagerAlfa : MonoBehaviour
 
     void EnemyStatusSetUP(List<int> idList)
     {
-        for(var i = 0; i < idList.Count; i++)
+        m_target = idList.Count - 1;
+
+        for (var i = 0; i < idList.Count; i++)
         {
             EnemyStatusAlfa ene = PlayerDataAlfa.Instance.m_enemyTable[idList[i]];
             m_enemyInstanceList.Add(ene);
             GameObject eneSliObj = Instantiate(m_tempEnemyHPSlider, m_battleUICanvas.transform);
             eneSliObj.SetActive(true);
+            GameObject targetMarker = eneSliObj.transform.Find("Targetting").gameObject;
+            m_enemyTargettingMarkerList.Add(targetMarker);
+            if(i == m_target)
+            {
+                targetMarker.SetActive(true);
+            }
             Slider eneHPSli = eneSliObj.GetComponent<Slider>();
+            m_enemyHPBarList.Add(eneHPSli);
             eneHPSli.maxValue = ene.m_hp;
             eneHPSli.value = eneHPSli.maxValue;
             RectTransform rect = eneSliObj.GetComponent<RectTransform>();
@@ -97,6 +112,38 @@ public class BatteManagerAlfa : MonoBehaviour
 
     public void TestAttack()
     {
+        int damage = 10;
+        m_enemyHPBarList[m_target].value -= damage;
+        IsDead();
+    }
 
+    void IsDead()
+    {
+        if(m_enemyHPBarList[m_target].value == 0)
+        {
+            for (var i = m_enemyHPBarList.Count - 1; i >= 0 ; i--)
+            {
+                if (m_enemyHPBarList[i].value != 0)
+                {
+                    int pTarget = m_target;
+                    m_target = i;
+                    ChangeTarget(pTarget, m_target);
+                    return;
+                }
+            }
+            BattleEnd();
+        }
+    }
+
+    void ChangeTarget(int prev, int next)
+    {
+        m_enemyTargettingMarkerList[prev].SetActive(false);
+        m_enemyTargettingMarkerList[next].SetActive(true);
+    }
+
+    void BattleEnd()
+    {
+        m_battleUICanvas.SetActive(false);
+        m_resultUICanvas.SetActive(true);
     }
 }

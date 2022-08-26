@@ -26,10 +26,6 @@ public class ShowResult : MonoBehaviour
         StartCoroutine(ItemNaraberuCol(m_testGetItemNames[m_itemCount]));
     }
 
-    void ShowItem()
-    {
-    }
-
     IEnumerator ItemNaraberuCol(string name)
     {
         yield return new WaitForSeconds(0.3f);
