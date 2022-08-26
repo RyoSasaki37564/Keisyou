@@ -43,7 +43,7 @@ public class ShowResult : MonoBehaviour
 
     public void ResultEnd()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        SceneManager.UnloadSceneAsync("BattleAlfa");
         PlayerDataAlfa.Instance.m_encountData.ObjectsOn();
     }
 }

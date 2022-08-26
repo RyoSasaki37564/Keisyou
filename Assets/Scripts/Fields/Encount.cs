@@ -35,13 +35,17 @@ public class Encount : MonoBehaviour
     {
         m_activateTargetList.Clear();
         GameObject[] fieldOnActives = Resources.FindObjectsOfTypeAll<GameObject>();
-        m_activateTargetList = fieldOnActives.Where(o => o.activeSelf).ToList();
+        m_activateTargetList = fieldOnActives.Where(o => o.activeSelf && o != this.gameObject ).ToList();
         m_activateTargetList.ForEach(o => o.SetActive(false));
     }
 
     public void ObjectsOn()
     {
-        Task t = ObjsOnAsync();
+        for (var i = 0; i < m_activateTargetList.Count; i++)
+        {
+            m_activateTargetList[i].SetActive(true);
+        }
+        //Task t = ObjsOnAsync();
     }
 
     async Task ObjsOnAsync()
