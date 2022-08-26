@@ -63,6 +63,11 @@ public class BattleFieldPlayerControle : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
         m_col = GetComponent<Collider2D>();
+
+        if(m_encount == null)
+        {
+            m_encount = PlayerDataAlfa.Instance.m_encountData;
+        }
     }
 
     // Update is called once per frame

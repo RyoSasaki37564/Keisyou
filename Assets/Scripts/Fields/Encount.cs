@@ -10,24 +10,7 @@ public class Encount : MonoBehaviour
 {
     List<GameObject> m_activateTargetList = new List<GameObject>();
 
-    [SerializeField] GameObject m_fade; //フェーダー
-
-    private void Awake()
-    {
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //[SerializeField] GameObject m_fade; //フェーダー
 
     public void EnemyEncount()
     {
@@ -54,5 +37,21 @@ public class Encount : MonoBehaviour
         GameObject[] fieldOnActives = Resources.FindObjectsOfTypeAll<GameObject>();
         m_activateTargetList = fieldOnActives.Where(o => o.activeSelf).ToList();
         m_activateTargetList.ForEach(o => o.SetActive(false));
+    }
+
+    public void ObjectsOn()
+    {
+        Task t = ObjsOnAsync();
+    }
+
+    async Task ObjsOnAsync()
+    {
+        await Task.Run(() =>
+        {
+            for(var i = 0; i < m_activateTargetList.Count; i++)
+            {
+                m_activateTargetList[i].SetActive(true);
+            }
+        });
     }
 }

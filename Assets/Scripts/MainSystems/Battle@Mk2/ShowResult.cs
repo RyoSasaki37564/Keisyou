@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,5 +39,11 @@ public class ShowResult : MonoBehaviour
         {
             StartCoroutine(ItemNaraberuCol(m_testGetItemNames[m_itemCount]));
         }
+    }
+
+    public void ResultEnd()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        PlayerDataAlfa.Instance.m_encountData.ObjectsOn();
     }
 }

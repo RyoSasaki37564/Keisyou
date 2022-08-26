@@ -6,6 +6,8 @@ using System.IO;
 /// <summary>
 /// シーン間で持ち越したいデータの支配クラス
 /// </summary>
+/// 
+[RequireComponent(typeof(Encount))]
 public class PlayerDataAlfa : MonoBehaviour
 {
     static PlayerDataAlfa m_instance;
@@ -42,6 +44,15 @@ public class PlayerDataAlfa : MonoBehaviour
 
     int m_nowKakugo;
     public int GetKakugo { get => m_nowKakugo; }
+
+    public int m_exp;
+
+    public int m_money;
+    
+    /// <summary> 技量。スキルツリーの解放に使う。 </summary>
+    public int m_tp;
+
+    public Encount m_encountData;
 
     private void Awake()
     {
@@ -81,6 +92,11 @@ public class PlayerDataAlfa : MonoBehaviour
                     m_enemyTable[i] = new EnemyStatusAlfa(int.Parse(line[0]), line[1], int.Parse(line[2]), int.Parse(line[3]),
                         int.Parse(line[4]), int.Parse(line[5]), int.Parse(line[6]));
                 }
+            }
+
+            if(m_encountData == null)
+            {
+                m_encountData = GetComponent<Encount>();
             }
 
             DontDestroyOnLoad(gameObject);

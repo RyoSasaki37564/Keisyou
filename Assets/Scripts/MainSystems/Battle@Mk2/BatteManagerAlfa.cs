@@ -47,8 +47,6 @@ public class BatteManagerAlfa : MonoBehaviour
     {
         //テストエンカウント
         m_enemyEncountIDList.Add(0);
-        m_enemyEncountIDList.Add(0);
-        m_enemyEncountIDList.Add(0);
 
         PlayerStatusSetUP();
         EnemyStatusSetUP(m_enemyEncountIDList);
@@ -144,6 +142,13 @@ public class BatteManagerAlfa : MonoBehaviour
     void BattleEnd()
     {
         m_battleUICanvas.SetActive(false);
+
+        StartCoroutine(ResultOpen()); //実際には敵の死亡演出後。つまりここには本来敵の死亡演出呼び出しが入り、その演出からリザルトを起こす。
+    }
+
+    IEnumerator ResultOpen()
+    {
+        yield return new WaitForSeconds(1.5f);
         m_resultUICanvas.SetActive(true);
     }
 }
