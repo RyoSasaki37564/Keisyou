@@ -16,6 +16,13 @@ public class BatteManagerAlfa : MonoBehaviour
     [SerializeField] Slider m_playerConSlider;
     [SerializeField] Slider m_playerDodgSlider;
 
+    [SerializeField] GameObject m_battleUICanvas;
+
+    [SerializeField] GameObject m_tempEnemyHPSlider;
+    List<EnemyStatusAlfa> m_enemyInstanceList = new List<EnemyStatusAlfa>();
+    List<Slider> m_enemyHPBarList = new List<Slider>();
+    public List<int> m_enemyEncountIDList = new List<int>();
+
     int m_playerHP;
     public int GetPHP { get => m_playerHP; }
     int m_playerCon;
@@ -32,7 +39,31 @@ public class BatteManagerAlfa : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //テストエンカウント
+        m_enemyEncountIDList.Add(0);
+        m_enemyEncountIDList.Add(5);
+        m_enemyEncountIDList.Add(6);
+
         PlayerStatusSetUP();
+        EnemyStatusSetUP(m_enemyEncountIDList);
+    }
+
+    void EnemyStatusSetUP(List<int> idList)
+    {
+        for(var i = 0; i < idList.Count; i++)
+        {
+            EnemyStatusAlfa ene = PlayerDataAlfa.Instance.m_enemyTable[idList[i]];
+            m_enemyInstanceList.Add(ene);
+            GameObject eneSliObj = Instantiate(m_tempEnemyHPSlider, m_battleUICanvas.transform);
+            eneSliObj.SetActive(true);
+            Slider eneHPSli = eneSliObj.GetComponent<Slider>();
+            eneHPSli.maxValue = ene.m_hp;
+            eneHPSli.value = eneHPSli.maxValue;
+            RectTransform rect = eneSliObj.GetComponent<RectTransform>();
+            rect.localPosition = new Vector3(rect.localPosition.x, rect.localPosition.y + (35 * i), rect.localPosition.z);
+            Text eneName = eneSliObj.transform.Find("Name").GetComponent<Text>();
+            eneName.text = ene.m_name;
+        }
     }
 
     void PlayerStatusSetUP()
@@ -49,7 +80,7 @@ public class BatteManagerAlfa : MonoBehaviour
         SliderResize(m_playerHPSlider, m_playerHP);
 
         m_playerConSlider.maxValue = m_playerCon;
-        m_playerConSlider.value = m_playerCon;
+        m_playerConSlider.value = 0;
         SliderResize(m_playerConSlider, m_playerCon);
 
         m_playerDodgSlider.maxValue = m_playerDodg;
