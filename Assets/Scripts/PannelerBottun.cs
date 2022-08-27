@@ -4,34 +4,42 @@ using UnityEngine;
 
 public class PannelerBottun : MonoBehaviour
 {
-    [SerializeField] GameObject m_pannel = default; 
+    [SerializeField] GameObject[] m_pannels = new GameObject[5]; 
 
     // Start is called before the first frame update
     void Start()
     {
-        m_pannel.SetActive(false);
+        AllPannelClose();
     }
 
-    public void Panneling()
+    public void MenuPanneling()
     {
-        if(m_pannel.activeSelf == true)
+        if(m_pannels[0].activeSelf == false)
         {
-            m_pannel.SetActive(false);
+            m_pannels[0].SetActive(true);
         }
         else
         {
-            m_pannel.SetActive(true);
+            AllPannelClose();
         }
     }
 
-    public void PannelOpen()
+    public void PannelOpen(int num)
     {
-        m_pannel.SetActive(true);
+        m_pannels[num].SetActive(true);
     }
 
-    public void PannelClose()
+    public void PannelClose(int num)
     {
-        m_pannel.SetActive(false);
+        m_pannels[num].SetActive(false);
+    }
+
+    public void AllPannelClose()
+    {
+        foreach(var p in m_pannels)
+        {
+            p.SetActive(false);
+        }
     }
 
 }

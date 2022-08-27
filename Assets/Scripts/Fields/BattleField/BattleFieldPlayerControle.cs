@@ -280,7 +280,7 @@ public class BattleFieldPlayerControle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            m_col.enabled = false;
+            collision.enabled = false;
             m_encount.EnemyEncount();
         }
     }
@@ -289,7 +289,8 @@ public class BattleFieldPlayerControle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            m_col.enabled = false;
+            Collider2D c = collision.gameObject.GetComponent<Collider2D>();
+            c.enabled = false;
             m_encount.EnemyEncount();
         }
     }
