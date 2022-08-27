@@ -55,7 +55,7 @@ public class PlayerDataAlfa : MonoBehaviour
 
     public Encount m_encountData;
 
-    Inventory m_testInventry = new Inventory();
+    public Inventory m_testInventry = new Inventory();
 
     private void Awake()
     {
@@ -110,17 +110,5 @@ public class PlayerDataAlfa : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -303,7 +303,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7768574430638616466}
   m_HandleRect: {fileID: 2530826821485302704}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -509,13 +509,14 @@ GameObject:
   - component: {fileID: 4803831177215826266}
   - component: {fileID: 5325893644454914364}
   - component: {fileID: 5916586658905476264}
+  - component: {fileID: 4465573646319621041}
   m_Layer: 5
   m_Name: TemplateItemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &745255125857465287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -532,10 +533,10 @@ RectTransform:
   m_Father: {fileID: 329983377748186517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 238.69307, y: -25}
+  m_SizeDelta: {x: 477.38614, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4803831177215826266
 CanvasRenderer:
@@ -616,7 +617,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5325893644454914364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4465573646319621041}
+        m_MethodName: ShowData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4465573646319621041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321935745404330398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37dde66eae101e141833f5605b3af94c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 1318644505093897491}
 --- !u!1 &4169158584073682939
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +732,7 @@ GameObject:
   - component: {fileID: 8119260552443056233}
   - component: {fileID: 5597895318385379352}
   m_Layer: 5
-  m_Name: InventryName
+  m_Name: ItemName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16471,6 +16498,7 @@ GameObject:
   - component: {fileID: 7261043005136096692}
   - component: {fileID: 7261043005136096693}
   - component: {fileID: 7261043005136096694}
+  - component: {fileID: 7665012089850505544}
   m_Layer: 5
   m_Name: ManueCanvas
   m_TagString: Untagged
@@ -16559,6 +16587,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7665012089850505544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261043005136096695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f97ee3d100fbd47863cd4e4d7c87f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_itemInventryContenna: {fileID: 329983377748186517}
+  m_itemTemp: {fileID: 3321935745404330398}
 --- !u!1 &7261043005164468339
 GameObject:
   m_ObjectHideFlags: 0
@@ -16800,7 +16842,7 @@ GameObject:
   - component: {fileID: 1527131635052744071}
   - component: {fileID: 1318644505093897491}
   m_Layer: 5
-  m_Name: InventrySetumeiText
+  m_Name: ItemSetumeiText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
