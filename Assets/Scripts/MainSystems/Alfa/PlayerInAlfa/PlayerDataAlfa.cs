@@ -53,7 +53,7 @@ public class PlayerDataAlfa : MonoBehaviour
     /// <summary> 技量。スキルツリーの解放に使う。 </summary>
     public int m_tp;
 
-    public Encount m_encountData;
+    [System.NonSerialized] public Encount m_encountData;
 
     public Inventory m_testInventry = new Inventory();
 
