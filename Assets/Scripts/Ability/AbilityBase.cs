@@ -21,26 +21,27 @@ public abstract class AbilityBase : MonoBehaviour
     [SerializeField] Button m_agreeButton;
     [SerializeField] GameObject m_selectPanel;
 
-    [SerializeField] GameObject m_effect;
-
     [SerializeField] Text m_flavorText;
     [SerializeField, TextArea(10, 3)] string m_setumei;
     [SerializeField] Text m_nameText;
     [SerializeField] string m_name;
 
-    private void Awake()
+    private void OnEnable()
     {
-        m_thisButton = GetComponent<Button>();
-        m_thisButton.onClick.AddListener(OpenOrCloseManue);
-        if(m_nowState != ActivateState.Active)
+        if(m_thisButton == null)
         {
-            m_effect.SetActive(false);
-        }
-        if(m_nowState != ActivateState.Active && m_pipes.Length > 0)
-        {
-            foreach(var i in m_pipes)
+            m_thisButton = GetComponent<Button>();
+            m_thisButton.onClick.AddListener(OpenOrCloseManue);
+            if (m_nowState != ActivateState.Active)
             {
-                i.color = new Color(100f / 255, 100f / 255, 100f / 255);
+                //解除状態を表すなんか
+            }
+            if (m_nowState != ActivateState.Active && m_pipes.Length > 0)
+            {
+                foreach (var i in m_pipes)
+                {
+                    i.color = new Color(100f / 255, 100f / 255, 100f / 255);
+                }
             }
         }
     }
@@ -79,7 +80,7 @@ public abstract class AbilityBase : MonoBehaviour
         {
             AbilityPlayer();
             NextUnlockablize();
-            m_effect.SetActive(true);
+            //解除状態を表すなんかを置く
             m_nowState = ActivateState.Active;
             if(m_pipes.Length > 0)
             {

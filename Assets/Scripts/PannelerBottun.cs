@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PannelerBottun : MonoBehaviour
 {
-    [SerializeField] GameObject[] m_pannels = new GameObject[5]; 
+    [SerializeField] GameObject[] m_pannels = new GameObject[3];
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +14,7 @@ public class PannelerBottun : MonoBehaviour
 
     public void MenuPanneling()
     {
-        if(m_pannels[0].activeSelf == false)
+        if (m_pannels[0].activeSelf == false)
         {
             m_pannels[0].SetActive(true);
         }
@@ -36,10 +36,12 @@ public class PannelerBottun : MonoBehaviour
 
     public void AllPannelClose()
     {
-        foreach(var p in m_pannels)
+        foreach (var p in m_pannels)
         {
-            p.SetActive(false);
+            if(p.activeSelf)
+            {
+                p.SetActive(false);
+            }
         }
     }
-
 }

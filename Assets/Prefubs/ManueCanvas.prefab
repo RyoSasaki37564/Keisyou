@@ -1613,7 +1613,6 @@ MonoBehaviour:
   - {fileID: 7261043003708964539}
   m_agreeButton: {fileID: 7261043004837875538}
   m_selectPanel: {fileID: 7261043004339879096}
-  m_effect: {fileID: 0}
   m_flavorText: {fileID: 7261043003830597922}
   m_setumei: "\u3072\u3068\u307E\u305A\u4EEE\u7F6E\u304D\u3055\u308C\u305F\u7B2C\u4E8C\u30A2\u30D3\u30EA\u30C6\u30A3\u3002\n\n\u4F55\u304C\u3067\u304D\u308B\u308F\u3051\u3067\u3082\u306A\u3044\u3002\n\n\u89E3\u653E\u6761\u4EF6\uFF1A\u306A\u3044\u3067\u3059\u3002"
   m_nameText: {fileID: 7261043003680767805}
@@ -1986,7 +1985,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7261043003644189774}
-        m_MethodName: Panneling
+        m_MethodName: MenuPanneling
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2020,11 +2019,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pannels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7261043004251796176}
+  - {fileID: 7261043004233672373}
+  - {fileID: 2210155917414242474}
 --- !u!1 &7261043003649822959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,7 +2112,6 @@ GameObject:
   - component: {fileID: 7261043003670176031}
   - component: {fileID: 7261043003670176016}
   - component: {fileID: 7261043003670176017}
-  - component: {fileID: 7261043003670176018}
   m_Layer: 5
   m_Name: ModoruButton
   m_TagString: Untagged
@@ -2223,7 +2219,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7261043003670176018}
+      - m_Target: {fileID: 0}
         m_MethodName: PannelClose
         m_Mode: 1
         m_Arguments:
@@ -2234,24 +2230,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7261043003670176018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7261043003670176020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2628fd89e2382494a807954e4522bbd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_pannels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &7261043003671797576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,7 +4209,6 @@ MonoBehaviour:
   - {fileID: 7261043004157389031}
   m_agreeButton: {fileID: 7261043004837875538}
   m_selectPanel: {fileID: 7261043004339879096}
-  m_effect: {fileID: 0}
   m_flavorText: {fileID: 7261043003830597922}
   m_setumei: "\u3068\u308A\u3042\u3048\u305A\u3067\u4F5C\u3063\u3066\u307F\u305F\u8A66\u9A13\u7528\u30A2\u30D3\u30EA\u30C6\u30A3\u3002\n\n\u3053\u308C\u3067\u3044\u3044\u611F\u3058\u306B\u306A\u308C\uFF5E\u3002\n\n\u89E3\u653E\u6761\u4EF6\uFF1A\u30C6\u30B9\u30C8\u30AF\u30A8\u30B9\u30C8\u306E\u30AF\u30EA\u30A2"
   m_nameText: {fileID: 7261043003680767805}
@@ -5137,7 +5114,6 @@ GameObject:
   - component: {fileID: 7261043004477577847}
   - component: {fileID: 7261043004477577832}
   - component: {fileID: 7261043004477577833}
-  - component: {fileID: 7261043004477577846}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Untagged
@@ -5245,7 +5221,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7261043004477577846}
+      - m_Target: {fileID: 0}
         m_MethodName: PannelClose
         m_Mode: 1
         m_Arguments:
@@ -5256,24 +5232,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7261043004477577846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7261043004477577835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2628fd89e2382494a807954e4522bbd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_pannels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &7261043004506319271
 GameObject:
   m_ObjectHideFlags: 0
