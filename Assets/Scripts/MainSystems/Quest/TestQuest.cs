@@ -9,10 +9,26 @@ public class TestQuest : QuestBase
 
     TestAbility0 m_testAbility0;
 
+    private void OnEnable()
+    {
+        SetUp();
+    }
+
     private void Awake()
     {
-        m_player = GameObject.FindGameObjectWithTag("PlayerAvater");
-        m_testAbility0 = FindObjectOfType<TestAbility0>().GetComponent<TestAbility0>();
+        SetUp();
+    }
+
+    void SetUp()
+    {
+        if (m_player == null)
+        {
+            m_player = GameObject.FindGameObjectWithTag("PlayerAvater");
+        }
+        if (m_testAbility0 == null)
+        {
+            m_testAbility0 = FindObjectOfType<TestAbility0>().GetComponent<TestAbility0>();
+        }
     }
 
     public TestQuest(string name, string setumei, int flgCount) : base(name, setumei, flgCount)
