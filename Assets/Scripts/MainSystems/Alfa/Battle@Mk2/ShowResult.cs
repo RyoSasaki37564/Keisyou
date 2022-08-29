@@ -21,24 +21,35 @@ public class ShowResult : MonoBehaviour
         int exp = 1000;
         int tp = 1;
         int kane = 1980;
-        m_expText.text = $"経験値 +{exp}exp";
-        m_tpText.text = $"技量　 +{tp}tp";
-        m_moneyText.text = $"報酬金 +{kane}円";
-        StartCoroutine(ItemNaraberuCol(m_testGetItemNames[m_itemCount]));
+
+        GetResultTemp(kane, exp, tp);
+        StartCoroutine(ItemNaraberuCol(m_testGetItemNames[m_itemCount], 1));
     }
 
-    IEnumerator ItemNaraberuCol(string name)
+    IEnumerator ItemNaraberuCol(string name, int count)
     {
         yield return new WaitForSeconds(0.3f);
         var item = Instantiate(m_getItemTemp, m_getItemContenna);
         item.SetActive(true);
         Text itemName = item.transform.Find("Name").GetComponent<Text>();
+        Text itemCount = item.transform.Find("Count").GetComponent<Text>();
         itemName.text = name;
+        itemCount.text = $"× {count}";
         m_itemCount++;
         if(m_itemCount <= m_testGetItemNames.Length - 1)
         {
-            StartCoroutine(ItemNaraberuCol(m_testGetItemNames[m_itemCount]));
+            StartCoroutine(ItemNaraberuCol(m_testGetItemNames[m_itemCount], 1));
         }
+    }
+
+    void GetResultTemp(int resultMoney, int resultExp, int resultTp)
+    {
+        m_moneyText.text = $"報酬金 +{resultMoney}円";
+        m_expText.text = $"経験値 +{resultMoney}exp";
+        m_tpText.text = $"技量　 +{resultTp}tp";
+        PlayerDataAlfa.Instance.m_money += resultMoney;
+        PlayerDataAlfa.Instance.m_tp += resultExp;
+        PlayerDataAlfa.Instance.m_tp += resultTp;
     }
 
     public void ResultEnd()

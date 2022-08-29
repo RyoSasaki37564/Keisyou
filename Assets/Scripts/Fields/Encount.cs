@@ -35,7 +35,8 @@ public class Encount : MonoBehaviour
     {
         m_activateTargetList.Clear();
         GameObject[] fieldOnActives = Resources.FindObjectsOfTypeAll<GameObject>();
-        m_activateTargetList = fieldOnActives.Where(o => o.activeSelf && ( o != this.gameObject || o.transform.root == this.transform)).ToList();
+        m_activateTargetList = fieldOnActives.Where(o => o.activeSelf && o != this.gameObject 
+        && o.gameObject.transform.root != this.gameObject.transform).ToList();
         m_activateTargetList.ForEach(o => o.SetActive(false));
     }
 

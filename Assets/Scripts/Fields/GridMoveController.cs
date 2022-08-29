@@ -62,7 +62,6 @@ public class GridMoveController : MonoBehaviour
 
         while (Vector2.Distance(this.transform.position, m_destination) > float.Epsilon)
         {
-            Vector2 velocity = Vector2.zero;
             this.transform.position = Vector2.MoveTowards(this.transform.position, m_destination, Time.deltaTime / moveTime);
             yield return new WaitForEndOfFrame();
         }

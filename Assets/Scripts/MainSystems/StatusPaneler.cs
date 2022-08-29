@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StatusPaneler : MonoBehaviour
 {
-    [SerializeField] Text[] m_stastusText = new Text[7];
+    [SerializeField] Text[] m_stastusText = new Text[10];
 
     public void ShowStatus()
     {
@@ -16,5 +16,8 @@ public class StatusPaneler : MonoBehaviour
         m_stastusText[4].text = "集中:" + PlayerDataAlfa.Instance.GetStuts.m_con.ToString();
         m_stastusText[5].text = "回避:" + PlayerDataAlfa.Instance.GetStuts.m_dodge.ToString();
         m_stastusText[6].text = "覚悟:" + PlayerDataAlfa.Instance.GetKakugo.ToString();
+        m_stastusText[7].text = "経験値:" + PlayerDataAlfa.Instance.m_exp.ToString();
+        m_stastusText[8].text = "所持金:" + PlayerDataAlfa.Instance.m_money.ToString();
+        m_stastusText[9].text = "技量:" + PlayerDataAlfa.Instance.m_tp.ToString();
     }
 }

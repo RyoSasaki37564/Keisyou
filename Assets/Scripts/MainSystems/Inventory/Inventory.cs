@@ -3,17 +3,18 @@ using System.Collections.Generic;
 
 public class Inventory
 {
-    public ItemDataStruct[] m_itemInventry = new ItemDataStruct[3];
+    public ItemData[] m_itemInventry = new ItemData[4];
 
     public void TestInventryMake()
     {
-        m_itemInventry[0] = new ItemDataStruct(0, "丸薬", 3, 99, "体力を少し回復する。", "どこでも手に入る、ありふれた丸薬。", 0, 100);
-        m_itemInventry[1] = new ItemDataStruct(0, "飴玉", 3, 99, "集中を少し回復する。", "どこでも手に入る、ありふれた飴玉。", 0, 100);
-        m_itemInventry[2] = new ItemDataStruct(0, "例のアレ", 99, 99, "アレをアレする。", "アレだよアレ。", 0, 99999);
+        m_itemInventry[0] = new ItemData(0, "丸薬", 3, 99, "体力を少し回復する。", "どこでも手に入る、ありふれた丸薬。", 0, 100);
+        m_itemInventry[1] = new ItemData(1, "飴玉", 3, 99, "集中を少し回復する。", "どこでも手に入る、ありふれた飴玉。", 0, 100);
+        m_itemInventry[2] = new ItemData(2, "例のアレ", 99, 99, "アレをアレする。", "アレだよアレ。", 0, 99999);
+        m_itemInventry[3] = new ItemData(3, "左腕", 0, 1, "うで。。", "うでです。", 1, 1);
     }
 }
 
-public class ItemDataStruct
+public class ItemData
 {
     int m_id;
     string m_name;
@@ -24,7 +25,7 @@ public class ItemDataStruct
     bool m_isKeyItem;
     int m_price;
 
-    public ItemDataStruct(int id, string name, int count, int maxCount, string effect, string fravor, int isKey, int price)
+    public ItemData(int id, string name, int count, int maxCount, string effect, string fravor, int isKey, int price)
     {
         m_id = id;
         m_name = name;
