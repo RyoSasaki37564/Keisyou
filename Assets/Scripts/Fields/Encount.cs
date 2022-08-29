@@ -14,10 +14,16 @@ public class Encount : MonoBehaviour
 
     public void EnemyEncount()
     {
-        ObjectsOff();
+        //ObjectsOff();
+        //SceneManager.LoadScene("BattleAlfa", LoadSceneMode.Additive);
+
+        StartCoroutine(ObjectsOff());
         SceneManager.LoadScene("BattleAlfa", LoadSceneMode.Additive);
 
         //Task t = PreviousSceneOffAsync();
+        //Debug.Log("非同期処理開始");
+        //SceneManager.LoadScene("BattleAlfa", LoadSceneMode.Additive);
+        //t.Wait();
     }
 
     async Task PreviousSceneOffAsync()
@@ -25,19 +31,22 @@ public class Encount : MonoBehaviour
         await Task.Run(() =>
         {
             ObjectsOff();
+            Debug.Log("ロード完了");
         });
 
-        Debug.Log("ロード完了");
-        SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
     }
 
-    void ObjectsOff()
+    IEnumerator ObjectsOff()
     {
         m_activateTargetList.Clear();
-        GameObject[] fieldOnActives = Resources.FindObjectsOfTypeAll<GameObject>();
+        GameObject[] fieldOnActives = GameObject.FindObjectsOfType<GameObject>(); // Resources.FindObjectsOfTypeAll<GameObject>();        
         m_activateTargetList = fieldOnActives.Where(o => o.activeSelf && o != this.gameObject 
         && o.gameObject.transform.root != this.gameObject.transform).ToList();
-        m_activateTargetList.ForEach(o => o.SetActive(false));
+        foreach (var o in m_activateTargetList)
+        {
+            o.SetActive(false);
+            yield return null;
+        }
     }
 
     public void ObjectsOn()
