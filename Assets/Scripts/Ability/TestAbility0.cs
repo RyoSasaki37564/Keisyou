@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TestAbility0 : AbilityBase
 {
-    public override bool CanActivateTrue()
+    private void Start()
     {
-        return m_canActivate = true;
+        m_nowState = ActivateState.Unlockable;
+        OpenOrCloseManue();
     }
 
     protected override void AbilityPlayer()

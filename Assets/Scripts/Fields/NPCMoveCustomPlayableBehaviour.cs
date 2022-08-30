@@ -10,7 +10,7 @@ public class NPCMoveCustomPlayableBehaviour : PlayableBehaviour
     public static PlayableDirector m_director;
     [System.NonSerialized] public GameObject m_templateGameObject;
 
-    [SerializeField, Tooltip("速度倍率")] float m_speedRate = 3f;
+    //[SerializeField, Tooltip("速度倍率")] float m_speedRate = 3f;
 
     /// <summary>１ターンで動くのにかける時間（単位: 秒）</summary>
     float m_moveTime = 1f;

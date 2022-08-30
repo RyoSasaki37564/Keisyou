@@ -11,8 +11,7 @@ public abstract class AbilityBase : MonoBehaviour
         Unlockable,
         Active,
     }
-    /*[System.NonSerialized]*/ public ActivateState m_nowState = ActivateState.Lock;
-    [System.NonSerialized] protected bool m_canActivate = false;
+    public ActivateState m_nowState = ActivateState.Lock;
 
     [SerializeField] public AbilityBase[] m_nextAbilitys = new AbilityBase[1];
     [SerializeField] Image[] m_pipes = new Image[0];
@@ -21,23 +20,29 @@ public abstract class AbilityBase : MonoBehaviour
     [SerializeField] Button m_agreeButton;
     [SerializeField] GameObject m_selectPanel;
 
+    [SerializeField] GameObject m_activateMarker;
+
     [SerializeField] Text m_flavorText;
-    [SerializeField, TextArea(10, 3)] string m_setumei;
+    [SerializeField, TextArea(20, 3)] string m_setumei;
     [SerializeField] Text m_nameText;
     [SerializeField] string m_name;
+
+    [SerializeField] int m_costTP;
 
     private void OnEnable()
     {
         if(m_thisButton == null)
         {
             m_thisButton = GetComponent<Button>();
+
             m_thisButton.onClick.AddListener(OpenOrCloseManue);
             if (m_nowState != ActivateState.Active)
             {
-                //解除状態を表すなんか
+                m_activateMarker.SetActive(true);
             }
             if (m_nowState != ActivateState.Active && m_pipes.Length > 0)
             {
+                m_activateMarker.SetActive(false);
                 foreach (var i in m_pipes)
                 {
                     i.color = new Color(100f / 255, 100f / 255, 100f / 255);
@@ -71,16 +76,21 @@ public abstract class AbilityBase : MonoBehaviour
         }
 
         m_nameText.text = m_name;
-        m_flavorText.text = m_setumei;
+        m_flavorText.text = $"\n解放必要技量：{m_costTP}\n\n" + m_setumei;
+
+        //これしないと正常にリサイジングしてくれない
+        m_flavorText.gameObject.SetActive(false);
+        m_flavorText.gameObject.SetActive(true);
     }
 
     public void Activate()
     {
-        if(m_canActivate && m_nowState == ActivateState.Unlockable)
+        if(m_costTP <= PlayerDataAlfa.Instance.m_tp && m_nowState == ActivateState.Unlockable)
         {
+            PlayerDataAlfa.Instance.m_tp -= m_costTP;
             AbilityPlayer();
             NextUnlockablize();
-            //解除状態を表すなんかを置く
+            m_activateMarker.SetActive(true);
             m_nowState = ActivateState.Active;
             if(m_pipes.Length > 0)
             {
@@ -89,12 +99,12 @@ public abstract class AbilityBase : MonoBehaviour
                     i.color = new Color(173f / 255, 222f / 255, 231f / 255);
                 }
             }
+            OpenOrCloseManue();
         }
         else
         {
-            Debug.Log($"m_canActivate: {m_canActivate},m_nowState: {m_nowState}, 貴様風情には解放できぬわ!");
+            //ダメな音を鳴らす
         }
-        OpenOrCloseManue();
     }
 
     void NextUnlockablize()
@@ -109,6 +119,4 @@ public abstract class AbilityBase : MonoBehaviour
     }
 
     protected abstract void AbilityPlayer();
-
-    public abstract bool CanActivateTrue();
 }

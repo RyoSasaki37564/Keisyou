@@ -20,46 +20,46 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(m_quests.Length > 0)
-        {
-            int endCount = 0;
-            foreach (var q in m_quests)
-            {
-                if(!q.m_endFlg)
-                {
-                    q.QStateAdvance();
-                }
-                else
-                {
-                    endCount++;
-                }
+    //private void Update()
+    //{
+    //    if(m_quests.Length > 0)
+    //    {
+    //        int endCount = 0;
+    //        foreach (var q in m_quests)
+    //        {
+    //            if(!q.m_endFlg)
+    //            {
+    //                q.QStateAdvance();
+    //            }
+    //            else
+    //            {
+    //                endCount++;
+    //            }
 
-                if(m_quests.Length <= 0)
-                {
-                    return;
-                }
-            }
+    //            if(m_quests.Length <= 0)
+    //            {
+    //                return;
+    //            }
+    //        }
 
-            if(endCount > 0)
-            {
-                var q = new QuestBase[m_quests.Length - endCount];
-                int x = 0;
-                for(var i = 0; i < m_quests.Length; i++)
-                {
-                    if(!m_quests[i].enabled)
-                    {
-                        q[x] = m_quests[i];
-                        x++;
-                    }
-                    else
-                    {
-                        Destroy(m_quests[i].gameObject);
-                    }
-                }
-                m_quests = q;
-            }
-        }
-    }
+    //        if(endCount > 0)
+    //        {
+    //            var q = new QuestBase[m_quests.Length - endCount];
+    //            int x = 0;
+    //            for(var i = 0; i < m_quests.Length; i++)
+    //            {
+    //                if(!m_quests[i].enabled)
+    //                {
+    //                    q[x] = m_quests[i];
+    //                    x++;
+    //                }
+    //                else
+    //                {
+    //                    Destroy(m_quests[i].gameObject);
+    //                }
+    //            }
+    //            m_quests = q;
+    //        }
+    //    }
+    //}
 }

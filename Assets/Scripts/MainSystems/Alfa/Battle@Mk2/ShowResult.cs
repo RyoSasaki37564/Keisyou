@@ -48,7 +48,7 @@ public class ShowResult : MonoBehaviour
         m_expText.text = $"経験値 +{resultMoney}exp";
         m_tpText.text = $"技量　 +{resultTp}tp";
         PlayerDataAlfa.Instance.m_money += resultMoney;
-        PlayerDataAlfa.Instance.m_tp += resultExp;
+        PlayerDataAlfa.Instance.m_exp += resultExp;
         PlayerDataAlfa.Instance.m_tp += resultTp;
     }
 
