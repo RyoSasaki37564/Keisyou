@@ -12,6 +12,7 @@ public class TestAbility0 : AbilityBase
 
     protected override void AbilityPlayer()
     {
+        PlayerDataAlfa.Instance.NinekeyActivate(4);
         Debug.Log("最初のアビリティを解放");
     }
 }

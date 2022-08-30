@@ -53,6 +53,14 @@ public class PlayerDataAlfa : MonoBehaviour
     /// <summary> 技量。スキルツリーの解放に使う。 </summary>
     public int m_tp;
 
+    bool m_ryugekiUnLockFlg;
+    public bool GetRyugekiUnLockFlg { get => m_ryugekiUnLockFlg; }
+    [System.NonSerialized] bool[] m_nineKeyActiveFlgs = new bool[9];
+    public bool Getm_nineKeyActivateFlgs(int id)
+    {
+        return Instance.m_nineKeyActiveFlgs[id];
+    }
+
     [System.NonSerialized] public Encount m_encountData;
 
     public Inventory m_testInventry = new Inventory();
@@ -104,12 +112,20 @@ public class PlayerDataAlfa : MonoBehaviour
 
             m_testInventry.TestInventryMake();
 
-            Debug.Log("非破壊化");
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void NinekeyActivate(int id)
+    {
+        if(id == 4)
+        {
+            Instance.m_ryugekiUnLockFlg = true;
+        }
+        Instance.m_nineKeyActiveFlgs[id] = true;
     }
 }
