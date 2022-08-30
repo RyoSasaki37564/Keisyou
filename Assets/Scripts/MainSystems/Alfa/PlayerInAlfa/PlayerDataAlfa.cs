@@ -104,6 +104,7 @@ public class PlayerDataAlfa : MonoBehaviour
 
             m_testInventry.TestInventryMake();
 
+            Debug.Log("非破壊化");
             DontDestroyOnLoad(gameObject);
         }
         else

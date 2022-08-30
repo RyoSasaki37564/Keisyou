@@ -249,6 +249,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &185491380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3920671406725572657, guid: fb003b7327dda7e499758678b63c3a84,
+    type: 3}
+  m_PrefabInstance: {fileID: 1229112072979999825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &470493088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1922,10 +1928,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDataAlfa
       objectReference: {fileID: 0}
+    - target: {fileID: 3204257055325368600, guid: fb003b7327dda7e499758678b63c3a84,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204257055325368600, guid: fb003b7327dda7e499758678b63c3a84,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204257055325368600, guid: fb003b7327dda7e499758678b63c3a84,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3839390366362253247, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920671405958811786, guid: fb003b7327dda7e499758678b63c3a84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920671405958811786, guid: fb003b7327dda7e499758678b63c3a84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920671405958811786, guid: fb003b7327dda7e499758678b63c3a84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 185491380}
+    - target: {fileID: 3920671405958811786, guid: fb003b7327dda7e499758678b63c3a84,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3920671405958811786, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -1965,7 +2006,7 @@ PrefabInstance:
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90.91993
+      value: 95.91992
       objectReference: {fileID: 0}
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}

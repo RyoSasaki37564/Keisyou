@@ -477,17 +477,7 @@ MonoBehaviour:
   m_expText: {fileID: 2134675818}
   m_getItemContenna: {fileID: 1268733754}
   m_getItemTemp: {fileID: 719229891}
-  m_testGetItemNames:
-  - "\u9F8D\u9AA8"
-  - "\u9F8D\u6CB9"
-  - "\u4E38\u85AC"
-  - "\u4E38\u85AC"
-  - "\u30B7\u30E7\u30A6\u30B0\u30F3\u30E0\u30AB\u30C7"
-  - "\u30E4\u30DE\u30AC\u30A8\u30EB"
-  - "\u77F3\u3053\u308D"
-  - "\u77F3\u3053\u308D"
-  - "\u77F3\u3053\u308D"
-  - "\u77F3\u3053\u308D"
+  m_testGetItemIDs: 03000000040000000000000000000000050000000600000007000000070000000700000007000000
 --- !u!320 &99730338
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -3905,7 +3895,7 @@ PrefabInstance:
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 87.645065
+      value: 92.645065
       objectReference: {fileID: 0}
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}

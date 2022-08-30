@@ -35,7 +35,11 @@ public class InventryPaneler : MonoBehaviour
     {
         for (var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_itemInventry.Length; i++)
         {
-            var t = m_itemInventryContenna.transform.GetChild(i).gameObject;
+            var t = m_itemInventryContenna.transform.GetChild(i+1).gameObject; //テンプレート飛ばし
+            Text name = t.transform.Find("Name").GetComponent<Text>();
+            name.text = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[i].GetName;
+            Text count = t.transform.Find("Count").GetComponent<Text>();
+            count.text = "× " + PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[i].GetCount.ToString();
 
             if (PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[i].GetCount > 0)
             {

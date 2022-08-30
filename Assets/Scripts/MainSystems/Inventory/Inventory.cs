@@ -3,14 +3,18 @@ using System.Collections.Generic;
 
 public class Inventory
 {
-    public ItemData[] m_itemInventry = new ItemData[4];
+    public ItemData[] m_itemInventry = new ItemData[8];
 
     public void TestInventryMake()
     {
         m_itemInventry[0] = new ItemData(0, "丸薬", 3, 99, "体力を少し回復する。", "どこでも手に入る、ありふれた丸薬。", 0, 100);
         m_itemInventry[1] = new ItemData(1, "飴玉", 3, 99, "集中を少し回復する。", "どこでも手に入る、ありふれた飴玉。", 0, 100);
         m_itemInventry[2] = new ItemData(2, "例のアレ", 99, 99, "アレをアレする。", "アレだよアレ。", 0, 99999);
-        m_itemInventry[3] = new ItemData(3, "左腕", 0, 1, "うで。。", "うでです。", 1, 1);
+        m_itemInventry[3] = new ItemData(3, "龍骨", 0, 99, "ほね。。", "ほねです。", 0, 500);
+        m_itemInventry[4] = new ItemData(4, "龍油", 0, 99, "りゅーゆ。。", "くっさいんですわこれが。", 0, 1000);
+        m_itemInventry[5] = new ItemData(5, "ショウグンムカデ", 0, 99, "百足さん", "きんめぇ。", 0, 50);
+        m_itemInventry[6] = new ItemData(6, "ヤマガエル", 0, 99, "けろけろ。。", "がまです。", 0, 50);
+        m_itemInventry[7] = new ItemData(7, "石ころ", 0, 99, "スとーーん", "いしです。", 0, 1);
     }
 }
 
@@ -39,6 +43,7 @@ public class ItemData
 
     public int GetID { get => m_id; }
     public string GetName { get => m_name; }
+    public int SetCount { set => m_count = value; }
     public int GetCount { get => m_count; }
     public int GetMaxCount { get => m_maxCount; }
     public string GetEffectText { get => m_effectText; }
@@ -46,19 +51,25 @@ public class ItemData
     public bool GetIsKeyItem { get => m_isKeyItem; }
     public int GetPrice { get => m_price; }
 
-    public int GetItem(int getCount, int saifu)
+    /// <summary>
+    /// アイテム入手時に呼ぶ。
+    /// </summary>
+    /// <param name="itemCount">手に入れたアイテムの、現状のインベントリ上のカウント先</param>
+    /// <param name="gettingCount">今回手に入れた個数</param>
+    /// <returns></returns>
+    public int GetItem(int itemCount, int gettingCount)
     {
-        int num = m_count += getCount;
-        if(num > m_maxCount)
+        itemCount += gettingCount;
+        if(m_count > m_maxCount)
         {
-            int buy = num - m_maxCount;
-            Buy(buy, saifu);
-            m_count = m_maxCount;
+            int buy = itemCount - m_maxCount;
+            Buy(buy);
+            itemCount = m_maxCount;
         }
-        return num;
+        return itemCount;
     }
 
-    public int Buy(int buyCount, int saifu)
+    public int Buy(int buyCount)
     {
         int num = 0;
         if(!m_isKeyItem)
@@ -66,7 +77,7 @@ public class ItemData
             if(buyCount <= m_count)
             {
                 m_count -= buyCount;
-                num = saifu += (buyCount * m_price) / 2;
+                num = PlayerDataAlfa.Instance.m_money += (buyCount * m_price) / 2;
             }
         }
         return num;
