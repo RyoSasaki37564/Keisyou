@@ -33,9 +33,11 @@ public class ShowResult : MonoBehaviour
         item.SetActive(true);
         Text itemName = item.transform.Find("Name").GetComponent<Text>();
         Text itemCount = item.transform.Find("Count").GetComponent<Text>();
+
         PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[id].SetCount =
             PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[id].GetItem(
                 PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[id].GetCount, count);
+
         itemName.text = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[id].GetName;
         itemCount.text = $"× {count}";
         m_itemCount++;
