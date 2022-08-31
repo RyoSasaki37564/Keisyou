@@ -12,5 +12,9 @@ public class ItemDataPaneler : MonoBehaviour
     {
         m_dataPanels[0].text = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[m_id].GetName;
         m_dataPanels[1].text = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[m_id].GetFravorText;
+
+        //リサイジングさせるために必要
+        m_dataPanels[1].gameObject.SetActive(false);
+        m_dataPanels[1].gameObject.SetActive(true);
     }
 }

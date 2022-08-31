@@ -50,7 +50,7 @@ public class ShowResult : MonoBehaviour
     void GetResultTemp(int resultMoney, int resultExp, int resultTp)
     {
         m_moneyText.text = $"報酬金 +{resultMoney}円";
-        m_expText.text = $"経験値 +{resultMoney}exp";
+        m_expText.text = $"経験値 +{resultExp}exp";
         m_tpText.text = $"技量　 +{resultTp}tp";
         PlayerDataAlfa.Instance.m_money += resultMoney;
         PlayerDataAlfa.Instance.m_exp += resultExp;
