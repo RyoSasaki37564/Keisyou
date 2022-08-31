@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Rendering.PostProcessing;
 
 public class NineKeyInputNomal : MonoBehaviour
 {
@@ -20,8 +21,7 @@ public class NineKeyInputNomal : MonoBehaviour
 
     public float m_changeValueInterval = 1f; //値の変化速度
 
-    [SerializeField] GameObject m_redLightningEffect; //画面を覆う赤い雷のエフェクト。
-    [SerializeField] ColorLessWorld m_screenFlash; //画面を一瞬白塗りにする。
+    [SerializeField] PostProcessVolume m_ppv;
 
     //[SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
     //[SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
@@ -83,8 +83,6 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void Awake()
     {
-        m_redLightningEffect.SetActive(false);
-        m_screenFlash.gameObject.SetActive(false);
         NineKeySettings();
 
         //m_akiCutIn.SetActive(false);
@@ -108,22 +106,17 @@ public class NineKeyInputNomal : MonoBehaviour
             m_srasts[i] = x;
             m_srasts[i].SetActive(false);
         }
-        Debug.Log("Awaken");
-        this.gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         NineKeySettings();
-        m_redLightningEffect.SetActive(true);
-        m_screenFlash.gameObject.SetActive(true);
+        m_ppv.weight = 1;
     }
 
     private void OnDisable()
     {
-        m_screenFlash.NomalizedWorld();
-        m_redLightningEffect.SetActive(false);
-        m_screenFlash.gameObject.SetActive(false);
+        m_ppv.weight = 0;
     }
 
     /*
@@ -168,6 +161,7 @@ public class NineKeyInputNomal : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
                 if (hit.collider != null && hit.transform.tag == "NineKey")
                 {
+
                     //タッチした時点でコリジョン入りしてるパターン
                     m_colls.Add(hit.collider);
                     m_contactNum = hit.collider.gameObject;
@@ -252,8 +246,6 @@ public class NineKeyInputNomal : MonoBehaviour
                 m_isInStopper = false;
             }
         };
-
-        gameObject.SetActive(false);
     }
 
     private void LateUpdate()

@@ -29,8 +29,15 @@ public abstract class AbilityBase : MonoBehaviour
 
     [SerializeField] int m_costTP;
 
+    StatusPaneler m_sp;
+
     private void OnEnable()
     {
+        if(m_sp == null)
+        {
+            m_sp = FindObjectOfType<StatusPaneler>().GetComponent<StatusPaneler>();
+        }
+
         if(m_thisButton == null)
         {
             m_thisButton = GetComponent<Button>();
@@ -107,6 +114,7 @@ public abstract class AbilityBase : MonoBehaviour
             Select();
             m_agreeButton.onClick.RemoveListener(Activate);
             m_selectPanel.SetActive(false);
+            m_sp.ShowStatus();
         }
         else
         {

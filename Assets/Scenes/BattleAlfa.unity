@@ -5239,12 +5239,12 @@ PrefabInstance:
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -5259,7 +5259,7 @@ PrefabInstance:
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -160.52733
       objectReference: {fileID: 0}
     - target: {fileID: 5858061865930042955, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -5885,7 +5885,7 @@ RectTransform:
   - {fileID: 1216696821}
   - {fileID: 816722854}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7611,6 +7611,7 @@ GameObject:
   - component: {fileID: 1588949099}
   - component: {fileID: 1588949098}
   - component: {fileID: 1588949097}
+  - component: {fileID: 1588949100}
   m_Layer: 5
   m_Name: RyugekiButton
   m_TagString: Untagged
@@ -7680,7 +7681,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1588949098}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1588949100}
+        m_MethodName: Test
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1588949098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7718,6 +7730,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588949095}
   m_CullTransparentMesh: 0
+--- !u!114 &1588949100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588949095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d129e9e879c514089ec09fc8e174ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_goList:
+  - {fileID: 1672388331}
+  - {fileID: 225834441}
+  - {fileID: 1795475332}
 --- !u!1 &1598456787
 GameObject:
   m_ObjectHideFlags: 0
@@ -8172,7 +8200,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1672388332}
-  - component: {fileID: 1672388334}
   - component: {fileID: 1672388335}
   m_Layer: 13
   m_Name: KujiKenRoot
@@ -8180,7 +8207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1672388332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8209,18 +8236,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1672388334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672388331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40afb25a2cd568e4c898a626c975f0c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1672388335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8240,8 +8255,7 @@ MonoBehaviour:
   m_effectSrast: {fileID: 8156140928752646913, guid: 771810ef71bd62643a25d4eb47f2e027,
     type: 3}
   m_changeValueInterval: 1
-  m_redLightningEffect: {fileID: 225834441}
-  m_screenFlash: {fileID: 1795475337}
+  m_ppv: {fileID: 1977617051}
   m_nineKeyObjs:
   - {fileID: 981560434}
   - {fileID: 1918304012}
@@ -8624,7 +8638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1795475333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8712,7 +8726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac39c6d389f8d4340855f04fd04af743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ppv: {fileID: 1977617051}
 --- !u!1 &1826553510
 GameObject:
   m_ObjectHideFlags: 0
@@ -9260,7 +9273,7 @@ RectTransform:
   m_Children:
   - {fileID: 1795475333}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
