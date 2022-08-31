@@ -7,12 +7,12 @@ public class TestAbility0 : AbilityBase
     private void Start()
     {
         m_nowState = ActivateState.Unlockable;
-        OpenOrCloseManue();
+        Select();
     }
 
     protected override void AbilityPlayer()
     {
         PlayerDataAlfa.Instance.NinekeyActivate(4);
-        Debug.Log("最初のアビリティを解放");
+        Debug.Log($"解放{PlayerDataAlfa.Instance.GetNineKeyActivateFlgs(4)}最初のアビリティを解放");
     }
 }

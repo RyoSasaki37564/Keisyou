@@ -14,11 +14,11 @@ public class Encount : MonoBehaviour
 
     public void EnemyEncount()
     {
-        //ObjectsOff();
-        //SceneManager.LoadScene("BattleAlfa", LoadSceneMode.Additive);
-
-        StartCoroutine(ObjectsOff());
+        ObjectsOff();
         SceneManager.LoadScene("BattleAlfa", LoadSceneMode.Additive);
+
+        //StartCoroutine(ObjectsOff());
+        //SceneManager.LoadScene("BattleAlfa", LoadSceneMode.Additive);
 
         //Task t = PreviousSceneOffAsync();
         //Debug.Log("非同期処理開始");
@@ -36,7 +36,7 @@ public class Encount : MonoBehaviour
 
     }
 
-    IEnumerator ObjectsOff()
+    void ObjectsOff()
     {
         m_activateTargetList.Clear();
         GameObject[] fieldOnActives = GameObject.FindObjectsOfType<GameObject>(); // Resources.FindObjectsOfTypeAll<GameObject>();        
@@ -45,7 +45,6 @@ public class Encount : MonoBehaviour
         foreach (var o in m_activateTargetList)
         {
             o.SetActive(false);
-            yield return null;
         }
     }
 

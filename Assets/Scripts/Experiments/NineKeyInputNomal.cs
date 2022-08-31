@@ -8,6 +8,8 @@ public class NineKeyInputNomal : MonoBehaviour
 {
     [SerializeField] Text m_dialog = default;
 
+    [SerializeField] Transform m_poolParent;
+
     [SerializeField] GameObject m_effectSlash = default; //斬撃マーク
     GameObject[] m_slashs = new GameObject[9]; //斬撃のオブジェクトプール
     int m_slashIndexer = 0;
@@ -17,6 +19,9 @@ public class NineKeyInputNomal : MonoBehaviour
     int m_srastIndexer = 0;
 
     public float m_changeValueInterval = 1f; //値の変化速度
+
+    [SerializeField] GameObject m_redLightningEffect; //画面を覆う赤い雷のエフェクト。
+    [SerializeField] ColorLessWorld m_screenFlash; //画面を一瞬白塗りにする。
 
     //[SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
     //[SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
@@ -78,10 +83,9 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void Awake()
     {
-        for(var i = 0; i < m_nineKeyObjs.Length; i++)
-        {
-            m_nineKeyObjs[i].SetActive(PlayerDataAlfa.Instance.GetNineKeyActivateFlgs(i));
-        }
+        m_redLightningEffect.SetActive(false);
+        m_screenFlash.gameObject.SetActive(false);
+        NineKeySettings();
 
         //m_akiCutIn.SetActive(false);
         /*
@@ -94,17 +98,32 @@ public class NineKeyInputNomal : MonoBehaviour
         //マーカーエフェクトを生成しプール
         for (var i = 0; i < 9; i++)
         {
-            var x = Instantiate(m_effectSlash);
+            var x = Instantiate(m_effectSlash, m_poolParent);
             m_slashs[i] = x;
             m_slashs[i].SetActive(false);
         }
         for (var i = 0; i < 9; i++)
         {
-            var x = Instantiate(m_effectSrast);
+            var x = Instantiate(m_effectSrast, m_poolParent);
             m_srasts[i] = x;
             m_srasts[i].SetActive(false);
         }
+        Debug.Log("Awaken");
         this.gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        NineKeySettings();
+        m_redLightningEffect.SetActive(true);
+        m_screenFlash.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        m_screenFlash.NomalizedWorld();
+        m_redLightningEffect.SetActive(false);
+        m_screenFlash.gameObject.SetActive(false);
     }
 
     /*
@@ -233,6 +252,8 @@ public class NineKeyInputNomal : MonoBehaviour
                 m_isInStopper = false;
             }
         };
+
+        gameObject.SetActive(false);
     }
 
     private void LateUpdate()
@@ -253,6 +274,14 @@ public class NineKeyInputNomal : MonoBehaviour
                 m_zangekiFlg = true;
             }
 #endif
+        }
+    }
+
+    void NineKeySettings()
+    {
+        for (var i = 0; i < m_nineKeyObjs.Length; i++)
+        {
+            m_nineKeyObjs[i].SetActive(PlayerDataAlfa.Instance.GetNineKeyActivateFlgs(i));
         }
     }
 

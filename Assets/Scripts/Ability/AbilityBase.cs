@@ -31,13 +31,11 @@ public abstract class AbilityBase : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("アクティブ");
         if(m_thisButton == null)
         {
-            Debug.Log("取得");
             m_thisButton = GetComponent<Button>();
 
-            m_thisButton.onClick.AddListener(OpenOrCloseManue);
+            m_thisButton.onClick.AddListener(Select);
             if (m_nowState != ActivateState.Active)
             {
                 m_activateMarker.SetActive(true);
@@ -61,24 +59,29 @@ public abstract class AbilityBase : MonoBehaviour
         }
     }
 
-    public void OpenOrCloseManue()
+    public void Select()
     {
         if (m_nowState != ActivateState.Active)
         {
-            if (m_selectPanel.activeSelf == false)
+            if(!m_selectPanel.activeSelf)
             {
-                m_agreeButton.onClick.AddListener(Activate);
                 m_selectPanel.SetActive(true);
             }
-            else
-            {
-                m_agreeButton.onClick.RemoveListener(Activate);
-                m_selectPanel.SetActive(false);
-            }
+            m_agreeButton.onClick.RemoveAllListeners();
+            m_agreeButton.onClick.AddListener(Activate);
         }
 
         m_nameText.text = m_name;
-        m_flavorText.text = $"\n解放必要技量：{m_costTP}\n\n" + m_setumei;
+        if(m_nowState == ActivateState.Active)
+        {
+            m_flavorText.text = "\n解放済み\n\n" + m_setumei;
+        }
+        else
+        {
+            m_flavorText.text = m_costTP > PlayerDataAlfa.Instance.m_tp ? 
+                $"\n解放必要技量：<color=#8b0000>{m_costTP}</color>\n\n" + m_setumei : //技量不足で赤字表記
+                $"\n解放必要技量：{m_costTP}\n\n" + m_setumei; //足りてたら黒字
+        }
 
         //これしないと正常にリサイジングしてくれない
         m_flavorText.gameObject.SetActive(false);
@@ -87,7 +90,6 @@ public abstract class AbilityBase : MonoBehaviour
 
     public void Activate()
     {
-        Debug.Log($"cost{m_costTP}, now{PlayerDataAlfa.Instance.m_tp}, {m_nowState}");
         if(m_costTP <= PlayerDataAlfa.Instance.m_tp && m_nowState == ActivateState.Unlockable)
         {
             PlayerDataAlfa.Instance.m_tp -= m_costTP;
@@ -102,7 +104,9 @@ public abstract class AbilityBase : MonoBehaviour
                     i.color = new Color(173f / 255, 222f / 255, 231f / 255);
                 }
             }
-            OpenOrCloseManue();
+            Select();
+            m_agreeButton.onClick.RemoveListener(Activate);
+            m_selectPanel.SetActive(false);
         }
         else
         {
