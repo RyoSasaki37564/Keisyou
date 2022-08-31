@@ -44,7 +44,7 @@ public class SkillofShirogane : ShinzuiSkills
             if (m_turnCount == 5)
             {
                 //今は悪魔に魂を売る
-                NineKeyInputNomal.m_RG0Rate = 1.2f;
+                //NineKeyInputNomal.m_RG0Rate = 1.2f;
                 m_platinumCannan.SetActive(true);
                 m_turnCount = 0;
             }

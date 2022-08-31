@@ -8,8 +8,6 @@ public class NineKeyInputNomal : MonoBehaviour
 {
     [SerializeField] Text m_dialog = default;
 
-    [SerializeField] GameObject[] m_commands = new GameObject[9];
-
     [SerializeField] GameObject m_effectSlash = default; //斬撃マーク
     GameObject[] m_slashs = new GameObject[9]; //斬撃のオブジェクトプール
     int m_slashIndexer = 0;
@@ -20,18 +18,20 @@ public class NineKeyInputNomal : MonoBehaviour
 
     public float m_changeValueInterval = 1f; //値の変化速度
 
-    [SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
-    [SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
+    //[SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
+    //[SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
 
-    [SerializeField] ThisOff m_akiOff = default;
-    [SerializeField] ThisOff m_RG_0Off = default;
+    //[SerializeField] ThisOff m_akiOff = default;
+    //[SerializeField] ThisOff m_RG_0Off = default;
 
-    [SerializeField] Animator m_enemyAnim = default;
+    //[SerializeField] Animator m_enemyAnim = default;
 
+    /*
     [SerializeField] SEPlay m_zangekiSE = default;
     [SerializeField] SEPlay m_shitotsuSE = default;
+    */
 
-    public static float m_RG0Rate = 1.0f;
+    //public static float m_RG0Rate = 1.0f;
 
     public struct CommandCode
     {
@@ -53,7 +53,7 @@ public class NineKeyInputNomal : MonoBehaviour
 
     bool m_phase = false;
 
-
+    [SerializeField] GameObject[] m_nineKeyObjs = new GameObject[9];
 
     Vector3 m_mousePosDelta;
 
@@ -72,17 +72,25 @@ public class NineKeyInputNomal : MonoBehaviour
 
     List<Collider2D> m_colls = new List<Collider2D>();
 
-    [SerializeField] Stop m_pr = default;
+    //[SerializeField] Stop m_pr = default;
 
     bool m_yatteYoshi = true; //これはtrueで初期化。参加先のデリゲートの兼ね合い。
 
     private void Awake()
     {
-        m_akiCutIn.SetActive(false);
+        for(var i = 0; i < m_nineKeyObjs.Length; i++)
+        {
+            m_nineKeyObjs[i].SetActive(PlayerDataAlfa.Instance.GetNineKeyActivateFlgs(i));
+        }
+
+        //m_akiCutIn.SetActive(false);
+        /*
         foreach (var x in m_ryugekiEffectsList)
         {
             x.SetActive(false);
         }
+        */
+
         //マーカーエフェクトを生成しプール
         for (var i = 0; i < 9; i++)
         {
@@ -99,6 +107,7 @@ public class NineKeyInputNomal : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    /*
     void OnEnable()
     {
         m_pr.OnPauseResume += PauseResume;
@@ -126,6 +135,7 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         m_yatteYoshi = true;
     }
+    */
 
 
     // Start is called before the first frame update
@@ -175,7 +185,7 @@ public class NineKeyInputNomal : MonoBehaviour
                         if (m_zangekiFlg == true && m_colls[m_colls.Count - 1].enabled == true)
                         {
                             //Debug.LogError("なんでやねん切りmove");
-                            m_zangekiSE.MyPlayOneShot();
+                            //m_zangekiSE.MyPlayOneShot();
                             Slash(ZangekiDirection());
                             m_colls[m_colls.Count - 1].enabled = false;
                             m_zangekiFlg = false;
@@ -203,7 +213,7 @@ public class NineKeyInputNomal : MonoBehaviour
                     m_srasts[m_srastIndexer].SetActive(true);
                     m_srasts[m_srastIndexer].transform.position = m_contactNum.transform.position;
                     m_srastIndexer++;
-                    m_shitotsuSE.MyPlayOneShot();
+                    //m_shitotsuSE.MyPlayOneShot();
                     m_colls[m_colls.Count - 1].enabled = false;
                     m_slustFlg = false;
                     CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), 5); //方向ID 5は中央、刺突を意味する
@@ -213,7 +223,7 @@ public class NineKeyInputNomal : MonoBehaviour
                 {
                     //Debug.LogError("なんでやねん切りend");
                     Slash(ZangekiDirection());
-                    m_zangekiSE.MyPlayOneShot();
+                    //m_zangekiSE.MyPlayOneShot();
                     m_colls[m_colls.Count - 1].enabled = false;
                     m_zangekiFlg = false;
                     CommandCode m_CC = new CommandCode(int.Parse(m_contactNum.name), ZangekiDirection());
@@ -375,8 +385,8 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         if (commands.Count == 0)
         {
-            m_akiOff.ThisOffMetthod();
-            m_RG_0Off.ThisOffMetthod();
+            //m_akiOff.ThisOffMetthod();
+            //m_RG_0Off.ThisOffMetthod();
             m_dialog.text = "失敗";
         }
         else
@@ -385,14 +395,14 @@ public class NineKeyInputNomal : MonoBehaviour
             {
                 if (commands[0].Number == 2 && commands[0].Direction == 5)
                 {
-                    m_RG0Rate = 1.3f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.3f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 点睛 ～ ";
                 }
                 else
                 {
-                    m_RG0Rate = 1.2f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.2f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -403,14 +413,14 @@ public class NineKeyInputNomal : MonoBehaviour
                     commands[1].Number == 9 && commands[1].Direction == 9)
                 {
                     //使用武器が鳥属性の時のみ可能
-                    m_RG0Rate = 1.3f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.3f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 燕返し ～ ";
                 }
                 else
                 {
-                    m_RG0Rate = 1.2f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.2f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -420,20 +430,20 @@ public class NineKeyInputNomal : MonoBehaviour
                    commands[1].Number == 5 && commands[1].Direction == 2 &&
                    commands[2].Number == 8 && commands[2].Direction == 5)
                 {
-                    m_ryugekiEffectsList[0].SetActive(true);
+                    //m_ryugekiEffectsList[0].SetActive(true);
                     m_dialog.text = " ～ 顎門落とし ～ ";
                 }
                 else if (commands[0].Number == 4 && commands[0].Direction == 1 &&
                         commands[1].Number == 6 && commands[1].Direction == 7 &&
                         commands[2].Number == 5 && commands[2].Direction == 5)
                 {
-                    m_RG0Rate = 1.25f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.25f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 徹甲突 ～ ";
                 }
                 else
                 {
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -446,7 +456,7 @@ public class NineKeyInputNomal : MonoBehaviour
                    commands[4].Number == 9 && commands[4].Direction != 5 &&
                    commands[5].Number == 6 && commands[5].Direction != 5)
                 {
-                    m_ryugekiEffectsList[1].SetActive(true);
+                    //m_ryugekiEffectsList[1].SetActive(true);
                     m_dialog.text = " ～ 爬行連裂 ～ ";
                 }
                 else if (Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 2 &&
@@ -458,15 +468,15 @@ public class NineKeyInputNomal : MonoBehaviour
                    commands[5].Number == 8)
                 {
                     //使用属性が風の時のみ
-                    m_RG0Rate = 1.4f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.4f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 龍巻 ～ ";
                 }
                 else
                 {
-                    m_RG0Rate = 1.2f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
-                    m_dialog.text = "ガチビンタ";
+                    //m_RG0Rate = 1.2f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_dialog.text = "ガチビンタ";
                 }
             }
             else if (commands.Count == 7)
@@ -479,7 +489,7 @@ public class NineKeyInputNomal : MonoBehaviour
                    commands[5].Number == 8 &&
                    commands[6].Number == 6)
                 {
-                    m_ryugekiEffectsList[2].SetActive(true);
+                    //m_ryugekiEffectsList[2].SetActive(true);
                     m_dialog.text = " ～ 打尾払い ～ ";
                 }
                 /*
@@ -499,8 +509,8 @@ public class NineKeyInputNomal : MonoBehaviour
                 */
                 else
                 {
-                    m_RG0Rate = 1.25f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.25f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -518,21 +528,21 @@ public class NineKeyInputNomal : MonoBehaviour
                     if (Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 0 || Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._type == 3)
                     {
                         //すべての入力が斬撃であり、中央には不接触であり、使用している屠龍具が花か月属性である
-                        m_ryugekiEffectsList[3].SetActive(true);
+                        //m_ryugekiEffectsList[3].SetActive(true);
                         m_dialog.text = " ～ 月下美人 ～ ";
                     }
                     else
                     {
-                        m_RG0Rate = 1.3f;
-                        m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                        //m_RG0Rate = 1.3f;
+                        //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                         m_dialog.text = "ガチビンタ";
                     }
 
                 }
                 else
                 {
-                    m_RG0Rate = 1.3f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.3f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ";
                 }
             }
@@ -548,8 +558,8 @@ public class NineKeyInputNomal : MonoBehaviour
                     commands[7].Number == 4 &&
                     commands[8].Number == 5 && commands[8].Direction == 5)
                 {
-                    m_RG0Rate = 1.35f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.35f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ とぐろ回し ～ ";
                 }
                 else if (commands[0].Number == 3 && commands[0].Direction == 3 &&
@@ -562,7 +572,7 @@ public class NineKeyInputNomal : MonoBehaviour
                     commands[7].Number == 2 && commands[7].Direction == 2 &&
                     commands[8].Number == 5 && commands[8].Direction == 5)
                 {
-                    m_ryugekiEffectsList[4].SetActive(true);
+                    //m_ryugekiEffectsList[4].SetActive(true);
                     m_dialog.text = " ～ カス龍閃 ～ ";
                 }
                 else if (commands[0].Direction == 5 &&
@@ -576,26 +586,26 @@ public class NineKeyInputNomal : MonoBehaviour
                     commands[8].Direction == 5)
                 {
                     //全部突きにすると出る
-                    m_RG0Rate = 1.5f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.5f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = " ～ 蜂ノ巣 ～ ";
 
                 }
                 else
                 {
-                    m_RG0Rate = 1.4f;
-                    m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                    //m_RG0Rate = 1.4f;
+                    //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                     m_dialog.text = "ガチビンタ9";
                 }
             }
             else
             {
-                m_RG0Rate = 1f;
-                m_ryugekiEffectsList[5].SetActive(true); //現在汎用
+                //m_RG0Rate = 1f;
+                //m_ryugekiEffectsList[5].SetActive(true); //現在汎用
                 m_dialog.text = "ガチビンタ";
             }
 
-            m_akiCutIn.SetActive(true);
+            //m_akiCutIn.SetActive(true);
         }
         m_phase = false;
         commands.Clear();
@@ -619,13 +629,13 @@ public class NineKeyInputNomal : MonoBehaviour
     public void RGAgito()
     {
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * 1.1f, false, m_changeValueInterval);
-        m_enemyAnim.SetBool("IsDamaged", true);
+        //m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     public void RGTekkou()
     {
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki, true, m_changeValueInterval);
-        m_enemyAnim.SetBool("IsDamaged", true);
+        //m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     public void RGHakou()
@@ -633,7 +643,7 @@ public class NineKeyInputNomal : MonoBehaviour
         //四回呼び出してね
         float rand = Random.Range(0.8f, 1.2f);
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 4, false, m_changeValueInterval / 10);
-        m_enemyAnim.SetBool("IsDamaged", true);
+        //m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     int m_dabiCount = 0; //コード長いしこの関数でしか使わないメンバーのためここに書こう
@@ -644,7 +654,7 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             case 0:
                 RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5, false, m_changeValueInterval);
-                m_enemyAnim.SetBool("IsDamaged", true);
+                //m_enemyAnim.SetBool("IsDamaged", true);
                 break;
             case 1:
                 rand = 0.9f;
@@ -663,20 +673,21 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         float rand = Random.Range(1.3f, 1.6f);
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 5.5f, false, m_changeValueInterval * 1.5f);
-        m_enemyAnim.SetBool("IsDamaged", true);
+        //m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     public void RG_Kuzuryu()
     {
         float rand = Random.Range(1f, 1.5f);
         RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki * rand / 1.5f, true, m_changeValueInterval);
-        m_enemyAnim.SetBool("IsDamaged", true);
+        //m_enemyAnim.SetBool("IsDamaged", true);
     }
 
     public void RG_0()
     {
-        RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki / 3.5f * m_RG0Rate, false, m_changeValueInterval);
-        m_enemyAnim.SetBool("IsDamaged", true);
+        Debug.Log("ダメージ処理の代わりのデバッグログ");
+        //RyugekiDamage(Player.Instance.m_armsMasterTable[ArmsSys.m_carsol]._ryugeki / 3.5f * m_RG0Rate, false, m_changeValueInterval);
+        //m_enemyAnim.SetBool("IsDamaged", true);
     }
 
 
@@ -684,6 +695,6 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         //白銀の真髄解放ダメージ
         RyugekiDamage(Player.Instance.m_armsMasterTable[4]._atk * 3, true, m_changeValueInterval);
-        m_enemyAnim.SetBool("IsDamaged", true);
+        //m_enemyAnim.SetBool("IsDamaged", true);
     }
 }

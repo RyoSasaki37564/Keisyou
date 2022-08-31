@@ -31,8 +31,10 @@ public abstract class AbilityBase : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("アクティブ");
         if(m_thisButton == null)
         {
+            Debug.Log("取得");
             m_thisButton = GetComponent<Button>();
 
             m_thisButton.onClick.AddListener(OpenOrCloseManue);
@@ -85,6 +87,7 @@ public abstract class AbilityBase : MonoBehaviour
 
     public void Activate()
     {
+        Debug.Log($"cost{m_costTP}, now{PlayerDataAlfa.Instance.m_tp}, {m_nowState}");
         if(m_costTP <= PlayerDataAlfa.Instance.m_tp && m_nowState == ActivateState.Unlockable)
         {
             PlayerDataAlfa.Instance.m_tp -= m_costTP;

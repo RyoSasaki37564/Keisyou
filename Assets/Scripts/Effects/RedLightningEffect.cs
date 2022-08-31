@@ -12,9 +12,10 @@ public class RedLightningEffect : MonoBehaviour
     [SerializeField] Image m_img;
 
     [SerializeField] float m_movingLenge = 17f;
-    [SerializeField] float m_clearingRate = 50f;
 
     float m_colorAlfaDef;
+
+    [SerializeField] bool m_isEndless;
 
     bool m_isStop;
 
@@ -44,8 +45,11 @@ public class RedLightningEffect : MonoBehaviour
 
     IEnumerator CountDown()
     {
-        yield return new WaitForSeconds(10f);
-        m_isStop = true;
+        if(!m_isEndless)
+        {
+            yield return new WaitForSeconds(2f);
+            m_isStop = true;
+        }
     }
 
     IEnumerator LightningAnimationCol(float time)
@@ -56,12 +60,16 @@ public class RedLightningEffect : MonoBehaviour
             if(m_isUIObject)
             {
                 m_img.color = new Color(m_img.color.r, m_img.color.g, m_img.color.b, m_colorAlfaDef);
+                gameObject.SetActive(false);
             }
             else
             {
                 m_sr.color = new Color(m_sr.color.r, m_sr.color.g, m_sr.color.b, m_colorAlfaDef);
+                if (transform.parent.gameObject.activeSelf)
+                {
+                    transform.parent.gameObject.SetActive(false);
+                }
             }
-            gameObject.SetActive(false);
         }
         else
         {
@@ -75,7 +83,7 @@ public class RedLightningEffect : MonoBehaviour
                 rect.localScale = new Vector3(size, size, 1);
                 size = Random.Range(0, m_sprites.Length - 1);
                 m_img.sprite = m_sprites[(int)size];
-                //m_img.color = new Color(m_img.color.r, m_img.color.g, m_img.color.b, m_img.color.a - m_img.color.a / m_clearingRate);
+                //m_img.color = new Color(m_img.color.r, m_img.color.g, m_img.color.b, m_img.color.a - m_img.color.a / 75);
             }
             else
             {
@@ -86,7 +94,6 @@ public class RedLightningEffect : MonoBehaviour
                 transform.localPosition = new Vector2(x, y);
                 size = Random.Range(0, m_sprites.Length - 1);
                 m_sr.sprite = m_sprites[(int)size];
-                //m_sr.color = new Color(m_sr.color.r, m_sr.color.g, m_sr.color.b, m_sr.color.a - m_sr.color.a / m_clearingRate);
             }
             float nextTime = Random.Range(0.01f, 0.07f);
             StartCoroutine(LightningAnimationCol(nextTime));

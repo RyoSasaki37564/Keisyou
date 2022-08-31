@@ -56,7 +56,7 @@ public class PlayerDataAlfa : MonoBehaviour
     bool m_ryugekiUnLockFlg;
     public bool GetRyugekiUnLockFlg { get => m_ryugekiUnLockFlg; }
     [System.NonSerialized] bool[] m_nineKeyActiveFlgs = new bool[9];
-    public bool Getm_nineKeyActivateFlgs(int id)
+    public bool GetNineKeyActivateFlgs(int id)
     {
         return Instance.m_nineKeyActiveFlgs[id];
     }
@@ -88,6 +88,7 @@ public class PlayerDataAlfa : MonoBehaviour
             }
 
             m_stuts = m_playerLevelTable[9]; //実際には外部保存したステータスを入れる
+            m_tp = 1;
 
             m_nowKakugo = m_stuts.m_kakugo;
 
