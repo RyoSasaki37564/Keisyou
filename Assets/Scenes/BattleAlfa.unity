@@ -2266,7 +2266,7 @@ GameObject:
   - component: {fileID: 623565821}
   m_Layer: 13
   m_Name: NineKey (3)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3867,7 +3867,7 @@ GameObject:
   - component: {fileID: 971103218}
   m_Layer: 13
   m_Name: NineKey (2)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3980,7 +3980,7 @@ GameObject:
   - component: {fileID: 981560439}
   m_Layer: 13
   m_Name: NineKey
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4515,7 +4515,7 @@ GameObject:
   - component: {fileID: 1039510301}
   m_Layer: 13
   m_Name: NineKey (7)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4628,7 +4628,7 @@ GameObject:
   - component: {fileID: 1057278009}
   m_Layer: 13
   m_Name: NineKey (6)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5239,12 +5239,12 @@ PrefabInstance:
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -5259,7 +5259,7 @@ PrefabInstance:
     - target: {fileID: 5835105291120322068, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -160.52733
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5858061865930042955, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -5383,7 +5383,7 @@ GameObject:
   - component: {fileID: 1119294894}
   m_Layer: 13
   m_Name: NineKey (5)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6297,7 +6297,7 @@ GameObject:
   - component: {fileID: 1351824817}
   m_Layer: 13
   m_Name: NineKey (8)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7618,7 +7618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1588949096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7835,7 +7835,7 @@ GameObject:
   - component: {fileID: 1600946292}
   m_Layer: 13
   m_Name: NineKey (4)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8266,6 +8266,10 @@ MonoBehaviour:
   - {fileID: 1057278004}
   - {fileID: 1039510296}
   - {fileID: 1351824812}
+  m_shakeDuration: 1
+  m_shakeStrength: 100
+  m_shakeVibrato: 100
+  m_shakeRandomness: 100
 --- !u!1 &1683951318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8815,7 +8819,7 @@ GameObject:
   - component: {fileID: 1918304017}
   m_Layer: 13
   m_Name: NineKey (1)
-  m_TagString: Untagged
+  m_TagString: NineKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

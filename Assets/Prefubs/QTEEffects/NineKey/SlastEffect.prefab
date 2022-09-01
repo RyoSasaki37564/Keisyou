@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8156140928752646915}
   - component: {fileID: 8156140928752646914}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SlastEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 8156140928752646913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1014354169
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1a2de3207e9a25e4cbff672e341bd045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

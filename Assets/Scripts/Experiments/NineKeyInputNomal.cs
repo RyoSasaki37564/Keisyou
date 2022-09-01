@@ -45,6 +45,7 @@ public class NineKeyInputNomal : MonoBehaviour
 
         /// <summary>
         /// 入力されたキーの番号と接触方向を受け取り、ID情報に変換する
+        /// 1～9
         /// </summary>
         /// <param name="numID">キー番号</param>
         /// <param name="conID">接触方向</param>
@@ -59,6 +60,12 @@ public class NineKeyInputNomal : MonoBehaviour
     bool m_phase = false;
 
     [SerializeField] GameObject[] m_nineKeyObjs = new GameObject[9];
+    Vector2[] m_nineKeyDefaultPoss = new Vector2[9]; //シェイクさせた後元に戻すため
+    //シェイク関連のパラメータ
+    [SerializeField] float m_shakeDuration;
+    [SerializeField] float m_shakeStrength;
+    [SerializeField] int m_shakeVibrato;
+    [SerializeField] float m_shakeRandomness;
 
     Vector3 m_mousePosDelta;
 
@@ -96,7 +103,7 @@ public class NineKeyInputNomal : MonoBehaviour
         //マーカーエフェクトを生成しプール
         for (var i = 0; i < 9; i++)
         {
-            var x = Instantiate(m_effectSlash, m_poolParent);
+            var x = Instantiate(m_effectSlash,  m_poolParent);
             m_slashs[i] = x;
             m_slashs[i].SetActive(false);
         }
@@ -110,7 +117,10 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void OnEnable()
     {
-        NineKeySettings();
+        for(var i = 0; i < m_nineKeyObjs.Length; i++)
+        {
+            m_nineKeyObjs[i].transform.position = m_nineKeyDefaultPoss[i];
+        }
         m_ppv.weight = 1;
     }
 
@@ -197,6 +207,7 @@ public class NineKeyInputNomal : MonoBehaviour
                     {
                         if (m_zangekiFlg == true && m_colls[m_colls.Count - 1].enabled == true)
                         {
+                            KujikenShake(m_colls[m_colls.Count - 1].gameObject);
                             //Debug.LogError("なんでやねん切りmove");
                             //m_zangekiSE.MyPlayOneShot();
                             Slash(ZangekiDirection());
@@ -222,6 +233,7 @@ public class NineKeyInputNomal : MonoBehaviour
 
                 if (m_slustFlg == true && m_isInStopper == true)
                 {
+                    KujikenShake(m_colls[m_colls.Count - 1].gameObject);
                     //Debug.LogError("なんでやねん突きend");
                     m_srasts[m_srastIndexer].SetActive(true);
                     m_srasts[m_srastIndexer].transform.position = m_contactNum.transform.position;
@@ -234,6 +246,7 @@ public class NineKeyInputNomal : MonoBehaviour
                 }
                 else if (m_zangekiFlg == true && m_isInStopper == true)
                 {
+                    KujikenShake(m_colls[m_colls.Count - 1].gameObject);
                     //Debug.LogError("なんでやねん切りend");
                     Slash(ZangekiDirection());
                     //m_zangekiSE.MyPlayOneShot();
@@ -273,8 +286,15 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         for (var i = 0; i < m_nineKeyObjs.Length; i++)
         {
+            m_nineKeyDefaultPoss[i] = m_nineKeyObjs[i].transform.position;
+            m_nineKeyObjs[i].name = $"{i + 1}"; //1スタートでIDを入れる。名前をそのままコマンド変換する。
             m_nineKeyObjs[i].SetActive(PlayerDataAlfa.Instance.GetNineKeyActivateFlgs(i));
         }
+    }
+
+    void KujikenShake(GameObject go)
+    {
+        go.transform.DOShakePosition(m_shakeDuration, m_shakeStrength, m_shakeVibrato, m_shakeRandomness, false, false);
     }
 
     int ZangekiDirection()
