@@ -125,6 +125,7 @@ public class PlayerDataAlfa : MonoBehaviour
     {
         if(id == 4)
         {
+            //「皆」は龍撃そのものの解放も行う
             Instance.m_ryugekiUnLockFlg = true;
         }
         Instance.m_nineKeyActiveFlgs[id] = true;

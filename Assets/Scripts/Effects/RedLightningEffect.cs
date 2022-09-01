@@ -13,8 +13,6 @@ public class RedLightningEffect : MonoBehaviour
 
     [SerializeField] float m_movingLenge = 17f;
 
-    float m_colorAlfaDef;
-
     [SerializeField] bool m_isEndless;
 
     bool m_isStop;
@@ -25,12 +23,10 @@ public class RedLightningEffect : MonoBehaviour
         if(m_isUIObject)
         {
             m_img = GetComponent<Image>();
-            m_colorAlfaDef = m_img.color.a;
         }
         else
         {
             m_sr = GetComponent<SpriteRenderer>();
-            m_colorAlfaDef = m_sr.color.a;
         }
         StartCoroutine(CountDown());
         StartCoroutine(LightningAnimationCol(0.1f));
@@ -59,12 +55,12 @@ public class RedLightningEffect : MonoBehaviour
         {
             if(m_isUIObject)
             {
-                m_img.color = new Color(m_img.color.r, m_img.color.g, m_img.color.b, m_colorAlfaDef);
+                m_img.color = new Color(m_img.color.r, m_img.color.g, m_img.color.b);
                 gameObject.SetActive(false);
             }
             else
             {
-                m_sr.color = new Color(m_sr.color.r, m_sr.color.g, m_sr.color.b, m_colorAlfaDef);
+                m_sr.color = new Color(m_sr.color.r, m_sr.color.g, m_sr.color.b);
                 if (transform.parent.gameObject.activeSelf)
                 {
                     transform.parent.gameObject.SetActive(false);
@@ -83,7 +79,6 @@ public class RedLightningEffect : MonoBehaviour
                 rect.localScale = new Vector3(size, size, 1);
                 size = Random.Range(0, m_sprites.Length - 1);
                 m_img.sprite = m_sprites[(int)size];
-                //m_img.color = new Color(m_img.color.r, m_img.color.g, m_img.color.b, m_img.color.a - m_img.color.a / 75);
             }
             else
             {

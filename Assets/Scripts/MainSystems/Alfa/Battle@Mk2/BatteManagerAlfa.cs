@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +9,23 @@ public enum PhaseOnBattle
     Input,
     Player,
     Enemy,
+    End,
+}
+
+enum ModeOfZone
+{
+    Kamigakari,
+    Homura,
+    Meikyoushisui,
+    Deep,
 }
 
 public class BatteManagerAlfa : MonoBehaviour
 {
+    PhaseOnBattle m_nowPhase = PhaseOnBattle.Input;
+
+    ModeOfZone m_zone = ModeOfZone.Kamigakari;
+
     [SerializeField] Slider m_playerHPSlider;
     [SerializeField] Slider m_playerConSlider;
     [SerializeField] Slider m_playerDodgSlider;
@@ -110,12 +124,22 @@ public class BatteManagerAlfa : MonoBehaviour
 
     public void TestAttack()
     {
-        int damage = 10;
-        m_enemyHPBarList[m_target].value -= damage;
-        IsDead();
+        int damage = 30;
+        //m_enemyHPBarList[m_target].value -= damage;
+        //IsDead();
+
+        float doTime = 1f;
+        IEnumerator DeadCheck()
+        {
+            yield return new WaitForSeconds(doTime);
+            IsEnemyDead();
+        }
+        StartCoroutine(DeadCheck());
+        DOTween.To(() => m_enemyHPBarList[m_target].value, x => m_enemyHPBarList[m_target].value = x,
+                m_enemyHPBarList[m_target].value - damage, doTime);
     }
 
-    void IsDead()
+    void IsEnemyDead()
     {
         if(m_enemyHPBarList[m_target].value == 0)
         {
@@ -150,5 +174,41 @@ public class BatteManagerAlfa : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         m_resultUICanvas.SetActive(true);
+    }
+
+    void StateProgression()
+    {
+        switch(m_nowPhase)
+        {
+            case PhaseOnBattle.Input:
+                break;
+            case PhaseOnBattle.Player:
+                break;
+            case PhaseOnBattle.Enemy:
+                EnemysSelectActions();
+                break;
+            case PhaseOnBattle.End:
+                break;
+        }
+    }
+
+    void EnemysSelectActions()
+    {
+        Debug.Log("敵の行動");
+    }
+
+    void Zone()
+    {
+        switch (m_zone)
+        {
+            case ModeOfZone.Kamigakari:
+                break;
+            case ModeOfZone.Homura:
+                break;
+            case ModeOfZone.Meikyoushisui:
+                break;
+            case ModeOfZone.Deep:
+                break;
+        }
     }
 }

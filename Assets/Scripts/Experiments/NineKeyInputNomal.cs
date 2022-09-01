@@ -119,6 +119,7 @@ public class NineKeyInputNomal : MonoBehaviour
     private void OnEnable()
     {
         m_ppv.weight = 1;
+        m_dialog.color = Color.black;
         foreach (var i in m_colls)
         {
             i.enabled = true;
@@ -145,6 +146,7 @@ public class NineKeyInputNomal : MonoBehaviour
     private void OnDisable()
     {
         m_ppv.weight = 0;
+        m_dialog.color = Color.white;
     }
 
     /*
