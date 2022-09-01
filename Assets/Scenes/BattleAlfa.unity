@@ -322,12 +322,12 @@ GameObject:
   - component: {fileID: 70459514}
   - component: {fileID: 70459513}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &70459512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2377,12 +2377,12 @@ GameObject:
   - component: {fileID: 646472959}
   - component: {fileID: 646472958}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &646472957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2476,12 +2476,12 @@ GameObject:
   - component: {fileID: 662258497}
   - component: {fileID: 662258496}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &662258495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3423,12 +3423,12 @@ GameObject:
   - component: {fileID: 908678613}
   - component: {fileID: 908678612}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &908678611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4253,12 +4253,12 @@ GameObject:
   - component: {fileID: 1021856561}
   - component: {fileID: 1021856560}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1021856559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5219,7 +5219,7 @@ PrefabInstance:
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -142.34724
+      value: -163.62306
       objectReference: {fileID: 0}
     - target: {fileID: 4361986435013816683, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -6101,12 +6101,12 @@ GameObject:
   - component: {fileID: 1303033253}
   - component: {fileID: 1303033252}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1303033251
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6429,8 +6429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.5515, y: -196.4}
-  m_SizeDelta: {x: 432.22748, y: 28.815165}
+  m_AnchoredPosition: {x: 0.000012159, y: -206.15}
+  m_SizeDelta: {x: 432.22748, y: 37.970337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1383166239
 MonoBehaviour:
@@ -6453,10 +6453,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 635e6f6ad611cea41ac9ab38915c160c, type: 3}
-    m_FontSize: 30
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 29
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -6486,12 +6486,12 @@ GameObject:
   - component: {fileID: 1387760750}
   - component: {fileID: 1387760749}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1387760748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7164,12 +7164,12 @@ GameObject:
   - component: {fileID: 1489781811}
   - component: {fileID: 1489781810}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1489781809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7513,12 +7513,12 @@ GameObject:
   - component: {fileID: 1571340863}
   - component: {fileID: 1571340862}
   m_Layer: 13
-  m_Name: Image
+  m_Name: RedLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1571340861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8266,7 +8266,7 @@ MonoBehaviour:
   - {fileID: 1057278004}
   - {fileID: 1039510296}
   - {fileID: 1351824812}
-  m_shakeDuration: 1
+  m_shakeDuration: 0.7
   m_shakeStrength: 20
   m_shakeVibrato: 30
   m_shakeRandomness: 30

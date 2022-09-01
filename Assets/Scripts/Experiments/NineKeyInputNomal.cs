@@ -119,10 +119,15 @@ public class NineKeyInputNomal : MonoBehaviour
     private void OnEnable()
     {
         m_ppv.weight = 1;
+        foreach (var i in m_colls)
+        {
+            i.enabled = true;
+        }
 
         for (var i = 0; i < m_nineKeyObjs.Length; i++)
         {
             m_nineKeyObjs[i].transform.position = m_nineKeyDefaultPoss[i];
+            m_nineKeyObjs[i].transform.Find("RedLightning").gameObject.SetActive(true);
         }
 
         foreach(var s in m_slashs)
@@ -133,6 +138,8 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             s.SetActive(false);
         }
+        m_slashIndexer = 0;
+        m_srastIndexer = 0;
     }
 
     private void OnDisable()
@@ -249,7 +256,7 @@ public class NineKeyInputNomal : MonoBehaviour
                     m_srasts[m_srastIndexer].SetActive(true);
                     m_srasts[m_srastIndexer].transform.position = m_contactNum.transform.position;
                     m_srasts[m_srastIndexer].transform.SetParent(m_contactNum.transform);
-                    m_contactNum.transform.GetChild(0).gameObject.SetActive(true);
+                    m_contactNum.transform.GetChild(0).gameObject.SetActive(false);
                     m_srastIndexer++;
                     //m_shitotsuSE.MyPlayOneShot();
                     m_colls[m_colls.Count - 1].enabled = false;
@@ -370,12 +377,12 @@ public class NineKeyInputNomal : MonoBehaviour
 
     void Slash(int i)
     {
+        m_slashs[m_slashIndexer].transform.SetParent(m_contactNum.transform);
         m_slashs[m_slashIndexer].SetActive(true);
         m_slashs[m_slashIndexer].transform.position = m_contactNum.transform.position;
 
-        m_slashs[m_slashIndexer].transform.SetParent(m_contactNum.transform);
 
-        m_contactNum.transform.GetChild(0).gameObject.SetActive(true);
+        m_contactNum.transform.GetChild(0).gameObject.SetActive(false);
 
         //斬撃エフェクトの角度を調節
         switch (i)
