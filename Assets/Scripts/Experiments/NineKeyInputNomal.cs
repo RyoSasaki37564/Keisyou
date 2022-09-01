@@ -60,8 +60,9 @@ public class NineKeyInputNomal : MonoBehaviour
     bool m_phase = false;
 
     [SerializeField] GameObject[] m_nineKeyObjs = new GameObject[9];
-    Vector2[] m_nineKeyDefaultPoss = new Vector2[9]; //シェイクさせた後元に戻すため
+    Vector3[] m_nineKeyDefaultPoss = new Vector3[9]; //シェイクさせた後元に戻すため
     //シェイク関連のパラメータ
+    Tweener m_tw;
     [SerializeField] float m_shakeDuration;
     [SerializeField] float m_shakeStrength;
     [SerializeField] int m_shakeVibrato;
@@ -117,11 +118,21 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void OnEnable()
     {
-        for(var i = 0; i < m_nineKeyObjs.Length; i++)
+        m_ppv.weight = 1;
+
+        for (var i = 0; i < m_nineKeyObjs.Length; i++)
         {
             m_nineKeyObjs[i].transform.position = m_nineKeyDefaultPoss[i];
         }
-        m_ppv.weight = 1;
+
+        foreach(var s in m_slashs)
+        {
+            s.SetActive(false);
+        }
+        foreach(var s in m_srasts)
+        {
+            s.SetActive(false);
+        }
     }
 
     private void OnDisable()
@@ -237,6 +248,8 @@ public class NineKeyInputNomal : MonoBehaviour
                     //Debug.LogError("なんでやねん突きend");
                     m_srasts[m_srastIndexer].SetActive(true);
                     m_srasts[m_srastIndexer].transform.position = m_contactNum.transform.position;
+                    m_srasts[m_srastIndexer].transform.SetParent(m_contactNum.transform);
+                    m_contactNum.transform.GetChild(0).gameObject.SetActive(true);
                     m_srastIndexer++;
                     //m_shitotsuSE.MyPlayOneShot();
                     m_colls[m_colls.Count - 1].enabled = false;
@@ -294,6 +307,7 @@ public class NineKeyInputNomal : MonoBehaviour
 
     void KujikenShake(GameObject go)
     {
+        m_tw.Kill();
         go.transform.DOShakePosition(m_shakeDuration, m_shakeStrength, m_shakeVibrato, m_shakeRandomness, false, false);
     }
 
@@ -358,6 +372,11 @@ public class NineKeyInputNomal : MonoBehaviour
     {
         m_slashs[m_slashIndexer].SetActive(true);
         m_slashs[m_slashIndexer].transform.position = m_contactNum.transform.position;
+
+        m_slashs[m_slashIndexer].transform.SetParent(m_contactNum.transform);
+
+        m_contactNum.transform.GetChild(0).gameObject.SetActive(true);
+
         //斬撃エフェクトの角度を調節
         switch (i)
         {
