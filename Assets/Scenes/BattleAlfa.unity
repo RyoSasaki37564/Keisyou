@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48673023301059846967d300781e9133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_dialog: {fileID: 1383166239}
   m_playerHPSlider: {fileID: 935754727}
   m_playerConSlider: {fileID: 1396514141}
   m_playerDodgSlider: {fileID: 1516828370}
@@ -5381,7 +5382,7 @@ PrefabInstance:
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -166.72786
+      value: -143.82863
       objectReference: {fileID: 0}
     - target: {fileID: 4361986435013816683, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}

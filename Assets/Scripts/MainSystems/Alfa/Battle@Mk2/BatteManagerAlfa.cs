@@ -6,14 +6,17 @@ using UnityEngine.UI;
 
 public enum PhaseOnBattle
 {
+    Start,
     Input,
     Player,
     Enemy,
+    Kamigakari,
     End,
 }
 
 enum ModeOfZone
 {
+    None,
     Kamigakari,
     Homura,
     Meikyoushisui,
@@ -22,9 +25,10 @@ enum ModeOfZone
 
 public class BatteManagerAlfa : MonoBehaviour
 {
-    PhaseOnBattle m_nowPhase = PhaseOnBattle.Input;
+    PhaseOnBattle m_nowPhase = PhaseOnBattle.Start;
+    ModeOfZone m_zone = ModeOfZone.None;
 
-    ModeOfZone m_zone = ModeOfZone.Kamigakari;
+    [SerializeField] Text m_dialog;
 
     [SerializeField] Slider m_playerHPSlider;
     [SerializeField] Slider m_playerConSlider;
@@ -36,6 +40,7 @@ public class BatteManagerAlfa : MonoBehaviour
     [SerializeField] GameObject m_tempEnemyHPSlider;
     List<EnemyStatusAlfa> m_enemyInstanceList = new List<EnemyStatusAlfa>();
     List<Slider> m_enemyHPBarList = new List<Slider>();
+    List<EnemyBattleAIBase> m_enemyAIList = new List<EnemyBattleAIBase>();
     List<GameObject> m_enemyTargettingMarkerList = new List<GameObject>();
     public List<int> m_enemyEncountIDList = new List<int>();
 
@@ -60,11 +65,19 @@ public class BatteManagerAlfa : MonoBehaviour
     void Start()
     {
         //テストエンカウント
-        m_enemyEncountIDList.Add(0);
+        m_enemyEncountIDList.Add(1);
+        m_enemyEncountIDList.Add(2);
 
         PlayerStatusSetUP();
         EnemyStatusSetUP(m_enemyEncountIDList);
+        StateProgression();
     }
+
+
+    //void Update()
+    //{
+    //    StateProgression();
+    //}
 
     void EnemyStatusSetUP(List<int> idList)
     {
@@ -90,6 +103,21 @@ public class BatteManagerAlfa : MonoBehaviour
             rect.localPosition = new Vector3(rect.localPosition.x, rect.localPosition.y + (35 * i), rect.localPosition.z);
             Text eneName = eneSliObj.transform.Find("Name").GetComponent<Text>();
             eneName.text = ene.m_name;
+            var eAI = EnemyAIGenerate(idList[i]);
+            m_enemyAIList.Add(eAI);
+        }
+    }
+
+    EnemyBattleAIBase EnemyAIGenerate(int id)
+    {
+
+        if(id < 5)
+        {
+            return new BattleAIDragon0();
+        }
+        else
+        {
+            return new BattleAIDragon0();
         }
     }
 
@@ -124,19 +152,31 @@ public class BatteManagerAlfa : MonoBehaviour
 
     public void TestAttack()
     {
-        int damage = 30;
-        //m_enemyHPBarList[m_target].value -= damage;
-        //IsDead();
-
-        float doTime = 1f;
-        IEnumerator DeadCheck()
+        if(m_nowPhase == PhaseOnBattle.Input)
         {
-            yield return new WaitForSeconds(doTime);
-            IsEnemyDead();
+            int damage = 30;
+            int lessDodg = 10;
+            float getConRate = 0.12f;
+
+            //m_enemyHPBarList[m_target].value -= damage;
+            //IsDead();
+
+            float doTime = 1f;
+            IEnumerator DeadCheck()
+            {
+                yield return new WaitForSeconds(doTime);
+                IsEnemyDead();
+            }
+            StartCoroutine(DeadCheck());
+            DOTween.To(() => m_enemyHPBarList[m_target].value, x => m_enemyHPBarList[m_target].value = x,
+                    m_enemyHPBarList[m_target].value - damage, doTime);
+
+            DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
+                    m_playerDodgSlider.value - lessDodg, doTime);
+
+            DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
+                    m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
         }
-        StartCoroutine(DeadCheck());
-        DOTween.To(() => m_enemyHPBarList[m_target].value, x => m_enemyHPBarList[m_target].value = x,
-                m_enemyHPBarList[m_target].value - damage, doTime);
     }
 
     void IsEnemyDead()
@@ -150,10 +190,17 @@ public class BatteManagerAlfa : MonoBehaviour
                     int pTarget = m_target;
                     m_target = i;
                     ChangeTarget(pTarget, m_target);
+                    m_nowPhase = PhaseOnBattle.Enemy;
+                    StateProgression();
                     return;
                 }
             }
             BattleEnd();
+        }
+        else
+        {
+            m_nowPhase = PhaseOnBattle.Enemy;
+            StateProgression();
         }
     }
 
@@ -180,12 +227,17 @@ public class BatteManagerAlfa : MonoBehaviour
     {
         switch(m_nowPhase)
         {
-            case PhaseOnBattle.Input:
+            case PhaseOnBattle.Start:
+                m_nowPhase = PhaseOnBattle.Input;
                 break;
-            case PhaseOnBattle.Player:
+            case PhaseOnBattle.Input:
+                m_dialog.text = "プレイヤーのターン";
                 break;
             case PhaseOnBattle.Enemy:
+                m_dialog.text = "敵の行動";
                 EnemysSelectActions();
+                break;
+            case PhaseOnBattle.Kamigakari:
                 break;
             case PhaseOnBattle.End:
                 break;
@@ -194,13 +246,42 @@ public class BatteManagerAlfa : MonoBehaviour
 
     void EnemysSelectActions()
     {
-        Debug.Log("敵の行動");
+        int i = m_enemyHPBarList.Count - 1;
+        float doTime = 1.5f;
+
+        StartCoroutine(DeadCheck());
+
+        IEnumerator DeadCheck()
+        {
+            yield return new WaitForSeconds(doTime);
+            if (m_enemyHPBarList[i].value != 0)
+            {
+                Debug.Log(m_enemyInstanceList[i].m_name);
+                m_enemyAIList[i].EnemyActionSelect((int)m_enemyHPBarList[i].value, (int)m_enemyHPBarList[i].maxValue,
+                    ref m_enemyInstanceList[i].m_nowStamina, m_enemyInstanceList[i].m_stamina, (int)m_playerHPSlider.value, (int)m_playerHPSlider.maxValue);
+            }
+
+            i--;
+
+            if(i == -1)
+            {
+                m_nowPhase = PhaseOnBattle.Input;
+                StateProgression();
+            }
+            else
+            {
+                StartCoroutine(DeadCheck());
+            }
+        }
     }
 
     void Zone()
     {
         switch (m_zone)
         {
+            case ModeOfZone.None:
+                Debug.LogWarning("極致になってねーのにZone()呼ばれたぞ");
+                break;
             case ModeOfZone.Kamigakari:
                 break;
             case ModeOfZone.Homura:
