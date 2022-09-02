@@ -149,16 +149,19 @@ public class BatteManagerAlfa : MonoBehaviour
         rect.localPosition = new Vector3(-300f + ((rect.sizeDelta.x - 100) / 2), rect.localPosition.y, rect.localPosition.z);
     }
 
+    bool testDodgeControll;
     public void TestDodge()
     {
-        if (m_nowPhase == PhaseOnBattle.Input)
+        if (m_nowPhase == PhaseOnBattle.Input && !testDodgeControll)
         {
+            testDodgeControll = true;
             int testDodge = 10;
             float doTime = 1f;
             IEnumerator Progression()
             {
                 yield return new WaitForSeconds(doTime);
                 m_nowPhase = PhaseOnBattle.Enemy;
+                testDodgeControll = false;
                 StateProgression();
             }
             StartCoroutine(Progression());
@@ -167,11 +170,12 @@ public class BatteManagerAlfa : MonoBehaviour
         }
     }
 
+    bool testAttackControll;
     public void TestAttack()
     {
-        if(m_nowPhase == PhaseOnBattle.Input)
+        if(m_nowPhase == PhaseOnBattle.Input && !testAttackControll)
         {
-            Debug.LogError("attack");
+            testAttackControll = true;
             int damage = m_playerAtk - m_enemyInstanceList[m_target].m_def/10;
             if(damage < 0)
             {
@@ -184,6 +188,7 @@ public class BatteManagerAlfa : MonoBehaviour
             IEnumerator DeadCheck()
             {
                 yield return new WaitForSeconds(doTime);
+                testAttackControll = false;
                 IsEnemyDead();
             }
             StartCoroutine(DeadCheck());
