@@ -16,10 +16,18 @@ public class BattleAIDragon0 : EnemyBattleAIBase
     PrevCommand m_preCom = PrevCommand.Non;
     int m_repeatCount = 0;
 
+    string m_non = "Wait";
+    string m_morph = "MorphChange";
+    string m_attack = "Attack";
+    string m_danger = "Danger";
+    string m_roar = "Roar";
+    string m_rest = "Rest";
+    // 
+
     /// <summary>
     /// このfreePara0はプレイヤーの回避
     /// </summary>
-    public override void EnemyActionSelect(int nowHP, int maxHP, ref int nowStamina, int maxStamina, int freePara0, int freePara0Max)
+    public override string EnemyActionSelect(int nowHP, int maxHP, ref int nowStamina, int maxStamina, int freePara0, int freePara0Max)
     {
         //froatキャスト必須
         float hpRate = (float)nowHP / (float)maxHP;
@@ -27,10 +35,10 @@ public class BattleAIDragon0 : EnemyBattleAIBase
         float playerDodgeRate = (float)freePara0 / (float)freePara0Max;
 
         float wantMorphing = 0;
-        float wantNomalAttack = FuzzyLogic.FuzzyGrade(hpRate, 0f, 1f);
-        float wantDangerAttack = FuzzyLogic.FuzzyReverseGrade(hpRate, 1f, 0f);
-        float wantRest = FuzzyLogic.FuzzyReverseGrade(staminaRate, 0.3f, 0f);
-        float wantRoar = FuzzyLogic.FuzzyGrade(playerDodgeRate, 0.8f, 1f);
+        float wantNomalAttack = FuzzyLogic.FuzzyReverseGrade(hpRate,0f, 0.9f);
+        float wantDangerAttack = FuzzyLogic.FuzzyReverseGrade(hpRate, 0.2f, 0.5f);
+        float wantRest = FuzzyLogic.FuzzyReverseGrade(staminaRate, 0.1f, 0.3f);
+        float wantRoar = FuzzyLogic.FuzzyGrade(playerDodgeRate, 0.8f, 0.9f);
 
 
         if (hpRate <= 0.5f && !m_isMorphChanged)
@@ -40,67 +48,90 @@ public class BattleAIDragon0 : EnemyBattleAIBase
         }
 
         float select = Mathf.Max(wantMorphing, wantNomalAttack, wantDangerAttack, wantRest, wantRoar);
-        if(select == wantMorphing)
+        if (select == wantMorphing)
         {
             CommandOfMorphProgression();
             m_repeatCount = 0;
+            return m_morph;
         }
         else if (select == wantRoar)
         {
-            if(m_preCom == PrevCommand.Roar && m_repeatCount < 2)
+            if (m_preCom == PrevCommand.Roar)
             {
-                CommandOfRoar();
-            }
-            else
-            {
-                if(m_preCom != PrevCommand.Roar)
+                if (m_repeatCount < 2)
                 {
-                    m_repeatCount = 0;
-                }
-                CommandOfNomalAttack(ref nowStamina, maxStamina);
-            }
-        }
-        else if(select == wantNomalAttack)
-        {
-            if (m_preCom != PrevCommand.NomalAttack)
-            {
-                m_repeatCount = 0;
-            }
-            CommandOfNomalAttack(ref nowStamina, maxStamina);
-        }
-        else if(select == wantDangerAttack)
-        {
-            if(wantRest < 0.4f && wantRoar < 0.5f)
-            {
-                if (m_preCom == PrevCommand.DangerAttack && m_repeatCount < 3)
-                {
-                    CommandOfDangerAttack(ref nowStamina, maxStamina);
+                    CommandOfRoar();
+                    return m_roar;
                 }
                 else
                 {
-                    if(m_preCom != PrevCommand.NomalAttack)
-                    {
-                        m_repeatCount = 0;
-                    }
                     CommandOfNomalAttack(ref nowStamina, maxStamina);
+                    return m_attack;
                 }
             }
             else
             {
-                if (m_preCom != PrevCommand.NomalAttack)
-                {
-                    m_repeatCount = 0;
-                }
-                CommandOfNomalAttack(ref nowStamina, maxStamina);
+                CommandOfRoar();
+                return m_roar;
             }
         }
-        else if(select == wantRest)
+
+        else if (select == wantNomalAttack)
+        {
+            if(m_preCom == PrevCommand.NomalAttack)
+            {
+                int rand = Random.Range(3, 6);
+                if (m_repeatCount < rand)
+                {
+                    CommandOfRoar();
+                    return m_roar;
+                }
+                else
+                {
+                    CommandOfNomalAttack(ref nowStamina, maxStamina);
+                    return m_attack;
+                }
+            }
+            else
+            {
+                CommandOfNomalAttack(ref nowStamina, maxStamina);
+                return m_attack;
+            }
+        }
+
+        else if (select == wantDangerAttack)
+        {
+            if (m_preCom == PrevCommand.DangerAttack)
+            {
+                if (m_repeatCount < 3)
+                {
+                    CommandOfDangerAttack(ref nowStamina, maxStamina);
+                    return m_danger;
+                }
+                else
+                {
+
+                    CommandOfNomalAttack(ref nowStamina, maxStamina);
+                    return m_attack;
+                }
+            }
+            else
+            {
+                CommandOfDangerAttack(ref nowStamina, maxStamina);
+                return m_danger;
+            }
+        }
+
+        else if (select == wantRest)
         {
             CommandOfRest(ref nowStamina, maxStamina);
+            return m_rest;
         }
+
         else
         {
             Debug.Log("それ以外");
+            return m_non;
         }
     }
 
@@ -116,6 +147,10 @@ public class BattleAIDragon0 : EnemyBattleAIBase
         {
             m_repeatCount++;
         }
+        else
+        {
+            m_repeatCount = 0;
+        }
         m_preCom = PrevCommand.NomalAttack;
         UseStamina(ref stm, maxSTm, 0.1f);
         Debug.Log("通常攻撃");
@@ -127,6 +162,10 @@ public class BattleAIDragon0 : EnemyBattleAIBase
         {
             m_repeatCount++;
         }
+        else
+        {
+            m_repeatCount = 0;
+        }
         m_preCom = PrevCommand.DangerAttack;
         UseStamina(ref stm, maxSTm, 0.2f);
         Debug.Log("危険攻撃");
@@ -134,28 +173,36 @@ public class BattleAIDragon0 : EnemyBattleAIBase
 
     void CommandOfRoar()
     {
-        if(m_preCom == PrevCommand.Roar)
+        if (m_preCom == PrevCommand.Roar)
         {
             m_repeatCount++;
+        }
+        else
+        {
+            m_repeatCount = 0;
         }
         m_preCom = PrevCommand.Roar;
         Debug.Log("咆哮");
     }
 
-    void CommandOfRest(ref int stamina , int max)
+    void CommandOfRest(ref int stamina, int max)
     {
         if (m_preCom == PrevCommand.Rest)
         {
             m_repeatCount++;
+        }
+        else
+        {
+            m_repeatCount = 0;
         }
         m_preCom = PrevCommand.Rest;
         stamina = max;
         Debug.Log("スタミナ切れ");
     }
 
-    void UseStamina(ref int eneStamina,int eneStaminaMax, float useRate)
+    void UseStamina(ref int eneStamina, int eneStaminaMax, float useRate)
     {
-        if(eneStamina - eneStaminaMax * useRate < 0)
+        if (eneStamina - eneStaminaMax * useRate < 0)
         {
             eneStamina = 0;
         }

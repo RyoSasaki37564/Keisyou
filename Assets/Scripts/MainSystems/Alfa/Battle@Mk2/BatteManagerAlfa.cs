@@ -65,8 +65,7 @@ public class BatteManagerAlfa : MonoBehaviour
     void Start()
     {
         //テストエンカウント
-        m_enemyEncountIDList.Add(1);
-        m_enemyEncountIDList.Add(2);
+        m_enemyEncountIDList.Add(0);
 
         PlayerStatusSetUP();
         EnemyStatusSetUP(m_enemyEncountIDList);
@@ -150,16 +149,36 @@ public class BatteManagerAlfa : MonoBehaviour
         rect.localPosition = new Vector3(-300f + ((rect.sizeDelta.x - 100) / 2), rect.localPosition.y, rect.localPosition.z);
     }
 
+    public void TestDodge()
+    {
+        if (m_nowPhase == PhaseOnBattle.Input)
+        {
+            int testDodge = 10;
+            float doTime = 1f;
+            IEnumerator Progression()
+            {
+                yield return new WaitForSeconds(doTime);
+                m_nowPhase = PhaseOnBattle.Enemy;
+                StateProgression();
+            }
+            StartCoroutine(Progression());
+            DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
+                    m_playerDodgSlider.value + testDodge, doTime);
+        }
+    }
+
     public void TestAttack()
     {
         if(m_nowPhase == PhaseOnBattle.Input)
         {
-            int damage = 30;
+            Debug.LogError("attack");
+            int damage = m_playerAtk - m_enemyInstanceList[m_target].m_def/10;
+            if(damage < 0)
+            {
+                damage = 1;
+            }
             int lessDodg = 10;
             float getConRate = 0.12f;
-
-            //m_enemyHPBarList[m_target].value -= damage;
-            //IsDead();
 
             float doTime = 1f;
             IEnumerator DeadCheck()
@@ -256,9 +275,9 @@ public class BatteManagerAlfa : MonoBehaviour
             yield return new WaitForSeconds(doTime);
             if (m_enemyHPBarList[i].value != 0)
             {
-                Debug.Log(m_enemyInstanceList[i].m_name);
+                Debug.Log(m_enemyInstanceList[i].m_name + ", スタミナ" + m_enemyInstanceList[i].m_nowStamina);
                 m_enemyAIList[i].EnemyActionSelect((int)m_enemyHPBarList[i].value, (int)m_enemyHPBarList[i].maxValue,
-                    ref m_enemyInstanceList[i].m_nowStamina, m_enemyInstanceList[i].m_stamina, (int)m_playerHPSlider.value, (int)m_playerHPSlider.maxValue);
+                    ref m_enemyInstanceList[i].m_nowStamina, m_enemyInstanceList[i].m_stamina, (int)m_playerDodgSlider.value, (int)m_playerDodgSlider.maxValue);
             }
 
             i--;
