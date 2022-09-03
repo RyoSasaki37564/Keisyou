@@ -5,10 +5,19 @@ using System.IO;
 
 public struct GameDataStruct
 {
-    /// <summary> 0 = level, 1 = hp, 2 = con, 3 = dod, 4 = atk, 5 = def, 6 = kak, 7 = exp, 8 = money, 9 = tp </summary>
-    public int[] playerStatusAndPoints;
+    /// <summary> 0 = level, 1 = hp, 2 = con, 3 = dod, 4 = atk, 5 = def, 6 = kak </summary>
+    public int[] playerStatus;
 
-    //public int[] items;
+    /// <summary> 0 = exp, 1 = money, 2 = tp </summary>
+    public int[] playerPoints;
+
+    //public int[] armsInventry;
+
+    //public int[] mainArms;
+
+    //public int[] itemsInventry;
+
+    //public int[] shortCutItems;
 
     //public bool[] abilityActivateFlgs;
 
@@ -34,8 +43,9 @@ public class SaveDataStructure : MonoBehaviour
             return;
         }
 
-        m_instance = new SaveDataStructure();
-        m_gameData.playerStatusAndPoints = new int[10];
+        m_instance = this;
+        m_gameData.playerStatus = new int[7];
+        m_gameData.playerPoints = new int[3];
 
         LoadData();
     }
@@ -79,11 +89,18 @@ public class SaveDataStructure : MonoBehaviour
 
         m_oneTimeData = JsonUtility.FromJson<GameDataStruct>(datastr);
 
-        for (int i = 0; i < m_gameData.playerStatusAndPoints.Length; i++)
+        for (var i = 0; i < m_gameData.playerStatus.Length; i++)
         {
-            if (m_oneTimeData.playerStatusAndPoints[i] > m_gameData.playerStatusAndPoints[i])
+            if (m_oneTimeData.playerStatus[i] > m_gameData.playerStatus[i])
             {
-                m_gameData.playerStatusAndPoints[i] = m_oneTimeData.playerStatusAndPoints[i];
+                m_gameData.playerStatus[i] = m_oneTimeData.playerStatus[i];
+            }
+        }
+        for(var i = 0; i < m_gameData.playerPoints.Length; i++)
+        {
+            if(m_oneTimeData.playerPoints[i] > m_gameData.playerPoints[i])
+            {
+                m_gameData.playerPoints[i] = m_oneTimeData.playerPoints[i];
             }
         }
     }

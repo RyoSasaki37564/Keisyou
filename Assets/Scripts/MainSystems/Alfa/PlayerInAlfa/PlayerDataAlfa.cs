@@ -101,15 +101,8 @@ public class PlayerDataAlfa : MonoBehaviour
                 }
             }
 
+            LoadedStatusSetting();
 
-
-            m_stuts = m_playerLevelTable[9]; //実際には外部保存したステータスを入れる
-            m_tp = 1;
-            m_nowKakugo = m_stuts.m_kakugo;
-
-            
-            //テストセービング
-            
 
             sr = new StringReader(m_enemyMasterAlfaText.text);
             int eneLineMax = int.Parse(sr.ReadLine());
@@ -143,18 +136,34 @@ public class PlayerDataAlfa : MonoBehaviour
     void SaveStatus()
     {
         // ステータスをセーブする。
-        SaveDataStructure.m_gameData.playerStatusAndPoints[0] = m_stuts.m_level;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[1] = m_stuts.m_hp;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[2] = m_stuts.m_con;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[3] = m_stuts.m_dodge;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[4] = m_stuts.m_atk;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[5] = m_stuts.m_def;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[6] = m_nowKakugo;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[7] = m_exp;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[8] = m_money;
-        SaveDataStructure.m_gameData.playerStatusAndPoints[9] = m_tp;
+        SaveDataStructure.m_gameData.playerStatus[0] = m_stuts.m_level;
+        SaveDataStructure.m_gameData.playerStatus[1] = m_stuts.m_hp;
+        SaveDataStructure.m_gameData.playerStatus[2] = m_stuts.m_con;
+        SaveDataStructure.m_gameData.playerStatus[3] = m_stuts.m_dodge;
+        SaveDataStructure.m_gameData.playerStatus[4] = m_stuts.m_atk;
+        SaveDataStructure.m_gameData.playerStatus[5] = m_stuts.m_def;
+        SaveDataStructure.m_gameData.playerStatus[6] = m_nowKakugo;
+
+        SaveDataStructure.m_gameData.playerPoints[0] = m_exp;
+        SaveDataStructure.m_gameData.playerPoints[1] = m_money;
+        SaveDataStructure.m_gameData.playerPoints[2] = m_tp;
+
+        SaveDataStructure.m_instance.SavePlayerData();
     }
 
+    void LoadedStatusSetting()
+    {
+        //SaveDataStructure.m_instance.LoadData();
+
+        PlayerStatusAlfa psa = new PlayerStatusAlfa(SaveDataStructure.m_gameData.playerStatus[0], SaveDataStructure.m_gameData.playerStatus[1],
+            SaveDataStructure.m_gameData.playerStatus[2], SaveDataStructure.m_gameData.playerStatus[3], SaveDataStructure.m_gameData.playerStatus[4],
+            SaveDataStructure.m_gameData.playerStatus[5], SaveDataStructure.m_gameData.playerStatus[6]);
+        m_stuts = psa;
+
+        m_exp = SaveDataStructure.m_gameData.playerPoints[0];
+        m_money = SaveDataStructure.m_gameData.playerPoints[1];
+        m_tp = SaveDataStructure.m_gameData.playerPoints[2];
+    }
 
     //アビリティ解放系
 

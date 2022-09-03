@@ -1,1 +1,4 @@
-{"playerStatusAndPoints":[10,2140,2000,99,23,23,10,0,0,1]}
+{
+  "playerStatus": [ 1, 220, 200, 99, 23, 23, 10 ],
+  "playerPoints": [ 0, 0, 1 ]
+}
