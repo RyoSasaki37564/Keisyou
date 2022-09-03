@@ -782,8 +782,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6488946689433932037}
   m_HandleRect: {fileID: 570165792776201499}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.63239574
+  m_Value: 0.9999998
+  m_Size: 0.5477349
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5645912714351196462}
   m_Direction: 2
   m_Value: 0.99999976
-  m_Size: 0.63239574
+  m_Size: 0.60674804
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6795,17 +6795,17 @@ PrefabInstance:
     - target: {fileID: 9138355198549416497, guid: 7911e83401a5a9848b37b84c2336ba43,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.9056604
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9138355198549416497, guid: 7911e83401a5a9848b37b84c2336ba43,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.9056603
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9138355198549416497, guid: 7911e83401a5a9848b37b84c2336ba43,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.61089355
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9138355198549416499, guid: 7911e83401a5a9848b37b84c2336ba43,
         type: 3}
