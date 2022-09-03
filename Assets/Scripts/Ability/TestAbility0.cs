@@ -14,11 +14,11 @@ public class TestAbility0 : AbilityBase
 
     protected override void AbilityPlayer()
     {
-        //PlayerDataAlfa.Instance.NinekeyActivate(4);
-
+        PlayerDataAlfa.Instance.NinekeyActivate(4);
+        /*
         for (var i = 0; i < 9; i++)
         {
             PlayerDataAlfa.Instance.NinekeyActivate(i);
-        }
+        }*/
     }
 }

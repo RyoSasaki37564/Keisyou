@@ -65,7 +65,6 @@ public class PlayerDataAlfa : MonoBehaviour
         return Instance.m_nineKeyActiveFlgs[id];
     }
 
-
     /// <summary>回避の心得 0 = 「足捌き」, 1 = 「体捌き」 </summary>
     bool[] m_dodgeAbilitiesActiveFlgs = new bool[2];
     public bool GetDodgeAbilitiesActivateFlgs(int id)
@@ -102,10 +101,15 @@ public class PlayerDataAlfa : MonoBehaviour
                 }
             }
 
+
+
             m_stuts = m_playerLevelTable[9]; //実際には外部保存したステータスを入れる
             m_tp = 1;
-
             m_nowKakugo = m_stuts.m_kakugo;
+
+            
+            //テストセービング
+            
 
             sr = new StringReader(m_enemyMasterAlfaText.text);
             int eneLineMax = int.Parse(sr.ReadLine());
@@ -136,13 +140,29 @@ public class PlayerDataAlfa : MonoBehaviour
         }
     }
 
+    void SaveStatus()
+    {
+        // ステータスをセーブする。
+        SaveDataStructure.m_gameData.playerStatusAndPoints[0] = m_stuts.m_level;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[1] = m_stuts.m_hp;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[2] = m_stuts.m_con;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[3] = m_stuts.m_dodge;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[4] = m_stuts.m_atk;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[5] = m_stuts.m_def;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[6] = m_nowKakugo;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[7] = m_exp;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[8] = m_money;
+        SaveDataStructure.m_gameData.playerStatusAndPoints[9] = m_tp;
+    }
+
+
     //アビリティ解放系
 
     public void NinekeyActivate(int id)
     {
         if(id == 4)
         {
-            //「皆」は龍撃そのものの解放も行う
+            // 第五番「皆」は龍撃そのものの解放も行う
             Instance.m_ryugekiUnLockFlg = true;
         }
         Instance.m_nineKeyActiveFlgs[id] = true;
