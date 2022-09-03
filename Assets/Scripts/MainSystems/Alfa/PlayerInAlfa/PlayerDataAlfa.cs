@@ -53,13 +53,28 @@ public class PlayerDataAlfa : MonoBehaviour
     /// <summary> 技量。スキルツリーの解放に使う。 </summary>
     public int m_tp;
 
+
+    //アビリティツリー関連
+
+
     bool m_ryugekiUnLockFlg;
     public bool GetRyugekiUnLockFlg { get => m_ryugekiUnLockFlg; }
-    [System.NonSerialized] bool[] m_nineKeyActiveFlgs = new bool[9];
+    bool[] m_nineKeyActiveFlgs = new bool[9];
     public bool GetNineKeyActivateFlgs(int id)
     {
         return Instance.m_nineKeyActiveFlgs[id];
     }
+
+
+    /// <summary>回避の心得 0 = 「足捌き」, 1 = 「体捌き」 </summary>
+    bool[] m_dodgeAbilitiesActiveFlgs = new bool[2];
+    public bool GetDodgeAbilitiesActivateFlgs(int id)
+    {
+        return Instance.m_dodgeAbilitiesActiveFlgs[id];
+    }
+
+    //アビリティツリー関連
+
 
     [System.NonSerialized] public Encount m_encountData;
 
@@ -121,6 +136,8 @@ public class PlayerDataAlfa : MonoBehaviour
         }
     }
 
+    //アビリティ解放系
+
     public void NinekeyActivate(int id)
     {
         if(id == 4)
@@ -130,4 +147,11 @@ public class PlayerDataAlfa : MonoBehaviour
         }
         Instance.m_nineKeyActiveFlgs[id] = true;
     }
+
+    public void DodgeAbilitiesActivate(int id)
+    {
+        Instance.m_dodgeAbilitiesActiveFlgs[id] = true;
+    }
+
+    //アビリティ解放系
 }
