@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestAbility0 : AbilityBase
+public class Ability0_4 : AbilityBase
 {
-    //九字龍撃印・皆
+    //九字龍撃印　皆
 
     private void Start()
     {
@@ -14,11 +14,11 @@ public class TestAbility0 : AbilityBase
 
     protected override void AbilityPlayer()
     {
-        PlayerDataAlfa.Instance.NinekeyActivate(4);
-        /*
-        for (var i = 0; i < 9; i++)
+        PlayerDataAlfa.Instance.AbilityActivate(0, 4);
+
+        for(var i = 0; i < 9; i++)
         {
-            PlayerDataAlfa.Instance.NinekeyActivate(i);
-        }*/
+            PlayerDataAlfa.Instance.AbilityActivate(0, i);
+        }
     }
 }

@@ -17,4 +17,6 @@ public class ItemDataPaneler : MonoBehaviour
         m_dataPanels[1].gameObject.SetActive(false);
         m_dataPanels[1].gameObject.SetActive(true);
     }
+
+
 }

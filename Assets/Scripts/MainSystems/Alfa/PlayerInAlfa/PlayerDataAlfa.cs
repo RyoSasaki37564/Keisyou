@@ -54,25 +54,25 @@ public class PlayerDataAlfa : MonoBehaviour
     public int m_tp;
 
 
-    //アビリティツリー関連
-
-
-    bool m_ryugekiUnLockFlg;
-    public bool GetRyugekiUnLockFlg { get => m_ryugekiUnLockFlg; }
-    bool[] m_nineKeyActiveFlgs = new bool[9];
-    public bool GetNineKeyActivateFlgs(int id)
+    /// <summary>
+    /// アビリティツリー
+    /// 各アビリティタイプごとに行を分ける
+    /// </summary>
+    bool[][] m_abilityActiveFlgs = new bool[][]
+        {
+            new bool[9], // 0 九字龍撃印
+            new bool[2], // 1 回避の心得
+            new bool[3], // 2 痛打の心得
+            new bool[5], // 3 龍撃の極意
+            new bool[3], // 4 薬効知見
+            new bool[2], // 5 求道邁進
+            new bool[2], // 6 技量鍛錬
+            new bool[6], // 7 龍狩りの呪い「六道」
+        };
+    public bool GetAbilityActivateFlgs(int tree, int id)
     {
-        return Instance.m_nineKeyActiveFlgs[id];
+        return Instance.m_abilityActiveFlgs[tree][id];
     }
-
-    /// <summary>回避の心得 0 = 「足捌き」, 1 = 「体捌き」 </summary>
-    bool[] m_dodgeAbilitiesActiveFlgs = new bool[2];
-    public bool GetDodgeAbilitiesActivateFlgs(int id)
-    {
-        return Instance.m_dodgeAbilitiesActiveFlgs[id];
-    }
-
-    //アビリティツリー関連
 
 
     [System.NonSerialized] public Encount m_encountData;
@@ -167,20 +167,8 @@ public class PlayerDataAlfa : MonoBehaviour
 
     //アビリティ解放系
 
-    public void NinekeyActivate(int id)
+    public void　AbilityActivate(int tree, int id)
     {
-        if(id == 4)
-        {
-            // 第五番「皆」は龍撃そのものの解放も行う
-            Instance.m_ryugekiUnLockFlg = true;
-        }
-        Instance.m_nineKeyActiveFlgs[id] = true;
+        Instance.m_abilityActiveFlgs[tree][id] = true;
     }
-
-    public void DodgeAbilitiesActivate(int id)
-    {
-        Instance.m_dodgeAbilitiesActiveFlgs[id] = true;
-    }
-
-    //アビリティ解放系
 }

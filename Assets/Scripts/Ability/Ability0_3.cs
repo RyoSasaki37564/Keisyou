@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestAbility1 : AbilityBase
+public class Ability0_3 : AbilityBase
 {
-    //回避の心得　足捌き
+    //九字龍撃印　者
 
     protected override void AbilityPlayer()
     {
-        PlayerDataAlfa.Instance.DodgeAbilitiesActivate(0);
+        PlayerDataAlfa.Instance.AbilityActivate(0, 3);
     }
 }

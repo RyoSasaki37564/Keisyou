@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Inventory
 {
     public ItemData[] m_itemInventry = new ItemData[8];
+
+    public List<ItemData> m_shortCutItems = new List<ItemData>();
 
     public void TestInventryMake()
     {
@@ -15,6 +18,30 @@ public class Inventory
         m_itemInventry[5] = new ItemData(5, "ショウグンムカデ", 0, 99, "百足さん", "きんめぇ。", 0, 50);
         m_itemInventry[6] = new ItemData(6, "ヤマガエル", 0, 99, "けろけろ。。", "がまです。", 0, 50);
         m_itemInventry[7] = new ItemData(7, "石ころ", 0, 99, "スとーーん", "いしです。", 0, 1);
+    }
+
+    public void IntoShortCut(int id)
+    {
+        if (!m_shortCutItems.Contains(m_itemInventry[id]))
+        {
+            m_shortCutItems.Add(m_itemInventry[id]);
+        }
+        else
+        {
+            Debug.Log("元からあんねん");
+        }
+    }
+
+    public void RemovefromShortCut(int id)
+    {
+        if(m_shortCutItems.Contains(m_itemInventry[id]))
+        {
+            m_shortCutItems.Remove(m_itemInventry[id]);
+        }
+        else
+        {
+            Debug.Log("元からないねん");
+        }
     }
 }
 

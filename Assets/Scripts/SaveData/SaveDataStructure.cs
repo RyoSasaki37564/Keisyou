@@ -19,11 +19,13 @@ public struct GameDataStruct
 
     //public int[] shortCutItems;
 
-    //public bool[] abilityActivateFlgs;
+    //public bool[][] abilityActivateFlgs;
 
     //public bool[] senarioFlgs;
 
     //public int[] eventFlgs;
+
+    //public bool[] tutrials;
 }
 
 public class SaveDataStructure : MonoBehaviour

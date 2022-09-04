@@ -311,7 +311,7 @@ public class NineKeyInputNomal : MonoBehaviour
         {
             m_nineKeyDefaultPoss[i] = m_nineKeyObjs[i].transform.position;
             m_nineKeyObjs[i].name = $"{i + 1}"; //1スタートでIDを入れる。名前をそのままコマンド変換する。
-            m_nineKeyObjs[i].SetActive(PlayerDataAlfa.Instance.GetNineKeyActivateFlgs(i));
+            m_nineKeyObjs[i].SetActive(PlayerDataAlfa.Instance.GetAbilityActivateFlgs(0, i));
         }
     }
 
