@@ -14,7 +14,7 @@ public class Ability0_4 : AbilityBase
 
     protected override void AbilityPlayer()
     {
-        PlayerDataAlfa.Instance.AbilityActivate(0, 4);
+        //PlayerDataAlfa.Instance.AbilityActivate(0, 4);
 
         for(var i = 0; i < 9; i++)
         {
