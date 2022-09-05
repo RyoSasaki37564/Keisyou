@@ -118,6 +118,11 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void OnEnable()
     {
+        if (!m_ppv.gameObject.activeSelf)
+        {
+            m_ppv.gameObject.SetActive(true);
+        }
+
         m_ppv.profile.GetSetting<ColorGrading>().contrast.value = 10f;
         m_ppv.weight = 1;
         m_dialog.color = Color.black;
