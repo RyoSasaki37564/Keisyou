@@ -7,6 +7,8 @@ public class InventryPaneler : MonoBehaviour
 {
     [SerializeField] Transform m_itemInventryContenna;
     [SerializeField] Transform m_armInventryContenna;
+    [SerializeField] Transform m_mainArmsContenna;
+    [SerializeField] Transform m_itemShortCutContenna;
     [SerializeField] GameObject m_itemTemp;
     [SerializeField] GameObject m_armTemp;
 
@@ -38,6 +40,7 @@ public class InventryPaneler : MonoBehaviour
 
         //テスト獲得
         PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[0].InToTheHand();
+        PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[1].InToTheHand();
 
         for (var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_armsInventry.Length; i++)
         {
@@ -59,6 +62,10 @@ public class InventryPaneler : MonoBehaviour
             }
         }
 
+        for (var i = 1; i < m_menuPanels.Length; i++)
+        {
+            m_menuPanels[i].SetActive(false);
+        }
         SelectAndOpen(0);
     }
 
