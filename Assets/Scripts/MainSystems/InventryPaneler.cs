@@ -8,6 +8,8 @@ public class InventryPaneler : MonoBehaviour
     [SerializeField] Transform m_itemInventryContenna;
     [SerializeField] GameObject m_itemTemp;
 
+    [SerializeField] GameObject[] m_menuPanels = new GameObject[5]; // 0 = 装備、1 = 道具、2 = 屠龍具、3 = 貴重品、4 = 1~3の親
+
     private void Start()
     {
         for(var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_itemInventry.Length; i++)
@@ -29,6 +31,8 @@ public class InventryPaneler : MonoBehaviour
                 t.SetActive(true);
             }
         }
+
+        SelectAndOpen(0);
     }
 
     public void ItemCountSet()
@@ -55,6 +59,29 @@ public class InventryPaneler : MonoBehaviour
                     t.SetActive(false);
                 }
             }
+        }
+    }
+
+    public void SelectAndOpen(int num)
+    {
+        if(num == 4) { Debug.LogError("それ根元や"); return; }
+
+        if(!m_menuPanels[num].activeSelf)
+        {
+            for (var i = 0; i < m_menuPanels.Length; i++)
+            {
+                if(i != num)
+                {
+                    m_menuPanels[i].SetActive(false);
+                }
+            }
+
+            if(num != 0)
+            {
+                //0以外はスクロールビュー内にあり親オブジェクトを共有しているので、親を起こす
+                m_menuPanels[4].SetActive(true);
+            }
+            m_menuPanels[num].SetActive(true);
         }
     }
 }

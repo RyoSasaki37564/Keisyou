@@ -5,8 +5,11 @@ using UnityEngine;
 public class Inventory
 {
     public ItemData[] m_itemInventry = new ItemData[8];
+    public Toryugu[] m_armsInventry = new Toryugu[5];
+    public ItemData[] m_kichouhinInventry;
 
     public List<ItemData> m_shortCutItems = new List<ItemData>();
+    public List<Toryugu> m_mainArms = new List<Toryugu>();
 
     public void TestInventryMake()
     {
@@ -108,5 +111,47 @@ public class ItemData
             }
         }
         return num;
+    }
+}
+
+public class Toryugu
+{
+    int m_id;
+    string m_name;
+    bool m_isItHave;
+    int m_atk;
+    int m_dodge;
+    int m_type;
+    bool m_isSrust;
+    int m_motionType;
+    int m_ryugekiTekisei;
+    string m_fravorText;
+
+    public Toryugu(int id, string name, int atk, int dod, int type, int isSrust, int motion, int ryugeki, string fraText)
+    {
+        m_id = id;
+        m_name = name;
+        m_atk = atk;
+        m_dodge = dod;
+        m_type = type;
+        if(isSrust > 0) { m_isSrust = true; }
+        m_motionType = motion;
+        m_ryugekiTekisei = ryugeki;
+        m_fravorText = fraText;
+    }
+    public int GetID { get => m_id; }
+    public string GetName { get => m_name; }
+    public bool GetIsHave { get => m_isItHave; }
+    public string GetFravorText { get => m_fravorText; }
+    public int GetAtk { get => m_atk; }
+    public int GetDod { get => m_dodge; }
+    public int GetKatyouHugetu { get => m_type; }
+    public bool GetIsSrust { get => m_isSrust; }
+    public int GetMotion { get => m_motionType; }
+    public int GetRyugekiTekisei { get => m_ryugekiTekisei; }
+
+    public void InToTheHand()
+    {
+        m_isItHave = true;
     }
 }
