@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory
 {
     public ItemData[] m_itemInventry = new ItemData[8];
-    public Toryugu[] m_armsInventry = new Toryugu[5];
+    public Toryugu[] m_armsInventry = new Toryugu[1];
     public ItemData[] m_kichouhinInventry;
 
     public List<ItemData> m_shortCutItems = new List<ItemData>();
@@ -21,6 +21,8 @@ public class Inventory
         m_itemInventry[5] = new ItemData(5, "ショウグンムカデ", 0, 99, "百足さん", "きんめぇ。", 0, 50);
         m_itemInventry[6] = new ItemData(6, "ヤマガエル", 0, 99, "けろけろ。。", "がまです。", 0, 50);
         m_itemInventry[7] = new ItemData(7, "石ころ", 0, 99, "スとーーん", "いしです。", 0, 1);
+
+        m_armsInventry[0] = new Toryugu(0, "自我", 50, 12, 0, 0, 0, 15, "じがっががっががが！");
     }
 
     public void IntoShortCut(int id)

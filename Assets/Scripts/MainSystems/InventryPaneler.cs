@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class InventryPaneler : MonoBehaviour
 {
     [SerializeField] Transform m_itemInventryContenna;
+    [SerializeField] Transform m_armInventryContenna;
     [SerializeField] GameObject m_itemTemp;
+    [SerializeField] GameObject m_armTemp;
 
     [SerializeField] GameObject[] m_menuPanels = new GameObject[5]; // 0 = 装備、1 = 道具、2 = 屠龍具、3 = 貴重品、4 = 1~3の親
 
@@ -21,14 +23,39 @@ public class InventryPaneler : MonoBehaviour
             count.text = "× " + PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[i].GetCount.ToString();
             ItemDataPaneler idp = t.GetComponent<ItemDataPaneler>();
             idp.m_id = i;
+
+            /*
             if(i == 0)
             {
                 idp.ShowData();
-            }
+            }*/
 
             if(PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[i].GetCount > 0)
             {
                 t.SetActive(true);
+            }
+        }
+
+        //テスト獲得
+        PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[0].InToTheHand();
+
+        for (var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_armsInventry.Length; i++)
+        {
+            var a = Instantiate(m_armTemp, m_armInventryContenna);
+            Text name = a.transform.Find("Name").GetComponent<Text>();
+            name.text = PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[i].GetName;
+            Text count = a.transform.Find("Count").GetComponent<Text>();
+            if(PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[i].GetIsHave)
+            {
+                count.text = "× 1";
+            }
+
+            ArmDataPaneler adp = a.GetComponent<ArmDataPaneler>();
+            adp.m_id = i;
+
+            if (PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[i].GetIsHave)
+            {
+                a.SetActive(true);
             }
         }
 

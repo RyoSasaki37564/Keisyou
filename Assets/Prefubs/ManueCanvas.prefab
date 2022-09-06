@@ -2250,8 +2250,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6488946689433932037}
   m_HandleRect: {fileID: 570165792776201499}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6630298
+  m_Value: 0.9999998
+  m_Size: 0.5485036
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3846,8 +3846,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2162985481117673458}
   m_HandleRect: {fileID: 5645912714351196462}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6630298
+  m_Value: 0.99999976
+  m_Size: 0.6075969
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4062,9 +4062,9 @@ GameObject:
   - component: {fileID: 8472255163291798707}
   - component: {fileID: 8994308889114525436}
   - component: {fileID: 3588032054712524090}
-  - component: {fileID: 5928908142386174688}
+  - component: {fileID: 7356793832148313606}
   m_Layer: 5
-  m_Name: TemplateItemButton
+  m_Name: TemplateArmButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4171,7 +4171,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5928908142386174688}
+      - m_Target: {fileID: 7356793832148313606}
         m_MethodName: ShowData
         m_Mode: 1
         m_Arguments:
@@ -4182,7 +4182,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5928908142386174688
+--- !u!114 &7356793832148313606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4191,7 +4191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4828077186185342848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37dde66eae101e141833f5605b3af94c, type: 3}
+  m_Script: {fileID: 11500000, guid: 091e49f0f6678004ea22ca681dfbef7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_dataPanels:
@@ -9745,7 +9745,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemInventryContenna: {fileID: 329983377748186517}
+  m_armInventryContenna: {fileID: 1511327453532499947}
   m_itemTemp: {fileID: 3321935745404330398}
+  m_armTemp: {fileID: 4828077186185342848}
   m_menuPanels:
   - {fileID: 3042009259558755559}
   - {fileID: 7472264605378093537}
