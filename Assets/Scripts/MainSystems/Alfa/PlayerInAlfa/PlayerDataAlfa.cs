@@ -114,7 +114,7 @@ public class PlayerDataAlfa : MonoBehaviour
                 {
                     line = sr.ReadLine().Split(',');
                     m_enemyTable[i] = new EnemyStatusAlfa(int.Parse(line[0]), line[1], int.Parse(line[2]), int.Parse(line[3]),
-                        int.Parse(line[4]), int.Parse(line[5]), int.Parse(line[6]));
+                        int.Parse(line[4]), int.Parse(line[5]), int.Parse(line[6]), int.Parse(line[7]));
                 }
             }
 

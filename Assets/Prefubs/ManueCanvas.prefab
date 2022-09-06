@@ -782,8 +782,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6488946689433932037}
   m_HandleRect: {fileID: 570165792776201499}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.633648
+  m_Value: 0.9999998
+  m_Size: 0.5471125
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -801,8 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nowState: 0
-  m_nextAbilitys:
-  - {fileID: 0}
+  m_nextAbilitys: []
   m_pipes: []
   m_agreeButton: {fileID: 7261043004837875538}
   m_selectPanel: {fileID: 7261043004339879096}
@@ -1402,7 +1401,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5645912714351196462}
   m_Direction: 2
   m_Value: 0.99999976
-  m_Size: 0.633648
+  m_Size: 0.6060607
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

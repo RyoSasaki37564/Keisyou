@@ -43,6 +43,9 @@ public class BatteManagerAlfa : MonoBehaviour
     List<EnemyBattleAIBase> m_enemyAIList = new List<EnemyBattleAIBase>();
     List<GameObject> m_enemyTargettingMarkerList = new List<GameObject>();
     public List<int> m_enemyEncountIDList = new List<int>();
+    [SerializeField] Transform[] m_spawnPoints = new Transform[6];
+    [SerializeField] GameObject[] m_enemysBattleAnimatorsTemps = new GameObject[2];
+    List<GameObject> m_nowEnemysAnimatorList = new List<GameObject>();
 
     int m_target;
     public int GetTarget { get => m_target; }
@@ -104,6 +107,21 @@ public class BatteManagerAlfa : MonoBehaviour
             eneName.text = ene.m_name;
             var eAI = EnemyAIGenerate(idList[i]);
             m_enemyAIList.Add(eAI);
+            var eAnim = Instantiate(m_enemysBattleAnimatorsTemps[ene.m_animatorID]);
+            m_nowEnemysAnimatorList.Add(eAnim);
+            if(idList.Count == 3)
+            {
+                eAnim.transform.position = m_spawnPoints[i].position;
+            }
+            else if(idList.Count == 2)
+            {
+                eAnim.transform.position = m_spawnPoints[i + 3].position;
+            }
+            else
+            {
+                eAnim.transform.position = m_spawnPoints[5].position;
+            }
+            SetSortingLayer(eAnim.transform, "Chara" + i.ToString());
         }
     }
 
@@ -117,6 +135,28 @@ public class BatteManagerAlfa : MonoBehaviour
         else
         {
             return new BattleAIDragon0();
+        }
+    }
+
+    void SetSortingLayer(Transform t, string sLayerName)
+    {
+        if (t.childCount > 0)
+        {
+            if (t.gameObject.GetComponent<SpriteRenderer>())
+            {
+                SpriteRenderer s = t.gameObject.GetComponent<SpriteRenderer>();
+                s.sortingLayerName = sLayerName;
+            }
+            for (var i = 0; i < t.childCount; i++)
+            {
+                if (t.GetChild(i).gameObject.GetComponent<SpriteRenderer>())
+                {
+                    SpriteRenderer chiS = t.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
+                    chiS.sortingLayerName = sLayerName;
+
+                }
+                SetSortingLayer(t.GetChild(i), sLayerName);
+            }
         }
     }
 
@@ -200,6 +240,8 @@ public class BatteManagerAlfa : MonoBehaviour
 
             DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
                     m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
+
+            Debug.Log("damage = " + damage);
         }
     }
 
@@ -281,6 +323,7 @@ public class BatteManagerAlfa : MonoBehaviour
             if (m_enemyHPBarList[i].value != 0)
             {
                 Debug.Log(m_enemyInstanceList[i].m_name + ", スタミナ" + m_enemyInstanceList[i].m_nowStamina);
+                Debug.Log($"{(int)m_enemyHPBarList[i].value}, {(int)m_enemyHPBarList[i].maxValue}");
                 m_enemyAIList[i].EnemyActionSelect((int)m_enemyHPBarList[i].value, (int)m_enemyHPBarList[i].maxValue,
                     ref m_enemyInstanceList[i].m_nowStamina, m_enemyInstanceList[i].m_stamina, (int)m_playerDodgSlider.value, (int)m_playerDodgSlider.maxValue);
             }

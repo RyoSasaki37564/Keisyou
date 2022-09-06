@@ -12,7 +12,7 @@ public class ShowResult : MonoBehaviour
     [SerializeField] Transform m_getItemContenna;
     [SerializeField] GameObject m_getItemTemp;
 
-    [SerializeField] int[] m_testGetItemIDs = new int[6];
+    int[] m_testGetItemIDs = { 3, 4, 0, 0, 5, 6, 7, 7, 7, 7 };
     int m_itemCount = 0;
 
     // Start is called before the first frame update

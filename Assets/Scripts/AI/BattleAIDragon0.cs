@@ -47,14 +47,8 @@ public class BattleAIDragon0 : EnemyBattleAIBase
             m_isMorphChanged = true;
         }
 
-        float select = Mathf.Max(wantMorphing, wantNomalAttack, wantDangerAttack, wantRest, wantRoar);
-        if (select == wantMorphing)
-        {
-            CommandOfMorphProgression();
-            m_repeatCount = 0;
-            return m_morph;
-        }
-        else if (select == wantRoar)
+        float select = Mathf.Max(wantNomalAttack, wantDangerAttack, wantRest, wantRoar, wantMorphing);
+        if (select == wantRoar)
         {
             if (m_preCom == PrevCommand.Roar)
             {
@@ -126,6 +120,14 @@ public class BattleAIDragon0 : EnemyBattleAIBase
         {
             CommandOfRest(ref nowStamina, maxStamina);
             return m_rest;
+        }
+
+        else if (select == wantMorphing)
+        {
+            Debug.Log(select);
+            CommandOfMorphProgression();
+            m_repeatCount = 0;
+            return m_morph;
         }
 
         else

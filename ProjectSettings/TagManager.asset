@@ -68,8 +68,14 @@ TagManager:
   - name: FieldObj
     uniqueID: 3727750445
     locked: 0
-  - name: Chara
+  - name: Chara0
     uniqueID: 173591733
+    locked: 0
+  - name: Chara1
+    uniqueID: 3936556859
+    locked: 0
+  - name: Chara2
+    uniqueID: 2258933495
     locked: 0
   - name: Downer
     uniqueID: 1213170935

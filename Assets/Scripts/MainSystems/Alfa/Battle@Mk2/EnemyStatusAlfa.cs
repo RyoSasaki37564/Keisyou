@@ -8,8 +8,9 @@
     public readonly int m_atk;
     public readonly int m_def;
     public readonly int m_kachouFugetsu;
+    public readonly int m_animatorID;
 
-    public EnemyStatusAlfa(int id, string name, int hp, int stm, int atk, int def, int kacho)
+    public EnemyStatusAlfa(int id, string name, int hp, int stm, int atk, int def, int kacho, int anim)
     {
         this.m_id = id;
         this.m_name = name;
@@ -19,5 +20,6 @@
         this.m_atk = atk;
         this.m_def = def;
         this.m_kachouFugetsu = kacho;
+        this.m_animatorID = anim;
     }
 }

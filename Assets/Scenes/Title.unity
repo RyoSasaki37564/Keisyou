@@ -249,12 +249,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &185491380 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3920671406725572657, guid: fb003b7327dda7e499758678b63c3a84,
+--- !u!114 &185491382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4103617196499750094, guid: fb003b7327dda7e499758678b63c3a84,
     type: 3}
   m_PrefabInstance: {fileID: 1229112072979999825}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f97ee3d100fbd47863cd4e4d7c87f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &470493088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1992,7 +1998,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 185491380}
+      objectReference: {fileID: 185491382}
     - target: {fileID: 3920671405958811786, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
