@@ -24,6 +24,8 @@ public class Inventory
 
         m_armsInventry[0] = new Toryugu(0, "自我", 50, 12, 0, 0, 0, 15, "じがっががっががが！");
         m_armsInventry[1] = new Toryugu(1, "処刑者", 85, 9, 0, 2, 1, 30, "おめーの首ねーから！");
+
+        m_mainArms.Add(m_armsInventry[1]);
         m_mainArms.Add(m_armsInventry[0]);
     }
 
@@ -48,6 +50,67 @@ public class Inventory
         else
         {
             Debug.Log("元からないねん");
+        }
+    }
+
+    public void AddMainArm(Toryugu t)
+    {
+        if(m_mainArms.Count < 5)
+        {
+            m_mainArms.Add(t);
+        }
+        else
+        {
+            Debug.Log("これ以上持てない");
+        }
+    }
+
+    public void RemoveMainArm(Toryugu t)
+    {
+        if(m_mainArms.Count > 2)
+        {
+            m_mainArms.Remove(t);
+        }
+        else
+        {
+            Debug.Log("一本はないとダメ");
+        }
+    }
+
+    public void ReplaceMainArm(Toryugu prev, Toryugu iretai)
+    {
+        if(m_mainArms.Contains(iretai))
+        {
+            int nowP = 0;
+            int nowI = 0;
+            for(var i = 0; i < m_mainArms.Count; i++)
+            {
+                if(m_mainArms[i] == prev)
+                {
+                    nowP = i;
+                }
+                if(m_mainArms[i] == iretai)
+                {
+                    nowI = i;
+                }
+            }
+            m_mainArms.Remove(prev);
+            m_mainArms.Remove(iretai);
+            m_mainArms.Insert(nowP, iretai);
+            m_mainArms.Insert(nowI, prev);
+        }
+        else
+        {
+            int nowP = 0;
+            for (var i = 0; i < m_mainArms.Count; i++)
+            {
+                if (m_mainArms[i] == prev)
+                {
+                    nowP = i;
+                }
+            }
+            m_mainArms.Remove(prev);
+            m_mainArms.Insert(nowP, iretai);
         }
     }
 }

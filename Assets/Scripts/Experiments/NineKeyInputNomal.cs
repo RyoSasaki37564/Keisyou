@@ -62,7 +62,6 @@ public class NineKeyInputNomal : MonoBehaviour
     [SerializeField] GameObject[] m_nineKeyObjs = new GameObject[9];
     Vector3[] m_nineKeyDefaultPoss = new Vector3[9]; //シェイクさせた後元に戻すため
     //シェイク関連のパラメータ
-    Tweener m_tw;
     [SerializeField] float m_shakeDuration;
     [SerializeField] float m_shakeStrength;
     [SerializeField] int m_shakeVibrato;
@@ -322,7 +321,6 @@ public class NineKeyInputNomal : MonoBehaviour
 
     void KujikenShake(GameObject go)
     {
-        m_tw.Kill();
         go.transform.DOShakePosition(m_shakeDuration, m_shakeStrength, m_shakeVibrato, m_shakeRandomness, false, false);
     }
 

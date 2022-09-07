@@ -7,7 +7,7 @@ public class InventryPaneler : MonoBehaviour
 {
     [SerializeField] Transform m_itemInventryContenna;
     [SerializeField] Transform m_armInventryContenna;
-    [SerializeField] Transform m_mainArmsContenna;
+    [SerializeField] GameObject[] m_mainArms = new GameObject[5];
     [SerializeField] Transform m_itemShortCutContenna;
     [SerializeField] GameObject m_itemTemp;
     [SerializeField] GameObject m_armTemp;
@@ -67,6 +67,8 @@ public class InventryPaneler : MonoBehaviour
             m_menuPanels[i].SetActive(false);
         }
         SelectAndOpen(0);
+
+        MainArmsView();
     }
 
     public void ItemCountSet()
@@ -116,6 +118,16 @@ public class InventryPaneler : MonoBehaviour
                 m_menuPanels[4].SetActive(true);
             }
             m_menuPanels[num].SetActive(true);
+        }
+    }
+
+    public void MainArmsView()
+    {
+        for(var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_mainArms.Count; i++)
+        {
+
+            m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].transform.SetAsLastSibling();
+            m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].SetActive(true);
         }
     }
 }
