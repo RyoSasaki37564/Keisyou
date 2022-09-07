@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory
 {
     public ItemData[] m_itemInventry = new ItemData[8];
-    public Toryugu[] m_armsInventry = new Toryugu[2];
+    public Toryugu[] m_armsInventry = new Toryugu[3];
     public ItemData[] m_kichouhinInventry;
 
     public List<ItemData> m_shortCutItems = new List<ItemData>();
@@ -22,8 +22,9 @@ public class Inventory
         m_itemInventry[6] = new ItemData(6, "ヤマガエル", 0, 99, "けろけろ。。", "がまです。", 0, 50);
         m_itemInventry[7] = new ItemData(7, "石ころ", 0, 99, "スとーーん", "いしです。", 0, 1);
 
-        m_armsInventry[0] = new Toryugu(0, "自我", 50, 12, 0, 0, 0, 15, "じがっががっががが！");
+        m_armsInventry[0] = new Toryugu(0, "自我", 50, 14, 0, 0, 0, 15, "じがっががっががが！");
         m_armsInventry[1] = new Toryugu(1, "処刑者", 85, 9, 0, 2, 1, 30, "おめーの首ねーから！");
+        m_armsInventry[2] = new Toryugu(2, "白銀", 35, 30, 1, 1, 2, 8, "内部炸裂ガール！");
 
         m_mainArms.Add(m_armsInventry[1]);
         m_mainArms.Add(m_armsInventry[0]);
@@ -67,7 +68,7 @@ public class Inventory
 
     public void RemoveMainArm(Toryugu t)
     {
-        if(m_mainArms.Count > 2)
+        if(m_mainArms.Count > 1)
         {
             m_mainArms.Remove(t);
         }
@@ -79,6 +80,12 @@ public class Inventory
 
     public void ReplaceMainArm(Toryugu prev, Toryugu iretai)
     {
+        if(prev == iretai)
+        {
+            RemoveMainArm(prev);
+            return;
+        }
+
         if(m_mainArms.Contains(iretai))
         {
             int nowP = 0;

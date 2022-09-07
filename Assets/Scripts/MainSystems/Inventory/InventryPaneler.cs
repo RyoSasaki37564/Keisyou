@@ -11,8 +11,16 @@ public class InventryPaneler : MonoBehaviour
     [SerializeField] Transform m_itemShortCutContenna;
     [SerializeField] GameObject m_itemTemp;
     [SerializeField] GameObject m_armTemp;
+    [SerializeField] MainArmsSettingTargetManager m_MASTM;
 
     [SerializeField] GameObject[] m_menuPanels = new GameObject[5]; // 0 = 装備、1 = 道具、2 = 屠龍具、3 = 貴重品、4 = 1~3の親
+
+    public bool m_mainArmDirectMode;
+
+    public MainArmsSettingTargetManager GetMASTM()
+    {
+        return m_MASTM;
+    }
 
     private void Start()
     {
@@ -41,6 +49,7 @@ public class InventryPaneler : MonoBehaviour
         //テスト獲得
         PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[0].InToTheHand();
         PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[1].InToTheHand();
+        PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[2].InToTheHand();
 
         for (var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_armsInventry.Length; i++)
         {
@@ -54,6 +63,7 @@ public class InventryPaneler : MonoBehaviour
             }
 
             ArmDataPaneler adp = a.GetComponent<ArmDataPaneler>();
+            adp.m_ip = this;
             adp.m_id = i;
 
             if (PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[i].GetIsHave)
@@ -117,16 +127,27 @@ public class InventryPaneler : MonoBehaviour
                 //0以外はスクロールビュー内にあり親オブジェクトを共有しているので、親を起こす
                 m_menuPanels[4].SetActive(true);
             }
+            else
+            {
+                MainArmsView();
+            }
             m_menuPanels[num].SetActive(true);
         }
+        m_mainArmDirectMode = false;
     }
 
     public void MainArmsView()
     {
+        foreach(var x in m_mainArms)
+        {
+            x.SetActive(false);
+        }
         for(var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_mainArms.Count; i++)
         {
             m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].transform.SetAsLastSibling();
             m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].SetActive(true);
+            MainArmAgent maa = m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].GetComponent<MainArmAgent>();
+            maa.m_arm = PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i];
         }
     }
 }

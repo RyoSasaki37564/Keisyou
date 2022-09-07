@@ -7,6 +7,7 @@ public class ArmDataPaneler : MonoBehaviour
 {
     [System.NonSerialized] public int m_id;
     [SerializeField] Text[] m_dataPanels = new Text[2];
+    public InventryPaneler m_ip;
 
     public void ShowData()
     {
@@ -16,5 +17,15 @@ public class ArmDataPaneler : MonoBehaviour
         //リサイジングさせるために必要
         m_dataPanels[1].gameObject.SetActive(false);
         m_dataPanels[1].gameObject.SetActive(true);
+    }
+
+    public void IntoMains()
+    {
+        if(m_ip.m_mainArmDirectMode)
+        {
+            Debug.Log(m_ip);
+            PlayerDataAlfa.Instance.m_testInventry.ReplaceMainArm(m_ip.GetMASTM().m_nowTargetArm,
+                   PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[m_id]);
+        }
     }
 }
