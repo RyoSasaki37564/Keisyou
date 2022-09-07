@@ -25,12 +25,15 @@ public class MainArmAgent : MonoBehaviour
     void DirectArm()
     {
         m_ip.SelectAndOpen(2);
-        m_ip.m_mainArmDirectMode = true;
+        m_ip.m_MADM = MainArmDirectMode.Direct;
     }
 
     void OutArm()
     {
-        this.gameObject.SetActive(false);
-        PlayerDataAlfa.Instance.m_testInventry.RemoveMainArm(m_arm);
+        if(PlayerDataAlfa.Instance.m_testInventry.RemoveMainArm(m_arm))
+        {
+            this.gameObject.SetActive(false);
+            m_ip.m_mainDirectPanel.SetActive(false);
+        }
     }
 }

@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum MainArmDirectMode
+{
+    Off,
+    Add,
+    Direct,
+}
+
 public class InventryPaneler : MonoBehaviour
 {
     [SerializeField] Transform m_itemInventryContenna;
     [SerializeField] Transform m_armInventryContenna;
-    [SerializeField] GameObject[] m_mainArms = new GameObject[5];
+    [SerializeField] GameObject[] m_mainArmsSamples = new GameObject[5];
     [SerializeField] Transform m_itemShortCutContenna;
     [SerializeField] GameObject m_itemTemp;
     [SerializeField] GameObject m_armTemp;
@@ -15,7 +22,9 @@ public class InventryPaneler : MonoBehaviour
 
     [SerializeField] GameObject[] m_menuPanels = new GameObject[5]; // 0 = 装備、1 = 道具、2 = 屠龍具、3 = 貴重品、4 = 1~3の親
 
-    public bool m_mainArmDirectMode;
+    public MainArmDirectMode m_MADM = MainArmDirectMode.Off;
+
+    [SerializeField] public GameObject m_mainDirectPanel;
 
     public MainArmsSettingTargetManager GetMASTM()
     {
@@ -133,21 +142,23 @@ public class InventryPaneler : MonoBehaviour
             }
             m_menuPanels[num].SetActive(true);
         }
-        m_mainArmDirectMode = false;
+        m_MADM = MainArmDirectMode.Off;
     }
 
     public void MainArmsView()
     {
-        foreach(var x in m_mainArms)
+        foreach(var x in m_mainArmsSamples)
         {
             x.SetActive(false);
         }
         for(var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_mainArms.Count; i++)
         {
-            m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].transform.SetAsLastSibling();
-            m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].SetActive(true);
-            MainArmAgent maa = m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].GetComponent<MainArmAgent>();
+            m_mainArmsSamples[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].transform.SetAsLastSibling();
+            m_mainArmsSamples[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].SetActive(true);
+            MainArmAgent maa = m_mainArmsSamples[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].GetComponent<MainArmAgent>();
             maa.m_arm = PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i];
         }
+
+        m_mainDirectPanel.SetActive(false);
     }
 }

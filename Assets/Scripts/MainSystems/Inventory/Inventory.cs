@@ -56,7 +56,7 @@ public class Inventory
 
     public void AddMainArm(Toryugu t)
     {
-        if(m_mainArms.Count < 5)
+        if(m_mainArms.Count < 4 && !m_mainArms.Contains(t))
         {
             m_mainArms.Add(t);
         }
@@ -66,15 +66,17 @@ public class Inventory
         }
     }
 
-    public void RemoveMainArm(Toryugu t)
+    public bool RemoveMainArm(Toryugu t)
     {
         if(m_mainArms.Count > 1)
         {
             m_mainArms.Remove(t);
+            return true;
         }
         else
         {
             Debug.Log("一本はないとダメ");
+            return false;
         }
     }
 
@@ -82,7 +84,10 @@ public class Inventory
     {
         if(prev == iretai)
         {
-            RemoveMainArm(prev);
+            if (m_mainArms.Count > 2)
+            {
+                RemoveMainArm(prev);
+            }
             return;
         }
 
