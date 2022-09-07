@@ -125,7 +125,6 @@ public class InventryPaneler : MonoBehaviour
     {
         for(var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_mainArms.Count; i++)
         {
-
             m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].transform.SetAsLastSibling();
             m_mainArms[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].SetActive(true);
         }
