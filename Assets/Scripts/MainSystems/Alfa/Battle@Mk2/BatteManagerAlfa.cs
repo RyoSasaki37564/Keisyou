@@ -34,6 +34,12 @@ public class BatteManagerAlfa : MonoBehaviour
     [SerializeField] Slider m_playerConSlider;
     [SerializeField] Slider m_playerDodgSlider;
 
+    
+    [SerializeField] Transform m_shinzuiCircle;
+    [SerializeField] Transform m_shinzuiPool;
+    [SerializeField] GameObject[] m_shinzuiButtons = new GameObject[5];
+    Button m_menuB; 
+
     [SerializeField] GameObject m_battleUICanvas;
     [SerializeField] GameObject m_resultUICanvas;
 
@@ -73,8 +79,24 @@ public class BatteManagerAlfa : MonoBehaviour
         PlayerStatusSetUP();
         EnemyStatusSetUP(m_enemyEncountIDList);
         StateProgression();
+
+        ShinzuiSet();
+
+        m_menuB = GameObject.Find("MenueButton").GetComponent<Button>();
+        m_menuB.onClick.AddListener(ShinzuiSet);
     }
 
+    public void ShinzuiSet()
+    {
+        for(var i = 0; i < m_shinzuiButtons.Length; i++)
+        {
+            m_shinzuiButtons[i].transform.SetParent(m_shinzuiPool);
+        }
+        for(var i = 0; i < PlayerDataAlfa.Instance.m_testInventry.m_mainArms.Count; i++)
+        {
+            m_shinzuiButtons[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[i].GetID].transform.SetParent(m_shinzuiCircle);
+        }
+    }
 
     //void Update()
     //{
@@ -278,6 +300,8 @@ public class BatteManagerAlfa : MonoBehaviour
 
     void BattleEnd()
     {
+        m_menuB.onClick.RemoveListener(ShinzuiSet);
+
         m_battleUICanvas.SetActive(false);
 
         StartCoroutine(ResultOpen()); //実際には敵の死亡演出後。つまりここには本来敵の死亡演出呼び出しが入り、その演出からリザルトを起こす。

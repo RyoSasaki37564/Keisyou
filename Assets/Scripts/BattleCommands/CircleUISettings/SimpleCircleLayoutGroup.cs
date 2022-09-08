@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 	Vector2 m_mouseEntPos; //クリック地点
 
 	[SerializeField] float m_speedRate = 1.5f;
+
+	[SerializeField] List<GameObject> m_openAndCloseGOList = new List<GameObject>();
 
 
 	//ここんとところ、Editorでしか機能しないしビルド時コンパイルエラー吐くぞ。プリプロっとけば安心☆
@@ -32,6 +35,8 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 
 	void Arrange()
 	{
+		if(transform.childCount == 0) { return; }
+
 		float splitAngle = 360 / transform.childCount;
 
 		for (int elementId = 0; elementId < transform.childCount; elementId++)
@@ -55,12 +60,23 @@ public class SimpleCircleLayoutGroup : UIBehaviour, ILayoutGroup
 		TouchManager.Moved += (info) =>
 		{
 			//入力位置から移動位置の差で加速
-			m_offsetAngle -= (m_mouseEntPos.y - Input.mousePosition.y) / (m_radius / m_speedRate);
-			if (m_offsetAngle > 360 || m_offsetAngle < -360)
+			if(gameObject.activeSelf)
 			{
-				m_offsetAngle /= 360;
+				m_offsetAngle -= (m_mouseEntPos.y - Input.mousePosition.y) / (m_radius / m_speedRate);
+				if (m_offsetAngle > 360 || m_offsetAngle < -360)
+				{
+					m_offsetAngle /= 360;
+				}
+				Arrange();
 			}
-			Arrange();
 		};
 	}
+
+	public void OpenCloseSunAndMoon()
+    {
+		foreach(var g in m_openAndCloseGOList)
+		{
+			g.SetActive(!g.activeSelf);
+		}
+    }
 }
