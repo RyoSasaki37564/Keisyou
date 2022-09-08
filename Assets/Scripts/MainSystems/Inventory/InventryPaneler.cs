@@ -135,6 +135,10 @@ public class InventryPaneler : MonoBehaviour
             {
                 //0以外はスクロールビュー内にあり親オブジェクトを共有しているので、親を起こす
                 m_menuPanels[4].SetActive(true);
+                if(num == 2)
+                {
+                    SoubiStateSetting();
+                }
             }
             else
             {
@@ -160,5 +164,23 @@ public class InventryPaneler : MonoBehaviour
         }
 
         m_mainDirectPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// 装備状態の表示
+    /// </summary>
+    void SoubiStateSetting()
+    {
+        for (var i = 1; i < m_armInventryContenna.childCount; i++)
+        {
+            if (PlayerDataAlfa.Instance.m_testInventry.m_mainArms.Contains(PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[i - 1]))//テンプレ飛ばしで1ずれる
+            {
+                m_armInventryContenna.GetChild(i).GetChild(2).gameObject.SetActive(true);
+            }
+            else
+            {
+                m_armInventryContenna.GetChild(i).GetChild(2).gameObject.SetActive(false);
+            }
+        }
     }
 }
