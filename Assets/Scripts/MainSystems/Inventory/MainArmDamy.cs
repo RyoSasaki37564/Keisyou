@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//装備追加用装置
 public class MainArmDamy : MonoBehaviour
 {
     [SerializeField] InventryPaneler m_ip;

@@ -13,8 +13,11 @@ public class ItemShortcutAgent : MonoBehaviour
     [SerializeField] MainArmsSettingTargetManager m_MASTAM;
     [SerializeField] public int m_mySlotNumber;
 
+    [SerializeField] Text[] m_dataPanels = new Text[2];
+
     public void ShortCutDirectMode()
     {
+
         m_ip.m_targetShortCutSlot = m_mySlotNumber;
         m_directPanel.SetActive(true);
         m_directionShortcutButton.onClick.RemoveAllListeners();
@@ -29,6 +32,13 @@ public class ItemShortcutAgent : MonoBehaviour
         else
         {
             m_MASTAM.m_nowTargetItem = m_shortCutTarget;
+
+            m_dataPanels[0].text = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[m_shortCutTarget.GetID].GetName;
+            m_dataPanels[1].text = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[m_shortCutTarget.GetID].GetFravorText;
+
+            //リサイジングさせるために必要
+            m_dataPanels[1].gameObject.SetActive(false);
+            m_dataPanels[1].gameObject.SetActive(true);
         }
     }
     void DirectItem()

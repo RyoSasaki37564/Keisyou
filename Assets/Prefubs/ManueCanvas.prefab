@@ -314,6 +314,9 @@ MonoBehaviour:
   m_ip: {fileID: 7665012089850505544}
   m_MASTAM: {fileID: 6719668899755258761}
   m_mySlotNumber: 2
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &548620829288667917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1084,10 @@ MonoBehaviour:
   m_directionArmButton: {fileID: 2881787191815056571}
   m_outArmButton: {fileID: 1617622715196999184}
   m_ip: {fileID: 7665012089850505544}
+  m_id: 0
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &1498670717017361130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2304,9 @@ MonoBehaviour:
   m_ip: {fileID: 7665012089850505544}
   m_MASTAM: {fileID: 6719668899755258761}
   m_mySlotNumber: 3
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &2615126927055160532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,8 +2617,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6488946689433932037}
   m_HandleRect: {fileID: 570165792776201499}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.6201986
+  m_Value: 1
+  m_Size: 0.5483442
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4056,6 +4066,10 @@ MonoBehaviour:
   m_directionArmButton: {fileID: 2881787191815056571}
   m_outArmButton: {fileID: 1617622715196999184}
   m_ip: {fileID: 7665012089850505544}
+  m_id: 3
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &4320555324699931984
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,6 +4791,9 @@ MonoBehaviour:
   m_ip: {fileID: 7665012089850505544}
   m_MASTAM: {fileID: 6719668899755258761}
   m_mySlotNumber: 4
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &4736265809438887341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5626,6 +5643,10 @@ MonoBehaviour:
   m_directionArmButton: {fileID: 2881787191815056571}
   m_outArmButton: {fileID: 1617622715196999184}
   m_ip: {fileID: 7665012089850505544}
+  m_id: 4
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &5220567031644682750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6346,6 +6367,9 @@ MonoBehaviour:
   m_ip: {fileID: 7665012089850505544}
   m_MASTAM: {fileID: 6719668899755258761}
   m_mySlotNumber: 0
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &5747008891045049254
 GameObject:
   m_ObjectHideFlags: 0
@@ -6715,6 +6739,10 @@ MonoBehaviour:
   m_directionArmButton: {fileID: 2881787191815056571}
   m_outArmButton: {fileID: 1617622715196999184}
   m_ip: {fileID: 7665012089850505544}
+  m_id: 2
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &6295974027370897429
 GameObject:
   m_ObjectHideFlags: 0
@@ -7031,6 +7059,10 @@ MonoBehaviour:
   m_directionArmButton: {fileID: 2881787191815056571}
   m_outArmButton: {fileID: 1617622715196999184}
   m_ip: {fileID: 7665012089850505544}
+  m_id: 1
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &6761047808874195201
 GameObject:
   m_ObjectHideFlags: 0
@@ -7377,6 +7409,9 @@ MonoBehaviour:
   m_ip: {fileID: 7665012089850505544}
   m_MASTAM: {fileID: 6719668899755258761}
   m_mySlotNumber: 5
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &7261043003113240645
 GameObject:
   m_ObjectHideFlags: 0
@@ -11208,6 +11243,9 @@ MonoBehaviour:
   m_ip: {fileID: 7665012089850505544}
   m_MASTAM: {fileID: 6719668899755258761}
   m_mySlotNumber: 1
+  m_dataPanels:
+  - {fileID: 5597895318385379352}
+  - {fileID: 3412864177202634185}
 --- !u!1 &7472264605378093537
 GameObject:
   m_ObjectHideFlags: 0
