@@ -30,15 +30,16 @@ public class Inventory
         m_mainArms.Add(m_armsInventry[0]);
     }
 
-    public void IntoShortCut(int id, int slot)
+    public bool IntoShortCut(int id, int slot)
     {
+        PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[slot] = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[id];
         if (!PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems.Contains(m_itemInventry[id]))
         {
-            PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[slot] = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[id];
+            return false;
         }
         else
         {
-            Debug.Log("元からあんねん");
+            return true;
         }
     }
 
@@ -58,10 +59,7 @@ public class Inventory
     {
         if (prev == iretai)
         {
-            if (m_shortCutItems.Count > 2)
-            {
                 RemovefromShortCut(prev, slot);
-            }
             return;
         }
 
@@ -97,8 +95,8 @@ public class Inventory
                     nowP = i;
                 }
             }
-            m_shortCutItems.Remove(PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[prev]);
-            m_shortCutItems.Insert(nowP, PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[iretai]);
+            m_shortCutItems[prev] = null;
+            m_shortCutItems[nowP] = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[iretai];
         }
     }
 

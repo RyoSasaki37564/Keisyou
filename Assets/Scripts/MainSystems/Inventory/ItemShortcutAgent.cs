@@ -11,7 +11,7 @@ public class ItemShortcutAgent : MonoBehaviour
     [SerializeField] Button m_outShortcutButton;
     [SerializeField] InventryPaneler m_ip;
     [SerializeField] MainArmsSettingTargetManager m_MASTAM;
-    [SerializeField] int m_mySlotNumber;
+    [SerializeField] public int m_mySlotNumber;
 
     public void ShortCutDirectMode()
     {

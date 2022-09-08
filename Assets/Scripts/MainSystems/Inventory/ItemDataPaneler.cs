@@ -29,7 +29,17 @@ public class ItemDataPaneler : MonoBehaviour
         }
         else if (m_ip.m_MADM == MainDirectMode.Add)
         {
-            PlayerDataAlfa.Instance.m_testInventry.IntoShortCut(PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[m_id].GetID, m_ip.m_targetShortCutSlot);
+            if(PlayerDataAlfa.Instance.m_testInventry.IntoShortCut(PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[m_id].GetID, m_ip.m_targetShortCutSlot))
+            {
+                for(var i = 0; i < m_ip.m_shortCutSamples.Length; i++)
+                {
+                    ItemShortcutAgent isa = m_ip.m_shortCutSamples[i].GetComponent<ItemShortcutAgent>();
+                    if (isa.m_shortCutTarget == PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[m_id] && isa.m_mySlotNumber != m_ip.m_targetShortCutSlot)
+                    {
+                        PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[isa.m_mySlotNumber] = null;
+                    }
+                }
+            }
             m_ip.SelectAndOpen(0);
         }
     }

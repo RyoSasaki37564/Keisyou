@@ -15,7 +15,7 @@ public class InventryPaneler : MonoBehaviour
     [SerializeField] Transform m_itemInventryContenna;
     [SerializeField] Transform m_armInventryContenna;
     [SerializeField] GameObject[] m_mainArmsSamples = new GameObject[5];
-    [SerializeField] GameObject[] m_shortCutSamples = new GameObject[6];
+    [SerializeField] public GameObject[] m_shortCutSamples = new GameObject[6];
     [SerializeField] GameObject m_itemTemp;
     [SerializeField] GameObject m_armTemp;
     [SerializeField] MainArmsSettingTargetManager m_MASTM;
