@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum MainArmDirectMode
+public enum MainDirectMode
 {
     Off,
     Add,
@@ -15,16 +15,18 @@ public class InventryPaneler : MonoBehaviour
     [SerializeField] Transform m_itemInventryContenna;
     [SerializeField] Transform m_armInventryContenna;
     [SerializeField] GameObject[] m_mainArmsSamples = new GameObject[5];
-    [SerializeField] Transform m_itemShortCutContenna;
+    [SerializeField] GameObject[] m_shortCutSamples = new GameObject[6];
     [SerializeField] GameObject m_itemTemp;
     [SerializeField] GameObject m_armTemp;
     [SerializeField] MainArmsSettingTargetManager m_MASTM;
 
     [SerializeField] GameObject[] m_menuPanels = new GameObject[5]; // 0 = 装備、1 = 道具、2 = 屠龍具、3 = 貴重品、4 = 1~3の親
 
-    public MainArmDirectMode m_MADM = MainArmDirectMode.Off;
+    public MainDirectMode m_MADM = MainDirectMode.Off;
 
     [SerializeField] public GameObject m_mainDirectPanel;
+
+    public int m_targetShortCutSlot = 0;
 
     public MainArmsSettingTargetManager GetMASTM()
     {
@@ -79,6 +81,11 @@ public class InventryPaneler : MonoBehaviour
             {
                 a.SetActive(true);
             }
+        }
+
+        for(var i = 0; i < 6; i++)
+        {
+            PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems.Add(null);
         }
 
         for (var i = 1; i < m_menuPanels.Length; i++)
@@ -142,11 +149,12 @@ public class InventryPaneler : MonoBehaviour
             }
             else
             {
+                ShortCutView();
                 MainArmsView();
             }
             m_menuPanels[num].SetActive(true);
         }
-        m_MADM = MainArmDirectMode.Off;
+        m_MADM = MainDirectMode.Off;
     }
 
     public void MainArmsView()
@@ -180,6 +188,28 @@ public class InventryPaneler : MonoBehaviour
             else
             {
                 m_armInventryContenna.GetChild(i).GetChild(2).gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ShortCutView()
+    {
+        for(var i = 0; i < m_shortCutSamples.Length; i++)
+        {
+            Text name = m_shortCutSamples[i].transform.GetChild(0).GetComponent<Text>();
+            Text num = m_shortCutSamples[i].transform.GetChild(1).GetComponent<Text>();
+            ItemShortcutAgent ism = m_shortCutSamples[i].GetComponent<ItemShortcutAgent>();
+            if (PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[i] != null)
+            {
+                name.text = PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[i].GetName;
+                num.text = PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[i].GetCount.ToString();
+                ism.m_shortCutTarget = PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[i];
+            }
+            else
+            {
+                ism.m_shortCutTarget = null;
+                name.text = "-";
+                num.text = "-";
             }
         }
     }

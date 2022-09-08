@@ -10,6 +10,6 @@ public class MainArmDamy : MonoBehaviour
     public void MainArmAddMode()
     {
         m_ip.SelectAndOpen(2);
-        m_ip.m_MADM = MainArmDirectMode.Add;
+        m_ip.m_MADM = MainDirectMode.Add;
     }
 }

@@ -30,11 +30,11 @@ public class Inventory
         m_mainArms.Add(m_armsInventry[0]);
     }
 
-    public void IntoShortCut(int id)
+    public void IntoShortCut(int id, int slot)
     {
-        if (!m_shortCutItems.Contains(m_itemInventry[id]))
+        if (!PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems.Contains(m_itemInventry[id]))
         {
-            m_shortCutItems.Add(m_itemInventry[id]);
+            PlayerDataAlfa.Instance.m_testInventry.m_shortCutItems[slot] = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[id];
         }
         else
         {
@@ -42,15 +42,63 @@ public class Inventory
         }
     }
 
-    public void RemovefromShortCut(int id)
+    public void RemovefromShortCut(int id, int slot)
     {
         if(m_shortCutItems.Contains(m_itemInventry[id]))
         {
-            m_shortCutItems.Remove(m_itemInventry[id]);
+            m_shortCutItems[slot] = null;
         }
         else
         {
             Debug.Log("元からないねん");
+        }
+    }
+
+    public void ReplaceItem(int prev, int iretai, int slot)
+    {
+        if (prev == iretai)
+        {
+            if (m_shortCutItems.Count > 2)
+            {
+                RemovefromShortCut(prev, slot);
+            }
+            return;
+        }
+
+        if (m_shortCutItems.Contains(m_itemInventry[iretai]))
+        {
+            int nowP = 0;
+            int nowI = 0;
+            for (var i = 0; i < m_shortCutItems.Count; i++)
+            {
+                if(m_shortCutItems[i] != null)
+                {
+                    Debug.Log($"{i}, {m_shortCutItems[i].GetName}");
+                }
+                if (m_shortCutItems[i] == PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[prev])
+                {
+                    nowP = i;
+                }
+                if (m_shortCutItems[i] == PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[iretai])
+                {
+                    nowI = i;
+                }
+            }
+            m_shortCutItems[nowP] = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[iretai];
+            m_shortCutItems[nowI] = PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[prev];
+        }
+        else
+        {
+            int nowP = 0;
+            for (var i = 0; i < m_shortCutItems.Count; i++)
+            {
+                if (m_shortCutItems[i] == PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[prev])
+                {
+                    nowP = i;
+                }
+            }
+            m_shortCutItems.Remove(PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[prev]);
+            m_shortCutItems.Insert(nowP, PlayerDataAlfa.Instance.m_testInventry.m_itemInventry[iretai]);
         }
     }
 

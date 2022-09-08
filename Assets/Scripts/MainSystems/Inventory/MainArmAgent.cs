@@ -25,7 +25,7 @@ public class MainArmAgent : MonoBehaviour
     void DirectArm()
     {
         m_ip.SelectAndOpen(2);
-        m_ip.m_MADM = MainArmDirectMode.Direct;
+        m_ip.m_MADM = MainDirectMode.Direct;
     }
 
     void OutArm()

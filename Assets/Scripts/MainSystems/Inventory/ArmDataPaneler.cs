@@ -21,15 +21,16 @@ public class ArmDataPaneler : MonoBehaviour
 
     public void IntoMains()
     {
-        if(m_ip.m_MADM == MainArmDirectMode.Direct)
+        if(m_ip.m_MADM == MainDirectMode.Direct)
         {
             PlayerDataAlfa.Instance.m_testInventry.ReplaceMainArm(m_ip.GetMASTM().m_nowTargetArm,
                    PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[m_id]);
+            m_ip.SelectAndOpen(0);
         }
-        else if(m_ip.m_MADM == MainArmDirectMode.Add)
+        else if(m_ip.m_MADM == MainDirectMode.Add)
         {
             PlayerDataAlfa.Instance.m_testInventry.AddMainArm(PlayerDataAlfa.Instance.m_testInventry.m_armsInventry[m_id]);
+            m_ip.SelectAndOpen(0);
         }
-        m_ip.SelectAndOpen(0);
     }
 }

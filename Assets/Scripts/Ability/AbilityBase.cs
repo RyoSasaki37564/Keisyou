@@ -43,8 +43,9 @@ public abstract class AbilityBase : MonoBehaviour
             m_thisButton = GetComponent<Button>();
 
             m_thisButton.onClick.AddListener(Select);
-            if (m_nowState != ActivateState.Active)
+            if (m_nowState == ActivateState.Active)
             {
+                Debug.Log(gameObject.transform.parent.name);
                 m_activateMarker.SetActive(true);
             }
             if (m_nowState != ActivateState.Active && m_pipes.Length > 0)

@@ -6,6 +6,7 @@ public class MainArmsSettingTargetManager : MonoBehaviour
 {
     [SerializeField] RectTransform m_nowSettingTarget;
     public Toryugu m_nowTargetArm;
+    public ItemData m_nowTargetItem;
 
     public void FirstSetting()
     {
