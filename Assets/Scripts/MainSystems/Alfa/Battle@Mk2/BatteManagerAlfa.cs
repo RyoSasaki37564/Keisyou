@@ -10,7 +10,6 @@ public enum PhaseOnBattle
     Input,
     Player,
     Enemy,
-    Kamigakari,
     End,
 }
 
@@ -27,6 +26,7 @@ public class BatteManagerAlfa : MonoBehaviour
 {
     PhaseOnBattle m_nowPhase = PhaseOnBattle.Start;
     ModeOfZone m_zone = ModeOfZone.None;
+    bool m_nowZone = false;
 
     [SerializeField] Text m_dialog;
 
@@ -71,6 +71,12 @@ public class BatteManagerAlfa : MonoBehaviour
     int m_playerKakugo;
     public int GetKakugo { get => m_playerKakugo; }
 
+
+    [SerializeField] GameObject[] m_kyokuchiEffect = new GameObject[4];
+    [SerializeField] GameObject m_whiteFlash;
+
+    List<ChildrenBlackOut> m_kamigakariSiletSettings = new List<ChildrenBlackOut>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,10 +106,13 @@ public class BatteManagerAlfa : MonoBehaviour
         }
     }
 
-    //void Update()
-    //{
-    //    StateProgression();
-    //}
+    void Update()
+    {
+        if(m_nowZone)
+        {
+            m_playerConSlider.value -= (1f / 10);
+        }
+    }
 
     void EnemyStatusSetUP(List<int> idList)
     {
@@ -146,6 +155,7 @@ public class BatteManagerAlfa : MonoBehaviour
                 eAnim.transform.position = m_spawnPoints[5].position;
             }
             SetSortingLayer(eAnim.transform, "Chara" + i.ToString());
+            m_kamigakariSiletSettings.Add(eAnim.transform.GetChild(0).GetComponent<ChildrenBlackOut>());
         }
     }
 
@@ -237,8 +247,9 @@ public class BatteManagerAlfa : MonoBehaviour
     bool testAttackControll;
     public void TestAttack()
     {
-        if(m_nowPhase == PhaseOnBattle.Input && !testAttackControll)
+        if(!(m_nowZone == true && m_zone == ModeOfZone.Kamigakari) && m_nowPhase == PhaseOnBattle.Input && !testAttackControll)
         {
+            m_zone = ModeOfZone.Kamigakari;
             testAttackControll = true;
             int damage = m_playerAtk - m_enemyInstanceList[m_target].m_def/10;
             if(damage < 0)
@@ -264,8 +275,6 @@ public class BatteManagerAlfa : MonoBehaviour
 
             DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
                     m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
-
-            Debug.Log("damage = " + damage);
         }
     }
 
@@ -330,8 +339,6 @@ public class BatteManagerAlfa : MonoBehaviour
                 m_dialog.text = "敵の行動";
                 EnemysSelectActions();
                 break;
-            case PhaseOnBattle.Kamigakari:
-                break;
             case PhaseOnBattle.End:
                 break;
         }
@@ -369,20 +376,72 @@ public class BatteManagerAlfa : MonoBehaviour
         }
     }
 
+    public void Kyokuchi()
+    {
+        if(!m_nowZone && m_playerConSlider.value == m_playerConSlider.maxValue)
+        {
+            Zone();
+        }
+        else if(m_nowZone &&　m_playerConSlider.value == 0)
+        {
+            ZoneEnd();
+        }
+    }
+
     void Zone()
     {
+        m_whiteFlash.SetActive(true);
+        m_nowZone = true;
+
         switch (m_zone)
         {
             case ModeOfZone.None:
                 Debug.LogWarning("極致になってねーのにZone()呼ばれたぞ");
                 break;
             case ModeOfZone.Kamigakari:
+                m_kyokuchiEffect[0].SetActive(true);
+                for(var i = 0; i < m_kamigakariSiletSettings.Count; i++)
+                {
+                    m_kamigakariSiletSettings[i].Kamigakari();
+                }
                 break;
             case ModeOfZone.Homura:
+                m_kyokuchiEffect[1].SetActive(true);
                 break;
             case ModeOfZone.Meikyoushisui:
+                m_kyokuchiEffect[2].SetActive(true);
                 break;
             case ModeOfZone.Deep:
+                m_kyokuchiEffect[3].SetActive(true);
+                break;
+        }
+    }
+
+    void ZoneEnd()
+    {
+        m_whiteFlash.SetActive(true);
+        m_nowZone = false;
+
+        switch (m_zone)
+        {
+            case ModeOfZone.None:
+                Debug.LogWarning("極致になってねーのにZone()呼ばれたぞ");
+                break;
+            case ModeOfZone.Kamigakari:
+                m_kyokuchiEffect[0].SetActive(false);
+                for(var i = 0; i < m_kamigakariSiletSettings.Count; i++)
+                {
+                    m_kamigakariSiletSettings[i].TimeIsBack();
+                }
+                break;
+            case ModeOfZone.Homura:
+                m_kyokuchiEffect[1].SetActive(true);
+                break;
+            case ModeOfZone.Meikyoushisui:
+                m_kyokuchiEffect[2].SetActive(true);
+                break;
+            case ModeOfZone.Deep:
+                m_kyokuchiEffect[3].SetActive(true);
                 break;
         }
     }

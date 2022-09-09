@@ -7,54 +7,59 @@ public class ChildrenBlackOut : MonoBehaviour
 {
     List<SpriteRenderer> m_childrenSpr = new List<SpriteRenderer>();
 
-    [SerializeField] GameObject[] m_gameObjects;
+    Animator a;
+    Animator a2;
 
-    [SerializeField] PostProcessVolume m_ppv;
-
-    void BlackOutCheck(Transform t)
+    void BlackOutCheck(Transform t, float animSpeed, int setLayer)
     {
         if(t.childCount > 0)
         {
             if (t.gameObject.GetComponent<Animator>())
             {
-                Animator a = t.gameObject.GetComponent<Animator>();
-                a.speed = 0;
+                if(a == null)
+                {
+                    a = t.gameObject.GetComponent<Animator>();
+                }
+                a.speed = animSpeed;
             }
             for (var i = 0; i < t.childCount; i++)
             {
                 if (t.GetChild(i).gameObject.GetComponent<SpriteRenderer>())
                 {
                     m_childrenSpr.Add(t.GetChild(i).gameObject.GetComponent<SpriteRenderer>());
-                    t.GetChild(i).gameObject.layer = 13;
+                    t.GetChild(i).gameObject.layer = setLayer;
 
                 }
                 if (t.GetChild(i).gameObject.GetComponent<Animator>())
                 {
-                    Animator a2 = t.GetChild(i).gameObject.GetComponent<Animator>();
-                    a2.speed = 0;
+                    if(a2 == null)
+                    {
+                        a2 = t.GetChild(i).gameObject.GetComponent<Animator>();
+                    }
+                    a2.speed = animSpeed;
                 }
-                BlackOutCheck(t.GetChild(i));
+                BlackOutCheck(t.GetChild(i), animSpeed, setLayer);
             }
         }
     }
 
-    public void KamigakariTest()
+    public void Kamigakari()
     {
-        BlackOutCheck(transform);
-
-        for(var i = 0; i < m_gameObjects.Length; i++)
-        {
-            m_gameObjects[i].SetActive(true);
-        }
-        BlackOut();
-        m_ppv.profile.GetSetting<ColorGrading>().contrast.value = -200f;
+        BlackOutCheck(transform, 0, 13); //Upper(エフェクト外レイヤー)
+        BlackOut(Color.black);
     }
 
-    void BlackOut()
+    void BlackOut(Color c)
     {
         for(var i = 0; i < m_childrenSpr.Count; i++)
         {
-            m_childrenSpr[i].color = Color.black;
+            m_childrenSpr[i].color = c;
         }
+    }
+
+    public void TimeIsBack()
+    {
+        BlackOutCheck(transform, 1, 10); //エネミーレイヤー
+        BlackOut(Color.white);
     }
 }

@@ -151,7 +151,10 @@ public class NineKeyInputNomal : MonoBehaviour
     private void OnDisable()
     {
         m_ppv.weight = 0;
-        m_dialog.color = Color.white;
+        if(m_dialog)
+        {
+            m_dialog.color = Color.white;
+        }
     }
 
     /*

@@ -611,6 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6204637706022353237}
   - component: {fileID: 6204637706022353242}
+  - component: {fileID: 2651398391437350636}
   m_Layer: 10
   m_Name: AlfaRyu-NakiMushi-Prot
   m_TagString: Untagged
@@ -627,7 +628,7 @@ Transform:
   m_GameObject: {fileID: 6204637706022353236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_Children:
   - {fileID: 6204637706189969352}
   - {fileID: 6204637705224064641}
@@ -657,6 +658,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2651398391437350636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204637706022353236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b0539ea2030764ab602cc3412eafca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gameObjects: []
+  m_ppv: {fileID: 0}
 --- !u!1 &6204637706189969355
 GameObject:
   m_ObjectHideFlags: 0
