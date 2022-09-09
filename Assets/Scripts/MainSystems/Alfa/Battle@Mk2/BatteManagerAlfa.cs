@@ -38,7 +38,8 @@ public class BatteManagerAlfa : MonoBehaviour
     [SerializeField] Transform m_shinzuiCircle;
     [SerializeField] Transform m_shinzuiPool;
     [SerializeField] GameObject[] m_shinzuiButtons = new GameObject[5];
-    Button m_menuB; 
+    [SerializeField] ArmsSysAlfa m_armsSys;
+    Button m_menuB; //メニューボタン。装備リセット系などで呼びたいことが多い
 
     [SerializeField] GameObject m_battleUICanvas;
     [SerializeField] GameObject m_resultUICanvas;
@@ -84,6 +85,7 @@ public class BatteManagerAlfa : MonoBehaviour
 
         m_menuB = GameObject.Find("MenueButton").GetComponent<Button>();
         m_menuB.onClick.AddListener(ShinzuiSet);
+        m_menuB.onClick.AddListener(m_armsSys.MainArmsSetting);
     }
 
     public void ShinzuiSet()
@@ -301,6 +303,7 @@ public class BatteManagerAlfa : MonoBehaviour
     void BattleEnd()
     {
         m_menuB.onClick.RemoveListener(ShinzuiSet);
+        m_menuB.onClick.RemoveListener(m_armsSys.MainArmsSetting);
 
         m_battleUICanvas.SetActive(false);
 
