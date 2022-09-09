@@ -249,7 +249,10 @@ public class BatteManagerAlfa : MonoBehaviour
     {
         if(!(m_nowZone == true && m_zone == ModeOfZone.Kamigakari) && m_nowPhase == PhaseOnBattle.Input && !testAttackControll)
         {
-            m_zone = ModeOfZone.Kamigakari;
+            if(!m_nowZone)
+            {
+                m_zone = ModeOfZone.Kamigakari;
+            }
             testAttackControll = true;
             int damage = m_playerAtk - m_enemyInstanceList[m_target].m_def/10;
             if(damage < 0)
@@ -273,8 +276,11 @@ public class BatteManagerAlfa : MonoBehaviour
             DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
                     m_playerDodgSlider.value - lessDodg, doTime);
 
-            DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
-                    m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
+            if (!m_nowZone)
+            {
+                DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
+                        m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
+            }
         }
     }
 
@@ -346,6 +352,10 @@ public class BatteManagerAlfa : MonoBehaviour
 
     void EnemysSelectActions()
     {
+        if(!m_nowZone)
+        {
+            m_zone = ModeOfZone.Homura;
+        }
         int i = m_enemyHPBarList.Count - 1;
         float doTime = 1.5f;
 
@@ -360,6 +370,17 @@ public class BatteManagerAlfa : MonoBehaviour
                 Debug.Log($"{(int)m_enemyHPBarList[i].value}, {(int)m_enemyHPBarList[i].maxValue}");
                 m_enemyAIList[i].EnemyActionSelect((int)m_enemyHPBarList[i].value, (int)m_enemyHPBarList[i].maxValue,
                     ref m_enemyInstanceList[i].m_nowStamina, m_enemyInstanceList[i].m_stamina, (int)m_playerDodgSlider.value, (int)m_playerDodgSlider.maxValue);
+
+                //test
+                if(!(m_nowZone && m_zone == ModeOfZone.Kamigakari))
+                DOTween.To(() => m_playerHPSlider.value, x => m_playerHPSlider.value = x,
+                        m_playerHPSlider.value - m_enemyInstanceList[i].m_atk, doTime);
+                if(!m_nowZone)
+                {
+                    float getConRate = 0.12f;
+                    DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
+                            m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
+                }
             }
 
             i--;
@@ -435,13 +456,13 @@ public class BatteManagerAlfa : MonoBehaviour
                 }
                 break;
             case ModeOfZone.Homura:
-                m_kyokuchiEffect[1].SetActive(true);
+                m_kyokuchiEffect[1].SetActive(false);
                 break;
             case ModeOfZone.Meikyoushisui:
-                m_kyokuchiEffect[2].SetActive(true);
+                m_kyokuchiEffect[2].SetActive(false);
                 break;
             case ModeOfZone.Deep:
-                m_kyokuchiEffect[3].SetActive(true);
+                m_kyokuchiEffect[3].SetActive(false);
                 break;
         }
     }
