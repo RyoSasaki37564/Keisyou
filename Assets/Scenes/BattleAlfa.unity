@@ -3372,6 +3372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 446509646}
   - component: {fileID: 446509647}
+  - component: {fileID: 446509648}
   m_Layer: 0
   m_Name: PostProKamigakari
   m_TagString: Untagged
@@ -3400,7 +3401,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446509645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -3410,6 +3411,23 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &446509648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446509645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: a8a843539f61c0b409f9b2c89c635afc, type: 2}
 --- !u!1 &457123805
 GameObject:
   m_ObjectHideFlags: 0
@@ -21262,6 +21280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1214138791}
   - component: {fileID: 1214138790}
+  - component: {fileID: 1214138792}
   m_Layer: 0
   m_Name: PostProcessDeep
   m_TagString: Untagged
@@ -21300,6 +21319,23 @@ Transform:
   m_Father: {fileID: 2127709051}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214138792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214138789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: ba2e669aa2a22f64480d5e14d5758a84, type: 2}
 --- !u!4 &1216696821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3904794779737929791, guid: 0a0dcc9efe31c4a49a824e72af8e0999,
@@ -37388,6 +37424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021000775}
   - component: {fileID: 2021000776}
+  - component: {fileID: 2021000777}
   m_Layer: 0
   m_Name: PostProcessNomal (1)
   m_TagString: Untagged
@@ -37426,6 +37463,23 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &2021000777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021000774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0.277
+  sharedProfile: {fileID: 11400000, guid: 27597036d69da024ab8166e0007d090b, type: 2}
 --- !u!1 &2023893185
 GameObject:
   m_ObjectHideFlags: 0
@@ -42558,6 +42612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2079131216}
   - component: {fileID: 2079131215}
+  - component: {fileID: 2079131217}
   m_Layer: 0
   m_Name: PostProcess (1)
   m_TagString: Untagged
@@ -42596,6 +42651,23 @@ Transform:
   m_Father: {fileID: 899587072}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2079131217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079131214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0.594
+  sharedProfile: {fileID: 11400000, guid: 83a179b8e4704a241bedb81a937e32b3, type: 2}
 --- !u!1 &2091152855
 GameObject:
   m_ObjectHideFlags: 0
@@ -42767,6 +42839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2107628566}
+  - component: {fileID: 2107628565}
   m_Layer: 0
   m_Name: PostProcessNomal
   m_TagString: Untagged
@@ -42774,6 +42847,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2107628565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107628564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0.859
+  sharedProfile: {fileID: 11400000, guid: 3dee6537c618bb643a4346599bd63384, type: 2}
 --- !u!4 &2107628566
 Transform:
   m_ObjectHideFlags: 0
