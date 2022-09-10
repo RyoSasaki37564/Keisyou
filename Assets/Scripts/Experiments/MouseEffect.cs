@@ -11,10 +11,16 @@ public class MouseEffect : MonoBehaviour
     void Update()
     {
 #if UNITY_STANDALONE || UNITY_WEBGL || IS_EDITOR
+
         m_position = Input.mousePosition;
+
+#elif UNITY_ANDROID || UNITY_ANDROID_API
+
+        
+
+#endif
         m_position.z = 10f;
         m_screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(m_position);
         gameObject.transform.position = m_screenToWorldPointPosition;
-#endif
     }
 }
