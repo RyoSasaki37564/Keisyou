@@ -21,7 +21,7 @@ public class NineKeyInputNomal : MonoBehaviour
 
     public float m_changeValueInterval = 1f; //値の変化速度
 
-    [SerializeField] PostProcessVolume m_ppv;
+    [SerializeField] GameObject m_postPro;
 
     //[SerializeField] GameObject m_akiCutIn = default; //アキのカットインタイムライン
     //[SerializeField] List<GameObject> m_ryugekiEffectsList = default; // 各龍撃演出タイムラインを格納
@@ -117,13 +117,11 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void OnEnable()
     {
-        if (!m_ppv.gameObject.activeSelf)
+        if (!m_postPro.activeSelf)
         {
-            m_ppv.gameObject.SetActive(true);
+            m_postPro.SetActive(true);
         }
 
-        m_ppv.profile.GetSetting<ColorGrading>().contrast.value = 10f;
-        m_ppv.weight = 1;
         m_dialog.color = Color.black;
         foreach (var i in m_colls)
         {
@@ -150,8 +148,8 @@ public class NineKeyInputNomal : MonoBehaviour
 
     private void OnDisable()
     {
-        m_ppv.weight = 0;
-        if(m_dialog)
+        m_postPro.SetActive(false);
+        if (m_dialog)
         {
             m_dialog.color = Color.white;
         }
