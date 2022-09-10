@@ -735,7 +735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483983518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.17, y: -5.21, z: 0}
+  m_LocalPosition: {x: 0.48, y: -5.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1193740499}
@@ -811,8 +811,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 0.47058824, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1740,7 +1740,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2059,6 +2059,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1628836406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2832741412481844399, guid: dd80ccdf2b06ae74daf54715f95567bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2832741412962847821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1721801723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2637748873276017458, guid: 8b46c1390d9268e44a85e42fa80759f5,
@@ -2371,12 +2377,12 @@ GameObject:
   - component: {fileID: 1901059303}
   - component: {fileID: 1901059302}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: IceUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1901059302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,7 +2630,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -277, y: 166}
-  m_SizeDelta: {x: 220.63611, y: 61.055283}
+  m_SizeDelta: {x: 220.63611, y: 38.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911286019
 MonoBehaviour:
@@ -3412,6 +3418,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1901059305}
     m_Modifications:
+    - target: {fileID: 2832741412481844393, guid: dd80ccdf2b06ae74daf54715f95567bf,
+        type: 3}
+      propertyPath: m_flashFade
+      value: 
+      objectReference: {fileID: 1628836406}
     - target: {fileID: 2832741412481844398, guid: dd80ccdf2b06ae74daf54715f95567bf,
         type: 3}
       propertyPath: m_Pivot.x

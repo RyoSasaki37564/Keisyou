@@ -34,7 +34,6 @@ public class IceGenerate : MonoBehaviour
 
     IEnumerator ICEBorn(float time)
     {
-        Debug.Log(id);
         yield return new WaitForSeconds(time);
         m_iceList[id].SetActive(true);
         id++;
