@@ -3371,7 +3371,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 446509646}
-  - component: {fileID: 446509647}
   - component: {fileID: 446509648}
   m_Layer: 0
   m_Name: PostProKamigakari
@@ -3394,23 +3393,6 @@ Transform:
   m_Father: {fileID: 646887365}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &446509647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446509645}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 2b1c1d9461722464eb727591087bc75f, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!114 &446509648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19870,12 +19852,12 @@ PrefabInstance:
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -19895,7 +19877,7 @@ PrefabInstance:
     - target: {fileID: 3920671408005848229, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -142.68068
       objectReference: {fileID: 0}
     - target: {fileID: 3970555821119645979, guid: fb003b7327dda7e499758678b63c3a84,
         type: 3}
@@ -21279,7 +21261,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214138791}
-  - component: {fileID: 1214138790}
   - component: {fileID: 1214138792}
   m_Layer: 0
   m_Name: PostProcessDeep
@@ -21288,23 +21269,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1214138790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214138789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 24cdf48ab2a88814d83045bae55b1677, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!4 &1214138791
 Transform:
   m_ObjectHideFlags: 0
@@ -22587,6 +22551,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MouseEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303571771024089693, guid: f1363df0cac43214bb52669d4b3ee6f3,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303571771024089693, guid: f1363df0cac43214bb52669d4b3ee6f3,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303571771024089693, guid: f1363df0cac43214bb52669d4b3ee6f3,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.47058824
       objectReference: {fileID: 0}
     - target: {fileID: 3303571771024089694, guid: f1363df0cac43214bb52669d4b3ee6f3,
         type: 3}
@@ -37128,7 +37107,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1977617052}
-  - component: {fileID: 1977617051}
   - component: {fileID: 1977617053}
   m_Layer: 0
   m_Name: PostProcessRyuGeki
@@ -37137,23 +37115,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1977617051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977617050}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 2afad79d402ea8c44822f143594a179e, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!4 &1977617052
 Transform:
   m_ObjectHideFlags: 0
@@ -37423,7 +37384,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2021000775}
-  - component: {fileID: 2021000776}
   - component: {fileID: 2021000777}
   m_Layer: 0
   m_Name: PostProcessNomal (1)
@@ -37446,23 +37406,6 @@ Transform:
   m_Father: {fileID: 504004536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2021000776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021000774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: e51aa89fdaba3b442844996a1735e298, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!114 &2021000777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37478,7 +37421,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.277
+  weight: 0.5
   sharedProfile: {fileID: 11400000, guid: 27597036d69da024ab8166e0007d090b, type: 2}
 --- !u!1 &2023893185
 GameObject:
@@ -42611,7 +42554,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2079131216}
-  - component: {fileID: 2079131215}
   - component: {fileID: 2079131217}
   m_Layer: 0
   m_Name: PostProcess (1)
@@ -42620,23 +42562,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2079131215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079131214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: af276f3d7e17e0840bd1fd1d684be3d4, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!4 &2079131216
 Transform:
   m_ObjectHideFlags: 0
@@ -42666,7 +42591,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.594
+  weight: 0.39
   sharedProfile: {fileID: 11400000, guid: 83a179b8e4704a241bedb81a937e32b3, type: 2}
 --- !u!1 &2091152855
 GameObject:
@@ -42862,7 +42787,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.859
+  weight: 0.704
   sharedProfile: {fileID: 11400000, guid: 3dee6537c618bb643a4346599bd63384, type: 2}
 --- !u!4 &2107628566
 Transform:

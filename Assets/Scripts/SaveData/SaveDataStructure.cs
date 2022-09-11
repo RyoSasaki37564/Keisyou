@@ -68,7 +68,7 @@ public class SaveDataStructure : MonoBehaviour
 
     public void LoadData()
     {
-        Debug.Log(m_gameData + "のデータをロード");
+        //Debug.Log(m_gameData + "のデータをロード");
         string datastr = "";
         StreamReader reader;
 
@@ -77,7 +77,7 @@ public class SaveDataStructure : MonoBehaviour
         reader.Close();
 
         m_gameData = JsonUtility.FromJson<GameDataStruct>(datastr); // ロードしたデータで上書き
-        Debug.Log(m_gameData + "のデータをロードしました");
+        //Debug.Log(m_gameData + "のデータをロードしました");
     }
 
     void SaveDataCheak()
