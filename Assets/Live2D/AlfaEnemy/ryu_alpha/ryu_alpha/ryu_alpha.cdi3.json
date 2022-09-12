@@ -1,0 +1,160 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamHeadAngleX",
+			"GroupId": "",
+			"Name": "頭の回転X"
+		},
+		{
+			"Id": "ParamHeadAngleY",
+			"GroupId": "",
+			"Name": "頭の回転Y"
+		},
+		{
+			"Id": "ParamHeadAngleZ",
+			"GroupId": "",
+			"Name": "頭の回転Z"
+		},
+		{
+			"Id": "ParamMouthOpen",
+			"GroupId": "",
+			"Name": "口開閉"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "体の回転X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "体の回転Y"
+		},
+		{
+			"Id": "ParamLowerBody1X",
+			"GroupId": "",
+			"Name": "下半身１X"
+		},
+		{
+			"Id": "ParamLowerBody1Y",
+			"GroupId": "",
+			"Name": "下半身１Y"
+		},
+		{
+			"Id": "ParamLowerBody2X",
+			"GroupId": "",
+			"Name": "下半身2X"
+		},
+		{
+			"Id": "ParamLowerBody2Y",
+			"GroupId": "",
+			"Name": "下半身2Y"
+		},
+		{
+			"Id": "ParamLowerBody3X",
+			"GroupId": "",
+			"Name": "下半身3X"
+		},
+		{
+			"Id": "ParamLowerBody3Y",
+			"GroupId": "",
+			"Name": "下半身3Y"
+		},
+		{
+			"Id": "ParamRightShoulderPos",
+			"GroupId": "ParamGroup",
+			"Name": "右肩"
+		},
+		{
+			"Id": "ParamRightArmAngle",
+			"GroupId": "ParamGroup",
+			"Name": "右腕"
+		},
+		{
+			"Id": "ParamRightUpperArmAngleZ",
+			"GroupId": "ParamGroup",
+			"Name": "右上腕前後"
+		},
+		{
+			"Id": "ParamRightElbowAngle",
+			"GroupId": "ParamGroup",
+			"Name": "右ひじ"
+		},
+		{
+			"Id": "ParamRightLowerArmAngleZ",
+			"GroupId": "ParamGroup",
+			"Name": "右前腕前後"
+		},
+		{
+			"Id": "ParamRightWristAngle",
+			"GroupId": "ParamGroup",
+			"Name": "右手首"
+		},
+		{
+			"Id": "ParamLeftShoulderPos",
+			"GroupId": "ParamGroup2",
+			"Name": "左肩"
+		},
+		{
+			"Id": "ParamLeftArmAngle",
+			"GroupId": "ParamGroup2",
+			"Name": "左腕"
+		},
+		{
+			"Id": "ParamLeftUpperArmAngleZ",
+			"GroupId": "ParamGroup2",
+			"Name": "左上腕前後"
+		},
+		{
+			"Id": "ParamLeftElbowAngle",
+			"GroupId": "ParamGroup2",
+			"Name": "左ひじ"
+		},
+		{
+			"Id": "ParamLeftLowerArmAngleZ",
+			"GroupId": "ParamGroup2",
+			"Name": "左前腕前後"
+		},
+		{
+			"Id": "ParamLeftWristAngle",
+			"GroupId": "ParamGroup2",
+			"Name": "左手首"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "右腕"
+		},
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "左腕"
+		}
+	],
+	"Parts": [],
+	"CombinedParameters": [
+		[
+			"ParamHeadAngleX",
+			"ParamHeadAngleY"
+		],
+		[
+			"ParamBodyAngleX",
+			"ParamBodyAngleY"
+		],
+		[
+			"ParamLowerBody1X",
+			"ParamLowerBody1Y"
+		],
+		[
+			"ParamLowerBody2X",
+			"ParamLowerBody2Y"
+		],
+		[
+			"ParamLowerBody3X",
+			"ParamLowerBody3Y"
+		]
+	]
+}

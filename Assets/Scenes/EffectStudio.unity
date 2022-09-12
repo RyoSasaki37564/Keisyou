@@ -3201,6 +3201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackType1(1Hit)
       objectReference: {fileID: 0}
+    - target: {fileID: 1905430257063044220, guid: 169af9e0c0f0531468a8924a1784ca3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1905430257063044221, guid: 169af9e0c0f0531468a8924a1784ca3c,
         type: 3}
       propertyPath: m_RootOrder
@@ -3324,6 +3329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AttackType0(2Hit)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365497740558171463, guid: 093caf9003e25664b846b74d905d6594,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 093caf9003e25664b846b74d905d6594, type: 3}
@@ -4453,6 +4463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AttackType2(4Hit)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315432392161070942, guid: c532571de7e58f54488b1e6f08bb4445,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c532571de7e58f54488b1e6f08bb4445, type: 3}

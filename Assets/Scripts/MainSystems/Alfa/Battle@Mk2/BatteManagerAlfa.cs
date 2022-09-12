@@ -367,7 +367,6 @@ public class BatteManagerAlfa : MonoBehaviour
             if (m_enemyHPBarList[i].value != 0)
             {
                 Debug.Log(m_enemyInstanceList[i].m_name + ", スタミナ" + m_enemyInstanceList[i].m_nowStamina);
-                Debug.Log($"{(int)m_enemyHPBarList[i].value}, {(int)m_enemyHPBarList[i].maxValue}");
                 m_enemyAIList[i].EnemyActionSelect((int)m_enemyHPBarList[i].value, (int)m_enemyHPBarList[i].maxValue,
                     ref m_enemyInstanceList[i].m_nowStamina, m_enemyInstanceList[i].m_stamina, (int)m_playerDodgSlider.value, (int)m_playerDodgSlider.maxValue);
 
