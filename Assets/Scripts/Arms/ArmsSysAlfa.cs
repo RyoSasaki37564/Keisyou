@@ -15,7 +15,7 @@ public class ArmsSysAlfa : MonoBehaviour
     [SerializeField] Image m_rightArm = default;
     [SerializeField] Image m_leftArm = default;
 
-    int m_carsol = 0;
+    public static int m_carsol = 0;
 
     // Start is called before the first frame update
     void Start()

@@ -41,6 +41,8 @@ public class BatteManagerAlfa : MonoBehaviour
     [SerializeField] ArmsSysAlfa m_armsSys;
     Button m_menuB; //メニューボタン。装備リセット系などで呼びたいことが多い
 
+    [SerializeField] GameObject[] m_nomalAttackTimeLines = new GameObject[3];
+
     [SerializeField] GameObject m_battleUICanvas;
     [SerializeField] GameObject m_resultUICanvas;
 
@@ -249,38 +251,53 @@ public class BatteManagerAlfa : MonoBehaviour
     {
         if(!(m_nowZone == true && m_zone == ModeOfZone.Kamigakari) && m_nowPhase == PhaseOnBattle.Input && !testAttackControll)
         {
-            if(!m_nowZone)
-            {
-                m_zone = ModeOfZone.Kamigakari;
-            }
-            testAttackControll = true;
-            int damage = m_playerAtk - m_enemyInstanceList[m_target].m_def/10;
-            if(damage < 0)
-            {
-                damage = 1;
-            }
-            int lessDodg = 10;
-            float getConRate = 0.12f;
+            m_nomalAttackTimeLines[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetMotion].SetActive(true);
+        }
+    }
 
-            float doTime = 1f;
-            IEnumerator DeadCheck()
-            {
-                yield return new WaitForSeconds(doTime);
-                testAttackControll = false;
-                IsEnemyDead();
-            }
-            StartCoroutine(DeadCheck());
-            DOTween.To(() => m_enemyHPBarList[m_target].value, x => m_enemyHPBarList[m_target].value = x,
-                    m_enemyHPBarList[m_target].value - damage, doTime);
+    public void NomalAttackDamage(float doTime)
+    {
+        if (!m_nowZone)
+        {
+            m_zone = ModeOfZone.Kamigakari;
+        }
+        testAttackControll = true;
 
-            DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
-                    m_playerDodgSlider.value - lessDodg, doTime);
+        int damage = m_playerAtk - m_enemyInstanceList[m_target].m_def / 10;
 
-            if (!m_nowZone)
-            {
-                DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
-                        m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
-            }
+        if (damage <= 0)
+        {
+            damage = 1;
+        }
+
+        int lessDodg = 10;
+        float getConRate = 0.12f;
+
+
+        /*
+         * 
+         * こいつを何とかして最後だけ出すようにしろ
+         * 
+         */
+        IEnumerator DeadCheck()
+        {
+            yield return new WaitForSeconds(doTime);
+            testAttackControll = false;
+            IsEnemyDead();
+        }
+
+        StartCoroutine(DeadCheck());
+
+        DOTween.To(() => m_enemyHPBarList[m_target].value, x => m_enemyHPBarList[m_target].value = x,
+                m_enemyHPBarList[m_target].value - damage, doTime);
+
+        DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
+                m_playerDodgSlider.value - lessDodg, doTime);
+
+        if (!m_nowZone)
+        {
+            DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
+                    m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
         }
     }
 
