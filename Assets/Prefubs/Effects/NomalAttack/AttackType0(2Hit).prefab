@@ -285,6 +285,8 @@ GameObject:
   - component: {fileID: 2365497740558171462}
   - component: {fileID: 2365497740558171456}
   - component: {fileID: 2365497740558171457}
+  - component: {fileID: 3719603799900151131}
+  - component: {fileID: 4893828812825124739}
   m_Layer: 0
   m_Name: AttackType0(2Hit)
   m_TagString: Untagged
@@ -325,6 +327,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -1082350439661830558, guid: e0d3069026fd59f419736aa77dd66d3a, type: 2}
     value: {fileID: 2365497740558171457}
+  - key: {fileID: 3318217825707232183, guid: e0d3069026fd59f419736aa77dd66d3a, type: 2}
+    value: {fileID: 2365497740558171463}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &2365497740558171457
@@ -346,3 +350,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3719603799900151131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365497740558171463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1746bb2f85d00cd43a74152130ba9cf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bma: {fileID: 0}
+  m_doTimeList: []
+--- !u!114 &4893828812825124739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365497740558171463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: da57f9323d57ca24e9391c1171343fa6, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3719603799900151131}
+          m_MethodName: NomalAttackFromSignal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

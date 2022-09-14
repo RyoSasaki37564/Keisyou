@@ -28,6 +28,10 @@ public class BatteManagerAlfa : MonoBehaviour
     ModeOfZone m_zone = ModeOfZone.None;
     bool m_nowZone = false;
 
+
+    //シェイク関連のパラメータ
+    [SerializeField] Transform m_cameraTF;
+
     [SerializeField] Text m_dialog;
 
     [SerializeField] Slider m_playerHPSlider;
@@ -255,7 +259,7 @@ public class BatteManagerAlfa : MonoBehaviour
         }
     }
 
-    public void NomalAttackDamage(float doTime)
+    public void NomalAttackDamage(float doTime, bool isLast)
     {
         if (!m_nowZone)
         {
@@ -263,30 +267,29 @@ public class BatteManagerAlfa : MonoBehaviour
         }
         testAttackControll = true;
 
-        int damage = m_playerAtk - m_enemyInstanceList[m_target].m_def / 10;
+        int damage = (m_playerAtk + PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetAtk) - m_enemyInstanceList[m_target].m_def / 2;
 
         if (damage <= 0)
         {
             damage = 1;
         }
 
+        Debug.Log("damage : " + damage);
+
         int lessDodg = 10;
         float getConRate = 0.12f;
 
-
-        /*
-         * 
-         * こいつを何とかして最後だけ出すようにしろ
-         * 
-         */
-        IEnumerator DeadCheck()
+        if(isLast)
         {
-            yield return new WaitForSeconds(doTime);
-            testAttackControll = false;
-            IsEnemyDead();
-        }
+            IEnumerator DeadCheck()
+            {
+                yield return new WaitForSeconds(doTime);
+                testAttackControll = false;
+                IsEnemyDead();
+            }
 
-        StartCoroutine(DeadCheck());
+            StartCoroutine(DeadCheck());
+        }
 
         DOTween.To(() => m_enemyHPBarList[m_target].value, x => m_enemyHPBarList[m_target].value = x,
                 m_enemyHPBarList[m_target].value - damage, doTime);
@@ -299,6 +302,22 @@ public class BatteManagerAlfa : MonoBehaviour
             DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
                     m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
         }
+
+        StartCoroutine(Shake(doTime, 0.6f)); //画面揺らし
+    }
+
+    public IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPosition = m_cameraTF.position;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            m_cameraTF.position = originalPosition + Random.insideUnitSphere * magnitude;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        m_cameraTF.position = originalPosition;
     }
 
     void IsEnemyDead()
