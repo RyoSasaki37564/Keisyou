@@ -250,10 +250,10 @@ public class BatteManagerAlfa : MonoBehaviour
         }
     }
 
-    bool testAttackControll;
+    bool m_AttackControll;
     public void TestAttack()
     {
-        if(!(m_nowZone == true && m_zone == ModeOfZone.Kamigakari) && m_nowPhase == PhaseOnBattle.Input && !testAttackControll)
+        if(!(m_nowZone == true && m_zone == ModeOfZone.Kamigakari) && m_nowPhase == PhaseOnBattle.Input && !m_AttackControll && !m_enemyActControll)
         {
             m_nomalAttackTimeLines[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetMotion].SetActive(true);
         }
@@ -265,7 +265,7 @@ public class BatteManagerAlfa : MonoBehaviour
         {
             m_zone = ModeOfZone.Kamigakari;
         }
-        testAttackControll = true;
+        m_AttackControll = true;
 
         int damage = (m_playerAtk + PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetAtk) - m_enemyInstanceList[m_target].m_def / 2;
 
@@ -273,8 +273,6 @@ public class BatteManagerAlfa : MonoBehaviour
         {
             damage = 1;
         }
-
-        Debug.Log("damage : " + damage);
 
         int lessDodg = 10;
         float getConRate = 0.12f;
@@ -284,7 +282,7 @@ public class BatteManagerAlfa : MonoBehaviour
             IEnumerator DeadCheck()
             {
                 yield return new WaitForSeconds(doTime);
-                testAttackControll = false;
+                m_AttackControll = false;
                 IsEnemyDead();
             }
 
@@ -386,9 +384,10 @@ public class BatteManagerAlfa : MonoBehaviour
         }
     }
 
+    bool m_enemyActControll;
     void EnemysSelectActions()
     {
-        if(!m_nowZone)
+        if (!m_nowZone)
         {
             m_zone = ModeOfZone.Homura;
         }
@@ -397,8 +396,15 @@ public class BatteManagerAlfa : MonoBehaviour
 
         StartCoroutine(DeadCheck());
 
+        IEnumerator EneConSetting()
+        {
+            yield return new WaitForSeconds(doTime);
+            m_enemyActControll = false;
+        }
+
         IEnumerator DeadCheck()
         {
+            m_enemyActControll = true;
             yield return new WaitForSeconds(doTime);
             if (m_enemyHPBarList[i].value != 0)
             {
@@ -416,6 +422,8 @@ public class BatteManagerAlfa : MonoBehaviour
                     DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
                             m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
                 }
+
+                StartCoroutine(EneConSetting());
             }
 
             i--;
