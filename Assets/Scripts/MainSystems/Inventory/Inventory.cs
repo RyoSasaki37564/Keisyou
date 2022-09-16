@@ -24,7 +24,7 @@ public class Inventory
 
         m_armsInventry[0] = new Toryugu(0, "自我", 50, 14, 0, 0, 0, 15, "じがっががっががが！");
         m_armsInventry[1] = new Toryugu(1, "処刑者", 85, 9, 2, 0, 1, 30, "おめーの首ねーから！");
-        m_armsInventry[2] = new Toryugu(2, "白銀", 35, 30, 1, 1, 2, 8, "内部炸裂ガール！");
+        m_armsInventry[2] = new Toryugu(2, "白銀", 35, 30, 1, 1, 2, 8, "内部炸裂ガール!");
 
         m_mainArms.Add(m_armsInventry[1]);
         m_mainArms.Add(m_armsInventry[0]);

@@ -13,7 +13,7 @@ public enum PhaseOnBattle
     End,
 }
 
-enum ModeOfZone
+public enum ModeOfZone
 {
     None,
     Kamigakari,
@@ -26,10 +26,10 @@ public class BatteManagerAlfa : MonoBehaviour
 {
     PhaseOnBattle m_nowPhase = PhaseOnBattle.Start;
     ModeOfZone m_zone = ModeOfZone.None;
+    public ModeOfZone GetModeOfZone { get => m_zone; }
     bool m_nowZone = false;
+    public bool GetNowZone { get => m_nowZone; }
 
-
-    //シェイク関連のパラメータ
     [SerializeField] Transform m_cameraTF;
 
     [SerializeField] Text m_dialog;
@@ -87,6 +87,7 @@ public class BatteManagerAlfa : MonoBehaviour
     void Start()
     {
         //テストエンカウント
+        m_enemyEncountIDList.Add(0);
         m_enemyEncountIDList.Add(0);
 
         PlayerStatusSetUP();
@@ -162,6 +163,11 @@ public class BatteManagerAlfa : MonoBehaviour
             }
             SetSortingLayer(eAnim.transform, "Chara" + i.ToString());
             m_kamigakariSiletSettings.Add(eAnim.transform.GetChild(0).GetComponent<ChildrenBlackOut>());
+            KamigakariDamageManager kdm = eAnim.GetComponent<KamigakariDamageManager>();
+            kdm.m_cameraTF = eAnim.transform;
+            kdm.m_hpSlider = eneHPSli;
+            kdm.m_id = i;
+            kdm.m_bma = this;
         }
     }
 
@@ -318,7 +324,7 @@ public class BatteManagerAlfa : MonoBehaviour
         m_cameraTF.position = originalPosition;
     }
 
-    void IsEnemyDead()
+    public void IsEnemyDead()
     {
         if(m_enemyHPBarList[m_target].value == 0)
         {
@@ -336,6 +342,20 @@ public class BatteManagerAlfa : MonoBehaviour
             }
             BattleEnd();
         }
+        else if(m_nowZone && m_zone == ModeOfZone.Kamigakari && m_enemyHPBarList[m_target].value == 0)
+        {
+            for (var i = m_enemyHPBarList.Count - 1; i >= 0; i--)
+            {
+                if (m_enemyHPBarList[i].value != 0)
+                {
+                    int pTarget = m_target;
+                    m_target = i;
+                    ChangeTarget(pTarget, m_target);
+                    return;
+                }
+            }
+            BattleEnd();
+        }
         else
         {
             m_nowPhase = PhaseOnBattle.Enemy;
@@ -343,7 +363,7 @@ public class BatteManagerAlfa : MonoBehaviour
         }
     }
 
-    void ChangeTarget(int prev, int next)
+    public void ChangeTarget(int prev, int next)
     {
         m_enemyTargettingMarkerList[prev].SetActive(false);
         m_enemyTargettingMarkerList[next].SetActive(true);
