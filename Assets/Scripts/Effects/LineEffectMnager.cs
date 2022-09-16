@@ -8,7 +8,7 @@ public class LineEffectMnager : MonoBehaviour
 
     [SerializeField] int m_lineCount = 100;
 
-    int m_indexer = 0;
+    int m_indexer = 1;
 
     [SerializeField] GameObject m_maxHeight;
     [SerializeField] GameObject m_minHeight;
@@ -28,7 +28,7 @@ public class LineEffectMnager : MonoBehaviour
             x.transform.SetParent(this.gameObject.transform);
             x.SetActive(false);
         }
-        m_indexer = 0;
+        m_indexer = 1;
         Liner();
     }
 
@@ -55,7 +55,7 @@ public class LineEffectMnager : MonoBehaviour
         m_indexer++;
         if (m_indexer == m_lineCount)
         {
-            m_indexer = 0;
+            m_indexer = 1;
         }
         Liner();
     }
@@ -68,7 +68,7 @@ public class LineEffectMnager : MonoBehaviour
         m_indexer++;
         if (m_indexer == m_lineCount)
         {
-            m_indexer = 0;
+            m_indexer = 1;
         }
         Liner();
     }
