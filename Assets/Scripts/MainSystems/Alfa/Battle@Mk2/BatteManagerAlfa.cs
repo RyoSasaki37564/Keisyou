@@ -258,7 +258,7 @@ public class BatteManagerAlfa : MonoBehaviour
 
 
             //止水のテスト
-            m_zone = ModeOfZone.Deep;
+            m_zone = ModeOfZone.Meikyoushisui;
             float getConRate = 0.12f;
             DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
                     m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
