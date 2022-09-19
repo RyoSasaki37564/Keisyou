@@ -284,7 +284,14 @@ public class BatteManagerAlfa : MonoBehaviour
         }
         m_AttackControll = true;
 
-        int damage = (m_playerAtk + PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetAtk) - m_enemyInstanceList[m_target].m_def / 2;
+        int homuraATK = 0;
+
+        if(m_zone == ModeOfZone.Homura && m_nowZone)
+        {
+            homuraATK = (m_playerAtk + PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetAtk) / 2;
+        }
+
+        int damage = (m_playerAtk + PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetAtk + homuraATK) - m_enemyInstanceList[m_target].m_def / 2;
 
         if (damage <= 0)
         {
@@ -309,8 +316,11 @@ public class BatteManagerAlfa : MonoBehaviour
         DOTween.To(() => m_enemyHPBarList[m_target].value, x => m_enemyHPBarList[m_target].value = x,
                 m_enemyHPBarList[m_target].value - damage, doTime);
 
-        DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
-                m_playerDodgSlider.value - lessDodg, doTime);
+        if(!m_nowZone && m_zone == ModeOfZone.Meikyoushisui)
+        {
+            DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
+                    m_playerDodgSlider.value - lessDodg, doTime);
+        }
 
         if (!m_nowZone)
         {
@@ -425,13 +435,8 @@ public class BatteManagerAlfa : MonoBehaviour
         int i = m_enemyHPBarList.Count - 1;
         float doTime = 1.5f;
 
+        StartCoroutine(EneConSetting());
         StartCoroutine(DeadCheck());
-
-        IEnumerator EneConSetting()
-        {
-            yield return new WaitForSeconds(doTime);
-            m_enemyActControll = false;
-        }
 
         IEnumerator DeadCheck()
         {
@@ -443,23 +448,48 @@ public class BatteManagerAlfa : MonoBehaviour
                 m_enemyAIList[i].EnemyActionSelect((int)m_enemyHPBarList[i].value, (int)m_enemyHPBarList[i].maxValue,
                     ref m_enemyInstanceList[i].m_nowStamina, m_enemyInstanceList[i].m_stamina, (int)m_playerDodgSlider.value, (int)m_playerDodgSlider.maxValue);
 
-                //test
-                if(!(m_nowZone && m_zone == ModeOfZone.Kamigakari))
-                DOTween.To(() => m_playerHPSlider.value, x => m_playerHPSlider.value = x,
-                        m_playerHPSlider.value - m_enemyInstanceList[i].m_atk, doTime);
+                int homuraDef = 0;
+
+                if (m_zone == ModeOfZone.Homura && m_nowZone)
+                {
+                    homuraDef = m_playerDef;
+                }
+
+                int damage = m_enemyInstanceList[i].m_atk - (m_playerDef + homuraDef);
+
+                if(damage <= 0)
+                {
+                    damage = 1;
+                }
+
+                float rand = Random.Range(0, 100);
+                if(m_zone == ModeOfZone.Meikyoushisui && m_nowZone)
+                {
+                    m_dialog.text = "回避";
+                }
+                else if(rand > m_playerDodgSlider.value)
+                {
+                    DOTween.To(() => m_playerHPSlider.value, x => m_playerHPSlider.value = x,
+                            m_playerHPSlider.value - damage, doTime);
+                }
+                else
+                {
+                    DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
+                            m_playerDodgSlider.value - damage / 2, doTime);
+                    m_dialog.text = "回避";
+                }
+
+
                 if(!m_nowZone)
                 {
                     float getConRate = 0.12f;
                     DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
                             m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
                 }
-
-                StartCoroutine(EneConSetting());
             }
 
             i--;
-
-            if(i == -1)
+            if (i == -1)
             {
                 m_nowPhase = PhaseOnBattle.Input;
                 StateProgression();
@@ -469,6 +499,21 @@ public class BatteManagerAlfa : MonoBehaviour
                 StartCoroutine(DeadCheck());
             }
         }
+
+
+        IEnumerator EneConSetting()
+        {
+            yield return new WaitForSeconds(doTime);
+            if (i == -1)
+            {
+                m_enemyActControll = false;
+            }
+            else
+            {
+                StartCoroutine(EneConSetting());
+            }
+        }
+
     }
 
     public void Kyokuchi()
