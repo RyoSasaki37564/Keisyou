@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ターゲットセッティング装置も兼ねる
+/// </summary>
 public class KamigakariDamageManager : MonoBehaviour
 {
     public int m_id = 0;

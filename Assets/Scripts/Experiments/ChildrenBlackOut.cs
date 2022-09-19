@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using DG.Tweening;
 
 public class ChildrenBlackOut : MonoBehaviour
 {
@@ -53,7 +53,7 @@ public class ChildrenBlackOut : MonoBehaviour
     {
         for(var i = 0; i < m_childrenSpr.Count; i++)
         {
-            m_childrenSpr[i].color = c;
+            m_childrenSpr[i].DOColor(c, 2f);
         }
     }
 

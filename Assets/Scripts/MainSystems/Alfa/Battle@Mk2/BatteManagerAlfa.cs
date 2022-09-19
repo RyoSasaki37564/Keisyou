@@ -38,6 +38,7 @@ public class BatteManagerAlfa : MonoBehaviour
     [SerializeField] Slider m_playerConSlider;
     [SerializeField] Slider m_playerDodgSlider;
 
+    [SerializeField] GameObject[] m_kyokuchiNameAnimations = new GameObject[4];
     
     [SerializeField] Transform m_shinzuiCircle;
     [SerializeField] Transform m_shinzuiPool;
@@ -484,19 +485,23 @@ public class BatteManagerAlfa : MonoBehaviour
                 break;
             case ModeOfZone.Kamigakari:
                 m_kyokuchiEffect[0].SetActive(true);
-                for(var i = 0; i < m_kamigakariSiletSettings.Count; i++)
+                m_kyokuchiNameAnimations[0].SetActive(true);
+                for (var i = 0; i < m_kamigakariSiletSettings.Count; i++)
                 {
                     m_kamigakariSiletSettings[i].Kamigakari();
                 }
                 break;
             case ModeOfZone.Homura:
                 m_kyokuchiEffect[1].SetActive(true);
+                m_kyokuchiNameAnimations[1].SetActive(true);
                 break;
             case ModeOfZone.Meikyoushisui:
                 m_kyokuchiEffect[2].SetActive(true);
+                m_kyokuchiNameAnimations[2].SetActive(true);
                 break;
             case ModeOfZone.Deep:
                 m_kyokuchiEffect[3].SetActive(true);
+                m_kyokuchiNameAnimations[3].SetActive(true);
                 break;
         }
     }
@@ -513,19 +518,23 @@ public class BatteManagerAlfa : MonoBehaviour
                 break;
             case ModeOfZone.Kamigakari:
                 m_kyokuchiEffect[0].SetActive(false);
-                for(var i = 0; i < m_kamigakariSiletSettings.Count; i++)
+                m_kyokuchiNameAnimations[0].SetActive(false);
+                for (var i = 0; i < m_kamigakariSiletSettings.Count; i++)
                 {
                     m_kamigakariSiletSettings[i].TimeIsBack();
                 }
                 break;
             case ModeOfZone.Homura:
                 m_kyokuchiEffect[1].SetActive(false);
+                m_kyokuchiNameAnimations[1].SetActive(false);
                 break;
             case ModeOfZone.Meikyoushisui:
                 m_kyokuchiEffect[2].SetActive(false);
+                m_kyokuchiNameAnimations[2].SetActive(false);
                 break;
             case ModeOfZone.Deep:
                 m_kyokuchiEffect[3].SetActive(false);
+                m_kyokuchiNameAnimations[3].SetActive(false);
                 break;
         }
     }
