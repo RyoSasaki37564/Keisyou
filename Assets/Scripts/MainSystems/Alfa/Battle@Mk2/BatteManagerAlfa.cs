@@ -254,6 +254,16 @@ public class BatteManagerAlfa : MonoBehaviour
             StartCoroutine(Progression());
             DOTween.To(() => m_playerDodgSlider.value, x => m_playerDodgSlider.value = x,
                     m_playerDodgSlider.value + testDodge, doTime);
+
+
+
+            //止水のテスト
+            m_zone = ModeOfZone.Deep;
+            float getConRate = 0.12f;
+            DOTween.To(() => m_playerConSlider.value, x => m_playerConSlider.value = x,
+                    m_playerConSlider.value + m_playerConSlider.maxValue * getConRate, doTime);
+
+
         }
     }
 
