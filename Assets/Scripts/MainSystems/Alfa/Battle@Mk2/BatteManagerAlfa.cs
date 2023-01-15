@@ -84,11 +84,13 @@ public class BatteManagerAlfa : MonoBehaviour
 
     List<ChildrenBlackOut> m_kamigakariSiletSettings = new List<ChildrenBlackOut>();
 
+    [SerializeField] TestNineKeyOpen m_testNineKeyOpen; //エネミーグラの当たり判定のオンオフを制御するために
+
     // Start is called before the first frame update
     void Start()
     {
         //テストエンカウント
-        m_enemyEncountIDList.Add(0);
+        //m_enemyEncountIDList.Add(0);
         m_enemyEncountIDList.Add(0);
 
         PlayerStatusSetUP();
@@ -149,6 +151,7 @@ public class BatteManagerAlfa : MonoBehaviour
             var eAI = EnemyAIGenerate(idList[i]);
             m_enemyAIList.Add(eAI);
             var eAnim = Instantiate(m_enemysBattleAnimatorsTemps[ene.m_animatorID]);
+            EneColSet(eAnim);
             m_nowEnemysAnimatorList.Add(eAnim);
             if(idList.Count == 3)
             {
@@ -169,6 +172,19 @@ public class BatteManagerAlfa : MonoBehaviour
             kdm.m_hpSlider = eneHPSli;
             kdm.m_id = i;
             kdm.m_bma = this;
+        }
+    }
+
+    void EneColSet(GameObject go)
+    {
+        Collider2D c = go.GetComponent<Collider2D>();
+        if (c != null)
+        {
+            m_testNineKeyOpen.m_enemyBodyColList.Add(c);
+        }
+        for (var x = 0; x < go.transform.childCount; x++)
+        {
+            EneColSet(go.transform.GetChild(x).gameObject);
         }
     }
 
@@ -272,6 +288,7 @@ public class BatteManagerAlfa : MonoBehaviour
     {
         if(!(m_nowZone == true && m_zone == ModeOfZone.Kamigakari) && m_nowPhase == PhaseOnBattle.Input && !m_AttackControll && !m_enemyActControll)
         {
+            m_nomalAttackTimeLines[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetMotion].transform.position = m_nowEnemysAnimatorList[m_target].transform.position;
             m_nomalAttackTimeLines[PlayerDataAlfa.Instance.m_testInventry.m_mainArms[ArmsSysAlfa.m_carsol].GetMotion].SetActive(true);
         }
     }
@@ -465,7 +482,7 @@ public class BatteManagerAlfa : MonoBehaviour
                 float rand = Random.Range(0, 100);
                 if(m_zone == ModeOfZone.Meikyoushisui && m_nowZone)
                 {
-                    m_dialog.text = "回避";
+                    m_dialog.text = "明鏡止水・回避";
                 }
                 else if(rand > m_playerDodgSlider.value)
                 {

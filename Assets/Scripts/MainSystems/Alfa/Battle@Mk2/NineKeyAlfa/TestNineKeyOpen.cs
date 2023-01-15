@@ -6,6 +6,8 @@ public class TestNineKeyOpen : MonoBehaviour
 {
     [SerializeField] List<GameObject> m_goList = new List<GameObject>();
 
+    public List<Collider2D> m_enemyBodyColList = new List<Collider2D>();
+
     bool m_test;
 
     private void Start()
@@ -27,6 +29,10 @@ public class TestNineKeyOpen : MonoBehaviour
             {
                 g.SetActive(true);
 ;           }
+            foreach(var c in m_enemyBodyColList)
+            {
+                c.enabled = false;
+            }
             m_test = true;
         }
         else
@@ -34,6 +40,10 @@ public class TestNineKeyOpen : MonoBehaviour
             foreach (var g in m_goList)
             {
                 g.SetActive(false);
+            }
+            foreach (var c in m_enemyBodyColList)
+            {
+                c.enabled = true;
             }
             m_goList[2].SetActive(true);
             m_test = false;

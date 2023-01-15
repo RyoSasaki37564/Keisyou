@@ -47,6 +47,7 @@ MonoBehaviour:
   m_id: 0
   m_hpSlider: {fileID: 0}
   m_cameraTF: {fileID: 0}
+  m_bma: {fileID: 0}
 --- !u!1001 &4382658030213021571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,6 +55,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1146216491444550538}
     m_Modifications:
+    - target: {fileID: 1270585953033153018, guid: 81eb2b61f67bbbe40a3af0520fd99df5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476246584587286965, guid: 81eb2b61f67bbbe40a3af0520fd99df5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5253295257724694379, guid: 81eb2b61f67bbbe40a3af0520fd99df5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6204637705224064640, guid: 81eb2b61f67bbbe40a3af0520fd99df5,
         type: 3}
       propertyPath: m_Layer
